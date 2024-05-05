@@ -1,0 +1,10 @@
+# Experimental design
+
+## Sequencing methods
+
+## Cost optimisation approaches
+
+## Sequencing 
+
+## Batches and replicates (technical/biological)
+

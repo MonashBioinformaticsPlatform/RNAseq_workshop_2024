@@ -1,0 +1,10 @@
+# Differential Expression
+
+
+
+## Normalisation
+## analysis ie DEG
+ ( should we go into more details on design matrices, contrast matrices, fitting linear models etc.?)
+## QC of results
+### MDA/PCA plots and running additional adjustments such as RUVseq or adding covariates in DGE
+
