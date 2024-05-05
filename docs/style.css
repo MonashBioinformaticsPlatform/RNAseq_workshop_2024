@@ -1,0 +1,34 @@
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+.challenge {
+  margin: 2em;
+  padding: 1em;
+  border: 1px solid black;
+  border-radius: 5px;
+  background: #f4e1fc;
+}
+.challenge > :first-child, .challenge > :nth-child(2) {
+  margin-top: 0;
+}
+.rational {
+  margin: 2em;
+  padding: 1em;
+  border: 1px solid black;
+  border-radius: 5px;
+  background: rgb(201, 249, 245);
+}
+.rational > :first-child, .rational > :nth-child(2) {
+  margin-top: 0;
+}
