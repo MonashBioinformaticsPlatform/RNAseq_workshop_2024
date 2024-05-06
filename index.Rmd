@@ -36,4 +36,8 @@ knitr::write_bib(c(
   .packages(), 
   'bookdown', 'knitr', 'rmarkdown'
   ), 'packages.bib')
+
+# So that renv includes these in the lock file
+library('xml2')
+library('downlit')
 ```
