@@ -1,6 +1,6 @@
 # Build the bookdown
 
-> All commits to the `main` branch on Github automatically trigger a bookdown build and deployment to Pages automatically - you only need to do the steps below to render the HTML locally.
+> All commits to the `main` branch on Github automatically trigger a bookdown build and deployment to Pages automatically - you only need to do the steps below to render the HTML locally. The rendered pages can be found on the `gh-pages` branch.
 
 ## install bookdown
 
