@@ -1,7 +1,0 @@
-# Library Preparation
-
-## Read length/type, paired/single
-## Enrichment/depletion
-## cDNA synthesis
-
-
