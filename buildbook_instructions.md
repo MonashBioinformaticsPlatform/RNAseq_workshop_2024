@@ -1,18 +1,25 @@
 # Build the bookdown
 
+> All commits to the `main` branch on Github automatically trigger a bookdown build and deployment to Pages automatically - you only need to do the steps below to render the HTML locally. The rendered pages can be found on the `gh-pages` branch.
 
 ## install bookdown
 
-
 ```{r }
-install.packages("bookdown")
+install.packages("renv")
+renv::restore()
 
+# alternatively
+# install.packages(c("bookdown", "downlit", "xml2"))
 ```
 
 ## open project
 
 open the .Rproj file and in the history panel of Rstudio you will see the ```build``` tab. ```Build Book``` from there.
 
+Alternatively, in the R console run:
+```{r }
+bookdown::render_book("index.Rmd")
+```
 
 # Add boxes in your pages
 
