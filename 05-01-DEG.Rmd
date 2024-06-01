@@ -1,10 +1,72 @@
 # Differential Expression
 
+We will be looking at data from the project [SRP067469](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SRP067469&o=acc_s%3Aa) in the Sequence Read Archive (SRA). Read counts can be found in [GSE76081](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE76081) in Gene Expression Omnibus (GEO), but in this workshop we have produced our own read counts. The data is from the publication:
 
+> Hoogduijn MJ, de Witte SF, Luk F, van den Hout-van Vroonhoven MC, Ignatowicz L, Catar R, Strini T, Korevaar SS, van IJcken WF, Betjes MG, Franquesa M, Moll G, Baan CC. Effects of Freeze-Thawing and Intravenous Infusion on Mesenchymal Stromal Cell Gene Expression. *Stem Cells Dev.* 2016 Apr 15;25(8):586-97. doi: [10.1089/scd.2015.0329](https://doi.org/10.1089/scd.2015.0329)
+
+This experiment is about mesenchymal stromal cells (MSC). Injecting MSCs is a potential therapy for immune disorders and degenerative disease. This experiment looks at the effect of freezing and thawing cells, and also simulates the effect of injecting them into a person by injecting them into mice.
+
+There are nine samples in three conditions:
+
+| SRA accession number | Condition | Donor |
+|---|---|---|
+| SRR3021900 | Continuous culture | 1 |
+| SRR3021901 | Continuous culture | 2 |
+| SRR3021902 | Continuous culture | 3 |
+| SRR3021903 | Frozen-Thawed | 1 | 
+| SRR3021904 | Frozen-Thawed | 2 |
+| SRR3021905 | Frozen-Thawed | 3 |
+| SRR3021906 | Injected | 1 |
+| SRR3021907 | Injected | 2 |
+| SRR3021908 | Injected | 3 |
+
+## A first look
+
+These nine read sets have been run through the nf-core/rnaseq pipeline using the [laxy.io](https://laxy.io) website.
+
+* [laxy.io output](https://laxy.io/#/job/7CW69RaW4vglLAGcNqFRMi/?access_token=312fbb56-a09a-4f55-9519-6cf67cc341fa)
+
+<!--We will use the file `counts.star_featureCounts.tsv`, which counts reads unambiguously aligned to genes in a straightforward way. See later for a discussion of different ways of counting. -->
+
+We will use `salmon.merged.gene_counts_scaled.biotypes.tsv`.
+
+Either press the "send to degust" button next to this file, or download it and then upload it to [Degust](https://degust.erc.monash.edu/). We now need to configure Degust:
+
+* In "Info columns" add "gene_id" and "gene_name".
+* Using the "Add condition" button, add three conditions. Add samples to each condition as in the table above.
+* Press "Save changes".
+
+## Gene expression filter
+
+At this point, Degust warns us there is no gene expression filter. This is important!
+
+* Testing many genes increases the size of the FDR correction for multiple testing. Since there is no hope of detecting differential expression in lowly expressed genes, we prefer to remove these before testing. 
+* The "Empirical Bayes" part of the statistical test goes wonky if genes with very low expression are included.
+
+Click on "QC" in the top right and then "Library sizes". This shows the total count for each sample. This experiment has a variety of library sizes, from 7.9 million up.
+
+If few samples have a count of more than 5 to 10, we can safely discard them. Our rule of thumb is to require this in group size minus one samples. Here our group size is 3, so we will require at least 2 samples with a non-trivial count. So that we treat each sample in the same way, we will set a threshold on "Counts Per Million" (CPM) rather than the raw counts.
+
+* Press "Configure" in the top right to return to the configuration screen.
+* Set "Min gene CPM" to 1 and "in at least samples" to 2.
+* Press "Save changes".
+
+TODO: Discuss rules of thumb!
 
 ## Normalisation
+
 ## analysis ie DEG
+
  ( should we go into more details on design matrices, contrast matrices, fitting linear models etc.?)
+
 ## QC of results
 ### MDA/PCA plots and running additional adjustments such as RUVseq or adding covariates in DGE
 
+
+## Addendum: Which counts file to use?
+
+What are you counting?
+
+How should you count?
+
+What about transcript level counts or differential exon usage?
