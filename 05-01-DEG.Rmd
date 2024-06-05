@@ -25,13 +25,11 @@ There are 12 samples in 4 conditions:
 
 These 12 read sets have been run through the nf-core/rnaseq pipeline using the [laxy.io](https://laxy.io) website.
 
-* [laxy.io output](https://laxy.io/#/job/3lQ6tw48pcFfOKyg1vTJry/?access_token=485eaae2-46e7-4c15-8d83-6bd381615ae5)
+&rarr; [laxy.io output](https://laxy.io/#/job/3lQ6tw48pcFfOKyg1vTJry/?access_token=485eaae2-46e7-4c15-8d83-6bd381615ae5)
 
 <!--We will use the file `counts.star_featureCounts.tsv`, which counts reads unambiguously aligned to genes in a straightforward way. See later for a discussion of different ways of counting. -->
 
-We will use .... **TO FIX: Salmon counts are broken. featureCounts counts don't contain gene name.**
-
-Either press the "send to degust" button next to this file, or download it and then upload it to [Degust](https://degust.erc.monash.edu/). We now need to configure Degust:
+We will use `salmon.merged.gene_counts.biotypes.tsv`. You can find it in the Laxy output in the `output/results/star_salmon/` folder. Download this file and then upload it to [Degust](https://degust.erc.monash.edu/). We now need to configure Degust:
 
 * In "Info columns" add "gene_id" and "gene_name".
 * Using the "Add condition" button, add three conditions. Add samples to each condition as in the table above.
@@ -52,7 +50,9 @@ If few samples have a count of more than 5 to 10, we can safely discard them. Ou
 * Set "Min gene CPM" to 0.5 and "in at least samples" to 2.
 * Press "Save changes".
 
-TODO: Discuss rules of thumb!
+&rarr; [Degust page set up as described](https://degust.erc.monash.edu/degust/compare.html?code=d4453d6c1cbf8f7c0c876732a4bc0ba5#/)
+
+**TODO: Discuss rules of thumb!**
 
 ## Normalisation
 
