@@ -6,8 +6,8 @@ Triple-negative breast cancer cell line MDA-MB-468 has been engineered to have a
 
 There are 12 samples in 4 conditions:
 
-|sample     |condition    | replicate|
-|:----------|:------------|---:|
+|Sample |Condition |Replicate |
+|:--|:--|:--|
 |SRR2155413 |DMSO_nodox   |   1|
 |SRR2155414 |DMSO_nodox   |   2|
 |SRR2155415 |DMSO_nodox   |   3|
@@ -32,7 +32,7 @@ These 12 read sets have been run through the nf-core/rnaseq pipeline using the [
 We will use `salmon.merged.gene_counts.biotypes.tsv`. You can find it in the Laxy output in the `output/results/star_salmon/` folder. Download this file and then upload it to [Degust](https://degust.erc.monash.edu/). We now need to configure Degust:
 
 * In "Info columns" add "gene_id" and "gene_name".
-* Using the "Add condition" button, add three conditions. Add samples to each condition as in the table above.
+* Using the "Add condition" button, add four conditions. Add samples to each condition as in the table above.
 * Press "Save changes".
 
 ## Gene expression filter
@@ -54,19 +54,145 @@ If few samples have a count of more than 5 to 10, we can safely discard them. Ou
 
 **TODO: Discuss rules of thumb!**
 
-## Normalisation
 
-## analysis ie DEG
+## Differential Expression analysis
 
  ( should we go into more details on design matrices, contrast matrices, fitting linear models etc.?)
 
+### Choosing a set of DE genes
+
+### Thresholds
+
+We discover a larger number of DE genes. How can we pick the most biologically interesting results?
+
+* FDR cutoff
+* log2 fold change cutoff
+
+Try comparing:
+
+* E2_nodox vs DMSO_nodox
+* E2_plusdox vs DMSO_plusdox
+
+### Volcano plot
+
+A volcano plot shows the effects of these thresholds.
+
+* x-axis = log2 fold change
+* y-axis = log10 FDR adjusted p-value
+
+We might like a nice V-shaped volcano plot, where larger fold changes are always associated with smaller p-values. This sometimes happens, but not with this data. There may be many false negative results, and if the experiment were repeated a quite different set of genes might be discovered! 
+
+Statistical testing protects us from false discoveries but not false negatives. False negatives can be reduced with more replicates and better experimental design.
+
+### MA plot
+
+An MA plot (sometimes also called an MD plot) shows our ability to discover DE at different average expression levels.
+
+* x-axis = average log2 CPM expression
+* y-axis = log2 fold change
+
+
+### Parallel coordinates plot
+
+The parallel coordinates plot helps show patterns of differential expression with more than two conditions. You can interactively subset genes by dragging ranges on the axes of this plot!
+
+* y-axes = log2 fold change relative to baseline condition
+
+### Topconfects
+
+A more principled approach is provided by the "topconfects" method, developed at Monash. For a chosen FDR (0.05 should be fine), topconfects provides a confidence bound on the log fold change of each gene. Check the top genes found by this method.
+
+* x-axis = log2 fold change, line is confidence bound, dot is estimated log2 fold change
+* dot-size = average log2 expression
+
+
 ## QC of results
-### MDA/PCA plots and running additional adjustments such as RUVseq or adding covariates in DGE
+
+We've done things a bit out of order here. Before DE analysis, we should have done some more QC!
+
+### Library size
+
+* y-axis = Total count in each sample.
+
+### RLE plot
+
+### p-value histogram
+
+If a gene is not DE the p-value should be uniformly random between 0 and 1.
+ 
+* x-axis = p-value
+
+So a flat histogram indicates likely no differential expression in any genes.
+
+If the histogram leans left, there probably is some real differential expression, even if no significant DE genes were found!
+
+If the histogram leans right, something weird is going on because this shouldn't happen.
+
+Here, the "E2_plusdox vs DMSO_plusdox" comparison leans strongly left as we would expect. The "E2_nodox vs DMSO_nodox" comparisons leans right. That is, hmm, actually not ideal.
+
+### MDS plot 
+
+(very similar to PCA) 
+
+### Heatmap
+
+Heatmaps can have many uses. Genes can be selected in many different ways, and the genes and possibly also the samples can be seriated -- given a nice ordering to reveal patterns such as clusters. The heatmap Degust shows alongside the MDS plot is particularly useful as an *exploratory* view of the data. 
+
+* Select the MDS plot tab.
+* If you haven't already, right click on the heatmap and select "show replicates".
+* Set "num genes" to, say, 500.
+
+The "num genes" filter picks the top n most highly variable genes. This affects both the MDS plot and the heatmap.
+
+* color = log2 CPM relative to the average, for each gene. The log2 transformation has an adjustment to reduce variability with low counts, adjusted by the "moderation" control. (See the edgeR cpm function for details.)
+
+Here, the MDS plot indicated a batch effect, and the heatmap shows some of the genes involved.
 
 
-## Addendum: Which counts file to use?
+## Adjusting for batch effects
+
+Replicates seem to be a source of variation. If we can include this in our model of the data, possibly allowing us to discover more differentially expressed genes.
+
+Under the hood, the packages Degust uses are fitting a "linear models" for each gene. Linear models give us a great deal of flexibility analysing different experimental design (TODO: SEE HERE AND HERE). However they have some odd quirks and will give you wrong answers if you use them wrongly, often without any errors!
+
+**To adjust for a nuisance factor with n levels, the rule is that we include n-1 of the levels as "hidden factors" in Degust.** The choice of which n-1 levels should not make a difference.
+
+Here our nuisance factor is "replicate". Add hidden factors for replicate 2 and replicate 3. Do you discover more differentially expressed genes?
+
+### RUV
+
+RUV refers to a collection of methods for removing unwanted variation when the source of that variation is not known.
+
+Degust has basic support for RUV.
+
+
+## Interactions
+
+
+## Going deeper: UMIs and counting
+
+UMIs vs reads vs read-pairs vs fragments.
+
+## Going deeper: units and normalisation
+
+Our assumption is that most genes are not differentially expressed, so the total "library size" of a sample can serve as a reference level against which to compare each gene. (However if a highly expressed gene increases in expression, it will look like all of the other genes decreased a little in terms of CPM. It is common to make adjustments to library sizes to account for this. Degust uses an adjustment called "TMM".)
+
+Counts Per Million (CPM) (sometimes RPM, Reads Per Million) is therefore a convenient unit to compare the expression of a gene across different samples.
+
+If you want to compare the expression levels of different genes there is a further concern. Some RNA-Seq protocols produce reads along the full length of each transcript, and more reads are obtained from longer transcripts. Accounting for transcript lengths, another unit called Transcripts Per Million (TPM) is sometimes used. You may also see mention of an earlier unit called FPKM or RPKM (Fragments/Reads Per Kilobase per Million).
+
+Other RNA-Seq protocols only produce reads, for example, at the 3' ends of reads. In this case CPM and TPM are the same.
+
+**These units are only for visualizing and reporting results. For Differential Expression analysis, the input is always raw counts.** CPMs or TPMs are not raw counts and results will be meaningless if they are used with Degust.
+
+
+## Going deeper: which counts file to use?
 
 What are you counting?
+
+* Genes?
+* Transcripts? May need higher quality data: greater depth, paired-end. TODO: REFERENCE
+* Exons?
 
 How should you count?
 
