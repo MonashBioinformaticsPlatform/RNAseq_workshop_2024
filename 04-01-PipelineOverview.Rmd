@@ -1,13 +1,153 @@
 # Pipeline Overview
 
+## High-level
 
-## Sequencing
-## (fastq)QC
+An RNA-seq pipeline needs to identify where a (short) read has come from to quantify transcription of genes.
+
+At the high-level, this usually involves:
+
+- align or 'map' the read to the genome (or transcriptome)
+  - _(mRNA transcript, or somewhere else on the genome ?)_
+- count / quantify abundance
+- differential expression analysis
+
+## A simple pipeline
+
+<a href="images/pipeline/simple_pipeline2.svg" target="_blank">
+![Simple RNA-seq pipeline overview](images/pipeline/simple_pipeline.svg){width="100%"}
+</a>
+
+## A more complex pipeline
+
+[nf-core/rnaseq](https://nf-co.re/rnaseq)
+
+<a href="images/pipeline/nf-core_rnaseq.png" target="_blank">
+![nf-core/rnaseq metromap](images/pipeline/nf-core_rnaseq.png){width="100%"}
+</a>
+
+### Pipeline activity
+
+**Challenge:** Create your own fantasy RNA-seq processing pipeline
+
+_list tools, challenge is to compose them in a sensible order_
+
+## 'Raw' short reads
+
+Your sequencing provider usually provides a set of FASTQ files (usually with the extension `.fq.gz` or `.fastq.gz`).
+These files contain the raw sequencing reads.
+
+**What's inside a FASTQ file ?**
+
+```
+@SRR5963435.1 FCC3UGWACXX:1:1101:1196:2111/1
+AANGGGCGCAATGTGCGTTCAAAGATTCGATGATTCACGGAATTCTGCAATTCACATTACGTATCGCATTTCGCTGCGTTCTTCATCGATGCGAGAACCA
++
+@C#4=BB=<FFHG>GAFHIGDGFHHGI:CD@>?BFGG>CEGIG>8BDFDGGEGEFFEHIIIGIIGGHBBBC>@CDBBDB??BDDED>9>AA?B@######
+```
+
+Each read has four lines:
+
+  - `@` followed by the read 'name', and other information (flowcell ID, etc)
+  - The DNA sequence of the read
+  - A single `+` on a line
+  - The [quality scores](https://en.wikipedia.org/wiki/FASTQ_format#Quality) for each base (roughly, capital letters are good, `!"#$%&` expletives are bad)
+
+Historically there were various different encodings used for the quality line - today you'll only ever see the 'standard' 
+Sanger/Phred+33 format, unless you are revisiting data generated prior to ~2011.
+
+If your sequencing is paired end, you will have pairs of files with `_R1`/`_R2` or `_1`/`_2_` toward the end of the filename.
+For single ended sequencing you'll just have `_R1` or `_1`.
+
+> Very occasionally a provider will also give you `_I1` and/or `_I2` files - these are usually index, barcode or UMI reads associated with a specific library layout or type of sequencing.
+
+### Detour: demultiplexing
+
+***Before***  you get your FASTQs, the sequencing provider will have 'demultiplexed' the data output by the instrument.
+
+Sequencing providers often pool many samples onto a single flowcell, combining samples from different customers.
+Demultiplexing is the process of identifying index/barcode sequences in the sequenced fragments and assigning them to samples.
+
+Each sample is identified by a short 'barcode' or 'index' incorporated into the fragment. For example:
+
+```bash
+                        R1>________________           I1>________
+--P5_primer-- --i5_primer- ----insert------ -i7_primer-- --index- -P7_primer--
+............. ............ AANGGGCGCAATGTGC ............ CCGCGGTT ............
+                           TTNCCCGCGTTACACG
+                           ________________<2Я
+```
+
+after demultiplexing becomes:
+
+```bash
+----R1_read----- --i7_adapter---
+AANGGGCGCAATGTGC ...............
+```
+
+and:
+
+```bash
+----R2_read----- --i5_primer- 
+GCACATTGCGCCNCTT ............
+```
+
+These sequences are placed in files `sampleA_R1_001.fastq.gz` and `sampleA_R2_001.fastq.gz`, respectively, 
+since fragments with the `CCGCGGTT` index ("barcode") are known to be from `sampleA`.
+
+**Barcodes can have sequencing errors** - but are carefully chosen to prevent mis-assigning reads to the wrong sample.
+The 'default' is often to allow one mismatch in the barcode when demultiplexing, 
+however the tolerable number of mismatches depends on the particular combination of barcodes used in the experiment 
+and the total number of reads (size of the flowcell).
+
+eg if a single mismatch would make a barcode ambiguous within the set used in the library, like:
+```
+CCGCGGTT vs.
+ACGCGGTT
+```
+we would be unable to tolerate any mismatches (and with very large flowcells might still mis-assign a _tiny_ fraction of sequences). 
+Index sequences are carefully chosen to have large ['Hamming distances'](https://en.wikipedia.org/wiki/Hamming_distance) to avoid this.
+
+**Reads can contain adapter sequences** - notice that if the insert is short and the number of sequencing 
+cycles is long enough, we read into the 'adapter' region. 
+This is a region of artefact sequence added as part of the library preparation, not native sequence from your sample.
+
+The adapter sequence(s) are known, so can be (computationally) removed.
+
+Sometimes the sequencing providers will 'trim' adapters from the read as part of the demultiplexing process; 
+often they won't, and adapters sequences may be present in the raw data.
+
+## Raw read QC
+
+- FastQC: generates reports on read quality, length, and content
+
+_guided tour through a FastQC report - pre and post trim. Trimming discussion_
+
+_quality score discussion_
+
+_while `FastQC` is the most popular tool, others exist - `fastp` also provides similar QC reports_
+
+> Tip: It's very rare that you should ever need to 'unzip' a FASTQ file - almost every tool and pipeline will 
+> work directly with the compressed version. 
+> Leave these files compressed, and treat them as a read-only artefact (set file permissions to read-only !).
+> Don't change the filenames from what the sequencing facility named them.
+> If you do need to look at the content, consider using a command-line tool like `zless` - this can peek inside the
+> compressed file without needing to make an uncompressed copy.
+
 ## multiQC interpretation
 ## Mapping
 ## Proper references and annotated genome references
 ## multiQC interpretation
 ## Counting
 ## Feature counts
+
+_diagrams of featureCounts cases ?_
+
+**Challenge:** Count reads for gene X
+
+_IGV or IGV.js activity, manually count aligned reads in example, compare with featureCounts output_
+
 ## UMIs
+
+_[dupRadar](https://doi.org/10.1186/s12859-016-1276-2) can help assess if an experiment is suffering from excessive PCR duplication, vs. 'over-sequencing'_
+
 ## Show them where they my run it
