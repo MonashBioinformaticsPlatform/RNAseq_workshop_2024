@@ -80,16 +80,18 @@ A volcano plot shows the effects of these thresholds.
 * x-axis = log2 fold change
 * y-axis = log10 FDR adjusted p-value
 
-We might like a nice V-shaped volcano plot, where larger fold changes are always associated with smaller p-values. This sometimes happens, but not with this data. There may be many false negative results, and if the experiment were repeated a quite different set of genes might be discovered! 
+We might like a nice V-shaped volcano plot, where larger fold changes are always associated with smaller p-values. This sometimes happens, but not with this data. The reason is that the log fold change for each gene may be estimated more or less accurately, due to differing levels of biological or technical variation.
 
-Statistical testing protects us from false discoveries but not false negatives. False negatives can be reduced with more replicates and better experimental design.
+There may be many false negative results, and if the experiment were repeated a quite different set of genes might be discovered! Statistical testing protects us from false discoveries but not false negatives. False negatives can be reduced with more replicates and better experimental design.
 
 ### MA plot
 
-An MA plot (sometimes also called an MD plot) shows our ability to discover DE at different average expression levels.
+An MA plot (sometimes also called an MD plot) helps show our ability to discover DE at different average expression levels.
 
 * x-axis = average log2 CPM expression
 * y-axis = log2 fold change
+
+With smaller counts, the log fold change estimates are noisier. This accounts for the &gt; shape of this plot. This is a form of technical variation. So it is harder to detect significant differential expression in lowly expressed genes.
 
 
 ### Parallel coordinates plot
