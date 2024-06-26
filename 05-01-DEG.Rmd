@@ -44,7 +44,7 @@ At this point, Degust warns us there is no gene expression filter. This is impor
 
 Click on "QC" in the top right and then "Library sizes". This shows the total count for each sample. This experiment has a variety of library sizes, with a typical library size around 25 million.
 
-If few samples have a count of more than 5 to 10, we can safely discard them. Our rule of thumb is to require this in group size minus one samples. Here our group size is 3, so we will require at least 2 samples with a non-trivial count. So that we treat each sample in the same way, we will set a threshold on "Counts Per Million" (CPM) rather than the raw counts.
+If few samples have a count of more than around 10, we can safely discard them. We can't require reads in more samples than our group size, or we won't be able to detect genes expressed only in one group. Here our group size is 3, so we will require at least 3 samples with a non-trivial count. So that we treat each sample in the same way, we will set a threshold on "Counts Per Million" (CPM) rather than the raw counts. We have a library size of around 20 million in each sample so we will require a CPM of 0.5.
 
 * Press "Configure" in the top right to return to the configuration screen.
 * Set "Min gene CPM" to 0.5 and "in at least samples" to 2.
@@ -52,16 +52,25 @@ If few samples have a count of more than 5 to 10, we can safely discard them. Ou
 
 &rarr; [Degust page set up as described](https://degust.erc.monash.edu/degust/compare.html?code=d4453d6c1cbf8f7c0c876732a4bc0ba5#/)
 
-**TODO: Discuss rules of thumb!**
+### Filtering rule of thumb {- .rationale}
+
+Our rule of thumb is to require a CPM corresponding to a count of around 10 in a typical sample, in as many samples as our smallest group.
+
+**Discussion:** You could try relaxing either of these settings to see if more differentially expressed genes are found, especially if you have many samples in each group.
 
 
 ## Differential Expression analysis
 
- ( should we go into more details on design matrices, contrast matrices, fitting linear models etc.?)
+We'll concentrate on the default "voom/limma" method. Essentailly, for each gene this performs a t-test on the log2 CPM values, or if more than two groups are selected, it performs an F-test as in a One-Way ANOVA. However it uses a series of refinements to this basic idea:
 
-### Choosing a set of DE genes
+* 0.5 is added to each count before calculating the log2 CPM, to avoid taking log of zero.
+* Testing is actually performed by fitting linear models. This method of testing includes conventional t-tests and One-Way ANOVA F-tests as special cases, but can also model more complicated experimental designs.
+* Residual variance is calculated from all groups, not just the groups being compared, to improve statistical power (much like post-hoc comparisons in an ANOVA).
+* Residual variance is observed to be similar between genes, so some information about the residual variance is shared between genes ("Empirical Bayes"), to improve statistical power. This allows for smaller numbers of replicates per group, so we can practically do, say, 3-vs-3 comparisons, or even 2-vs-2 if you must.
+* Smaller counts are are noisier after log transformation. The "voom" method takes this into account using "precision weights". This is acts as an adjustment to the residual variance of each observation.
+* Since we are testing a great many genes at once, we need to adjust for multiple testing. This is done with a "False Discovery Rate" (FDR) p-value adjustment.
 
-### Thresholds
+### Thresholds to choose DE genes
 
 We discover a larger number of DE genes. How can we pick the most biologically interesting results?
 
@@ -78,7 +87,7 @@ Try comparing:
 A volcano plot shows the effects of these thresholds.
 
 * x-axis = log2 fold change
-* y-axis = log10 FDR adjusted p-value
+* y-axis = -log10 FDR adjusted p-value
 
 We might like a nice V-shaped volcano plot, where larger fold changes are always associated with smaller p-values. This sometimes happens, but not with this data. The reason is that the log fold change for each gene may be estimated more or less accurately, due to differing levels of biological or technical variation.
 
@@ -134,7 +143,14 @@ Here, the "E2_plusdox vs DMSO_plusdox" comparison leans strongly left as we woul
 
 ### MDS plot 
 
-(very similar to PCA) 
+Multi-Dimensional Scaling (MDS) provides a 2D layout of your samples, attempting to preserve "distances" between the samples. MDS is very similar to Principal Components Analysis (PCA). In fact in Degust it is exactly PCA. **TODO: Check**
+
+(We call it an MDS plot rather than a PCA plot because it's based on the plotMDS function in the limma package. The limma version uses a slightly different distance calculation method, by default.)
+
+Ideally the MDS layout will separate your samples into experimental groups. If your samples have a batch effect, this may also separate the samples along a different direction. If your samples are all jumbled together you will be sad, as you are unlikely to find many differentially expressed genes. You might also notice one or two outlier samples. You could consider excluding these samples from the analysis.
+
+The PCA is calculated on log2(CPM+moderation), where "moderation" is a constant you can adjust. The moderation reduces the amount of noise in genes with low counts. Also the PCA can be calculated on only the most variable genes ("Num genes"). Adjusting these parameters might clean up your MDS layout a little.
+
 
 ### Heatmap
 
@@ -163,13 +179,22 @@ Here our nuisance factor is "replicate". Add hidden factors for replicate 2 and 
 
 ### RUV
 
-RUV refers to a collection of methods for removing unwanted variation when the source of that variation is not known.
+We could account for the batch effect because the batches were known. What if there is variation, but we didn't know which samples it would apply to ahead of time? RUV refers to a collection of methods for estimating and/or adjusting for hidden factors like this. Ideally, RUV estimates the hidden factors from a known set of "housekeeping" genes that should not be affected by the experimental condition. 
 
-Degust has basic support for RUV.
+Degust has basic support for RUV. It uses an "empirical" set of housekeeping genes derived from your data which is, to put it bluntly, cheating. You can give it a try, but examine the results carefully to decide if you believe them.
 
 
 ## Interactions
 
+So far we've concentrated on comparing pairs of experimental conditions. We noticed more DE genes comparing "E2_plusdox vs DMSO_plusdox" than when comparing "E2_nodox vs DMSO_nodox". This is actually an interaction effect between the two factors in this experiment (presence of estrogen, and presence of the estrogen receptor gene).
+
+It is possible to directly test for an interaction between two factors in the experiment. Go to the configuration screen, select "Add contrast" and then "Create interaction". This lets us set up a "difference of differences" that will be zero if the effects of the two factors simply add together, but non-zero if there is an interaction between the two factors.
+
+We want: (E2_plusdox - DMSO_plusdox) - (E2_nodox - DMSO_nodox)
+
+This asks "is the effect of adding estrogen different when the estrogen gene is induced?"
+
+Once this is configured, you can choose it to test in the top-left box of the main page.
 
 ## Going deeper: UMIs and counting
 

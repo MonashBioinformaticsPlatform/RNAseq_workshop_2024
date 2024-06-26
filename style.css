@@ -22,13 +22,13 @@ pre code {
 .challenge > :first-child, .challenge > :nth-child(2) {
   margin-top: 0;
 }
-.rational {
+.rationale {
   margin: 2em;
   padding: 1em;
   border: 1px solid black;
   border-radius: 5px;
   background: rgb(201, 249, 245);
 }
-.rational > :first-child, .rational > :nth-child(2) {
+.rationale > :first-child, .rational > :nth-child(2) {
   margin-top: 0;
 }
