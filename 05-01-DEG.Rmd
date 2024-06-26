@@ -44,7 +44,7 @@ At this point, Degust warns us there is no gene expression filter. This is impor
 
 Click on "QC" in the top right and then "Library sizes". This shows the total count for each sample. This experiment has a variety of library sizes, with a typical library size around 25 million.
 
-If few samples have a count of more than around 10, we can safely discard them. We can't require reads in more samples than our group size, or we won't be able to detect genes expressed only in one group. Here our group size is 3, so we will require at least 3 samples with a non-trivial count. So that we treat each sample in the same way, we will set a threshold on "Counts Per Million" (CPM) rather than the raw counts. We have a library size of around 20 million in each sample so we will require a CPM of 0.5.
+If few samples have a count of more than around 10, we can safely discard them. So that we treat each sample in the same way, we will set a threshold on "Counts Per Million" (CPM) rather than the raw counts. We have a library size of around 20 million in each sample so we will require a CPM of 0.5.
 
 * Press "Configure" in the top right to return to the configuration screen.
 * Set "Min gene CPM" to 0.5 and "in at least samples" to 2.
@@ -52,11 +52,23 @@ If few samples have a count of more than around 10, we can safely discard them. 
 
 &rarr; [Degust page set up as described](https://degust.erc.monash.edu/degust/compare.html?code=d4453d6c1cbf8f7c0c876732a4bc0ba5#/)
 
-### Filtering rule of thumb {- .rationale}
+### Our filtering rules of thumb {- .rationale}
 
-Our rule of thumb is to require a CPM corresponding to a count of around 10 in a typical sample, in as many samples as our smallest group.
+"Min gene CPM" setting:
 
-**Discussion:** You could try relaxing either of these settings to see if more differentially expressed genes are found, especially if you have many samples in each group.
+* So as to require about a count of 10 (check the library size QC plot).
+* The author of Degust says 0.5 or 1 is usual.
+
+"In at least samples" setting:
+
+* Should not be larger than the smallest group, or we will certainly miss genes that are only expressed in this group.
+* The author of Degust recommends around 2/3 or the smallest group size.
+
+For human or mouse data, typically around 15,000-20,000 genes will pass filtering.
+
+You could try relaxing either of these settings to see if more differentially expressed genes are found, especially if you have many samples in each group.
+
+See also: [the defaults used in edgeR::filterByExpr](https://rdrr.io/bioc/edgeR/man/filterByExpr.html).
 
 
 ## Differential Expression analysis
@@ -143,13 +155,15 @@ Here, the "E2_plusdox vs DMSO_plusdox" comparison leans strongly left as we woul
 
 ### MDS plot 
 
-Multi-Dimensional Scaling (MDS) provides a 2D layout of your samples, attempting to preserve "distances" between the samples. MDS is very similar to Principal Components Analysis (PCA). In fact in Degust it is exactly PCA. **TODO: Check**
+Multi-Dimensional Scaling (MDS) provides a 2D layout of your samples, attempting to preserve "distances" between the samples. MDS is very similar to Principal Components Analysis (PCA). In fact in Degust it is exactly PCA.
 
-(We call it an MDS plot rather than a PCA plot because it's based on the plotMDS function in the limma package. The limma version uses a slightly different distance calculation method, by default.)
+(We call it an MDS plot rather than a PCA plot because it's based on the plotMDS function in the limma package. The limma version uses a slightly different distance calculation method by default.)
 
 Ideally the MDS layout will separate your samples into experimental groups. If your samples have a batch effect, this may also separate the samples along a different direction. If your samples are all jumbled together you will be sad, as you are unlikely to find many differentially expressed genes. You might also notice one or two outlier samples. You could consider excluding these samples from the analysis.
 
 The PCA is calculated on log2(CPM+moderation), where "moderation" is a constant you can adjust. The moderation reduces the amount of noise in genes with low counts. Also the PCA can be calculated on only the most variable genes ("Num genes"). Adjusting these parameters might clean up your MDS layout a little.
+
+(You can roughly interpret distances between samples in the MDS plot as typical log2 fold changes of the genes being used (root-mean-square log2 fold change). This will especially make sense for a smallish value of "Num genes" (the limma default is 500), such that all the genes being considered have some differential expression.)
 
 
 ### Heatmap
