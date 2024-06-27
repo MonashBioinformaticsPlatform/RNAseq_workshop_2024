@@ -54,15 +54,15 @@ If few samples have a count of more than around 10, we can safely discard them. 
 
 ### Our filtering rules of thumb {- .rationale}
 
-"Min gene CPM" setting:
+"Min gene CPM" (Count Per Million) setting:
 
-* So as to require about a count of 10 (check the library size QC plot).
-* The author of Degust says 0.5 or 1 is usual.
+* So as to require an underlying count of about 10 (check the library size QC plot).
+* The author of Degust says 0.5 CPM or 1 CPM are usual choices.
 
 "In at least samples" setting:
 
 * Should not be larger than the smallest group, or we will certainly miss genes that are only expressed in this group.
-* The author of Degust recommends around 2/3 or the smallest group size.
+* The author of Degust recommends around 2/3 of the smallest group size.
 
 For human or mouse data, typically around 15,000-20,000 genes will pass filtering.
 
@@ -77,9 +77,9 @@ We'll concentrate on the default "voom/limma" method. Essentailly, for each gene
 
 * 0.5 is added to each count before calculating the log2 CPM, to avoid taking log of zero.
 * Testing is actually performed by fitting linear models. This method of testing includes conventional t-tests and One-Way ANOVA F-tests as special cases, but can also model more complicated experimental designs.
-* Residual variance is calculated from all groups, not just the groups being compared, to improve statistical power (much like post-hoc comparisons in an ANOVA).
+* Residual variance is calculated from all groups, not just the groups being compared, to improve statistical power (much like post-hoc comparisons in an ANOVA). Note that this means low quality or unusual samples can mess up all comparisons, not just the comparisons they are involved in -- perhaps do tests involving such samples in a separate Degust page!
 * Residual variance is observed to be similar between genes, so some information about the residual variance is shared between genes ("Empirical Bayes"), to improve statistical power. This allows for smaller numbers of replicates per group, so we can practically do, say, 3-vs-3 comparisons, or even 2-vs-2 if you must.
-* Smaller counts are are noisier after log transformation. The "voom" method takes this into account using "precision weights". This is acts as an adjustment to the residual variance of each observation.
+* Smaller counts are are noisier than large counts after log transformation. The "voom" method takes this into account using "precision weights". This is acts as an adjustment to the residual variance of each observation.
 * Since we are testing a great many genes at once, we need to adjust for multiple testing. This is done with a "False Discovery Rate" (FDR) p-value adjustment.
 
 ### Thresholds to choose DE genes
@@ -123,7 +123,7 @@ The parallel coordinates plot helps show patterns of differential expression wit
 
 ### Topconfects
 
-A more principled approach is provided by the "topconfects" method, developed at Monash. For a chosen FDR (0.05 should be fine), topconfects provides a confidence bound on the log fold change of each gene. Check the top genes found by this method.
+A small FDR just tells us the log fold change is not zero, and even if we also filter by the *estimated* log fold change this does not guarantee a large *real* log fold change. Which genes confidently have a large log fold change? The "topconfects" method, developed at Monash, answers this question. For a chosen FDR (0.05 should be fine), topconfects ranks genes from large to small confident log fold change. Check the top genes found by this method.
 
 * x-axis = log2 fold change, line is confidence bound, dot is estimated log2 fold change
 * dot-size = average log2 expression
