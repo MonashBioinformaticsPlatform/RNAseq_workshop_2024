@@ -2,18 +2,21 @@
 
 The first step of planning an RNAseq experiment is asking yourself whether RNAseq will answer the intended research question and whether you need to do it. Sequencing experiments are not cheap and you can save yourself a lot of time and money by ensuring that the sequencing that you are doing is suited to answering the research question at hand.
 
-Consider: if your intent is to study the expression of a small number of genes, RT-PCR might be more appropriate and cheaper for your needs. If you intend to assay the changes in expression accross all genes in your organism of interest, then RNAseq is suitable for the experiment. Then - what type of RNAseq - there are different protogcols that can be performed.
+Consider: if your intent is to study the expression of a small number of genes, RT-PCR might be more appropriate and cheaper for your needs. If you intend to assay the changes in expression accross all genes in your organism of interest, then RNAseq is suitable for the experiment. Then - what type of RNAseq - there are different protocols that can be performed.
 
-If you are interested in tiss
+If you are interested in tss
 
 are you interested in changes in gene expression levels or do you want to study structural variations within genes? Short read sequencing 
 
 
 Is RNAseq what you need? Should I do it? and is going to answer my questions? Do I have the prerequisites?
+
 Fundamentals of research -> Factor , Confounding factor, Variable to measure, Controls, Batch, Techinical replicates and not biological, Pooling samples, 
+
 Batch, Techinical replicates and not biological, Pooling samples, Randomization, Noise. Clonal (cell-lines, bacteria, inbred animalls) or not clonal organisms, Does my tissue has different cell types -> Cell sorting or single cell
 
 ## Sequencing methods
+
 Sequencing Decision. Transcriptomics for Bulk RNAseq. Short reads. Coverage.
 
 
