@@ -179,7 +179,7 @@ This is handy for seeing some key metrics all in one place.
 
 There's a lot of columns here - you can use the "configure columns" button to show just a subset.
 
-![MultiQC configure columns](images/multiqc/multiqc_configure_columns.jpg)
+![MultiQC configure columns](images/multiqc/mutliqc_configure_columns.jpg)
 
 Let's skip interpreting this table to begin with, since most of the information is repeated in plots below. 
 
