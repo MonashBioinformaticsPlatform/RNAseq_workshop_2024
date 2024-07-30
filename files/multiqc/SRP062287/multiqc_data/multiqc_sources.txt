@@ -1,0 +1,205 @@
+Module	Section	Sample Name	Source
+Picard	DuplicationMetrics	SRR2155415	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/picard/markduplicates/SRR2155415.markdup.sorted.MarkDuplicates.metrics.txt
+Picard	DuplicationMetrics	SRR2155418	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/picard/markduplicates/SRR2155418.markdup.sorted.MarkDuplicates.metrics.txt
+Picard	DuplicationMetrics	SRR2155424	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/picard/markduplicates/SRR2155424.markdup.sorted.MarkDuplicates.metrics.txt
+Picard	DuplicationMetrics	SRR2155417	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/picard/markduplicates/SRR2155417.markdup.sorted.MarkDuplicates.metrics.txt
+Picard	DuplicationMetrics	SRR2155422	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/picard/markduplicates/SRR2155422.markdup.sorted.MarkDuplicates.metrics.txt
+Picard	DuplicationMetrics	SRR2155421	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/picard/markduplicates/SRR2155421.markdup.sorted.MarkDuplicates.metrics.txt
+Picard	DuplicationMetrics	SRR2155416	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/picard/markduplicates/SRR2155416.markdup.sorted.MarkDuplicates.metrics.txt
+Picard	DuplicationMetrics	SRR2155423	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/picard/markduplicates/SRR2155423.markdup.sorted.MarkDuplicates.metrics.txt
+Picard	DuplicationMetrics	SRR2155420	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/picard/markduplicates/SRR2155420.markdup.sorted.MarkDuplicates.metrics.txt
+Picard	DuplicationMetrics	SRR2155413	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/picard/markduplicates/SRR2155413.markdup.sorted.MarkDuplicates.metrics.txt
+Picard	DuplicationMetrics	SRR2155414	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/picard/markduplicates/SRR2155414.markdup.sorted.MarkDuplicates.metrics.txt
+Picard	DuplicationMetrics	SRR2155419	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/picard/markduplicates/SRR2155419.markdup.sorted.MarkDuplicates.metrics.txt
+QualiMap	rna_genome_results	SRR2155422	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/qualimap/SRR2155422/rnaseq_qc_results.txt
+QualiMap	rna_genome_results	SRR2155414	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/qualimap/SRR2155414/rnaseq_qc_results.txt
+QualiMap	rna_genome_results	SRR2155418	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/qualimap/SRR2155418/rnaseq_qc_results.txt
+QualiMap	rna_genome_results	SRR2155420	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/qualimap/SRR2155420/rnaseq_qc_results.txt
+QualiMap	rna_genome_results	SRR2155413	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/qualimap/SRR2155413/rnaseq_qc_results.txt
+QualiMap	rna_genome_results	SRR2155416	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/qualimap/SRR2155416/rnaseq_qc_results.txt
+QualiMap	rna_genome_results	SRR2155415	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/qualimap/SRR2155415/rnaseq_qc_results.txt
+QualiMap	rna_genome_results	SRR2155423	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/qualimap/SRR2155423/rnaseq_qc_results.txt
+QualiMap	rna_genome_results	SRR2155419	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/qualimap/SRR2155419/rnaseq_qc_results.txt
+QualiMap	rna_genome_results	SRR2155424	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/qualimap/SRR2155424/rnaseq_qc_results.txt
+QualiMap	rna_genome_results	SRR2155417	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/qualimap/SRR2155417/rnaseq_qc_results.txt
+QualiMap	rna_genome_results	SRR2155421	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/qualimap/SRR2155421/rnaseq_qc_results.txt
+QualiMap	rna_coverage_histogram	SRR2155422	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/qualimap/SRR2155422/raw_data_qualimapReport/coverage_profile_along_genes_(total).txt
+QualiMap	rna_coverage_histogram	SRR2155414	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/qualimap/SRR2155414/raw_data_qualimapReport/coverage_profile_along_genes_(total).txt
+QualiMap	rna_coverage_histogram	SRR2155418	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/qualimap/SRR2155418/raw_data_qualimapReport/coverage_profile_along_genes_(total).txt
+QualiMap	rna_coverage_histogram	SRR2155420	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/qualimap/SRR2155420/raw_data_qualimapReport/coverage_profile_along_genes_(total).txt
+QualiMap	rna_coverage_histogram	SRR2155413	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/qualimap/SRR2155413/raw_data_qualimapReport/coverage_profile_along_genes_(total).txt
+QualiMap	rna_coverage_histogram	SRR2155416	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/qualimap/SRR2155416/raw_data_qualimapReport/coverage_profile_along_genes_(total).txt
+QualiMap	rna_coverage_histogram	SRR2155415	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/qualimap/SRR2155415/raw_data_qualimapReport/coverage_profile_along_genes_(total).txt
+QualiMap	rna_coverage_histogram	SRR2155423	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/qualimap/SRR2155423/raw_data_qualimapReport/coverage_profile_along_genes_(total).txt
+QualiMap	rna_coverage_histogram	SRR2155419	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/qualimap/SRR2155419/raw_data_qualimapReport/coverage_profile_along_genes_(total).txt
+QualiMap	rna_coverage_histogram	SRR2155424	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/qualimap/SRR2155424/raw_data_qualimapReport/coverage_profile_along_genes_(total).txt
+QualiMap	rna_coverage_histogram	SRR2155417	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/qualimap/SRR2155417/raw_data_qualimapReport/coverage_profile_along_genes_(total).txt
+QualiMap	rna_coverage_histogram	SRR2155421	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/qualimap/SRR2155421/raw_data_qualimapReport/coverage_profile_along_genes_(total).txt
+RSeQC	read_distribution	SRR2155415	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/read_distribution/SRR2155415.read_distribution.txt
+RSeQC	read_distribution	SRR2155419	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/read_distribution/SRR2155419.read_distribution.txt
+RSeQC	read_distribution	SRR2155413	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/read_distribution/SRR2155413.read_distribution.txt
+RSeQC	read_distribution	SRR2155417	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/read_distribution/SRR2155417.read_distribution.txt
+RSeQC	read_distribution	SRR2155422	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/read_distribution/SRR2155422.read_distribution.txt
+RSeQC	read_distribution	SRR2155423	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/read_distribution/SRR2155423.read_distribution.txt
+RSeQC	read_distribution	SRR2155414	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/read_distribution/SRR2155414.read_distribution.txt
+RSeQC	read_distribution	SRR2155421	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/read_distribution/SRR2155421.read_distribution.txt
+RSeQC	read_distribution	SRR2155416	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/read_distribution/SRR2155416.read_distribution.txt
+RSeQC	read_distribution	SRR2155418	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/read_distribution/SRR2155418.read_distribution.txt
+RSeQC	read_distribution	SRR2155420	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/read_distribution/SRR2155420.read_distribution.txt
+RSeQC	read_distribution	SRR2155424	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/read_distribution/SRR2155424.read_distribution.txt
+RSeQC	read_duplication	SRR2155417	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/read_duplication/SRR2155417.pos.DupRate.xls
+RSeQC	read_duplication	SRR2155414	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/read_duplication/SRR2155414.pos.DupRate.xls
+RSeQC	read_duplication	SRR2155421	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/read_duplication/SRR2155421.pos.DupRate.xls
+RSeQC	read_duplication	SRR2155422	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/read_duplication/SRR2155422.pos.DupRate.xls
+RSeQC	read_duplication	SRR2155423	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/read_duplication/SRR2155423.pos.DupRate.xls
+RSeQC	read_duplication	SRR2155420	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/read_duplication/SRR2155420.pos.DupRate.xls
+RSeQC	read_duplication	SRR2155415	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/read_duplication/SRR2155415.pos.DupRate.xls
+RSeQC	read_duplication	SRR2155418	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/read_duplication/SRR2155418.pos.DupRate.xls
+RSeQC	read_duplication	SRR2155416	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/read_duplication/SRR2155416.pos.DupRate.xls
+RSeQC	read_duplication	SRR2155413	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/read_duplication/SRR2155413.pos.DupRate.xls
+RSeQC	read_duplication	SRR2155424	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/read_duplication/SRR2155424.pos.DupRate.xls
+RSeQC	read_duplication	SRR2155419	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/read_duplication/SRR2155419.pos.DupRate.xls
+RSeQC	junction_annotation	SRR2155423	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/junction_annotation/SRR2155423.junction_annotation.log
+RSeQC	junction_annotation	SRR2155421	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/junction_annotation/SRR2155421.junction_annotation.log
+RSeQC	junction_annotation	SRR2155419	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/junction_annotation/SRR2155419.junction_annotation.log
+RSeQC	junction_annotation	SRR2155424	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/junction_annotation/SRR2155424.junction_annotation.log
+RSeQC	junction_annotation	SRR2155417	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/junction_annotation/SRR2155417.junction_annotation.log
+RSeQC	junction_annotation	SRR2155414	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/junction_annotation/SRR2155414.junction_annotation.log
+RSeQC	junction_annotation	SRR2155422	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/junction_annotation/SRR2155422.junction_annotation.log
+RSeQC	junction_annotation	SRR2155416	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/junction_annotation/SRR2155416.junction_annotation.log
+RSeQC	junction_annotation	SRR2155415	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/junction_annotation/SRR2155415.junction_annotation.log
+RSeQC	junction_annotation	SRR2155418	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/junction_annotation/SRR2155418.junction_annotation.log
+RSeQC	junction_annotation	SRR2155420	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/junction_annotation/SRR2155420.junction_annotation.log
+RSeQC	junction_annotation	SRR2155413	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/junction_annotation/SRR2155413.junction_annotation.log
+RSeQC	junction_saturation	SRR2155417	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/junction_saturation/SRR2155417.junctionSaturation_plot.r
+RSeQC	junction_saturation	SRR2155422	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/junction_saturation/SRR2155422.junctionSaturation_plot.r
+RSeQC	junction_saturation	SRR2155416	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/junction_saturation/SRR2155416.junctionSaturation_plot.r
+RSeQC	junction_saturation	SRR2155418	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/junction_saturation/SRR2155418.junctionSaturation_plot.r
+RSeQC	junction_saturation	SRR2155424	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/junction_saturation/SRR2155424.junctionSaturation_plot.r
+RSeQC	junction_saturation	SRR2155419	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/junction_saturation/SRR2155419.junctionSaturation_plot.r
+RSeQC	junction_saturation	SRR2155421	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/junction_saturation/SRR2155421.junctionSaturation_plot.r
+RSeQC	junction_saturation	SRR2155420	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/junction_saturation/SRR2155420.junctionSaturation_plot.r
+RSeQC	junction_saturation	SRR2155415	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/junction_saturation/SRR2155415.junctionSaturation_plot.r
+RSeQC	junction_saturation	SRR2155414	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/junction_saturation/SRR2155414.junctionSaturation_plot.r
+RSeQC	junction_saturation	SRR2155413	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/junction_saturation/SRR2155413.junctionSaturation_plot.r
+RSeQC	junction_saturation	SRR2155423	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/junction_saturation/SRR2155423.junctionSaturation_plot.r
+RSeQC	infer_experiment	SRR2155423	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/infer_experiment/SRR2155423.infer_experiment.txt
+RSeQC	infer_experiment	SRR2155421	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/infer_experiment/SRR2155421.infer_experiment.txt
+RSeQC	infer_experiment	SRR2155424	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/infer_experiment/SRR2155424.infer_experiment.txt
+RSeQC	infer_experiment	SRR2155418	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/infer_experiment/SRR2155418.infer_experiment.txt
+RSeQC	infer_experiment	SRR2155413	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/infer_experiment/SRR2155413.infer_experiment.txt
+RSeQC	infer_experiment	SRR2155419	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/infer_experiment/SRR2155419.infer_experiment.txt
+RSeQC	infer_experiment	SRR2155422	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/infer_experiment/SRR2155422.infer_experiment.txt
+RSeQC	infer_experiment	SRR2155420	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/infer_experiment/SRR2155420.infer_experiment.txt
+RSeQC	infer_experiment	SRR2155415	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/infer_experiment/SRR2155415.infer_experiment.txt
+RSeQC	infer_experiment	SRR2155416	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/infer_experiment/SRR2155416.infer_experiment.txt
+RSeQC	infer_experiment	SRR2155414	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/infer_experiment/SRR2155414.infer_experiment.txt
+RSeQC	infer_experiment	SRR2155417	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/infer_experiment/SRR2155417.infer_experiment.txt
+RSeQC	bam_stat	SRR2155419	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/bam_stat/SRR2155419.bam_stat.txt
+RSeQC	bam_stat	SRR2155423	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/bam_stat/SRR2155423.bam_stat.txt
+RSeQC	bam_stat	SRR2155421	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/bam_stat/SRR2155421.bam_stat.txt
+RSeQC	bam_stat	SRR2155422	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/bam_stat/SRR2155422.bam_stat.txt
+RSeQC	bam_stat	SRR2155420	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/bam_stat/SRR2155420.bam_stat.txt
+RSeQC	bam_stat	SRR2155424	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/bam_stat/SRR2155424.bam_stat.txt
+RSeQC	bam_stat	SRR2155418	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/bam_stat/SRR2155418.bam_stat.txt
+RSeQC	bam_stat	SRR2155414	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/bam_stat/SRR2155414.bam_stat.txt
+RSeQC	bam_stat	SRR2155417	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/bam_stat/SRR2155417.bam_stat.txt
+RSeQC	bam_stat	SRR2155416	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/bam_stat/SRR2155416.bam_stat.txt
+RSeQC	bam_stat	SRR2155413	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/bam_stat/SRR2155413.bam_stat.txt
+RSeQC	bam_stat	SRR2155415	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/rseqc/bam_stat/SRR2155415.bam_stat.txt
+Salmon	all_sections	SRR2155422	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/salmon/SRR2155422/libParams/flenDist.txt
+Salmon	all_sections	SRR2155414	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/salmon/SRR2155414/libParams/flenDist.txt
+Salmon	all_sections	SRR2155418	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/salmon/SRR2155418/libParams/flenDist.txt
+Salmon	all_sections	SRR2155420	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/salmon/SRR2155420/libParams/flenDist.txt
+Salmon	all_sections	SRR2155413	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/salmon/SRR2155413/libParams/flenDist.txt
+Salmon	all_sections	SRR2155416	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/salmon/SRR2155416/libParams/flenDist.txt
+Salmon	all_sections	SRR2155415	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/salmon/SRR2155415/libParams/flenDist.txt
+Salmon	all_sections	SRR2155423	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/salmon/SRR2155423/libParams/flenDist.txt
+Salmon	all_sections	SRR2155419	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/salmon/SRR2155419/libParams/flenDist.txt
+Salmon	all_sections	SRR2155424	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/salmon/SRR2155424/libParams/flenDist.txt
+Salmon	all_sections	SRR2155417	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/salmon/SRR2155417/libParams/flenDist.txt
+Salmon	all_sections	SRR2155421	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/salmon/SRR2155421/libParams/flenDist.txt
+Samtools	stats	SRR2155413	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/stats/SRR2155413.markdup.sorted.bam.stats
+Samtools	stats	SRR2155417	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/stats/SRR2155417.markdup.sorted.bam.stats
+Samtools	stats	SRR2155421	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/stats/SRR2155421.markdup.sorted.bam.stats
+Samtools	stats	SRR2155420	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/stats/SRR2155420.markdup.sorted.bam.stats
+Samtools	stats	SRR2155414	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/stats/SRR2155414.markdup.sorted.bam.stats
+Samtools	stats	SRR2155422	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/stats/SRR2155422.markdup.sorted.bam.stats
+Samtools	stats	SRR2155424	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/stats/SRR2155424.markdup.sorted.bam.stats
+Samtools	stats	SRR2155415	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/stats/SRR2155415.markdup.sorted.bam.stats
+Samtools	stats	SRR2155423	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/stats/SRR2155423.markdup.sorted.bam.stats
+Samtools	stats	SRR2155418	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/stats/SRR2155418.markdup.sorted.bam.stats
+Samtools	stats	SRR2155416	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/stats/SRR2155416.markdup.sorted.bam.stats
+Samtools	stats	SRR2155419	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/stats/SRR2155419.markdup.sorted.bam.stats
+Samtools	flagstat	SRR2155419	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/flagstat/SRR2155419.markdup.sorted.bam.flagstat
+Samtools	flagstat	SRR2155424	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/flagstat/SRR2155424.markdup.sorted.bam.flagstat
+Samtools	flagstat	SRR2155418	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/flagstat/SRR2155418.markdup.sorted.bam.flagstat
+Samtools	flagstat	SRR2155420	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/flagstat/SRR2155420.markdup.sorted.bam.flagstat
+Samtools	flagstat	SRR2155422	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/flagstat/SRR2155422.markdup.sorted.bam.flagstat
+Samtools	flagstat	SRR2155414	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/flagstat/SRR2155414.markdup.sorted.bam.flagstat
+Samtools	flagstat	SRR2155421	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/flagstat/SRR2155421.markdup.sorted.bam.flagstat
+Samtools	flagstat	SRR2155417	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/flagstat/SRR2155417.markdup.sorted.bam.flagstat
+Samtools	flagstat	SRR2155413	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/flagstat/SRR2155413.markdup.sorted.bam.flagstat
+Samtools	flagstat	SRR2155423	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/flagstat/SRR2155423.markdup.sorted.bam.flagstat
+Samtools	flagstat	SRR2155416	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/flagstat/SRR2155416.markdup.sorted.bam.flagstat
+Samtools	flagstat	SRR2155415	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/flagstat/SRR2155415.markdup.sorted.bam.flagstat
+Samtools	idxstats	SRR2155413	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/idxstats/SRR2155413.markdup.sorted.bam.idxstats
+Samtools	idxstats	SRR2155416	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/idxstats/SRR2155416.markdup.sorted.bam.idxstats
+Samtools	idxstats	SRR2155418	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/idxstats/SRR2155418.markdup.sorted.bam.idxstats
+Samtools	idxstats	SRR2155421	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/idxstats/SRR2155421.markdup.sorted.bam.idxstats
+Samtools	idxstats	SRR2155414	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/idxstats/SRR2155414.markdup.sorted.bam.idxstats
+Samtools	idxstats	SRR2155415	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/idxstats/SRR2155415.markdup.sorted.bam.idxstats
+Samtools	idxstats	SRR2155417	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/idxstats/SRR2155417.markdup.sorted.bam.idxstats
+Samtools	idxstats	SRR2155420	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/idxstats/SRR2155420.markdup.sorted.bam.idxstats
+Samtools	idxstats	SRR2155419	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/idxstats/SRR2155419.markdup.sorted.bam.idxstats
+Samtools	idxstats	SRR2155423	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/idxstats/SRR2155423.markdup.sorted.bam.idxstats
+Samtools	idxstats	SRR2155422	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/idxstats/SRR2155422.markdup.sorted.bam.idxstats
+Samtools	idxstats	SRR2155424	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/samtools/idxstats/SRR2155424.markdup.sorted.bam.idxstats
+STAR	SummaryLog	SRR2155419	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/star/SRR2155419.Log.final.out
+STAR	SummaryLog	SRR2155418	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/star/SRR2155418.Log.final.out
+STAR	SummaryLog	SRR2155423	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/star/SRR2155423.Log.final.out
+STAR	SummaryLog	SRR2155417	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/star/SRR2155417.Log.final.out
+STAR	SummaryLog	SRR2155421	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/star/SRR2155421.Log.final.out
+STAR	SummaryLog	SRR2155414	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/star/SRR2155414.Log.final.out
+STAR	SummaryLog	SRR2155424	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/star/SRR2155424.Log.final.out
+STAR	SummaryLog	SRR2155422	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/star/SRR2155422.Log.final.out
+STAR	SummaryLog	SRR2155416	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/star/SRR2155416.Log.final.out
+STAR	SummaryLog	SRR2155420	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/star/SRR2155420.Log.final.out
+STAR	SummaryLog	SRR2155415	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/star/SRR2155415.Log.final.out
+STAR	SummaryLog	SRR2155413	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/star/SRR2155413.Log.final.out
+FastQC (raw)	all_sections	SRR2155417	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/fastqc/SRR2155417_fastqc.zip
+FastQC (raw)	all_sections	SRR2155420	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/fastqc/SRR2155420_fastqc.zip
+FastQC (raw)	all_sections	SRR2155419	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/fastqc/SRR2155419_fastqc.zip
+FastQC (raw)	all_sections	SRR2155413	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/fastqc/SRR2155413_fastqc.zip
+FastQC (raw)	all_sections	SRR2155423	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/fastqc/SRR2155423_fastqc.zip
+FastQC (raw)	all_sections	SRR2155414	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/fastqc/SRR2155414_fastqc.zip
+FastQC (raw)	all_sections	SRR2155416	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/fastqc/SRR2155416_fastqc.zip
+FastQC (raw)	all_sections	SRR2155421	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/fastqc/SRR2155421_fastqc.zip
+FastQC (raw)	all_sections	SRR2155418	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/fastqc/SRR2155418_fastqc.zip
+FastQC (raw)	all_sections	SRR2155415	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/fastqc/SRR2155415_fastqc.zip
+FastQC (raw)	all_sections	SRR2155424	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/fastqc/SRR2155424_fastqc.zip
+FastQC (raw)	all_sections	SRR2155422	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/fastqc/SRR2155422_fastqc.zip
+Cutadapt	all_sections	SRR2155418	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/trimgalore/SRR2155418.fastq.gz_trimming_report.txt
+Cutadapt	all_sections	SRR2155421	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/trimgalore/SRR2155421.fastq.gz_trimming_report.txt
+Cutadapt	all_sections	SRR2155424	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/trimgalore/SRR2155424.fastq.gz_trimming_report.txt
+Cutadapt	all_sections	SRR2155417	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/trimgalore/SRR2155417.fastq.gz_trimming_report.txt
+Cutadapt	all_sections	SRR2155420	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/trimgalore/SRR2155420.fastq.gz_trimming_report.txt
+Cutadapt	all_sections	SRR2155413	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/trimgalore/SRR2155413.fastq.gz_trimming_report.txt
+Cutadapt	all_sections	SRR2155423	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/trimgalore/SRR2155423.fastq.gz_trimming_report.txt
+Cutadapt	all_sections	SRR2155422	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/trimgalore/SRR2155422.fastq.gz_trimming_report.txt
+Cutadapt	all_sections	SRR2155415	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/trimgalore/SRR2155415.fastq.gz_trimming_report.txt
+Cutadapt	all_sections	SRR2155414	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/trimgalore/SRR2155414.fastq.gz_trimming_report.txt
+Cutadapt	all_sections	SRR2155416	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/trimgalore/SRR2155416.fastq.gz_trimming_report.txt
+Cutadapt	all_sections	SRR2155419	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/trimgalore/SRR2155419.fastq.gz_trimming_report.txt
+FastQC (trimmed)	all_sections	SRR2155421	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/trimgalore/fastqc/SRR2155421_trimmed_fastqc.zip
+FastQC (trimmed)	all_sections	SRR2155418	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/trimgalore/fastqc/SRR2155418_trimmed_fastqc.zip
+FastQC (trimmed)	all_sections	SRR2155414	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/trimgalore/fastqc/SRR2155414_trimmed_fastqc.zip
+FastQC (trimmed)	all_sections	SRR2155417	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/trimgalore/fastqc/SRR2155417_trimmed_fastqc.zip
+FastQC (trimmed)	all_sections	SRR2155413	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/trimgalore/fastqc/SRR2155413_trimmed_fastqc.zip
+FastQC (trimmed)	all_sections	SRR2155416	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/trimgalore/fastqc/SRR2155416_trimmed_fastqc.zip
+FastQC (trimmed)	all_sections	SRR2155424	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/trimgalore/fastqc/SRR2155424_trimmed_fastqc.zip
+FastQC (trimmed)	all_sections	SRR2155415	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/trimgalore/fastqc/SRR2155415_trimmed_fastqc.zip
+FastQC (trimmed)	all_sections	SRR2155422	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/trimgalore/fastqc/SRR2155422_trimmed_fastqc.zip
+FastQC (trimmed)	all_sections	SRR2155420	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/trimgalore/fastqc/SRR2155420_trimmed_fastqc.zip
+FastQC (trimmed)	all_sections	SRR2155419	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/trimgalore/fastqc/SRR2155419_trimmed_fastqc.zip
+FastQC (trimmed)	all_sections	SRR2155423	/fs04/scratch2/pl41/laxy/jobs/3lQ6tw48pcFfOKyg1vTJry/output/work/1e/21d278936828977e27dca6eee5e22b/trimgalore/fastqc/SRR2155423_trimmed_fastqc.zip
