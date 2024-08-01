@@ -1,0 +1,13 @@
+Sample	total_passed	total_failed	secondary_passed	secondary_failed	supplementary_passed	supplementary_failed	duplicates_passed	duplicates_failed	mapped_passed	mapped_failed	mapped_passed_pct	mapped_failed_pct	paired in sequencing_passed	paired in sequencing_failed	read1_passed	read1_failed	read2_passed	read2_failed	properly paired_passed	properly paired_failed	properly paired_passed_pct	properly paired_failed_pct	with itself and mate mapped_passed	with itself and mate mapped_failed	singletons_passed	singletons_failed	singletons_passed_pct	singletons_failed_pct	with mate mapped to a different chr_passed	with mate mapped to a different chr_failed	with mate mapped to a different chr (mapQ >= 5)_passed	with mate mapped to a different chr (mapQ >= 5)_failed	flagstat_total
+SRR2155413	10443797	0	1441624	0	0	0	3479379	0	10443797	0	100.0	nan	0	0	0	0	0	0	0	0	nan	nan	0	0	0	0	nan	nan	0	0	0	0	10443797
+SRR2155414	35462980	0	5319970	0	0	0	16684629	0	35462980	0	100.0	nan	0	0	0	0	0	0	0	0	nan	nan	0	0	0	0	nan	nan	0	0	0	0	35462980
+SRR2155415	33785190	0	5154056	0	0	0	15621789	0	33785190	0	100.0	nan	0	0	0	0	0	0	0	0	nan	nan	0	0	0	0	nan	nan	0	0	0	0	33785190
+SRR2155416	23657980	0	3609497	0	0	0	9914598	0	23657980	0	100.0	nan	0	0	0	0	0	0	0	0	nan	nan	0	0	0	0	nan	nan	0	0	0	0	23657980
+SRR2155417	44973511	0	6884302	0	0	0	22566380	0	44973511	0	100.0	nan	0	0	0	0	0	0	0	0	nan	nan	0	0	0	0	nan	nan	0	0	0	0	44973511
+SRR2155418	33935932	0	5297924	0	0	0	15650837	0	33935932	0	100.0	nan	0	0	0	0	0	0	0	0	nan	nan	0	0	0	0	nan	nan	0	0	0	0	33935932
+SRR2155419	17400547	0	2619591	0	0	0	6631215	0	17400547	0	100.0	nan	0	0	0	0	0	0	0	0	nan	nan	0	0	0	0	nan	nan	0	0	0	0	17400547
+SRR2155420	43166160	0	6643007	0	0	0	21349588	0	43166160	0	100.0	nan	0	0	0	0	0	0	0	0	nan	nan	0	0	0	0	nan	nan	0	0	0	0	43166160
+SRR2155421	25520948	0	3832338	0	0	0	10975153	0	25520948	0	100.0	nan	0	0	0	0	0	0	0	0	nan	nan	0	0	0	0	nan	nan	0	0	0	0	25520948
+SRR2155422	24140053	0	3577029	0	0	0	10340810	0	24140053	0	100.0	nan	0	0	0	0	0	0	0	0	nan	nan	0	0	0	0	nan	nan	0	0	0	0	24140053
+SRR2155423	35466414	0	5399331	0	0	0	16901063	0	35466414	0	100.0	nan	0	0	0	0	0	0	0	0	nan	nan	0	0	0	0	nan	nan	0	0	0	0	35466414
+SRR2155424	30777079	0	4552536	0	0	0	14005382	0	30777079	0	100.0	nan	0	0	0	0	0	0	0	0	nan	nan	0	0	0	0	nan	nan	0	0	0	0	30777079
