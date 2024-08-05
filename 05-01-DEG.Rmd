@@ -123,11 +123,12 @@ The parallel coordinates plot helps show patterns of differential expression wit
 
 ### Topconfects
 
-A small FDR just tells us the log fold change is not zero, and even if we also filter by the *estimated* log fold change this does not guarantee a large *real* log fold change. Which genes confidently have a large log fold change? The "topconfects" method, developed at Monash, answers this question. For a chosen FDR (0.05 should be fine), topconfects ranks genes from large to small confident log fold change. Check the top genes found by this method.
+A small FDR just tells us the log fold change is probably not zero, but it might not be a biologically important size of fold change. Even if we also filter by the *estimated* log fold change this does not guarantee a large *real* log fold change. Which genes confidently have a large log fold change? The "topconfects" method, developed at Monash, answers this question. For a chosen FDR (0.05 should be fine), topconfects ranks genes from large to small confident log fold change. Topconfects is built on a method called TREAT, and choosing a certain cutoff "confect" will produce an identical set of gene to TREAT for that particular log fold change threshold.
 
 * x-axis = log2 fold change, line is confidence bound, dot is estimated log2 fold change
 * dot-size = average log2 expression
 
+Check the top genes found by this method.
 
 ## QC of results
 
