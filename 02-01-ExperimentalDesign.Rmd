@@ -1,19 +1,36 @@
+Section overview:
+
+- Experimental design: 
+
+
+
+
+
+# Introduction
+
+The first step of planning an RNAseq experiment is asking yourself whether RNAseq will answer the intended research question and whether you need to do it. Sequencing experiments are not cheap and a a lot of time and money by ensuring that the sequencing experiment performed is suited to answering the research question at hand. 
+
+Now consider: if the intent is to study the expression of a small number of genes, RT-PCR might be more appropriate and cheaper. If you intend to study the changes in expression accross all genes in your organism of interest, then RNAseq is suitable for the experiment. Then - what type of RNAseq - there are many different protocols that can be performed.
+
+The questions below are a few that might help in selecting a suitable protocol:
+
+- do you intend to study transcriptomic changes in individual cells or the tissue level? (single versus bulk RNAseq)
+- do you want to characterise isoforms/study alternative splicing? (short versus long read sequencing)
+- will you pull down transcripts with a poly A tail (poly-A selection) or deplete ribosomal genes (ribo depletion)
+- single end or paired end sequencing?
+
+
+The 'typical' RNAseq experiment is short read bulk RNAseq to examine the changes in gene expression levels between different experimental conditions. This workshop has been designed with this understanding that this is the type of analysis that you intend to perform but it is not the only type of RNAseq experiment that can be performed.
+
+
 # Experimental design
 
-The first step of planning an RNAseq experiment is asking yourself whether RNAseq will answer the intended research question and whether you need to do it. Sequencing experiments are not cheap and you can save yourself a lot of time and money by ensuring that the sequencing that you are doing is suited to answering the research question at hand.
-
-Consider: if your intent is to study the expression of a small number of genes, RT-PCR might be more appropriate and cheaper for your needs. If you intend to study the changes in expression accross all genes in your organism of interest, then RNAseq is suitable for the experiment. Then - what type of RNAseq - there are many different protocols that can be performed.
-
-If your intent is to study changes in gene expression in individual cells, then you would use a single cell sequencing approach. If however, you do not care for the fine detail of individual cells, then you might consider using a bulk sequencing protocol.
+The simplest experimental setup for an RNAseq experiment would be 2 conditions of interest: a control condition and an experimental condition. By comparing the gene expression levels in the experimental condition against the expression levels in the control condition, we can determine which genes are responding to the experimental condition. The experimental condition could be a drug treatment, knocking out a gene of interest, over expressing a gene of interest, a different type of diet, etc.
 
 
-
-are you interested in changes in gene expression levels or do you want to study structural variations within genes? Short read sequencing 
-
-
-The most common application of RNAseq that we see is to examine the changes in gene expression level between different experimental conditions. This workshop has been designed with this understanding that this is the type of analysis that you intend to perform.
-
-Is RNAseq what you need? Should I do it? and is going to answer my questions? Do I have the prerequisites?
+```{r, echo=FALSE, fig.cap = ""}
+knitr::include_graphics("images/fig_experimental_design.png")
+```
 
 Fundamentals of research -> Factor , Confounding factor, Variable to measure, Controls, Batch, Techinical replicates and not biological, Pooling samples, 
 
