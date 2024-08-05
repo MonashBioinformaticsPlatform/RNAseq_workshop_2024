@@ -28,8 +28,8 @@ The 'typical' RNAseq experiment is short read bulk RNAseq to examine the changes
 The simplest experimental setup for an RNAseq experiment would be 2 conditions of interest: a control condition and an experimental condition. By comparing the gene expression levels in the experimental condition against the expression levels in the control condition, we can determine which genes are responding to the experimental condition. The experimental condition could be a drug treatment, knocking out a gene of interest, over expressing a gene of interest, a different type of diet, etc.
 
 
-```{r, echo=FALSE, fig.cap = ""}
-knitr::include_graphics("images/fig_experimental_design.png")
+```{r, echo=FALSE}
+knitr::include_graphics("images/experimental_design/fig_experimental_design.png")
 ```
 
 Fundamentals of research -> Factor , Confounding factor, Variable to measure, Controls, Batch, Techinical replicates and not biological, Pooling samples, 
