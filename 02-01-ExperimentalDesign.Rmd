@@ -1,6 +1,6 @@
 
 
-
+# Experimental Design
 
 ## Introduction
 
@@ -19,7 +19,7 @@ The questions below are a few that might help in selecting a suitable protocol:
 The 'typical' RNAseq experiment is short read bulk RNAseq to examine the changes in gene expression levels between different experimental conditions. This workshop has been designed with this understanding that this is the type of analysis that you intend to perform but it is not the only type of RNAseq experiment that can be performed.
 
 
-## Experimental design
+## Designing a Bulk RNAseq Experiment
 
 The simplest experimental setup for an RNAseq experiment would be 2 conditions of interest: a control condition and an experimental condition. By comparing the gene expression levels in the experimental condition against the expression levels in the control condition, we can determine which genes are responding to the experimental condition. The experimental condition could be a drug treatment, knocking out a gene of interest, over expressing a gene of interest, a different type of diet, etc.
 
