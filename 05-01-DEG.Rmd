@@ -25,8 +25,6 @@ There are 12 samples in 4 conditions:
 
 These 12 read sets have been run through the nf-core/rnaseq pipeline using the [laxy.io](https://laxy.io) website.
 
-<!-- Older version &rarr; [laxy.io output](https://laxy.io/#/job/3lQ6tw48pcFfOKyg1vTJry/?access_token=485eaae2-46e7-4c15-8d83-6bd381615ae5) -->
-
 &rarr; [laxy.io output](https://laxy.io/#/job/3pLfQoLEuWeAnWh4H3Vvbv/?access_token=e0124ee9-c8ad-4164-b59f-ca2ae0ce4d2a)
 
 <!--We will use the file `counts.star_featureCounts.tsv`, which counts reads unambiguously aligned to genes in a straightforward way. See later for a discussion of different ways of counting. -->

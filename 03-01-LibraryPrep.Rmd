@@ -2,6 +2,9 @@
 
 ## Read length/type, paired/single
 ## Enrichment/depletion
+
+[Figure 4, Griffith _et al_, 2015](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004393) - RNA-seq library enrichment strategies and their impact on downstream interpretation and analysis
+
 ## cDNA synthesis
 
 

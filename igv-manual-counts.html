@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="Jim Robinson" name="author">
+    <link href=img/favicon.ico rel="shortcut icon">
+    <title>igv.js</title>
+
+</head>
+
+<body>
+
+<h1>IGV.js alignment</h1>
+
+<div id="igv-div" style="padding-top: 10px;padding-bottom: 10px; border:1px solid lightgray"></div>
+
+<script type="module">
+
+    import igv from "https://cdn.jsdelivr.net/npm/igv@3.0.0/dist/igv.esm.min.js"
+
+    var igvDiv = document.getElementById("igv-div");
+    
+    var options = {
+        genome: {
+            id: "hg38 (Ensemble release 109)",
+            fastaURL: "https://bioinformatics.erc.monash.edu/home/andrewperry/tmp/hg38/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz",
+            indexURL: "https://bioinformatics.erc.monash.edu/home/andrewperry/tmp/hg38/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz.fai",
+        },
+        tracks: [
+            {
+                name: "Genes",
+                type: "annotation",
+                format: "gtf",
+                // url: "https://bioinformatics.erc.monash.edu/home/andrewperry/tmp/hg38/Homo_sapiens.GRCh38.109.sorted.gtf",
+                url: "https://bioinformatics.erc.monash.edu/home/andrewperry/tmp/hg38/Homo_sapiens.GRCh38.109.sorted.gtf.gz",
+                indexURL: "https://bioinformatics.erc.monash.edu/home/andrewperry/tmp/hg38/Homo_sapiens.GRCh38.109.sorted.gtf.gz.tbi",
+                displayMode: "EXPANDED",
+                searchable: true
+            },
+            {
+                name: "SRR2155413 Alignments",
+                type: "alignment",
+                format: "bam",
+                url: "https://bioinformatics.erc.monash.edu/home/andrewperry/tmp/3lQ6tw48pcFfOKyg1vTJry/output/results/star_salmon/SRR2155413.markdup.sorted.bam",
+                indexURL: "https://bioinformatics.erc.monash.edu/home/andrewperry/tmp/3lQ6tw48pcFfOKyg1vTJry/output/results/star_salmon/SRR2155413.markdup.sorted.bam.bai"
+            }
+        ]
+    };
+
+    igv.createBrowser(igvDiv, options)
+        .then(function (browser) {
+            console.log("IGV browser created");
+        })
+        .catch(function (error) {
+            console.error(error);
+        });
+
+</script>
+
+</body>
+
+</html>

@@ -1,4 +1,4 @@
-book_filename: "RNAseq_workwhop"
+book_filename: "RNAseq_workshop"
 new_session: false
 before_chapter_script: _common.R
 delete_merged_file: true
@@ -6,4 +6,16 @@ output_dir: "docs"
 language:
   ui:
     chapter_name: "Chapter "
-#rmd_files: ["index.Rmd", "04-01-seuratobject.Rmd",  "04-02-load.Rmd", "04-03-qc.Rmd"]
+rmd_files:
+  - index.Rmd
+  - 01-01-Intro.Rmd
+  - 02-01-ExperimentalDesign.Rmd
+  - 03-01-LibraryPrep.Rmd
+  - 04-01-PipelineOverview.Rmd
+  - 04-02-Pipeline-FASTQ-files.Rmd
+  - 04-03-Pipeline-demultiplexing.Rmd
+  - 04-04-Pipeline-qc-and-mapping.Rmd
+  - 04-05-Pipeline-counting.Rmd
+  - 04-06-Pipeline-ways-to-run-a-pipeline.Rmd
+  - 05-01-DEG.Rmd
+  - 06-01-PostAnalysis.Rmd
