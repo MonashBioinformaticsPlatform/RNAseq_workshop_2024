@@ -1,0 +1,55 @@
+## Detour: demultiplexing
+
+***Before***  you get your FASTQs, the sequencing provider will have 'demultiplexed' the data output by the instrument.
+
+Sequencing providers often pool many samples onto a single flowcell, combining samples from different customers.
+Demultiplexing is the process of identifying index/barcode sequences in the sequenced fragments and assigning them to samples.
+
+Each sample is identified by a short 'barcode' or 'index' incorporated into the fragment. For example:
+
+```bash
+                        R1>________________           I1>________
+--P5_primer-- --i5_primer- ----insert------ -i7_primer-- --index- -P7_primer--
+............. ............ AANGGGCGCAATGTGC ............ CCGCGGTT ............
+                           TTNCCCGCGTTACACG
+                           ________________<2Я
+```
+
+after demultiplexing becomes:
+
+```bash
+----R1_read----- --i7_adapter---
+AANGGGCGCAATGTGC ...............
+```
+
+and:
+
+```bash
+----R2_read----- --i5_primer- 
+GCACATTGCGCCNCTT ............
+```
+
+These sequences are placed in files `sampleA_R1_001.fastq.gz` and `sampleA_R2_001.fastq.gz`, respectively, 
+since fragments with the `CCGCGGTT` index ("barcode") are known to be from `sampleA`.
+
+**Barcodes can have sequencing errors** - but are carefully chosen to prevent mis-assigning reads to the wrong sample.
+The 'default' is often to allow one mismatch in the barcode when demultiplexing, 
+however the tolerable number of mismatches depends on the particular combination of barcodes used in the experiment 
+and the total number of reads (size of the flowcell).
+
+eg if a single mismatch would make a barcode ambiguous within the set used in the library, like:
+```
+CCGCGGTT vs.
+ACGCGGTT
+```
+we would be unable to tolerate any mismatches (and with very large flowcells might still mis-assign a _tiny_ fraction of sequences). 
+Index sequences are carefully chosen to have large ['Hamming distances'](https://en.wikipedia.org/wiki/Hamming_distance) to avoid this.
+
+**Reads can contain adapter sequences** - notice that if the insert is short and the number of sequencing 
+cycles is long enough, we read into the 'adapter' region. 
+This is a region of artefact sequence added as part of the library preparation, not native sequence from your sample.
+
+The adapter sequence(s) are known, so can be (computationally) removed.
+
+Sometimes the sequencing providers will 'trim' adapters from the read as part of the demultiplexing process; 
+often they won't, and adapters sequences may be present in the raw data.

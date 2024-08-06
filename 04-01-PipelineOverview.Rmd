@@ -2,14 +2,23 @@
 
 ## High-level
 
-An RNA-seq pipeline needs to identify where a (short) read has come from to quantify transcription of genes.
+An RNA-seq pipeline needs to identify which RNA transcript a (short) read has originated from to quantify transcription of genes.
 
-At the high-level, this usually involves:
+Once we know the origin of each read, we can use this to estimate the abundance of each transcript.
+
+The minimal inputs to an RNA-seq processing pipeline are:
+
+- a set of **raw reads** (typically in gzipped FASTQ format)
+- a **reference genome sequence** (FASTA, gzipped) and **gene annotations** (GTF or GFF3, gzipped)
+
+At the high-level, a pipeline aims to:
 
 - align or 'map' the read to the genome (or transcriptome)
-  - _(mRNA transcript, or somewhere else on the genome ?)_
-- count / quantify abundance
-- differential expression analysis
+  - _(mRNA transcript, exon, intron, or somewhere else on the genome ?)_
+- count reads associated with features / quantify abundance
+
+Counts of the number of reads associated with each feature (_gene_) are used to 
+estimate transcript relative abundance through differential expression analysis.
 
 ## A simple pipeline
 
@@ -30,194 +39,3 @@ At the high-level, this usually involves:
 **Challenge:** Create your own fantasy RNA-seq processing pipeline
 
 _list tools, challenge is to compose them in a sensible order_
-
-## 'Raw' short reads
-
-Your sequencing provider usually provides a set of FASTQ files (usually with the extension `.fq.gz` or `.fastq.gz`).
-These files contain the raw sequencing reads. They are `gzipped` text files.
-
-**What's inside a FASTQ file ?**
-
-```
-@SRR5963435.1 FCC3UGWACXX:1:1101:1196:2111/1
-AANGGGCGCAATGTGCGTTCAAAGATTCGATGATTCACGGAATTCTGCAATTCACATTACGTATCGCATTTCGCTGCGTTCTTCATCGATGCGAGAACCA
-+
-@C#4=BB=<FFHG>GAFHIGDGFHHGI:CD@>?BFGG>CEGIG>8BDFDGGEGEFFEHIIIGIIGGHBBBC>@CDBBDB??BDDED>9>AA?B@######
-```
-
-Each read has four lines:
-
-  - `@` followed by the read 'name', and other information (flowcell ID, etc)
-  - The DNA sequence of the read
-  - A single `+` on a line
-  - The [quality scores](https://en.wikipedia.org/wiki/FASTQ_format#Quality) for each base (roughly, capital letters are good, `!"#$%&` expletives are bad)
-
-Historically there were various different encodings used for the quality line - today you'll only ever see the 'standard' 
-Sanger/Phred+33 format, unless you are revisiting data generated prior to ~2011.
-
-If your sequencing is paired end, you will have pairs of files with `_R1`/`_R2` or `_1`/`_2_` toward the end of the filename.
-For single ended sequencing you'll just have `_R1` or `_1`.
-
-> Very occasionally a provider will also give you `_I1` and/or `_I2` files - these are usually index, barcode or UMI reads associated with a specific library layout or type of sequencing.
-
-> You should keep a **read-only** copy of the original files, exactly as you recieve them from the sequencing provider. 
-> Don't rename them, don't uncompress them, don't open them in Notepad / Microsoft Word / WinZip etc.
-> Tip: It's very rare that you should ever need to 'unzip' a FASTQ file - almost every tool and pipeline will 
-> work directly with the compressed version.
-> If you do need to look at the content, consider using a command-line tool like `zless` - this can peek inside the
-> compressed file without needing to make an uncompressed copy.
-
-### Detour: demultiplexing
-
-***Before***  you get your FASTQs, the sequencing provider will have 'demultiplexed' the data output by the instrument.
-
-Sequencing providers often pool many samples onto a single flowcell, combining samples from different customers.
-Demultiplexing is the process of identifying index/barcode sequences in the sequenced fragments and assigning them to samples.
-
-Each sample is identified by a short 'barcode' or 'index' incorporated into the fragment. For example:
-
-```bash
-                        R1>________________           I1>________
---P5_primer-- --i5_primer- ----insert------ -i7_primer-- --index- -P7_primer--
-............. ............ AANGGGCGCAATGTGC ............ CCGCGGTT ............
-                           TTNCCCGCGTTACACG
-                           ________________<2Я
-```
-
-after demultiplexing becomes:
-
-```bash
-----R1_read----- --i7_adapter---
-AANGGGCGCAATGTGC ...............
-```
-
-and:
-
-```bash
-----R2_read----- --i5_primer- 
-GCACATTGCGCCNCTT ............
-```
-
-These sequences are placed in files `sampleA_R1_001.fastq.gz` and `sampleA_R2_001.fastq.gz`, respectively, 
-since fragments with the `CCGCGGTT` index ("barcode") are known to be from `sampleA`.
-
-**Barcodes can have sequencing errors** - but are carefully chosen to prevent mis-assigning reads to the wrong sample.
-The 'default' is often to allow one mismatch in the barcode when demultiplexing, 
-however the tolerable number of mismatches depends on the particular combination of barcodes used in the experiment 
-and the total number of reads (size of the flowcell).
-
-eg if a single mismatch would make a barcode ambiguous within the set used in the library, like:
-```
-CCGCGGTT vs.
-ACGCGGTT
-```
-we would be unable to tolerate any mismatches (and with very large flowcells might still mis-assign a _tiny_ fraction of sequences). 
-Index sequences are carefully chosen to have large ['Hamming distances'](https://en.wikipedia.org/wiki/Hamming_distance) to avoid this.
-
-**Reads can contain adapter sequences** - notice that if the insert is short and the number of sequencing 
-cycles is long enough, we read into the 'adapter' region. 
-This is a region of artefact sequence added as part of the library preparation, not native sequence from your sample.
-
-The adapter sequence(s) are known, so can be (computationally) removed.
-
-Sometimes the sequencing providers will 'trim' adapters from the read as part of the demultiplexing process; 
-often they won't, and adapters sequences may be present in the raw data.
-
-
-## An example dataset
-
-For the following examples, we will use the results of an `nf-core/rnaseq` run on a published dataset from [Shanle et al, 2013](https://doi.org/10.1210/me.2013-1164). ([SRP062287](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SRP062287)).
-This is an engineered triple-negative breast cancer cell line, treated with various combinations of estrogen, doxycycline, and controls.
-
-<a href="https://doi.org/10.1210/me.2013-1164" target="_blank">
-![Shanle et al, 2013 headline](images/Shanle_et_al_2013.jpg){width="100%"}
-</a>
-
-## Raw read QC
-
-Let's begin by looking at some metrics about the raw FASTQ reads. The most popular tool for this is FastQC, 
-which generates reports on read quality, length, and content (among other things).
-
-_guided tour through a FastQC report - pre and post trim. Trimming discussion_
-
-_quality score discussion_
-
-_while `FastQC` is the most popular tool, others exist - `fastp` also provides similar QC reports_
-
-
-## Mapping
-
-
-## MultiQC interpretation
-
-[MultiQC](https://multiqc.info/) is a tool that help aggregate and visualize sequencing 
-quality metrics from many tools into a single report. We will examine the report generated by
-the `nf-core/rnaseq` pipeline using MultiQC, focusing on the parts that are most useful for understanding
-your dataset.
-
-> Here's a link to the report [on laxy.io](https://api.laxy.io/api/v1/job/3lQ6tw48pcFfOKyg1vTJry/files/output/results/multiqc/star_salmon/multiqc_report.html){target="_blank"} (and an alternative backup version [here](files/multiqc/SRP062287/multiqc_report.html){target="_blank"}).
-
-We can use these QC metrics to identify:
-
-- quality poor samples
-- potential genomic DNA contamination
-- ribosomal RNA contamination
-- possible PCR derived duplication
-- over-sequencing / under-sequencing
-- reference genome mixups
-- library prep anomalies, barcode mixups
-
-By the time you see this QC, often there is very little that can be done to 'fix' a dataset or poor experimental design.
-However, these quality issues do not nessecarily make a dataset unusable. It's useful to know what you are working with.
-This might guide decisions around future experiments or resequencing, or occasionally provide justification for excluding some samples.
-
-
-### MultiQC: General Statistics table
-
-At the very top of the report is a table aggregating statistics across various tools. 
-This is handy for seeing some key metrics all in one place.
-
-There's a lot of columns here - you can use the "configure columns" button to show just a subset.
-
-![MultiQC configure columns](images/multiqc/mutliqc_configure_columns.jpg)
-
-Let's skip interpreting this table to begin with, since most of the information is repeated in plots below. 
-
-### MultiQC: Duplication statistics
-
-[See this section](files/multiqc/SRP062287/multiqc_report.html#picard)
-
-`picard MarkDuplicates` identifies and quantifies 'duplicate' mapped reads - if two reads have the same 5' start position and the same orientation (strand) (prior to soft-clipping), one of these reads is considered a duplicate.
-
-These dupicates can be of two origins:
-
-1. Reads from generated from different individual transcript molecules
-2. Reads generated by PCR of a single fragment, which are derived from only one transcript molecule
-
-Duplicate reads in category (1) are 'good', in that they represent the real transcript abundance. The 'deeper' you sequence (the larger the library), the more duplicates you'll get.
-Duplicate reads in category (2) aren't desired, since they inflate and bias the real transcript abundance. 
-
-#### UMIs and dupRadar
-
-This is the purpose of Universal Molecular Idenifiers (UMIs) - semi-random sequences incorporated into fragments as early as possible in library prep, prior to many rounds of PCR.
-They allow duplicated generated by PCR to be identified and accounted for.
-
-_[dupRadar](https://doi.org/10.1186/s12859-016-1276-2) can help assess if an experiment is suffering from excessive PCR duplication, vs. 'over-sequencing'_
-
-
-
-## Counting
-## Feature counts
-
-_diagrams of featureCounts cases ?_
-
-**Challenge:** Count reads for gene X
-
-_IGV or IGV.js activity, manually count aligned reads in example, compare with featureCounts output_
-
-
-## References genomes and annotatations
-
-
-
-## Show them where they my run it

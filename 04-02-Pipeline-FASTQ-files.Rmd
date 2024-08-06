@@ -1,0 +1,35 @@
+## FASTQ files
+
+## 'Raw' short reads
+
+Your sequencing provider usually provides a set of FASTQ files (usually with the extension `.fq.gz` or `.fastq.gz`).
+These files contain the raw sequencing reads. They are `gzipped` text files.
+
+**What's inside a FASTQ file ?**
+
+```
+@SRR5963435.1 FCC3UGWACXX:1:1101:1196:2111/1
+AANGGGCGCAATGTGCGTTCAAAGATTCGATGATTCACGGAATTCTGCAATTCACATTACGTATCGCATTTCGCTGCGTTCTTCATCGATGCGAGAACCA
++
+@C#4=BB=<FFHG>GAFHIGDGFHHGI:CD@>?BFGG>CEGIG>8BDFDGGEGEFFEHIIIGIIGGHBBBC>@CDBBDB??BDDED>9>AA?B@######
+```
+
+Each read has four lines:
+
+  - `@` followed by the read 'name', and other information (flowcell ID, etc)
+  - The DNA sequence of the read
+  - A single `+` on a line
+  - The [quality scores](https://en.wikipedia.org/wiki/FASTQ_format#Quality) for each base (roughly, capital letters are good, `!"#$%&` expletives are bad)
+
+Historically there were various different encodings used for the quality line - today you'll only ever see the 'standard' 
+Sanger/Phred+33 format, unless you are revisiting data generated prior to ~2011.
+
+If your sequencing is paired end, you will have pairs of files with `_R1`/`_R2` or `_1`/`_2_` toward the end of the filename.
+For single ended sequencing you'll just have `_R1` or `_1`.
+
+> You should keep a **read-only** copy of the original files, exactly as you receive them from the sequencing provider. 
+> Don't rename them, don't uncompress them, don't open them in Notepad / Microsoft Word / WinZip etc.
+> Tip: It's very rare that you should ever need to 'unzip' a FASTQ file - almost every tool and pipeline will 
+> work directly with the compressed version.
+> If you do need to look at the content, consider using a command-line tool like `zless` - this can peek inside the
+> compressed file without needing to make an uncompressed copy.

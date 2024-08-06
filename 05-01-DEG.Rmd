@@ -25,24 +25,26 @@ There are 12 samples in 4 conditions:
 
 These 12 read sets have been run through the nf-core/rnaseq pipeline using the [laxy.io](https://laxy.io) website.
 
-&rarr; [laxy.io output](https://laxy.io/#/job/3lQ6tw48pcFfOKyg1vTJry/?access_token=485eaae2-46e7-4c15-8d83-6bd381615ae5)
+&rarr; [laxy.io output](https://laxy.io/#/job/3pLfQoLEuWeAnWh4H3Vvbv/?access_token=e0124ee9-c8ad-4164-b59f-ca2ae0ce4d2a)
 
 <!--We will use the file `counts.star_featureCounts.tsv`, which counts reads unambiguously aligned to genes in a straightforward way. See later for a discussion of different ways of counting. -->
 
 We will use `salmon.merged.gene_counts.biotypes.tsv`. You can find it in the Laxy output in the `output/results/star_salmon/` folder. Download this file and then upload it to [Degust](https://degust.erc.monash.edu/). We now need to configure Degust:
 
-* In "Info columns" add "gene_id" and "gene_name".
+* In "Info columns" add at least "gene_id" and "gene_name".
 * Using the "Add condition" button, add four conditions. Add samples to each condition as in the table above.
 * Press "Save changes".
 
 ## Gene expression filter
 
-At this point, Degust warns us there is no gene expression filter. This is important!
+![](images/degust/filter_warning.png){width="50%"}
+
+Degust warns us there is no gene expression filter. This is important!
 
 * Testing many genes increases the size of the FDR correction for multiple testing. Since there is no hope of detecting differential expression in lowly expressed genes, we prefer to remove these before testing. 
 * The "Empirical Bayes" part of the statistical test goes wonky if genes with very low expression are included.
 
-Click on "QC" in the top right and then "Library sizes". This shows the total count for each sample. This experiment has a variety of library sizes, with a typical library size around 25 million.
+Click on "QC" in the top right and then "Library sizes". This shows the total count for each sample. This experiment has a variety of library sizes, with a typical library size around 20 million.
 
 If few samples have a count of more than around 10, we can safely discard them. So that we treat each sample in the same way, we will set a threshold on "Counts Per Million" (CPM) rather than the raw counts. We have a library size of around 20 million in each sample so we will require a CPM of 0.5.
 
@@ -50,7 +52,9 @@ If few samples have a count of more than around 10, we can safely discard them. 
 * Set "Min gene CPM" to 0.5 and "in at least samples" to 2.
 * Press "Save changes".
 
-&rarr; [Degust page set up as described](https://degust.erc.monash.edu/degust/compare.html?code=d4453d6c1cbf8f7c0c876732a4bc0ba5#/)
+<!-- &rarr; [Degust page set up as described](https://degust.erc.monash.edu/degust/compare.html?code=d4453d6c1cbf8f7c0c876732a4bc0ba5#/) -->
+
+&rarr; [Degust page set up as described](https://degust.erc.monash.edu/degust/compare.html?code=e48b17563f95769c842c7c33d6b73de2#/)
 
 ### Our filtering rules of thumb {- .rationale}
 
@@ -79,20 +83,33 @@ We'll concentrate on the default "voom/limma" method. Essentailly, for each gene
 * Testing is actually performed by fitting linear models. This method of testing includes conventional t-tests and One-Way ANOVA F-tests as special cases, but can also model more complicated experimental designs.
 * Residual variance is calculated from all groups, not just the groups being compared, to improve statistical power (much like post-hoc comparisons in an ANOVA). Note that this means low quality or unusual samples can mess up all comparisons, not just the comparisons they are involved in -- perhaps do tests involving such samples in a separate Degust page!
 * Residual variance is observed to be similar between genes, so some information about the residual variance is shared between genes ("Empirical Bayes"), to improve statistical power. This allows for smaller numbers of replicates per group, so we can practically do, say, 3-vs-3 comparisons, or even 2-vs-2 if you must.
-* Smaller counts are are noisier than large counts after log transformation. The "voom" method takes this into account using "precision weights". This is acts as an adjustment to the residual variance of each observation.
+* Smaller counts are are noisier than large counts after log transformation. The "voom" method takes this into account using "precision weights". This acts as an adjustment to the residual variance of each observation.
 * Since we are testing a great many genes at once, we need to adjust for multiple testing. This is done with a "False Discovery Rate" (FDR) p-value adjustment.
 
-### Thresholds to choose DE genes
+### Choosing conditions to compare and filtering results
 
-We discover a larger number of DE genes. How can we pick the most biologically interesting results?
+Let's initially look for differential expression between all conditions. This is similar to the F test in a One-way ANOVA.
 
-* FDR cutoff
-* log2 fold change cutoff
+![](images/degust/conditions.png){width="50%"}
 
-Try comparing:
+* Set the "FDR cutoff" to 0.05. This ensures that of the genes we discover at most 5% will be false discoveries.
+
+We discover a larger number of DE genes. We can try to focus on biologically interesting genes by also setting a log2 fold change cutoff.
+
+* Set the "abs logFC" (absolute log2 fold change) cutoff to 1. 
+
+We now only see genes with at least a 2-fold change between any two conditions.
+
+### Your turn: Compare pairs of conditions {- .challenge}
+
+Usually we willl be interested in comparing pairs of conditions. Try comparing:
 
 * E2_nodox vs DMSO_nodox
 * E2_plusdox vs DMSO_plusdox
+
+Try adjusting the cutoffs for FDR and log2 fold change.
+
+Have a look at the "Volcano" plot as you adjust these cutoffs.
 
 ### Volcano plot
 
@@ -117,7 +134,7 @@ With smaller counts, the log fold change estimates are noisier. This accounts fo
 
 ### Parallel coordinates plot
 
-The parallel coordinates plot helps show patterns of differential expression with more than two conditions. You can interactively subset genes by dragging ranges on the axes of this plot!
+The parallel coordinates plot helps show patterns of differential expression with more than two conditions. You can interactively subset genes by dragging ranges on the axes of this plot. The columns can also be dragged to put them in a different order.
 
 * y-axes = log2 fold change relative to baseline condition
 
@@ -139,6 +156,13 @@ We've done things a bit out of order here. Before DE analysis, we should have do
 * y-axis = Total count in each sample.
 
 ### RLE plot
+
+For each gene, we calculate the log2 fold difference to the median. A box plot of these values is shown for each sample.
+
+* y-axis = log2 fold difference from median
+* x-axis = Sample
+
+This should highlight any poor quality samples, or systematic quality differences between groups of samples.
 
 ### p-value histogram
 
