@@ -1,12 +1,8 @@
-Section overview:
-
-- Experimental design: 
 
 
 
 
-
-# Introduction
+## Introduction
 
 The first step of planning an RNAseq experiment is asking yourself whether RNAseq will answer the intended research question and whether you need to do it. Sequencing experiments are not cheap and a a lot of time and money by ensuring that the sequencing experiment performed is suited to answering the research question at hand. 
 
@@ -23,12 +19,12 @@ The questions below are a few that might help in selecting a suitable protocol:
 The 'typical' RNAseq experiment is short read bulk RNAseq to examine the changes in gene expression levels between different experimental conditions. This workshop has been designed with this understanding that this is the type of analysis that you intend to perform but it is not the only type of RNAseq experiment that can be performed.
 
 
-# Experimental design
+## Experimental design
 
 The simplest experimental setup for an RNAseq experiment would be 2 conditions of interest: a control condition and an experimental condition. By comparing the gene expression levels in the experimental condition against the expression levels in the control condition, we can determine which genes are responding to the experimental condition. The experimental condition could be a drug treatment, knocking out a gene of interest, over expressing a gene of interest, a different type of diet, etc.
 
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, fig.align="center"}
 knitr::include_graphics("images/experimental_design/fig_experimental_design.png")
 ```
 
