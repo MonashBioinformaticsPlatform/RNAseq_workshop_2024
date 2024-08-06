@@ -12,18 +12,63 @@ We've already run this dataset through the nf-core/rnaseq pipeline - here is the
 
 ## Raw read QC
 
-Let's begin by looking at some metrics about the raw FASTQ reads. The most popular tool for this is FastQC, 
+Let's begin by looking at some metrics about the raw FASTQ reads. The most popular tool for this is [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/), 
 which generates reports on read quality, length, and content (among other things).
 
-_guided tour through a FastQC report - pre and post trim. Trimming discussion_
+> **TODO:** _guided tour through a FastQC report
 
-_quality score discussion_
+> FastQC provides a set of pass 
+> ![FastQC PASS](images/multiqc/fastqc_pass.png) / warn ![FastQC PASS](images/multiqc/fastqc_warn.png)  / fail ![FastQC PASS](images/multiqc/fastqc_fail.png) 
+> status checks - these are notoriously sensitive, and even good quality datasets often have a warning or failure for one or 
+> two of these checks. If you see a fail ![FastQC PASS](images/multiqc/fastqc_fail.png), don't panic !
 
-_while `FastQC` is the most popular tool, others exist - `fastp` also provides similar QC reports_
+## Trimming
+
+There are two main goals when trimming for RNA-seq differential abundance studies:
+
+  - Remove low quality base calls (usually at the 3' end of reads)
+  - Remove non-native adapter sequences (also usually at the 3' end of reads)
+
+The literature suggests trimming is **not** required for differential abundance studies at the gene level [(Liao & Shi, 2020)](https://doi.org/10.1093%2Fnargab%2Flqaa068) 
+(and untrimmed reads potentially provide slightly _higher_ accuracy quantification of expression !). This is because aligners used for RNA-seq 'soft-clip' reads - 
+discarding parts at the ends of reads that don't match the reference genome.
+
+Despite this, most pipelines and protocols trim reads anyway.
+
+> **TODO:** Look at pre and post trimming FastQCC/MultiQC.
+
+> Trimming _is_ beneficial if you are _de novo_ assembling RNA-seq reads (eg, for a non-model organism), or using RNA-seq for variant calling.
+
+> **TODO:** quality score discussion
+
+## Positional nucleotide content bias
+
+FastQC reports "Per base sequence content".
+
+![FastQC 'Per base sequence content' plot showing nucleotide composition bias in the first ~12 bases](images/multiqc/fastqc_per-base-sequence-content.png){width="100%"}
+
+It is quite common to see some sequence bias at the 5' end of reads in RNA-seq libraries.
+
+*See:* https://sequencing.qcfail.com/articles/positional-sequence-bias-in-random-primed-libraries/
+
+*Takeaway:* Random priming / fragmentation of reads isn't completely random, so this shows up in some bias at the start of sequences. 
+
+- The 5' ends are still native sequence in this case, not any artefact sequence (eg not barcode, not adapter). 
+- This is often seen in datasets and doesn't require any action. 
+- If it ***was*** non-native sequence it wouldn't have a large impact on alignment, since the aligner will soft-clip 
+  those regions and happily align the parts that match, ignoring the parts that don't.
+
+
+> While `FastQC` is the most popular tool, others exist - `fastp` also provides similar QC reports.
 
 
 ## Mapping
 
+> **TODO:** What aligners do, with a focus on STAR. Inputs (FASTQs), outputs (BAMs), multimappers, softclipping.
+
+### Duplicate marking and sorting of alignment files
+
+> **TODO:** Common tools are `samtools sort` and `picard MarkDuplicates`. Why ?
 
 ## MultiQC interpretation
 

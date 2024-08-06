@@ -27,9 +27,7 @@ Sanger/Phred+33 format, unless you are revisiting data generated prior to ~2011.
 If your sequencing is paired end, you will have pairs of files with `_R1`/`_R2` or `_1`/`_2_` toward the end of the filename.
 For single ended sequencing you'll just have `_R1` or `_1`.
 
-> Very occasionally a provider will also give you `_I1` and/or `_I2` files - these are usually index, barcode or UMI reads associated with a specific library layout or type of sequencing.
-
-> You should keep a **read-only** copy of the original files, exactly as you recieve them from the sequencing provider. 
+> You should keep a **read-only** copy of the original files, exactly as you receive them from the sequencing provider. 
 > Don't rename them, don't uncompress them, don't open them in Notepad / Microsoft Word / WinZip etc.
 > Tip: It's very rare that you should ever need to 'unzip' a FASTQ file - almost every tool and pipeline will 
 > work directly with the compressed version.

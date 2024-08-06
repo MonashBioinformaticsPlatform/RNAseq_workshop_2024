@@ -45,6 +45,3 @@ _You can also search for your favorite gene - chances are there will be many map
 
 ## References genomes and annotatations
 
-
-
-## Show them where they my run it
