@@ -46,7 +46,7 @@ Degust warns us there is no gene expression filter. This is important!
 * Testing many genes increases the size of the FDR correction for multiple testing. Since there is no hope of detecting differential expression in lowly expressed genes, we prefer to remove these before testing. 
 * The "Empirical Bayes" part of the statistical test goes wonky if genes with very low expression are included.
 
-Click on "QC" in the top right and then "Library sizes". This shows the total count for each sample. This experiment has a variety of library sizes, with a typical library size around 25 million.
+Click on "QC" in the top right and then "Library sizes". This shows the total count for each sample. This experiment has a variety of library sizes, with a typical library size around 20 million.
 
 If few samples have a count of more than around 10, we can safely discard them. So that we treat each sample in the same way, we will set a threshold on "Counts Per Million" (CPM) rather than the raw counts. We have a library size of around 20 million in each sample so we will require a CPM of 0.5.
 
@@ -88,17 +88,30 @@ We'll concentrate on the default "voom/limma" method. Essentailly, for each gene
 * Smaller counts are are noisier than large counts after log transformation. The "voom" method takes this into account using "precision weights". This acts as an adjustment to the residual variance of each observation.
 * Since we are testing a great many genes at once, we need to adjust for multiple testing. This is done with a "False Discovery Rate" (FDR) p-value adjustment.
 
-### Thresholds to choose DE genes
+### Choosing conditions to compare and filtering results
 
-We discover a larger number of DE genes. How can we pick the most biologically interesting results?
+Let's initially look for differential expression between all conditions. This is similar to the F test in a One-way ANOVA.
 
-* FDR cutoff
-* log2 fold change cutoff
+![](images/degust/conditions.png){width="50%"}
 
-Try comparing:
+* Set the "FDR cutoff" to 0.05. This ensures that of the genes we discover at most 5% will be false discoveries.
+
+We discover a larger number of DE genes. We can try to focus on biologically interesting genes by also setting a log2 fold change cutoff.
+
+* Set the "abs logFC" (absolute log2 fold change) cutoff to 1. 
+
+We now only see genes with at least a 2-fold change between any two conditions.
+
+### Your turn: Compare pairs of conditions {- .challenge}
+
+Usually we willl be interested in comparing pairs of conditions. Try comparing:
 
 * E2_nodox vs DMSO_nodox
 * E2_plusdox vs DMSO_plusdox
+
+Try adjusting the cutoffs for FDR and log2 fold change.
+
+Have a look at the "Volcano" plot as you adjust these cutoffs.
 
 ### Volcano plot
 
@@ -123,7 +136,7 @@ With smaller counts, the log fold change estimates are noisier. This accounts fo
 
 ### Parallel coordinates plot
 
-The parallel coordinates plot helps show patterns of differential expression with more than two conditions. You can interactively subset genes by dragging ranges on the axes of this plot!
+The parallel coordinates plot helps show patterns of differential expression with more than two conditions. You can interactively subset genes by dragging ranges on the axes of this plot. The columns can also be dragged to put them in a different order.
 
 * y-axes = log2 fold change relative to baseline condition
 
@@ -145,6 +158,13 @@ We've done things a bit out of order here. Before DE analysis, we should have do
 * y-axis = Total count in each sample.
 
 ### RLE plot
+
+For each gene, we calculate the log2 fold difference to the median. A box plot of these values is shown for each sample.
+
+* y-axis = log2 fold difference from median
+* x-axis = Sample
+
+This should highlight any poor quality samples, or systematic quality differences between groups of samples.
 
 ### p-value histogram
 
