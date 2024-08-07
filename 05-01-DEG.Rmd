@@ -235,9 +235,8 @@ This asks "is the effect of adding estrogen different when the estrogen gene is 
 
 Once this is configured, you can choose it to test in the top-left box of the main page.
 
-## Going deeper: UMIs and counting
+&rarr; [Degust page with batches and interaction configured](https://degust.erc.monash.edu/degust/compare.html?code=8eb1f289764b99dade465ff9f04c539e#/)
 
-UMIs vs reads vs read-pairs vs fragments.
 
 ## Going deeper: units and normalisation
 
@@ -247,19 +246,36 @@ Counts Per Million (CPM) (sometimes RPM, Reads Per Million) is therefore a conve
 
 If you want to compare the expression levels of different genes there is a further concern. Some RNA-Seq protocols produce reads along the full length of each transcript, and more reads are obtained from longer transcripts. Accounting for transcript lengths, another unit called Transcripts Per Million (TPM) is sometimes used. You may also see mention of an earlier unit called FPKM or RPKM (Fragments/Reads Per Kilobase per Million).
 
-Other RNA-Seq protocols only produce reads, for example, at the 3' ends of reads. In this case CPM and TPM are the same.
+Other RNA-Seq protocols only produce reads, for example, at the 3' ends of RNA transcripts. In this case CPM and TPM are the same.
 
-**These units are only for visualizing and reporting results. For Differential Expression analysis, the input is always raw counts.** CPMs or TPMs are not raw counts and results will be meaningless if they are used with Degust.
+These units are only for visualizing and reporting results. For Differential Expression analysis, the input is always raw counts. CPMs or TPMs are not raw counts and results will be meaningless if they are used with Degust.
 
+**Absolute expression enthusiast says:** TPM is great! TPM is the right unit to describe absolute RNA expression levels.
+
+**Differential expression ethusiats says:** I don't care about absolute expression levels, just fold changes. Raw counts are what I need for statistical analysis. TPMs are not raw counts, get them outtahere!
+
+## Going deeper: UMIs and counting
+
+Modern RNA-Seq protocol tag fragments with a Unique Molecular Identifier (UMI) before PCR amplification. This allows each original RNA fragment to be counted once, even if it is seen in multiple reads (or read pairs).
+
+**Absolute expression enthusiast says:** I like UMI counting because my TPMs are not biassed due to PCR biasses.
+
+**Differential expression ethusiast says:** PCR bias doesn't worry me. Each gene has the same bias in each sample, so it cancels out when I look at fold change. I do like that UMI counting removes a source of noise though.
 
 ## Going deeper: which counts file to use?
 
 What are you counting?
 
 * Genes?
-* Transcripts? May need higher quality data: greater depth, paired-end. TODO: REFERENCE
 * Exons?
+* Transcripts?
 
-How should you count?
+There is software such as Salmon that can estimate transcript abundances. Since genes have multiple overlapping transcripts, estimating transcript abundance is a difficult inference task. Estimated abundances might hinge on just a few reads, creating an extra source of variation. 
 
-What about transcript level counts or differential exon usage?
+There is also software such as featureCounts which does something much simpler, counting reads aligning to genes (or possibly exons).
+
+**Absolute expression enthusiast says:** Different transcripts of a gene can have different biological effects, so they are important. Thinking about the different lengths of transcripts also helps me give accurate TPMs at the gene level. It's all about accurately measuring the biology!
+
+**Differential expression enthusiast says:** Genes are easiest to work with. Trying to estimate differential transcript-level counts is a hard inference task, I really have to know what I'm doing and I'll need deeper sequencing too. I do worry a little that differential transcript usage might look like differential gene expression if the transcripts of a gene have different lengths, but it hasn't been a huge problem in practice.
+
+
