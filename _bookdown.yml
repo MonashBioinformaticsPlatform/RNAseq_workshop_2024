@@ -19,3 +19,7 @@ rmd_files:
   - 04-06-Pipeline-ways-to-run-a-pipeline.Rmd
   - 05-01-DEG.Rmd
   - 06-01-PostAnalysis.Rmd
+
+copy_resources:
+  - files/multiqc
+  - files/fastqc

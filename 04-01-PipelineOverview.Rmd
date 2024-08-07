@@ -15,10 +15,12 @@ At the high-level, a pipeline aims to:
 
 - align or 'map' the read to the genome (or transcriptome)
   - _(mRNA transcript, exon, intron, or somewhere else on the genome ?)_
-- count reads associated with features / quantify abundance
+- count reads associated with features to quantify (differential) abundance
 
 Counts of the number of reads associated with each feature (_gene_) are used to 
-estimate transcript relative abundance through differential expression analysis.
+estimate the relative abundance of transcripts, and find differences in expression of a gene between groups (== differential expression analysis).
+
+Usually we quantify expression per gene (the sum of all transcripts arising from that gene).
 
 ## A simple pipeline
 

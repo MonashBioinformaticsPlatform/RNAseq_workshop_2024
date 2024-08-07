@@ -5,6 +5,10 @@
 Your sequencing provider usually provides a set of FASTQ files (usually with the extension `.fq.gz` or `.fastq.gz`).
 These files contain the raw sequencing reads. They are `gzipped` text files.
 
+The size of these files will vary depending on the library size / sequencing depth, read length and whether you have single or paired end reads.
+
+> A typical RNA-seq FASTQ file might have 20 million 150 bp reads = ~1.5 gigabytes (twice that for paired end reads).
+
 **What's inside a FASTQ file ?**
 
 ```
@@ -16,10 +20,15 @@ AANGGGCGCAATGTGCGTTCAAAGATTCGATGATTCACGGAATTCTGCAATTCACATTACGTATCGCATTTCGCTGCGTT
 
 Each read has four lines:
 
-  - `@` followed by the read 'name', and other information (flowcell ID, etc)
-  - The DNA sequence of the read
-  - A single `+` on a line
-  - The [quality scores](https://en.wikipedia.org/wiki/FASTQ_format#Quality) for each base (roughly, capital letters are good, `!"#$%&` expletives are bad)
+  - **Line 1**: `@` followed by the read 'name' which includes information like:
+    - the flowcell ID
+    - lane
+    - flowcell tile location
+    - pair number 
+    - _(and sometimes also the barcode and UMI sequence - not in this file from SRA)_
+  - **Line 2**: The DNA sequence of the read
+  - **Line 3**: A single `+` on a line
+  - **Line 4**: The [quality scores](https://en.wikipedia.org/wiki/FASTQ_format#Quality) for each base (roughly, capital letters are good, `!"#$%&` expletives are bad). Newer instruments 'quantize' these scores into 'binned' values - this has little impact on downstream analysis but improves file compression.
 
 Historically there were various different encodings used for the quality line - today you'll only ever see the 'standard' 
 Sanger/Phred+33 format, unless you are revisiting data generated prior to ~2011.
@@ -27,8 +36,9 @@ Sanger/Phred+33 format, unless you are revisiting data generated prior to ~2011.
 If your sequencing is paired end, you will have pairs of files with `_R1`/`_R2` or `_1`/`_2_` toward the end of the filename.
 For single ended sequencing you'll just have `_R1` or `_1`.
 
-> You should keep a **read-only** copy of the original files, exactly as you receive them from the sequencing provider. 
+> You should keep a **read-only** copy of the original files, exactly as you receive them from the sequencing provider.
 > Don't rename them, don't uncompress them, don't open them in Notepad / Microsoft Word / WinZip etc.
+
 > Tip: It's very rare that you should ever need to 'unzip' a FASTQ file - almost every tool and pipeline will 
 > work directly with the compressed version.
 > If you do need to look at the content, consider using a command-line tool like `zless` - this can peek inside the
