@@ -23,4 +23,4 @@ rmd_files:
 copy_resources:
   - files/multiqc
   - files/fastqc
-  - files/ngs-cluster-simulation-vue.html
+  - files/ngs-cluster-simulation.html

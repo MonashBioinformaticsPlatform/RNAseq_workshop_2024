@@ -18,7 +18,7 @@ which generates reports on read quality, length, and content (among other things
 > FastQC provides a set of pass 
 > ![FastQC PASS](images/multiqc/fastqc_pass.png) / warn ![FastQC PASS](images/multiqc/fastqc_warn.png)  / fail ![FastQC PASS](images/multiqc/fastqc_fail.png) 
 > status checks - these are notoriously sensitive, and even good quality datasets often have a warning or failure for one or 
-> two of these checks. If you see a fail ![FastQC PASS](images/multiqc/fastqc_fail.png), don't panic !
+> two of these checks. If you see a fail ![FastQC PASS](images/multiqc/fastqc_fail.png), don't panic - chances are your data is fine (or 'good enough') !
 
 
 ## Base call quality
@@ -29,7 +29,7 @@ Let's start by looking at the FastQC "Per base sequence quality" for a single sa
 
 #### **Challenge:** Examine the per-base quality metrics for sample SRR2155423 {- .challenge}
 
-Look at the <a href="files/fastqc/SRP062287/untrimmed/SRR2155423_fastqc.html" target="_blank">FastQC report for SRR2155423</a>:
+Look at the <a href="files/fastqc/SRP062287/untrimmed/SRR2155423_fastqc.html#M1" target="_blank">FastQC report for SRR2155423</a>:
 
 - What is the trend in the "Per base sequence quality" ?
 - Look at the "Per tile sequence quality plot" and the "Per base N content" - what might be going on here ?
@@ -51,6 +51,11 @@ There are two main goals when trimming for RNA-seq differential abundance studie
 
   - Remove low quality base calls (usually at the 3' end of reads)
   - Remove non-native adapter sequences (also usually at the 3' end of reads)
+
+The concern is that low quality regions with a higher chance of incorrect base calls, or the non-native adapter regions, 
+might impact the correct alignment of a read to the reference genome. 
+
+_However ...._
 
 The literature suggests trimming is **not** required for differential abundance studies at the gene level [(Liao & Shi, 2020)](https://doi.org/10.1093%2Fnargab%2Flqaa068) 
 (and untrimmed reads potentially provide slightly _higher_ accuracy quantification of expression !). This is because aligners used for RNA-seq 'soft-clip' reads - 

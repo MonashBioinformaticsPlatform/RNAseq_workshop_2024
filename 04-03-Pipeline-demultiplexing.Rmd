@@ -2,7 +2,10 @@
 
 ***Before***  you get your FASTQs, the sequencing provider will have 'demultiplexed' the data output by the instrument.
 
-Sequencing providers often pool many samples onto a single flowcell, combining samples from different customers.
+Sequencing providers often pool many samples onto a single flowcell.
+
+Before any sample mixing occurs, the DNA fragments for each sample are given an unique barcode or index.
+
 Demultiplexing is the process of identifying index/barcode sequences in the sequenced fragments and assigning them to samples.
 
 Each sample is identified by a short 'barcode' or 'index' incorporated into the fragment. For example:
