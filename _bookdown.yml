@@ -14,9 +14,10 @@ rmd_files:
   - 04-01-PipelineOverview.Rmd
   - 04-02-Pipeline-FASTQ-files.Rmd
   - 04-03-Pipeline-demultiplexing.Rmd
-  - 04-04-Pipeline-qc-and-mapping.Rmd
-  - 04-05-Pipeline-counting.Rmd
-  - 04-06-Pipeline-ways-to-run-a-pipeline.Rmd
+  - 04-04-Pipeline-fastqc.Rmd
+  - 04-05-Pipeline-mapping-and-qc.Rmd
+  - 04-06-Pipeline-counting.Rmd
+  - 04-07-Pipeline-ways-to-run-a-pipeline.Rmd
   - 05-01-DEG.Rmd
   - 06-01-PostAnalysis.Rmd
 

@@ -24,7 +24,7 @@ Usually we quantify expression per gene (the sum of all transcripts arising from
 
 ## A simple pipeline
 
-<a href="images/pipeline/simple_pipeline2.svg" target="_blank">
+<a href="images/pipeline/simple_pipeline.svg" target="_blank">
 ![Simple RNA-seq pipeline overview](images/pipeline/simple_pipeline.svg){width="100%"}
 </a>
 
@@ -38,6 +38,14 @@ Usually we quantify expression per gene (the sum of all transcripts arising from
 
 ### Pipeline activity
 
-**Challenge:** Create your own fantasy RNA-seq processing pipeline
+#### **Challenge:** Create your own fantasy RNA-seq processing pipeline {- .challenge}
 
-_list tools, challenge is to compose them in a sensible order_
+There are many different 'tools' that can be composed into an RNA-seq processing pipeline. 
+Many do pretty much the same thing, each with tradeoffs on speed, accuracy, memory etc.
+ 
+Compose a set of tools in an order that might make an RNA-seq pipeline.
+
+####  {-}
+
+<iframe src="files/fantasy-rnaseq-pipeline-builder.html" width="660" height="700" frameborder="0" scrolling="no"></iframe>
+

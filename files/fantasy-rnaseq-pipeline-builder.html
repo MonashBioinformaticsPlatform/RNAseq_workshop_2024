@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RNA-seq Pipeline Builder</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            font-family: Arial, sans-serif;
+            padding: 1rem;
+        }
+
+        .section {
+            border: 2px solid #ccc;
+            min-height: 100px;
+            padding: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .tool {
+            border: 1px solid #999;
+            border-radius: 5px;
+            padding: 5px 10px;
+            margin: 5px;
+            cursor: move;
+            user-select: none;
+        }
+
+        .pre-alignment-qc {
+            background-color: #FFB3BA;
+        }
+
+        .post-alignment-qc {
+            background-color: #BAFFC9;
+        }
+
+        .read-counting {
+            background-color: #BAE1FF;
+        }
+
+        .alignment {
+            background-color: #FFFFBA;
+        }
+
+        .differential-expression {
+            background-color: #FFD9BA;
+        }
+
+        .general-bam-processing {
+            background-color: #E0BBE4;
+        }
+
+        .non-typical {
+            background-color: #D3D3D3;
+        }
+
+        .add-tool-form {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .add-tool-form input {
+            flex-grow: 1;
+            padding: 5px;
+        }
+
+        .add-tool-form button {
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" class="container">
+        <h1 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem;">RNA-seq Pipeline Builder</h1>
+        <label>
+            <input type="checkbox" v-model="colorByFunction"> Color by function
+        </label>
+        <div>
+            <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem;">Pipeline</h2>
+            <div class="section" @dragover.prevent @drop="onDrop($event, 'top')">
+                <div v-for="tool in topTools" :key="tool.id" class="tool" :class="{ [tool.function]: colorByFunction }"
+                    draggable="true" @dragstart="onDragStart($event, tool.id)">
+                    {{ tool.name }}
+                </div>
+            </div>
+        </div>
+        <div>
+            <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem;">Available Tools</h2>
+            <div class="section" @dragover.prevent @drop="onDrop($event, 'bottom')">
+                <div v-for="tool in bottomTools" :key="tool.id" class="tool"
+                    :class="{ [tool.function]: colorByFunction }" draggable="true"
+                    @dragstart="onDragStart($event, tool.id)">
+                    {{ tool.name }}
+                </div>
+            </div>
+        </div>
+        <div class="add-tool-form">
+            <input v-model="newToolName" placeholder="New tool name" @keyup.enter="addTool">
+            <button @click="addTool">Add Tool</button>
+        </div>
+    </div>
+
+    <script>
+        const { createApp, ref } = Vue;
+
+        const app = createApp({
+            setup() {
+                const initialTools = [
+                    { id: 'tool1', name: 'FastQC → ', function: 'pre-alignment-qc' },
+                    { id: 'tool1.1', name: 'FastQC → ', function: 'pre-alignment-qc' },
+                    { id: 'tool2', name: 'Trimmomatic → ', function: 'pre-alignment-qc' },
+                    { id: 'tool3', name: 'HISAT2 → ', function: 'alignment' },
+                    { id: 'tool4', name: 'STAR → ', function: 'alignment' },
+                    { id: 'tool5', name: 'Salmon → ', function: 'read-counting' },
+                    { id: 'tool6', name: 'Kallisto → ', function: 'read-counting' },
+                    { id: 'tool7', name: 'Samtools → ', function: 'general-bam-processing' },
+                    { id: 'tool8', name: 'featureCounts → ', function: 'read-counting' },
+                    { id: 'tool9', name: 'HTSeq → ', function: 'read-counting' },
+                    { id: 'tool10', name: 'DESeq2 → ', function: 'differential-expression' },
+                    { id: 'tool11', name: 'RSeQC → ', function: 'post-alignment-qc' },
+                    { id: 'tool12', name: 'Qualimap → ', function: 'post-alignment-qc' },
+                    { id: 'tool13', name: 'Subread → ', function: 'alignment' },
+                    { id: 'tool14', name: 'Cutadapt → ', function: 'pre-alignment-qc' },
+                    { id: 'tool15', name: 'fastp → ', function: 'pre-alignment-qc' },
+                    { id: 'tool16', name: 'limma → ', function: 'differential-expression' },
+                    { id: 'tool17', name: 'edgeR → ', function: 'differential-expression' },
+                    { id: 'tool16', name: 'Degust → ', function: 'differential-expression' },
+                    { id: 'tool18', name: 'sambamba → ', function: 'general-bam-processing' },
+                    { id: 'tool19', name: 'bedtools → ', function: 'general-bam-processing' },
+                    { id: 'tool20', name: 'RSEM → ', function: 'read-counting' },
+                    { id: 'tool21', name: 'UMI-tools → ', function: 'pre-alignment-qc' },
+                    { id: 'tool22', name: 'Trinity → ', function: 'non-typical' },
+                    { id: 'tool23', name: 'StringTie → ', function: 'non-typical' },
+                    { id: 'tool24', name: 'GATK → ', function: 'non-typical' },
+                    { id: 'tool25', name: 'Microsoft Excel → ', function: 'non-typical' },
+                    { id: 'tool26', name: 'Microsoft Word → ', function: 'non-typical' },
+                    { id: 'tool27', name: 'picard MarkDuplicates → ', function: 'general-bam-processing' },
+                    { id: 'tool28', name: 'samtools sort → ', function: 'general-bam-processing' },
+                    { id: 'tool29', name: 'Bowtie2 → ', function: 'alignment' },
+                ];
+
+                const topTools = ref([]);
+                const bottomTools = ref([...initialTools]);
+                const colorByFunction = ref(false);
+                const newToolName = ref('');
+
+                const onDragStart = (event, id) => {
+                    event.dataTransfer.setData('text/plain', id);
+                };
+
+                const onDrop = (event, targetList) => {
+                    const id = event.dataTransfer.getData('text');
+                    const allTools = [...topTools.value, ...bottomTools.value];
+                    const sourceTool = allTools.find(tool => tool.id === id);
+
+                    if (targetList === 'top' && !topTools.value.some(tool => tool.id === id)) {
+                        topTools.value.push(sourceTool);
+                        bottomTools.value = bottomTools.value.filter(tool => tool.id !== id);
+                    } else if (targetList === 'bottom' && !bottomTools.value.some(tool => tool.id === id)) {
+                        bottomTools.value.push(sourceTool);
+                        topTools.value = topTools.value.filter(tool => tool.id !== id);
+                    }
+                };
+
+                const addTool = () => {
+                    if (newToolName.value.trim()) {
+                        const newTool = {
+                            id: `tool${Date.now()}`,
+                            name: `${newToolName.value.trim()} → `,
+                            function: 'non-typical'
+                        };
+                        bottomTools.value.push(newTool);
+                        newToolName.value = '';
+                    }
+                };
+
+                return {
+                    topTools,
+                    bottomTools,
+                    colorByFunction,
+                    newToolName,
+                    onDragStart,
+                    onDrop,
+                    addTool
+                };
+            }
+        });
+
+        app.mount('#app');
+    </script>
+</body>
+
+</html>

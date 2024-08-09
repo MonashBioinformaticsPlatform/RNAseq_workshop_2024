@@ -10,4 +10,4 @@
 
 ## Sequencing
 
-<iframe src="files/ngs-cluster-simulation.html" width="650" height="600" frameborder="0"></iframe>
+<iframe src="files/ngs-cluster-simulation.html" width="660" height="610" frameborder="0" scrolling="no"></iframe>
