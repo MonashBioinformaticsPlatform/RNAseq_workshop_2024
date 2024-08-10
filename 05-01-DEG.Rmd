@@ -1,10 +1,18 @@
 # Differential Expression
 
+## Degust
+
+![](images/degust/degust.png){width="100%"}
+
+We will now use a web application called [Degust](https://degust.erc.monash.edu/) for statistical analysis of our data. Degust is developed by David Powell at Monash University. It provides an richly interactive interface to widely used R packages for statistical analysis of RNA-Seq data, primarily limma and edgeR which are developed at the Walter and Eliza Hall Institute.
+
+## Re-introducing the example dataset
+
 We will be looking at data from the project [SRP062287](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SRP062287) in the Sequence Read Archive (SRA). Read counts can be found in [GSE71960](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE71960) in Gene Expression Omnibus (GEO), but in this workshop we have produced our own read counts. The data is associated with [this publication](https://doi.org/10.1210/me.2013-1164).
 
-Triple-negative breast cancer cell line MDA-MB-468 has been engineered to have an inducible ERβ estrogen receptor. This gene is expressed when treated with doxycycline (plusdox). Some samples are also be treated with estrogen E2. We expect interesting things to happen when both the estrogen receptor and the estrogen are present.
+Triple-negative breast cancer cell line MDA-MB-468 has been engineered to have an inducible ERβ estrogen receptor. This gene is expressed when treated with doxycycline ("plusdox"). Some samples are also be treated with estrogen E2. We expect interesting things to happen when both the estrogen receptor and the estrogen are present.
 
-There are 12 samples in 4 conditions:
+There are 12 samples in 4 conditions. "DMSO_nodox" is our control condition, and we have three further conditions with doxycycline, E2, and both. Samples were produced in three replications of the experiment.
 
 |Sample |Condition |Replicate |
 |:--|:--|:--|
@@ -29,11 +37,13 @@ These 12 read sets have been run through the nf-core/rnaseq pipeline using the [
 
 <!--We will use the file `counts.star_featureCounts.tsv`, which counts reads unambiguously aligned to genes in a straightforward way. See later for a discussion of different ways of counting. -->
 
-We will use `salmon.merged.gene_counts.biotypes.tsv`. You can find it in the Laxy output in the `output/results/star_salmon/` folder. Download this file and then upload it to [Degust](https://degust.erc.monash.edu/). We now need to configure Degust:
+We will use `salmon.merged.gene_counts.biotypes.tsv`. Download this file and then upload it to [Degust](https://degust.erc.monash.edu/). We now need to configure Degust:
 
 * In "Info columns" add at least "gene_id" and "gene_name".
 * Using the "Add condition" button, add four conditions. Add samples to each condition as in the table above.
 * Press "Save changes".
+
+![](images/degust/configuration.png){width="100%"}
 
 ## Gene expression filter
 
@@ -82,15 +92,15 @@ We'll concentrate on the default "voom/limma" method. Essentailly, for each gene
 * 0.5 is added to each count before calculating the log2 CPM, to avoid taking log of zero.
 * Testing is actually performed by fitting linear models. This method of testing includes conventional t-tests and One-Way ANOVA F-tests as special cases, but can also model more complicated experimental designs.
 * Residual variance is calculated from all groups, not just the groups being compared, to improve statistical power (much like post-hoc comparisons in an ANOVA). Note that this means low quality or unusual samples can mess up all comparisons, not just the comparisons they are involved in -- perhaps do tests involving such samples in a separate Degust page!
-* Residual variance is observed to be similar between genes, so some information about the residual variance is shared between genes ("Empirical Bayes"), to improve statistical power. This allows for smaller numbers of replicates per group, so we can practically do, say, 3-vs-3 comparisons, or even 2-vs-2 if you must.
+* Residual variance is observed to be similar between genes, so some information about the residual variance is shared between genes (using a method called "Empirical Bayes"). This improves statistical power, and allows for smaller numbers of replicates per group, so we can practically do, say, 3-vs-3 comparisons, or even 2-vs-2 if you must.
 * Smaller counts are are noisier than large counts after log transformation. The "voom" method takes this into account using "precision weights". This acts as an adjustment to the residual variance of each observation.
 * Since we are testing a great many genes at once, we need to adjust for multiple testing. This is done with a "False Discovery Rate" (FDR) p-value adjustment.
 
 ### Choosing conditions to compare and filtering results
 
-Let's initially look for differential expression between all conditions. This is similar to the F test in a One-way ANOVA.
-
 ![](images/degust/conditions.png){width="50%"}
+
+Let's initially look for differential expression (DE) between all conditions. This is similar to the F test in a One-Way ANOVA.
 
 * Set the "FDR cutoff" to 0.05. This ensures that of the genes we discover at most 5% will be false discoveries.
 
@@ -153,22 +163,24 @@ We've done things a bit out of order here. Before DE analysis, we should have do
 
 ### Library size
 
-* y-axis = Total count in each sample.
+The library size is the total count in each sample. We used this earlier to pick a reasonable level of filtering. A small library size may also indicate a problem with the quality of a sample.
+
+* x-axis = sample
+* y-axis = total count
 
 ### RLE plot
 
-For each gene, we calculate the log2 fold difference to the median. A box plot of these values is shown for each sample.
+For each gene, we calculate the log2 fold difference to the median. A box plot of these values is shown for each sample. This should highlight any poor quality samples, or systematic quality differences between groups of samples.
 
+* x-axis = sample
 * y-axis = log2 fold difference from median
-* x-axis = Sample
-
-This should highlight any poor quality samples, or systematic quality differences between groups of samples.
 
 ### p-value histogram
 
 If a gene is not DE the p-value should be uniformly random between 0 and 1.
  
 * x-axis = p-value
+* y-axis = number of genes
 
 So a flat histogram indicates likely no differential expression in any genes.
 
@@ -238,23 +250,26 @@ Once this is configured, you can choose it to test in the top-left box of the ma
 &rarr; [Degust page with batches and interaction configured](https://degust.erc.monash.edu/degust/compare.html?code=8eb1f289764b99dade465ff9f04c539e#/)
 
 
-## Going deeper: units and normalisation
+## Going deeper
 
-Our assumption is that most genes are not differentially expressed, so the total "library size" of a sample can serve as a reference level against which to compare each gene. (However if a highly expressed gene increases in expression, it will look like all of the other genes decreased a little in terms of CPM. It is common to make adjustments to library sizes to account for this. Degust uses an adjustment called "TMM".)
+### Units and normalisation
 
-Counts Per Million (CPM) (sometimes RPM, Reads Per Million) is therefore a convenient unit to compare the expression of a gene across different samples.
+Different numbers of reads are obtained from different samples. Our assumption is that most genes are not differentially expressed, so the total "library size" of a sample can serve as a reference level against which to compare each gene. Counts Per Million (CPM) is therefore a convenient unit to compare the expression of a gene across different samples. You may also see CPM referred to as RPM (Reads Per Million). (Technical note: If a highly expressed gene increases in expression, it will look like all of the other genes decreased a little in terms of CPM. It is common to make adjustments to library sizes to account for this. Degust uses an adjustment called "TMM".)
 
 If you want to compare the expression levels of different genes there is a further concern. Some RNA-Seq protocols produce reads along the full length of each transcript, and more reads are obtained from longer transcripts. Accounting for transcript lengths, another unit called Transcripts Per Million (TPM) is sometimes used. You may also see mention of an earlier unit called FPKM or RPKM (Fragments/Reads Per Kilobase per Million).
 
-Other RNA-Seq protocols only produce reads, for example, at the 3' ends of RNA transcripts. In this case CPM and TPM are the same.
+Other RNA-Seq protocols only produce reads at the 3' ends of RNA transcripts. In this case CPM and TPM are the same.
 
-These units are only for visualizing and reporting results. For Differential Expression analysis, the input is always raw counts. CPMs or TPMs are not raw counts and results will be meaningless if they are used with Degust.
+These units are only for visualizing and reporting results. For differential expression analysis, the input is always raw counts. CPMs or TPMs are not raw counts and results will be meaningless if they are used with Degust.
+
+To finding TPMs in the Laxy output, in the output pane you would navigate to `output/results/star_salmon` and download `salmon.merged.gene_tpm.tsv` or `salmon.merged.transcript_tpm.tsv`.
 
 **Absolute expression enthusiast says:** TPM is great! TPM is the right unit to describe absolute RNA expression levels.
 
 **Differential expression ethusiats says:** I don't care about absolute expression levels, just fold changes. Raw counts are what I need for statistical analysis. TPMs are not raw counts, get them outtahere!
 
-## Going deeper: UMIs and counting
+
+### UMIs and counting
 
 Modern RNA-Seq protocol tag fragments with a Unique Molecular Identifier (UMI) before PCR amplification. This allows each original RNA fragment to be counted once, even if it is seen in multiple reads (or read pairs).
 
@@ -262,7 +277,8 @@ Modern RNA-Seq protocol tag fragments with a Unique Molecular Identifier (UMI) b
 
 **Differential expression ethusiast says:** PCR bias doesn't worry me. Each gene has the same bias in each sample, so it cancels out when I look at fold change. I do like that UMI counting removes a source of noise though.
 
-## Going deeper: which counts file to use?
+
+### Which counts file to use?
 
 What are you counting?
 
@@ -279,3 +295,20 @@ There is also software such as featureCounts which does something much simpler, 
 **Differential expression enthusiast says:** Genes are easiest to work with. Trying to estimate differential transcript-level counts is a hard inference task, I really have to know what I'm doing and I'll need deeper sequencing too. I do worry a little that differential transcript usage might look like differential gene expression if the transcripts of a gene have different lengths, but it hasn't been a huge problem in practice.
 
 
+### Complex experimental designs
+
+Degust provides a convenient interface for analysing RNA-Seq data, but some large or complex designs may be beyond it. Some examples are:
+
+* Experiments involving hundreds or thousands of samples.
+* Numerical covariates.
+* Long time series.
+* A mixture of biological and technical replication.
+* Sources of unwanted variation that are not fully known.
+
+Experiments with these features can be analysed in R. Monash offers some introductory courses to R through the [Data Fluency](https://www.monash.edu/data-fluency/toolkit/r) program. For specifics of RNA-Seq analysis, there are excellent vignettes written by the authors of limma and edgeR:
+
+* ["RNA-seq analysis is easy as 1-2-3 with limma, Glimma and edgeR"](https://bioconductor.org/packages/release/workflows/vignettes/RNAseq123/i
+nst/doc/limmaWorkflow.html)
+
+* ["A guide to creating design matrices for gene expression experiments"](https://bioconductor.org/packages/release/workflows/vignettes/RNAseq
+123/inst/doc/designmatrices.html)
