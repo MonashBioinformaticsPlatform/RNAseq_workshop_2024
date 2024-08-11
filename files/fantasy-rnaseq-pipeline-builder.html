@@ -120,9 +120,10 @@
         const app = createApp({
             setup() {
                 const initialTools = [
-                    { id: 'tool1', name: 'FastQC → ', function: 'pre-alignment-qc' },
-                    { id: 'tool1.1', name: 'FastQC → ', function: 'pre-alignment-qc' },
+                    { id: 'FastQC-pre', name: 'FastQC → ', function: 'pre-alignment-qc' },
+                    { id: 'FastQC-post', name: 'FastQC → ', function: 'pre-alignment-qc' },
                     { id: 'tool2', name: 'Trimmomatic → ', function: 'pre-alignment-qc' },
+                    { id: 'Degust', name: 'Degust → ', function: 'differential-expression' },
                     { id: 'tool3', name: 'HISAT2 → ', function: 'alignment' },
                     { id: 'tool4', name: 'STAR → ', function: 'alignment' },
                     { id: 'tool5', name: 'Salmon → ', function: 'read-counting' },
@@ -138,7 +139,6 @@
                     { id: 'tool15', name: 'fastp → ', function: 'pre-alignment-qc' },
                     { id: 'tool16', name: 'limma → ', function: 'differential-expression' },
                     { id: 'tool17', name: 'edgeR → ', function: 'differential-expression' },
-                    { id: 'tool16', name: 'Degust → ', function: 'differential-expression' },
                     { id: 'tool18', name: 'sambamba → ', function: 'general-bam-processing' },
                     { id: 'tool19', name: 'bedtools → ', function: 'general-bam-processing' },
                     { id: 'tool20', name: 'RSEM → ', function: 'read-counting' },
@@ -151,6 +151,9 @@
                     { id: 'tool27', name: 'picard MarkDuplicates → ', function: 'general-bam-processing' },
                     { id: 'tool28', name: 'samtools sort → ', function: 'general-bam-processing' },
                     { id: 'tool29', name: 'Bowtie2 → ', function: 'alignment' },
+                    { id: 'MultiQC', name: 'MultiQC → ', function: 'post-alignment-qc' },
+                    { id: 'Glimma', name: 'Glimma → ', function: 'differential-expression' },
+                    { id: 'DupRadar', name: 'DupRadar → ', function: 'post-alignment-qc' },
                 ];
 
                 const topTools = ref([]);

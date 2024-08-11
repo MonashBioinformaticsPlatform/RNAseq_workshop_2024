@@ -41,7 +41,7 @@ Usually we quantify expression per gene (the sum of all transcripts arising from
 #### **Challenge:** Create your own fantasy RNA-seq processing pipeline {- .challenge}
 
 There are many different 'tools' that can be composed into an RNA-seq processing pipeline. 
-Many do pretty much the same thing, each with tradeoffs on speed, accuracy, memory etc.
+Many do pretty much the same thing, each with trade-offs on speed, accuracy, memory, features etc.
  
 Compose a set of tools in an order that might make an RNA-seq pipeline.
 

@@ -28,8 +28,6 @@ which generates reports on read quality, length, and content (among other things
 Let's start by looking at the FastQC "Per base sequence quality" for a single sample (untrimmed): 
 <a href="files/fastqc/SRP062287/untrimmed/SRR2155423_fastqc.html#M1" target="_blank">SRR2155423_fastqc.html</a>
 
-**TODO**: Insert "Per base sequence quality" for SRR2155423 directly in here ?
-
 #### **Challenge:** Examine the per-base quality metrics for sample SRR2155423 {- .challenge}
 
 Look at the <a href="files/fastqc/SRP062287/untrimmed/SRR2155423_fastqc.html#M1" target="_blank">FastQC report for SRR2155423</a>:
@@ -55,18 +53,30 @@ There are two main goals when trimming for RNA-seq differential abundance studie
   - Remove low quality base calls (usually at the 3' end of reads)
   - Remove non-native adapter sequences (also usually at the 3' end of reads)
 
-The concern is that low quality regions with a higher chance of incorrect base calls, or the non-native adapter regions, 
-might impact the correct alignment of a read to the reference genome. 
+The concern is that low quality regions and non-native adapter regions might 
+impact the correct alignment of a read to the reference genome, and add another 
+source of bias to the resulting expression level estimates.
 
 _However ...._
 
-The literature suggests trimming is **not** required for differential abundance studies at the gene level [(Liao & Shi, 2020)](https://doi.org/10.1093%2Fnargab%2Flqaa068) 
-(and untrimmed reads potentially provide slightly _higher_ accuracy quantification of expression !). This is because aligners used for RNA-seq 'soft-clip' reads - 
-discarding parts at the ends of reads that don't match the reference genome.
+The literature suggests trimming probably isn't nessecary for differential abundance studies, 
+and quantification at the gene level is very similar between trimmed and untrimmed reads [(Liao & Shi, 2020)](https://doi.org/10.1093%2Fnargab%2Flqaa068). 
+This is because aligners used for RNA-seq 'soft-clip' reads - discarding parts at the ends of reads that don't match the reference genome.
 
-Despite this, most pipelines and protocols trim reads anyway.
+Most pipelines and protocols trim reads anyway - it's unlikely to hurt.
 
-> **TODO:** Look at pre and post trimming FastQC/MultiQC.
+#### **Challenge:** QC pre- and post-trimming {- .challenge}
+
+Look at pre- and post- trimming in the FastQC (and/or MultiQC) reports. 
+
+What happens to the "Per base sequence quality" (called "Sequence Quality Histogram" in MultiQC) ?
+
+What happens to the adapter content and sequence length distribution ?
+
+####  {-}
+
+Here's our [example RNAseq run](https://laxy.io/#/job/1qUtszdMrQnXC4tawunu92/?access_token=7ad22813-fa68-4848-b93e-de30d53a35b3) without a trimming step. For this dataset, 
+important QC metrics like the "% Aligned" to the reference genome are very close, but not identical between trimmed and untrimmed reads.
 
 > Trimming _is_ beneficial if you are _de novo_ assembling RNA-seq reads (eg, for a non-model organism), or using RNA-seq for variant calling.
 
