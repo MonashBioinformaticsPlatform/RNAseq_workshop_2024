@@ -222,7 +222,7 @@ Here, the MDS plot indicated a batch effect, and the heatmap shows some of the g
 
 Replicates seem to be a source of variation. If we can include this in our model of the data, possibly allowing us to discover more differentially expressed genes.
 
-Under the hood, the packages Degust uses are fitting a "linear models" for each gene. Linear models give us a great deal of flexibility analysing different experimental design (TODO: SEE HERE AND HERE). However they have some odd quirks and will give you wrong answers if you use them wrongly, often without any errors!
+Under the hood, the packages Degust uses are fitting a "linear models" for each gene. Linear models give us a great deal of flexibility analysing different experimental design. If you configure Degust wrong, such as including a sample in multiple conditions, Degust will go ahead and fit the corresponding linear model, but the results may not make sense and there may not be an error. See the end of this section to learn more about linear models.
 
 **To adjust for a nuisance factor with n levels, the rule is that we include n-1 of the levels as "hidden factors" in Degust.** The choice of which n-1 levels should not make a difference.
 
@@ -305,10 +305,12 @@ Degust provides a convenient interface for analysing RNA-Seq data, but some larg
 * A mixture of biological and technical replication.
 * Sources of unwanted variation that are not fully known.
 
-Experiments with these features can be analysed in R. Monash offers some introductory courses to R through the [Data Fluency](https://www.monash.edu/data-fluency/toolkit/r) program. For specifics of RNA-Seq analysis, there are excellent vignettes written by the authors of limma and edgeR:
+Experiments with these features can be analysed in R. Monash offers some introductory courses to R through the [Data Fluency](https://www.monash.edu/data-fluency/toolkit/r) program. To better understand the fundamentals of linear models, see in particular this Data Fluency workshop:
 
-* ["RNA-seq analysis is easy as 1-2-3 with limma, Glimma and edgeR"](https://bioconductor.org/packages/release/workflows/vignettes/RNAseq123/i
-nst/doc/limmaWorkflow.html)
+* ["Linear models in R"](https://monashdatafluency.github.io/r-linear/)
 
-* ["A guide to creating design matrices for gene expression experiments"](https://bioconductor.org/packages/release/workflows/vignettes/RNAseq
-123/inst/doc/designmatrices.html)
+Then for specifics of RNA-Seq analysis, there are excellent vignettes written by the authors of limma and edgeR:
+
+* ["RNA-seq analysis is easy as 1-2-3 with limma, Glimma and edgeR"](https://bioconductor.org/packages/release/workflows/vignettes/RNAseq123/inst/doc/limmaWorkflow.html)
+
+* ["A guide to creating design matrices for gene expression experiments"](https://bioconductor.org/packages/release/workflows/vignettes/RNAseq123/inst/doc/designmatrices.html)
