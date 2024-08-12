@@ -26,7 +26,8 @@ Nice example of read assignment for strand specific libraries: [Figure 6, Griffi
 
 #### **Challenge:** Count reads for gene X {- .challenge}
 
-Using this [pre-populated IGV.js viewer](igv-manual-counts.html), find one of the genes below and count the reads that align to regions of the mature transcript(s).
+Use this [IGV-Web session for sample SRR2155413](https://igv.org/app/?sessionURL=https://bioinformatics.erc.monash.edu/home/andrewperry/rnaseq_workshop_2024/igv-webapp-session_SRR2155413_counting.json), find one of the genes below and count the reads that align to regions of the mature transcript(s).
+(You can also use this [IGV desktop app session](https://bioinformatics.erc.monash.edu/home/andrewperry/rnaseq_workshop_2024/igv_session_SRR2155413_counting.xml), but you'll need the IGV Desktop app installed)
 
 How do your manual counts compare with the value found in the `featureCounts` counts matrix ?
 

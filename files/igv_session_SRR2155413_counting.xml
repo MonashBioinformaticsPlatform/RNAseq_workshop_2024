@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Session genome="hg38" locus="All" nextAutoscaleGroup="2" version="8">
+    <Resources>
+        <Resource index="https://bioinformatics.erc.monash.edu/home/andrewperry/rnaseq_workshop_2024/hg38/Homo_sapiens.GRCh38.109.sorted.gtf.gz.tbi" path="https://bioinformatics.erc.monash.edu/home/andrewperry/rnaseq_workshop_2024/hg38/Homo_sapiens.GRCh38.109.sorted.gtf.gz" type="gtf"/>
+        <Resource index="https://bioinformatics.erc.monash.edu/home/andrewperry/rnaseq_workshop_2024/3lQ6tw48pcFfOKyg1vTJry/output/results/star_salmon/SRR2155413.markdup.sorted.bam.bai" path="https://bioinformatics.erc.monash.edu/home/andrewperry/rnaseq_workshop_2024/3lQ6tw48pcFfOKyg1vTJry/output/results/star_salmon/SRR2155413.markdup.sorted.bam" type="bam"/>
+    </Resources>
+    <Panel height="1026" name="Panel1722391717213" width="1842">
+        <Track attributeKey="SRR2155413.markdup.sorted.bam Coverage" autoScale="true" clazz="org.broad.igv.sam.CoverageTrack" fontSize="10" id="https://bioinformatics.erc.monash.edu/home/andrewperry/rnaseq_workshop_2024/3lQ6tw48pcFfOKyg1vTJry/output/results/star_salmon/SRR2155413.markdup.sorted.bam_coverage" name="SRR2155413.markdup.sorted.bam Coverage" snpThreshold="0.2" visible="true">
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="63.0" minimum="0.0" type="LINEAR"/>
+        </Track>
+        <Track attributeKey="SRR2155413.markdup.sorted.bam Junctions" autoScale="false" clazz="org.broad.igv.sam.SpliceJunctionTrack" fontSize="10" groupByStrand="false" height="60" id="https://bioinformatics.erc.monash.edu/home/andrewperry/rnaseq_workshop_2024/3lQ6tw48pcFfOKyg1vTJry/output/results/star_salmon/SRR2155413.markdup.sorted.bam_junctions" maxdepth="50" name="SRR2155413.markdup.sorted.bam Junctions" visible="true"/>
+        <Track attributeKey="SRR2155413.markdup.sorted.bam" clazz="org.broad.igv.sam.AlignmentTrack" color="185,185,185" displayMode="EXPANDED" experimentType="RNA" fontSize="10" id="https://bioinformatics.erc.monash.edu/home/andrewperry/rnaseq_workshop_2024/3lQ6tw48pcFfOKyg1vTJry/output/results/star_salmon/SRR2155413.markdup.sorted.bam" name="SRR2155413.markdup.sorted.bam" visible="true">
+            <RenderOptions/>
+        </Track>
+    </Panel>
+    <Panel height="170" name="FeaturePanel" width="1842">
+        <Track attributeKey="Reference sequence" clazz="org.broad.igv.track.SequenceTrack" fontSize="10" id="Reference sequence" name="Reference sequence" sequenceTranslationStrandValue="+" shouldShowTranslation="false" visible="true"/>
+        <Track attributeKey="Homo_sapiens.GRCh38.109.sorted.gtf.gz" clazz="org.broad.igv.track.FeatureTrack" featureVisibilityWindow="1000000" fontSize="10" groupByStrand="false" id="https://bioinformatics.erc.monash.edu/home/andrewperry/rnaseq_workshop_2024/hg38/Homo_sapiens.GRCh38.109.sorted.gtf.gz" name="Homo_sapiens.GRCh38.109.sorted.gtf.gz" visible="true"/>
+        <Track attributeKey="Refseq Genes" clazz="org.broad.igv.track.FeatureTrack" colorScale="ContinuousColorScale;0.0;1037.0;255,255,255;0,0,178" fontSize="10" groupByStrand="false" id="https://hgdownload.soe.ucsc.edu/goldenPath/hg38/database/ncbiRefSeq.txt.gz" name="Refseq Genes" visible="true"/>
+        <Track attributeKey="Refseq Genes" clazz="org.broad.igv.track.FeatureTrack" colorScale="ContinuousColorScale;0.0;1037.0;255,255,255;0,0,178" fontSize="10" groupByStrand="false" id="https://hgdownload.soe.ucsc.edu/goldenPath/hg38/database/ncbiRefSeq.txt.gz" name="Refseq Genes" visible="true"/>
+    </Panel>
+    <PanelLayout dividerFractions="0.011947431302270013,0.7909199522102748"/>
+    <HiddenAttributes>
+        <Attribute name="DATA FILE"/>
+        <Attribute name="DATA TYPE"/>
+        <Attribute name="NAME"/>
+    </HiddenAttributes>
+</Session>

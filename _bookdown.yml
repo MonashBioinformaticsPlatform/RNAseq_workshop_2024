@@ -25,3 +25,6 @@ copy_resources:
   - files/multiqc
   - files/fastqc
   - files/ngs-cluster-simulation.html
+  - files/fantasy-rnaseq-pipeline-builder.html
+  - files/igv-webapp-session_SRR2155413_counting.json
+  - files/igv_session_SRR2155413_counting.xml
