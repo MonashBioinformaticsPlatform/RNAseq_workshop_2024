@@ -19,7 +19,7 @@ These 'multi-mappers' are ambiguous are not counted, since we cannot be certain 
 
 _diagrams of featureCounts cases ?_
 
-![](images/featureCounts_assignment.svg)
+![](images/featureCounts_assignment.svg){width="50%"}
 
 Nice example of read assignment for strand specific libraries: [Figure 6, Griffith et al, 2015](https://journals.plos.org/ploscompbiol/article/figure?id=10.1371/journal.pcbi.1004393.g006)
 
@@ -33,9 +33,9 @@ How do your manual counts compare with the value found in the `featureCounts` co
 
 Use the search box at the top of the IGV viewer to find one of:
 
-  - `GNRH1` (`ENSG00000147437`) is a good example gene since it's short with only one intron, and has few reads (SRR2155413 = 6 reads)
-  - `GHET1` (`ENSG00000281189`) lncRNA is also an easy one to count  (SRR2155413 = 7 reads)
-  - `INSL3` (`ENSG00000248099`)  (SRR2155413 = 5 reads) - most mapped to the second intron and not counted. The counted reads are in exon3 and the 3' UTR.
+  - `GNRH1` (`ENSG00000147437`) is a good example gene since it's short with only one intron, and has few reads - Answer: <span class="redacted">(SRR2155413 = 6 reads)</span>
+  - `GHET1` (`ENSG00000281189`) a lncRNA - Answer: <span class="redacted">(SRR2155413 = 7 reads)</span>
+  - `INSL3` (`ENSG00000248099`) - Answer: <span class="redacted">(SRR2155413 = 5 reads) - most mapped to the second intron and not counted. The counted reads are in exon3 and the 3' UTR.</span>
 
 The locus search box will work with gene names and gene IDs as well as chromosomal coordinates.
 
