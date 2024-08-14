@@ -144,7 +144,7 @@
                 const updateClusters = () => {
                     let newClusters = [];
                     if (isPatternedFlowcell.value) {
-                        const gridSize = Math.ceil(Math.sqrt(density.value * 1.5));
+                        const gridSize = 25;
                         const cellWidth = width / gridSize;
                         const cellHeight = height / gridSize;
                         const totalPositions = gridSize * gridSize;
