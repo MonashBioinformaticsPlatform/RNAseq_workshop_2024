@@ -11,24 +11,43 @@ The size of these files will vary depending on the library size / sequencing dep
 
 **What's inside a FASTQ file ?**
 
+The content of a typical FASTQ file from an **Illumina sequencer** looks something like:
+
 ```
-@SRR5963435.1 FCC3UGWACXX:1:1101:1196:2111/1
-AANGGGCGCAATGTGCGTTCAAAGATTCGATGATTCACGGAATTCTGCAATTCACATTACGTATCGCATTTCGCTGCGTTCTTCATCGATGCGAGAACCA
+@NB551311:15:HG2F7BGX5:1:11101:14248:1120 1:N:0:TTAGGC
+CCCAGACAACCAGCTATTGCCAGGTTCGATAGGTCTGTCACTTCTACCCGGAGCTCTTCCCACTCTATTGCCAC
 +
-@C#4=BB=<FFHG>GAFHIGDGFHHGI:CD@>?BFGG>CEGIG>8BDFDGGEGEFFEHIIIGIIGGHBBBC>@CDBBDB??BDDED>9>AA?B@######
+AAAAAEEEEEEEEEEEE6EEEEEEEEAEEEEEEE??+=B+:ADDCD>DE9DCBC:3A,+222:):89D*:*1))
 ```
 
 Each read has four lines:
 
-  - **Line 1**: `@` followed by the read 'name' which includes information like:
+  - **Line 1**: `@` followed by the unique read name, and optionally some extra information like:
+    - the instrument ID
+    - the run ID
     - the flowcell ID
-    - lane
-    - flowcell tile location
-    - pair number 
-    - _(and sometimes also the barcode and UMI sequence - not in this file from SRA)_
+    - the flowcell lane
+    - flowcell tile number:x:y coordinates
+    - pair number
+    - pass filter flag (N for passed)
+    - control bits
+    - the barcode
+    - _(sometimes a UMI sequence is also incorporated in here)_
   - **Line 2**: The DNA sequence of the read
   - **Line 3**: A single `+` on a line
   - **Line 4**: The [quality scores](https://en.wikipedia.org/wiki/FASTQ_format#Quality) for each base (roughly, capital letters are good, `!"#$%&` expletives are bad). Newer instruments 'quantize' these scores into 'binned' values - this has little impact on downstream analysis but improves file compression.
+
+<!--
+FASTQ headers from SRA or ENA are a little different:
+```
+@SRR2155413.247 AMELIA:168:C0BJ5ACXX:1:1101:9509:2067/1
+CATCAGCTGGGCTGTGAAGCAGTTACGTTGTTACTGGAGCTGAACCCTGGTCAGAGCAACCTGATGTACTGGGCTGTGGACCGCTGCTACACGGGCTCCGG
++
+??+=B+:ADDCD>DE9DCBC:3A,+222:):89D*:*1))0?***0?DD(0*/)/)=@A@2AD3=)..7=)7=6@>;(;>@A8????A#############
+```
+-->
+
+The FASTQ `@` read name is only intended as a unique identifier and was not designed as a place to store metadata. As such, there isn't a universal standard for what goes in the FASTQ header - Illumina instruments, MGI instruments and public data from SRA/ENA all have their own variations.
 
 Historically there were various different encodings used for the quality line - today you'll only ever see the 'standard' 
 Sanger/Phred+33 format, unless you are revisiting data generated prior to ~2011.

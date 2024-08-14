@@ -19,27 +19,27 @@ These 'multi-mappers' are ambiguous are not counted, since we cannot be certain 
 
 _diagrams of featureCounts cases ?_
 
-![](images/featureCounts_assignment.svg){width="50%"}
+![](images/featureCounts_assignment.svg){width="80%"}
 
-Nice example of read assignment for strand specific libraries: [Figure 6, Griffith et al, 2015](https://journals.plos.org/ploscompbiol/article/figure?id=10.1371/journal.pcbi.1004393.g006)
+Nice example of read assignment for strand specific libraries: <a href="https://journals.plos.org/ploscompbiol/article/figure?id=10.1371/journal.pcbi.1004393.g006">Figure 6, Griffith et al, 2015</a>
 
 
 #### **Challenge:** Count reads for gene X {- .challenge}
 
-Use this [IGV-Web session for sample SRR2155413](https://igv.org/app/?sessionURL=https://bioinformatics.erc.monash.edu/home/andrewperry/rnaseq_workshop_2024/igv-webapp-session_SRR2155413_counting.json), find one of the genes below and count the reads that align to regions of the mature transcript(s).
+Use this <a href="https://igv.org/app/?sessionURL=https://bioinformatics.erc.monash.edu/home/andrewperry/rnaseq_workshop_2024/igv-webapp-session_SRR2155413_counting.json" target-"_blank">IGV-Web session for sample SRR2155413</a>, find one of the genes below and count the reads that align to regions of the mature transcript(s).
 (You can also use this [IGV desktop app session](https://bioinformatics.erc.monash.edu/home/andrewperry/rnaseq_workshop_2024/igv_session_SRR2155413_counting.xml), but you'll need the IGV Desktop app installed)
 
 How do your manual counts compare with the value found in the `featureCounts` counts matrix ?
 
 Use the search box at the top of the IGV viewer to find one of:
 
-  - `GNRH1` (`ENSG00000147437`) is a good example gene since it's short with only one intron, and has few reads - Answer: <span class="redacted">(SRR2155413 = 6 reads)</span>
-  - `GHET1` (`ENSG00000281189`) a lncRNA - Answer: <span class="redacted">(SRR2155413 = 7 reads)</span>
-  - `INSL3` (`ENSG00000248099`) - Answer: <span class="redacted">(SRR2155413 = 5 reads) - most mapped to the second intron and not counted. The counted reads are in exon3 and the 3' UTR.</span>
+  - `GNRH1` (`ENSG00000147437`) - this is a short gene with only one intron - Answer: <span class="redacted">(SRR2155413 = 6 reads)</span>
+  - `GHET1` (`ENSG00000281189`) - a lncRNA - Answer: <span class="redacted">(SRR2155413 = 7 reads)</span>
+  - `INSL3` (`ENSG00000248099`) - Answer: <span class="redacted">(SRR2155413 = 5 reads) - most reads are mapped to the second intron and not counted. The counted reads are in exon3 and the 3' UTR.</span>
 
 The locus search box will work with gene names and gene IDs as well as chromosomal coordinates.
 
-_You can also search for your favorite gene - chances are there will be many mapped reads and many intron, making manual counting impractical and error prone_
+_You can also search for your favorite gene - chances are there will be many mapped reads and many introns, making manual counting impractical and error prone_
 
 ####  {-}
 
