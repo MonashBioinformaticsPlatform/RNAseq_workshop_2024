@@ -1,6 +1,11 @@
-# Post Analysis
+# Additional Analysis
 
 ## Discuss additional plots and variations 
-## Discuss Network analysis
+
+## Discuss gene set enrichment, pathway and network analysis
+
 ## Discuss Multivariate integration
-## Discuss Single Cell
+
+"Multiomics?"
+
+## Discuss Single Cell & Spatial transcriptomics

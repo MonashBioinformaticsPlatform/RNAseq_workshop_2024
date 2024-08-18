@@ -100,7 +100,7 @@ It is quite common to see some sequence bias at the 5' end of reads in RNA-seq l
 
 > While `FastQC` is the most popular tool, others exist - `fastp` also provides similar QC reports.
 
-## "Per sequence GC content"**
+## "Per sequence GC content"
 
 Ideally the %GC distribution of reads will match the theorerical distribution - it may not if a sample has a strong sampling bias within the transcriptome
 (eg 3' focused sequencing, very low read count, or samples with high duplication / overrepresented sequences)
