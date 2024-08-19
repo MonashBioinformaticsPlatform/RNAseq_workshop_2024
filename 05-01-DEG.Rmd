@@ -96,6 +96,16 @@ We'll concentrate on the default "voom/limma" method. Essentailly, for each gene
 * Smaller counts are are noisier than large counts after log transformation. The "voom" method takes this into account using "precision weights". This acts as an adjustment to the residual variance of each observation.
 * Since we are testing a great many genes at once, we need to adjust for multiple testing. This is done with a "False Discovery Rate" (FDR) p-value adjustment.
 
+### Why adjust p-values? {- .rationale}
+
+Suppose we perform a test on each of 20,000 genes, with a p-value cutoff of 0.05. Then purely by chance we will call about `20000 * 0.05 = 1000` genes differentially expressed, even if there is no differential expression. **So p-value adjustment is not optional!**
+
+The False Discovery Rate adjustment controls the proportion of false discoveries you make amongst all discoveries. So if you set an FDR cutoff of 0.05, and found 100 differentially expressed genes, then about `100 * 0.05 = 5` of these would be false discoveries.
+
+FDR adjustment is a bit strange: the more discoveries you make, the more false discoveries you are willing to tolerate amongst them, and the higher the corresponding p-value threshold. This is in contrast to an earlier method of p-value adjustment which controlled the Family Wise Error Rate (FWER), i.e. controlling the chance of making *any* false discoveries, which would correspond to a very small p-value threshold no matter how many discoveries you are making.
+
+
+
 ### Choosing conditions to compare and filtering results
 
 ![](images/degust/conditions.png){width="50%"}
