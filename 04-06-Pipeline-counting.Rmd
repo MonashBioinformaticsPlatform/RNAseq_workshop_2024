@@ -17,16 +17,27 @@ Counts are summarized at the gene level.
 Sometimes a read will map to two or more genomic locations.
 These 'multi-mappers' are ambiguous are not counted, since we cannot be certain of their origin.
 
-_diagrams of featureCounts cases ?_
+_TODO: diagrams of featureCounts cases ?_
 
-![](images/featureCounts_assignment.svg){width="80%"}
+<a href="images/featureCounts_assignment.svg" target="_blank">![](images/featureCounts_assignment.svg){width="80%"}</a>
 
-Nice example of read assignment for strand specific libraries: <a href="https://journals.plos.org/ploscompbiol/article/figure?id=10.1371/journal.pcbi.1004393.g006">Figure 6, Griffith et al, 2015</a>
+
+### Strandedness
+
+Sequencing libraries can be **'stranded'** or **'unstranded'**, depending on the protocol used. 
+
+In an 'unstranded' library both strands of the cDNA for a transcript are sequenced such that we will have reads for both the coding and non-coding strand, and can't differentiate between them.
+
+For an 'unstranded' library, when two genes overlap on opposite strands, a read in that region cannot be unambigiously assigned.
+
+In a 'stranded' library, the reads always come from the coding strand, resolving this ambiguity.
+
+See <a href="https://journals.plos.org/ploscompbiol/article/figure?id=10.1371/journal.pcbi.1004393.g006">Figure 6, Griffith et al, 2015</a> for a nice example of read assignment for strand specific libraries.
 
 
 #### **Challenge:** Count reads for gene X {- .challenge}
 
-Use this <a href="https://igv.org/app/?sessionURL=https://bioinformatics.erc.monash.edu/home/andrewperry/rnaseq_workshop_2024/igv-webapp-session_SRR2155413_counting.json" target-"_blank">IGV-Web session for sample SRR2155413</a>, find one of the genes below and count the reads that align to regions of the mature transcript(s).
+Use this <a href="https://igv.org/app/?sessionURL=https://bioinformatics.erc.monash.edu/home/andrewperry/rnaseq_workshop_2024/igv-webapp-session_SRR2155413_counting.json" target="_blank">IGV-Web session for sample SRR2155413</a>, find one of the genes below and count the reads that align to regions of the mature transcript(s).
 (You can also use this [IGV desktop app session](https://bioinformatics.erc.monash.edu/home/andrewperry/rnaseq_workshop_2024/igv_session_SRR2155413_counting.xml), but you'll need the IGV Desktop app installed)
 
 How do your manual counts compare with the value found in the `featureCounts` counts matrix ?
