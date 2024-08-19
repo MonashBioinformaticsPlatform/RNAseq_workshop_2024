@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>02-01-ExperimentalDesign.knit</title>
+
+  
+   
+   <meta name="generator" content="placeholder" />
+  <meta property="og:title" content="02-01-ExperimentalDesign.knit" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="02-01-ExperimentalDesign.knit" />
+  
+  
+  
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
+    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
+    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
+    <script src="libs/bs3compat-0.7.0/transition.js"></script>
+    <script src="libs/bs3compat-0.7.0/tabs.js"></script>
+    <script src="libs/bs3compat-0.7.0/bs3compat.js"></script>
+    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
+    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
+
+  <!-- CSS -->
+  <style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+      <link rel="stylesheet" href="style.css" />
+  
+</head>
+
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<!--bookdown:title:start-->
+<!--bookdown:title:end-->
+
+<!--bookdown:toc:start-->
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
+    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title=""></a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+      </form>
+
+      <nav aria-label="Table of contents">
+        <h2>Table of contents</h2>
+        <div id="book-toc"></div>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
+<!--bookdown:toc:end-->
+<!--bookdown:body:start-->
+<div id="experimental-design" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Experimental Design</h1>
+<div id="introduction" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Introduction</h2>
+<p>The first step of planning an RNAseq experiment is asking yourself whether RNAseq will answer the intended research question and whether you need to do it. Sequencing experiments are not cheap and a lot of time and money can be saved by ensuring that the sequencing experiment performed is suited to answering the research question at hand.</p>
+<p>Now consider: if the intent is to study the expression of a small number of genes, RT-PCR might be more appropriate and cheaper. If you intend to study the changes in expression accross all genes in your organism of interest, then RNAseq is suitable for the experiment. Then - what type of RNAseq - there are many different protocols that can be performed.</p>
+<p>The questions below are a few that might help in selecting a suitable protocol:</p>
+<ul>
+<li>do you intend to study transcriptomic changes in individual cells or the tissue level? (single versus bulk RNAseq)</li>
+<li>do you want to characterise isoforms/study alternative splicing? (short versus long read sequencing)</li>
+<li>will you pull down transcripts with a poly A tail (poly-A selection) or deplete ribosomal genes (ribo depletion)</li>
+<li>single end or paired end sequencing?</li>
+</ul>
+<p>The ‘typical’ RNAseq experiment is short read bulk RNAseq to examine the changes in gene expression levels between different experimental conditions. This workshop has been designed with this understanding that this is the type of analysis that you intend to perform but it is not the only type of RNAseq experiment that can be performed.</p>
+</div>
+<div id="designing-a-bulk-rnaseq-experiment" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Designing a Bulk RNAseq Experiment</h2>
+<p>The simplest experimental setup for an RNAseq experiment would be 2 conditions of interest: a control condition and an experimental condition. By comparing the gene expression levels in the experimental condition against the expression levels in the control condition, we can determine which genes are responding to the experimental condition. The experimental condition could be a drug treatment, knocking out a gene of interest, over expressing a gene of interest, a different type of diet, etc.</p>
+<p><img src="images/experimental_design/fig_experimental_design.png" style="display: block; margin: auto;" /></p>
+<p>Fundamentals of research -&gt; Factor , Confounding factor, Variable to measure, Controls, Batch, Techinical replicates and not biological, Pooling samples,</p>
+</div>
+<div id="sequencing-methods" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> Sequencing methods</h2>
+<p>Sequencing Decision. Transcriptomics for Bulk RNAseq. Short reads. Coverage.</p>
+</div>
+<div id="batches-and-replicates-technicalbiological" class="section level2" number="1.4">
+<h2><span class="header-section-number">1.4</span> Batches and replicates (technical/biological)</h2>
+<p>There are two types of replicates in an experiment:</p>
+<ol style="list-style-type: decimal">
+<li>Technical replicates are repeated measurements taken from the same biological source to accurately <strong>assess technical variation in an experiment</strong>. For example, consider a simple RNA-Seq experiment comparing two conditions: normal and diseased. In this scenario, a single normal mouse provides three measurements—mouseX_normal_1, mouseX_normal_2, and mouseX_normal_3. Similarly, a single diseased mouse provides three measurements—mouseY_diseased_1, mouseY_diseased_2, and mouseY_diseased_3. This results in the following samplesheet:</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th align="center">sample</th>
+<th align="center">condition</th>
+<th align="center">mouse</th>
+<th align="center">technical replicates</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">mouseX_normal_1</td>
+<td align="center">normal</td>
+<td align="center">X</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center">mouseX_normal_2</td>
+<td align="center">normal</td>
+<td align="center">X</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td align="center">mouseX_normal_3</td>
+<td align="center">normal</td>
+<td align="center">X</td>
+<td align="center">3</td>
+</tr>
+<tr class="even">
+<td align="center">mouseY_diseased_1</td>
+<td align="center">diseased</td>
+<td align="center">Y</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td align="center">mouseY_diseased_2</td>
+<td align="center">diseased</td>
+<td align="center">Y</td>
+<td align="center">2</td>
+</tr>
+<tr class="even">
+<td align="center">mouseY_diseased_3</td>
+<td align="center">diseased</td>
+<td align="center">Y</td>
+<td align="center">3</td>
+</tr>
+</tbody>
+</table>
+<p>The samples mouseX_normal_1, mouseX_normal_2, and mouseX_normal_3 serve as technical replicates for the normal condition, while mouseY_diseased_1, mouseY_diseased_2, and mouseY_diseased_3 are technical replicates for the diseased condition.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Biological replicates involve using different biological sources to <strong>capture the biological variation between samples</strong>. In the previous RNA-Seq experiment, if we increase the number of mice to three for each healthy and diseased state, we obtain the following samplesheet:</li>
+</ol>
+<table>
+<colgroup>
+<col width="26%" />
+<col width="23%" />
+<col width="26%" />
+<col width="23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">sample</th>
+<th align="center">condition</th>
+<th align="center">mouse (biological replicates)</th>
+<th align="center">technical replicates</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">mouseX1_normal_1</td>
+<td align="center">normal</td>
+<td align="center">X1</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center">mouseX1_normal_2</td>
+<td align="center">normal</td>
+<td align="center">X1</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td align="center">mouseX1_normal_3</td>
+<td align="center">normal</td>
+<td align="center">X1</td>
+<td align="center">3</td>
+</tr>
+<tr class="even">
+<td align="center">mouseX2_normal_1</td>
+<td align="center">normal</td>
+<td align="center">X2</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td align="center">mouseX2_normal_2</td>
+<td align="center">normal</td>
+<td align="center">X2</td>
+<td align="center">2</td>
+</tr>
+<tr class="even">
+<td align="center">mouseX2_normal_3</td>
+<td align="center">normal</td>
+<td align="center">X2</td>
+<td align="center">3</td>
+</tr>
+<tr class="odd">
+<td align="center">mouseX3_normal_1</td>
+<td align="center">normal</td>
+<td align="center">X3</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center">mouseX3_normal_2</td>
+<td align="center">normal</td>
+<td align="center">X3</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td align="center">mouseX3_normal_3</td>
+<td align="center">normal</td>
+<td align="center">X3</td>
+<td align="center">3</td>
+</tr>
+<tr class="even">
+<td align="center">mouseY1_diseased_1</td>
+<td align="center">diseased</td>
+<td align="center">Y1</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td align="center">mouseY1_diseased_2</td>
+<td align="center">diseased</td>
+<td align="center">Y1</td>
+<td align="center">2</td>
+</tr>
+<tr class="even">
+<td align="center">mouseY1_diseased_3</td>
+<td align="center">diseased</td>
+<td align="center">Y1</td>
+<td align="center">3</td>
+</tr>
+<tr class="odd">
+<td align="center">mouseY2_diseased_1</td>
+<td align="center">diseased</td>
+<td align="center">Y2</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center">mouseY2_diseased_2</td>
+<td align="center">diseased</td>
+<td align="center">Y2</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td align="center">mouseY2_diseased_3</td>
+<td align="center">diseased</td>
+<td align="center">Y2</td>
+<td align="center">3</td>
+</tr>
+<tr class="even">
+<td align="center">mouseY3_diseased_1</td>
+<td align="center">diseased</td>
+<td align="center">Y3</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td align="center">mouseY3_diseased_2</td>
+<td align="center">diseased</td>
+<td align="center">Y3</td>
+<td align="center">2</td>
+</tr>
+<tr class="even">
+<td align="center">mouseY3_diseased_3</td>
+<td align="center">diseased</td>
+<td align="center">Y3</td>
+<td align="center">3</td>
+</tr>
+</tbody>
+</table>
+<p>In this experiment, X1, X2, and X3 serve as biological replicates for the normal condition, while Y1, Y2, and Y3 serve as biological replicates for the diseased condition. For each biological replicate, we have three technical replicates for both conditions.</p>
+<p>Batch, Technical replicates and not biological, Pooling samples, Randomization, Noise. Clonal (cell-lines, bacteria, inbred animalls) or not clonal organisms, Does my tissue has different cell types -&gt; Cell sorting or single cell</p>
+</div>
+</div>
+<!--bookdown:body:end-->
+  </main>
+
+  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <div id="book-on-this-page"></div>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5">
+  <div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong></strong>" was written by . </p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+
+
+</body>
+
+</html>
