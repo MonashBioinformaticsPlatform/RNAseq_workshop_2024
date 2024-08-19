@@ -2,25 +2,30 @@
 
 ## Introduction
 
-The first step of planning an RNAseq experiment is asking whether RNAseq will answer the intended research question and whether it should be performed. Sequencing experiments are not cheap and a lot of time and money can be saved by ensuring that the sequencing experiment performed is suited to answering the research question at hand. There is a huge diversity in what RNA-seq can achieve due to the number of different protocols that have been  developed and published. Therefore having a clear experimental goal will help in selecting an appropriate protocol that will best answer the research question.
+The first step of planning an RNAseq experiment is asking whether RNAseq will answer the intended research question and whether it should be performed. Sequencing experiments are not cheap and a lot of time and money can be saved by ensuring that the sequencing experiment performed is suited to answering the research question at hand. There is a huge diversity in what RNA-seq can achieve due to the number of different protocols that have been developed and published. Having a clear experimental goal will help in selecting an appropriate protocol that will best answer the research question.
 
 There are many choices to be made in designing an experiment and it is easy to feel overwhelmed by these choices. Consulting with relevant experts such as sequencing providers and bioinformaticians prior to performing the experiment can aid in this process. 
 
-## RNAseq Applications
-
 The most common use for RNAseq is to identify differentially expressed genes in a tissue of interest for a given organism. This workshop has been designed with this understanding that this is the type of analysis that most researchers intend to perform but it is not the only application of RNAseq. There are other applications RNA-seq that we will briefly discuss, this list is not an exhaustive one.
 
-* Novel transcript discovery
-* De novo transcriptome assembly
-* Isoform discovery
-* Differential isoform usage
-* Gene fusion detection
-* Differential alternate splicing
-* Aberrant splicing event detection
-* Epigenetic integration
+- Differential gene expression
+- De novo transcriptome assembly: if a reference genome for an organism is not available, the information from RNAseq reads can be used
+- Novel transcript/isoform discovery: identify new transcripts/isofrms that are not annotated in a reference
+- Differential isoform usage: detect changes in isoform abundance
+- Alternate splicing: 
+- Gene fusion detection: Gene fusions can occur as a result of chromosomal re-arrangments, resulting in the exchange of coding or regulatory sequences between genes. This can be a cause of cancer and therefore identification of fusion genes has important implications for human health.
+- Aberrant splicing event detection:
+- Epigenetic integration: combine transcriptomic and epigenetic information
 
 
+## RNAseq Applications
 
+
+```{r, echo=FALSE, fig.align="center", fig.cap=}
+knitr::include_graphics("https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/bin/fgene-14-997383-g002.jpg")
+```
+
+Image taken from: [Deshpande D, et al, RNA-seq data science: From raw data to effective interpretation. Frontier Genetics. 2023](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/) - outlines long read and short read sequencing. - can highlight how you can use this to study/interrogate isoforms
 
 ##
 
@@ -41,18 +46,22 @@ The 'typical' RNAseq experiment is short read bulk RNAseq to examine the changes
 
 ## Designing a Bulk RNAseq Experiment
 
+> Knowing what you want to study will determine the protocol
+
 It is important to have a clear idea of what the experimental goal is as this will guide the experimental design in terms of choice of sequencing protocol, technology and the number of replicates. 
 
 The simplest experimental setup for an RNAseq experiment would be 2 conditions of interest: a control condition and an experimental condition. By comparing the gene expression levels in the experimental condition against the expression levels in the control condition, we can determine which genes are responding to the experimental condition. The experimental condition could be a drug treatment, knocking out a gene of interest, over expressing a gene of interest, a different type of diet, etc. The control condition is our baseline measurement - we compare the gene expression levels in our experimental condition to the gene expresison levels in the control condition. 
 
 
-```{r, echo=FALSE, fig.align="center", fig.cap ="With an RNAseq experiment, we want to examine changes in all expressed genes in an organism. We do this by comparing the gene expression levels in an experimental condition against the gene expression levels in a control condition"}
+```{r, echo=FALSE, fig.align="center", fig.cap ="With a bulk RNAseq experiment, we want to examine changes in all expressed genes in an organism. We do this by comparing the gene expression levels in an experimental condition against the gene expression levels in a control condition"}
 knitr::include_graphics("images/experimental_design/fig_experimental_design.png")
 ```
 
 Fundamentals of research -> Factor , Confounding factor, Variable to measure, Controls, Batch, Techinical replicates and not biological, Pooling samples, 
 
 ### Experimental Factors
+
+
 
 ### Pooling Samples
 
@@ -66,13 +75,10 @@ Sequencing Decision. Transcriptomics for Bulk RNAseq. Short reads. Coverage.
 
 ### Coverage
 
-- common question asked - how deep should I sequence
-- ENCODE recommends
-- should sequence more deeply or more samples
 
-Researchers are often faced with a choice as to whether to sequence more deeply or sequence more samples. It is generally advised to sequence more samples if the option is there. More samples will increase the statistical power of the experiment.
+A common query is to what depth should a sequence experiment be performed. 
 
-More biological replicates will provide better estimates of variance and more precise measures of gene expression.
+Researchers are often faced with a choice as to whether to sequence more deeply or sequence more samples. More biological replicates will provide better estimates of variance and more precise measures of gene expression than sequencing to a greater depth. It is generally advised to sequence more samples rather than sequence deeply if the option is there. 
 
 ```{r, echo=FALSE, fig.align="center", fig.cap="Biological replicates provide more statistical power to detect differential genes than sequencing depth"}
 knitr::include_graphics("images/experimental_design/liu_y_bioinformatics_2014.jpg")
