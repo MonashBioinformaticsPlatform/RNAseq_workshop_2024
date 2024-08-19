@@ -1,0 +1,67 @@
+## Counting transcripts
+
+## featureCounts
+
+`featureCounts` is a popular tool often used within RNA-seq pipelines (and as part of the `Rsubread` package in R). 
+It provides summarization and quantification of mapped read.
+
+```
+aligned reads (BAM) ==> counts matrix (genes as rows, samples as columns)
+```
+
+When used for RNA-seq read counting, `featureCounts` calls a 'hit' if a read overlaps an exon in the gene by of 1 bp or more.
+For paired end reads, typically the 'fragment' is only counted if both `R1` and `R2` reads map to the gene (`-B` option).
+
+Counts are summarized at the gene level.
+
+Sometimes a read will map to two or more genomic locations.
+These 'multi-mappers' are ambiguous are not counted, since we cannot be certain of their origin.
+
+> <a href="images/featureCounts_assignment.svg" target="_blank">![](images/featureCounts_assignment.svg){width="80%"}</a>
+>
+> Here's an example of how some reads from an unstranded library might align with a set of genes in the genome.
+> Green reads are those that would be counted - the overlap an exon or UTR with no ambiguity.
+> Red reads are those that would not be counted - the either do no overlap any exon or UTR, or are ambiguous in their assignment.
+
+### Strandedness
+
+Sequencing libraries can be **'stranded'** or **'unstranded'**, depending on the protocol used. 
+
+In an 'unstranded' library both strands of the cDNA for a transcript are sequenced such that we will have reads for both the coding and non-coding strand, and can't differentiate between them.
+
+For an 'unstranded' library, when two genes overlap on opposite strands, a read in that region cannot be unambigiously assigned.
+
+In a 'stranded' library, the reads always come from the coding strand, resolving this ambiguity.
+
+See <a href="https://journals.plos.org/ploscompbiol/article/figure?id=10.1371/journal.pcbi.1004393.g006">Figure 6, Griffith et al, 2015</a> for a nice example of read assignment for strand specific libraries.
+
+#### **Question** {- .rationale}
+
+In the our aligned reads example above, which red read(s) could be assigned if the library was 'stranded' instead of 'unstraded' ?
+
+####  {-}
+
+### Read counting challenge
+
+#### **Challenge:** Count reads for gene X {- .challenge}
+
+Use this <a href="https://igv.org/app/?sessionURL=https://bioinformatics.erc.monash.edu/home/andrewperry/rnaseq_workshop_2024/igv-webapp-session_SRR2155413_counting.json" target="_blank">IGV-Web session for sample SRR2155413</a>, find one of the genes below and count the reads that align to regions of the mature transcript(s).
+(You can also use this [IGV desktop app session](https://bioinformatics.erc.monash.edu/home/andrewperry/rnaseq_workshop_2024/igv_session_SRR2155413_counting.xml), but you'll need the IGV Desktop app installed)
+
+How do your manual counts compare with the value found in the `featureCounts` counts matrix ?
+
+Use the search box at the top of the IGV viewer to find one of:
+
+  - `GNRH1` (`ENSG00000147437`) - this is a short gene with only one intron - Answer: <span class="redacted">(SRR2155413 = 6 reads)</span>
+  - `GHET1` (`ENSG00000281189`) - a lncRNA - Answer: <span class="redacted">(SRR2155413 = 7 reads)</span>
+  - `INSL3` (`ENSG00000248099`) - Answer: <span class="redacted">(SRR2155413 = 5 reads) - most reads are mapped to the second intron and not counted. The counted reads are in exon3 and the 3' UTR.</span>
+
+The locus search box will work with gene names and gene IDs as well as chromosomal coordinates.
+
+_You can also search for your favorite gene - chances are there will be many mapped reads and many introns, making manual counting impractical and error prone_
+
+####  {-}
+
+
+## References genomes and annotatations
+

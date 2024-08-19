@@ -32,3 +32,15 @@ pre code {
 .rationale > :first-child, .rational > :nth-child(2) {
   margin-top: 0;
 }
+
+.redacted {
+  background-color: #000;
+  color: transparent;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.redacted:hover {
+  background-color: transparent;
+  color: initial;
+}

@@ -1,0 +1,46 @@
+{
+	"version": "2.15.13",
+	"showSampleNames": false,
+	"reference": {
+		"id": "hg38",
+		"name": "Human (GRCh38/hg38)",
+		"fastaURL": "https://igv-genepattern-org.s3.amazonaws.com/genomes/seq/hg38/hg38.fa",
+		"indexURL": "https://igv-genepattern-org.s3.amazonaws.com/genomes/seq/hg38/hg38.fa.fai",
+		"cytobandURL": "https://igv-genepattern-org.s3.amazonaws.com/genomes/hg38/cytoBandIdeo.txt.gz",
+		"aliasURL": "https://igv-genepattern-org.s3.amazonaws.com/genomes/hg38/hg38_alias.tab",
+		"chromSizesURL": "https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.chrom.sizes",
+		"twoBitURL": "https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.2bit",
+		"chromosomeOrder": "chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY"
+	},
+	"locus": "all",
+	"roi": [],
+	"tracks": [
+		{
+			"type": "sequence",
+			"order": -9007199254740991
+		},
+		{
+			"url": "https://bioinformatics.erc.monash.edu/home/andrewperry/rnaseq_workshop_2024/3lQ6tw48pcFfOKyg1vTJry/output/results/star_salmon/SRR2155413.markdup.sorted.bam",
+			"filename": "SRR2155413.markdup.sorted.bam",
+			"indexURL": "https://bioinformatics.erc.monash.edu/home/andrewperry/rnaseq_workshop_2024/3lQ6tw48pcFfOKyg1vTJry/output/results/star_salmon/SRR2155413.markdup.sorted.bam.bai",
+			"name": "SRR2155413.markdup.sorted.bam",
+			"format": "bam",
+			"type": "alignment",
+			"height": 300,
+			"showCoverage": false,
+			"order": 4
+		},
+		{
+			"url": "https://bioinformatics.erc.monash.edu/home/andrewperry/rnaseq_workshop_2024/hg38/Homo_sapiens.GRCh38.109.sorted.gtf.gz",
+			"filename": "Homo_sapiens.GRCh38.109.sorted.gtf.gz",
+			"indexURL": "https://bioinformatics.erc.monash.edu/home/andrewperry/rnaseq_workshop_2024/hg38/Homo_sapiens.GRCh38.109.sorted.gtf.gz.tbi",
+			"name": "Homo_sapiens.GRCh38.109.sorted.gtf.gz",
+			"format": "gtf",
+			"type": "annotation",
+			"displayMode": "EXPANDED",
+			"height": 200,
+			"visibilityWindow": 464268,
+			"order": 6
+		}
+	]
+}
