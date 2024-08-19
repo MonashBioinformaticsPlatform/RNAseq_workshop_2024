@@ -2,7 +2,11 @@
 
 ## Introduction
 
+<<<<<<< HEAD
+The first step of planning an RNAseq experiment is asking yourself whether RNAseq will answer the intended research question and whether you need to do it. Sequencing experiments are not cheap and a lot of time and money can be saved by ensuring that the sequencing experiment performed is suited to answering the research question at hand.
+=======
 The first step of planning an RNAseq experiment is asking whether RNAseq will answer the intended research question and whether it should be performed. Sequencing experiments are not cheap and a lot of time and money can be saved by ensuring that the sequencing experiment performed is suited to answering the research question at hand. There is a huge diversity in what RNA-seq can achieve due to the number of different protocols that have been  developed and published. Therefore having a clear experimental goal will help in selecting an appropriate protocol that will best answer the research question.
+>>>>>>> 9b0d565c0bf0abf92bb090f2548ba07dd702b247
 
 There are many choices to be made in designing an experiment and it is easy to feel overwhelmed by these choices. Consulting with relevant experts such as sequencing providers and bioinformaticians prior to performing the experiment can aid in this process. 
 
@@ -29,15 +33,21 @@ Do you want to assay changes in gene expression? Or do you want to identify nove
 
 The questions below are a few that might help in selecting a suitable protocol:
 
+<<<<<<< HEAD
+-   do you intend to study transcriptomic changes in individual cells or the tissue level? (single versus bulk RNAseq)
+-   do you want to characterise isoforms/study alternative splicing? (short versus long read sequencing)
+-   will you pull down transcripts with a poly A tail (poly-A selection) or deplete ribosomal genes (ribo depletion)
+-   single end or paired end sequencing?
+=======
 - do you intend to study transcriptomic changes in individual cells or the tissue level? (single versus bulk RNAseq)
 - do you want to characterise isoforms/study alternative splicing? (short versus long read sequencing)
 - will you pull down transcripts with a poly A tail (poly-A selection) or deplete ribosomal genes (ribo depletion)
 - single end or paired end sequencing?
 - does your organism of interest have an annotated reference genome or will you need to assemble a transcriptome?
 
+>>>>>>> 9b0d565c0bf0abf92bb090f2548ba07dd702b247
 
 The 'typical' RNAseq experiment is short read bulk RNAseq to examine the changes in gene expression levels between different experimental conditions. 
-
 
 ## Designing a Bulk RNAseq Experiment
 
@@ -45,6 +55,13 @@ It is important to have a clear idea of what the experimental goal is as this wi
 
 The simplest experimental setup for an RNAseq experiment would be 2 conditions of interest: a control condition and an experimental condition. By comparing the gene expression levels in the experimental condition against the expression levels in the control condition, we can determine which genes are responding to the experimental condition. The experimental condition could be a drug treatment, knocking out a gene of interest, over expressing a gene of interest, a different type of diet, etc. The control condition is our baseline measurement - we compare the gene expression levels in our experimental condition to the gene expresison levels in the control condition. 
 
+<<<<<<< HEAD
+```{r, echo=FALSE, fig.align="center"}
+knitr::include_graphics("images/experimental_design/fig_experimental_design.png")
+```
+
+Fundamentals of research -\> Factor , Confounding factor, Variable to measure, Controls, Batch, Techinical replicates and not biological, Pooling samples,
+=======
 
 ```{r, echo=FALSE, fig.align="center", fig.cap ="With an RNAseq experiment, we want to examine changes in all expressed genes in an organism. We do this by comparing the gene expression levels in an experimental condition against the gene expression levels in a control condition"}
 knitr::include_graphics("images/experimental_design/fig_experimental_design.png")
@@ -55,11 +72,14 @@ Fundamentals of research -> Factor , Confounding factor, Variable to measure, Co
 ### Experimental Factors
 
 ### Pooling Samples
+>>>>>>> 9b0d565c0bf0abf92bb090f2548ba07dd702b247
 
 ## Sequencing methods
 
 Sequencing Decision. Transcriptomics for Bulk RNAseq. Short reads. Coverage.
 
+<<<<<<< HEAD
+=======
 ### Short Read Sequencing
 
 ### Long Read Sequencing
@@ -83,9 +103,11 @@ Image taken from: [Liu Y et al, RNA-seq differential expression studies: more se
 However, higher sequencing depth is necessary for detecting lowly expressed differentially expressed (DE) genes and for conducting isoform-level differential expression analysis.
 
 
+>>>>>>> 9b0d565c0bf0abf92bb090f2548ba07dd702b247
 ## Batches and replicates (technical/biological)
 
 There are two types of replicates in an experiment:
+<<<<<<< HEAD
 
 1.  Technical replicates are repeated measurements taken from the same biological source to accurately **assess technical variation in an experiment**.
 
@@ -156,6 +178,64 @@ To avoid confounding, it is important to ensure the sample source/animals in eac
 * gene-level differential expression
 * Isoform-level differential expression
 * Other types of RNA analyses (intron retention, small RNA-Seq, etc.)
+=======
+>>>>>>> 1155b704b0c5698fd3d38ea0a5e1012add5b782e
 
-Batch, Techinical replicates and not biological, Pooling samples, Randomization, Noise. Clonal (cell-lines, bacteria, inbred animalls) or not clonal organisms, Does my tissue has different cell types -> Cell sorting or single cell
+1.  Technical replicates are repeated measurements taken from the same biological source to accurately **assess technical variation in an experiment**. For example, consider a simple RNA-Seq experiment comparing two conditions: normal and diseased. In this scenario, a single normal mouse provides three measurements—mouseX_normal_1, mouseX_normal_2, and mouseX_normal_3. Similarly, a single diseased mouse provides three measurements—mouseY_diseased_1, mouseY_diseased_2, and mouseY_diseased_3. This results in the following samplesheet:
 
+| sample | condition | mouse | technical replicates |
+|:----------:|:---------:|:----------:|:---------:|
+|  mouseX_normal_1  |  normal | X  |  1 |
+|  mouseX_normal_2  |  normal | X  |  2 |
+|  mouseX_normal_3  |  normal | X  |  3 |
+|  mouseY_diseased_1  |  diseased  | Y |  1 |
+|  mouseY_diseased_2  |  diseased | Y  |  2 |
+|  mouseY_diseased_3  |  diseased | Y  |  3 |
+
+The samples mouseX_normal_1, mouseX_normal_2, and mouseX_normal_3 serve as technical replicates for the normal condition, while mouseY_diseased_1, mouseY_diseased_2, and mouseY_diseased_3 are technical replicates for the diseased condition.
+
+2.  Biological replicates involve using different biological sources to **capture the biological variation between samples**. In the previous RNA-Seq experiment, if we increase the number of mice to three for each healthy and diseased state, we obtain the following samplesheet:
+
+| sample | condition | mouse (biological replicates) | technical replicates |
+|:----------:|:---------:|:----------:|:---------:|
+|  mouseX1_normal_1  |  normal   | X1  |  1    |
+|  mouseX1_normal_2  |  normal   | X1  |  2    |
+|  mouseX1_normal_3  |  normal   | X1  |  3    |
+|  mouseX2_normal_1  |  normal   | X2  |  1    |
+|  mouseX2_normal_2  |  normal   | X2  |  2    |
+|  mouseX2_normal_3  |  normal   | X2  |  3    |
+|  mouseX3_normal_1  |  normal   | X3  |  1    |
+|  mouseX3_normal_2  |  normal   | X3  |  2    |
+|  mouseX3_normal_3  |  normal   | X3  |  3    |
+| mouseY1_diseased_1 | diseased  | Y1  |  1    |
+| mouseY1_diseased_2 | diseased  | Y1  |  2    |
+| mouseY1_diseased_3 | diseased  | Y1  |  3    |
+| mouseY2_diseased_1 | diseased  | Y2  |  1    |
+| mouseY2_diseased_2 | diseased  | Y2  |  2    |
+| mouseY2_diseased_3 | diseased  | Y2  |  3    |
+| mouseY3_diseased_1 | diseased  | Y3  |  1    |
+| mouseY3_diseased_2 | diseased  | Y3  |  2    |
+| mouseY3_diseased_3 | diseased  | Y3  |  3    |
+
+In this experiment, X1, X2, and X3 serve as biological replicates for the normal condition, while Y1, Y2, and Y3 serve as biological replicates for the diseased condition. For each biological replicate, we have three technical replicates for both conditions.
+
+In the era of microarrays, technical replicates were essential. However, with the advent of current RNA-Seq technologies, technical variation is minimal compared to biological variation, making technical replicates less necessary.
+
+Conversely, biological replicates are indispensable for differential expression analysis. Increasing the number of biological replicates enhances the accuracy of biological variation estimates and the precision of mean expression level estimates. This, in turn, leads to better data modeling and the identification of more differentially expressed genes.
+
+
+## Confounding factors
+
+A confounded RNA-Seq experiment is one in which the distinct effects of two different sources of variation in the data cannot be separated.
+
+For instance, sex is known to significantly influence gene expression. If all the control mice in an experiment were female and all the treatment mice were male, the treatment effect would be confounded by sex. In this scenario, it would be impossible to distinguish the treatment effect from the effect of sex. Consider another scenario, if all the control mice are from cage A and all the treatment mice for cage B, the treatment effects are confounded by the cage. The living conditions in the two cages may vary which is indistinguishable from the treatment effects.
+
+To avoid confounding, it is important to ensure the sample source/animals in each condition are all the same sex, age, litter, and batch, if possible. If this is not entirely possible, then make sure to split the animals equally between different conditions. It's best to discuss he experimental design with a bioinformatcian before conducting the experiment.
+
+As shown in @Liu2013
+
+* gene-level differential expression
+* Isoform-level differential expression
+* Other types of RNA analyses (intron retention, small RNA-Seq, etc.)
+
+Batch, Technical replicates and not biological, Pooling samples, Randomization, Noise. Clonal (cell-lines, bacteria, inbred animalls) or not clonal organisms, Does my tissue has different cell types -\> Cell sorting or single cell
