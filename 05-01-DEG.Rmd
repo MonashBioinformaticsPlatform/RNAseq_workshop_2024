@@ -206,7 +206,8 @@ Multi-Dimensional Scaling (MDS) provides a 2D layout of your samples, attempting
 
 (We call it an MDS plot rather than a PCA plot because it's based on the plotMDS function in the limma package. The limma version uses a slightly different distance calculation method by default.)
 
-Ideally the MDS layout will separate your samples into experimental groups. If your samples have a batch effect, this may also separate the samples along a different direction. If your samples are all jumbled together you will be sad, as you are unlikely to find many differentially expressed genes. You might also notice one or two outlier samples. You could consider excluding these samples from the analysis.
+Ideally the MDS layout will separate your samples into experimental groups. If your samples have a batch effect, this may also separate the samples along a different direction. If your samples are all jumbled together you will be sad, as you are unlikely to find many differentially expressed genes. You might also notice one or two outlier samples. 
+You could consider excluding these samples from the analysis - ideally with additional justification based on the raw-read and alignment level QC explored earlier.
 
 The PCA is calculated on log2(CPM+moderation), where "moderation" is a constant you can adjust. The moderation reduces the amount of noise in genes with low counts. Also the PCA can be calculated on only the most variable genes ("Num genes"). Adjusting these parameters might clean up your MDS layout a little.
 
