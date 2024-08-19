@@ -24,9 +24,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="1"
-     inkscape:cx="332.5"
-     inkscape:cy="115.5"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="423.91052"
+     inkscape:cy="97.934289"
      inkscape:window-width="1861"
      inkscape:window-height="1027"
      inkscape:window-x="59"
@@ -628,26 +628,6 @@
        refX="0"
        refY="0"
        orient="auto-start-reverse"
-       id="CapTriangle-7-9-0-3-7"
-       viewBox="0 0 0.525 1"
-       inkscape:stockid="pin"
-       style="overflow:visible"
-       preserveAspectRatio="xMidYMid"
-       inkscape:isstock="true"
-       inkscape:collect="always">
-      <path
-         id="path7813-2-1-18-9-9"
-         style="fill:context-stroke;stroke-linecap:butt"
-         d="M 0,-1 1,0 0,1 -0.05,0 Z"
-         sodipodi:nodetypes="sssssscsss"
-         transform="scale(0.5)" />
-    </marker>
-    <marker
-       markerWidth="0.52499998"
-       markerHeight="0.99999994"
-       refX="0"
-       refY="0"
-       orient="auto-start-reverse"
        id="CapTriangle-7-9-0-3-7-7"
        viewBox="0 0 0.525 1"
        inkscape:stockid="pin"
@@ -663,12 +643,32 @@
          transform="scale(0.5)" />
     </marker>
     <marker
+       markerWidth="1.05"
+       markerHeight="0.99999994"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       id="CapRibbon1-9-6-5"
+       viewBox="0 0 1.05 1"
+       inkscape:stockid="pin"
+       style="overflow:visible"
+       preserveAspectRatio="xMidYMid"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path56643-1-5-2"
+         style="fill:context-stroke;stroke-linecap:butt"
+         d="M 0,-1 H 2 L 1,0 2,1 H 0 L -0.1,0 Z"
+         sodipodi:nodetypes="sssssscsss"
+         transform="scale(0.5)" />
+    </marker>
+    <marker
        markerWidth="0.52499998"
        markerHeight="0.99999994"
        refX="0"
        refY="0"
        orient="auto-start-reverse"
-       id="CapTriangle-7-9-0-3-7-7-4"
+       id="CapTriangle-7-9-0-3-7-7-49"
        viewBox="0 0 0.525 1"
        inkscape:stockid="pin"
        style="overflow:visible"
@@ -676,7 +676,47 @@
        inkscape:isstock="true"
        inkscape:collect="always">
       <path
-         id="path7813-2-1-18-9-9-9-5"
+         id="path7813-2-1-18-9-9-9-4"
+         style="fill:context-stroke;stroke-linecap:butt"
+         d="M 0,-1 1,0 0,1 -0.05,0 Z"
+         sodipodi:nodetypes="sssssscsss"
+         transform="scale(0.5)" />
+    </marker>
+    <marker
+       markerWidth="1.05"
+       markerHeight="0.99999994"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       id="CapRibbon1-9-6-1"
+       viewBox="0 0 1.05 1"
+       inkscape:stockid="pin"
+       style="overflow:visible"
+       preserveAspectRatio="xMidYMid"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path56643-1-5-4"
+         style="fill:context-stroke;stroke-linecap:butt"
+         d="M 0,-1 H 2 L 1,0 2,1 H 0 L -0.1,0 Z"
+         sodipodi:nodetypes="sssssscsss"
+         transform="scale(0.5)" />
+    </marker>
+    <marker
+       markerWidth="0.52499998"
+       markerHeight="0.99999994"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       id="CapTriangle-7-9-0-3-7-7-6"
+       viewBox="0 0 0.525 1"
+       inkscape:stockid="pin"
+       style="overflow:visible"
+       preserveAspectRatio="xMidYMid"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path7813-2-1-18-9-9-9-0"
          style="fill:context-stroke;stroke-linecap:butt"
          d="M 0,-1 1,0 0,1 -0.05,0 Z"
          sodipodi:nodetypes="sssssscsss"
@@ -789,7 +829,7 @@
        d="m 215.34681,116.0344 h 13.47038"
        id="path2504-0" />
     <g
-       id="g21377">
+       id="g33329">
       <rect
          style="fill:#ff9955;stroke:#000000;stroke-width:0.985619;stroke-dasharray:none;stroke-dashoffset:0"
          id="rect234-6"
@@ -799,26 +839,26 @@
          y="65.066429"
          rx="0.79748338"
          ry="0.45770928" />
-      <path
-         style="fill:#ffaaaa;fill-opacity:1;stroke:#000000;stroke-width:7;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#CapTriangle-7-9-0-3-7)"
-         d="m 90.36207,68.476224 h 1.878888"
-         id="path1531-3-7-7-0-6"
-         inkscape:transform-center-x="0.9266696"
-         inkscape:transform-center-y="-0.92604166" />
       <text
          xml:space="preserve"
          style="font-size:5.64444px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-dashoffset:0"
-         x="67.20417"
+         x="72.495842"
          y="69.850006"
          id="text10222"><tspan
            sodipodi:role="line"
            id="tspan10220"
            style="fill:#000000;stroke:#000000;stroke-width:0.1;stroke-dasharray:none"
-           x="67.20417"
+           x="72.495842"
            y="69.850006">gene a</tspan></text>
+      <path
+         style="fill:#ffaaaa;fill-opacity:1;stroke:#000000;stroke-width:7;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#CapRibbon1-9-6-1);marker-end:url(#CapTriangle-7-9-0-3-7-7-6)"
+         d="m 66.348951,68.315392 h -1.87888"
+         id="path1531-3-7-7-0-6-8-3"
+         inkscape:transform-center-x="-0.92666939"
+         inkscape:transform-center-y="-0.92604166" />
     </g>
     <g
-       id="g22321">
+       id="g32855">
       <rect
          style="fill:#ffe680;stroke:#000000;stroke-width:0.985619;stroke-dasharray:none;stroke-dashoffset:0"
          id="rect234-6-5"
@@ -828,26 +868,26 @@
          y="83.401115"
          rx="0.79748338"
          ry="0.45770928" />
-      <path
-         style="fill:#ffaaaa;fill-opacity:1;stroke:#000000;stroke-width:7;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#CapTriangle-7-9-0-3-7-7-4)"
-         d="m 258.36033,86.805072 h 1.87888"
-         id="path1531-3-7-7-0-6-8-8"
-         inkscape:transform-center-x="0.9266696"
-         inkscape:transform-center-y="-0.92604166" />
       <text
          xml:space="preserve"
          style="font-size:5.64444px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-dashoffset:0"
-         x="234.8136"
+         x="230.58032"
          y="87.950531"
          id="text10222-6"><tspan
            sodipodi:role="line"
            id="tspan10220-2"
            style="fill:#000000;stroke:#000000;stroke-width:0.1;stroke-dasharray:none"
-           x="234.8136"
+           x="230.58032"
            y="87.950531">gene c</tspan></text>
+      <path
+         style="fill:#ffaaaa;fill-opacity:1;stroke:#000000;stroke-width:7;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#CapRibbon1-9-6-5);marker-end:url(#CapTriangle-7-9-0-3-7-7-49)"
+         d="m 254.42206,86.826707 h 0.80464"
+         id="path1531-3-7-7-0-6-8-4"
+         inkscape:transform-center-x="0.39684609"
+         inkscape:transform-center-y="-0.92604166" />
     </g>
     <g
-       id="g22013">
+       id="g33097">
       <rect
          style="fill:#ac9d93;stroke:#000000;stroke-width:1;stroke-dasharray:none;stroke-dashoffset:0"
          id="rect234"
@@ -880,25 +920,25 @@
          d="m 112.70995,86.84419 9.48233,-6.603765 9.90564,6.77309"
          id="path1190" />
       <path
-         style="fill:#ffaaaa;fill-opacity:1;stroke:#000000;stroke-width:7;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#CapTriangle-7-9-0-3-7-7)"
-         d="m 215.49818,86.864766 h 1.87888"
+         style="fill:#ffaaaa;fill-opacity:1;stroke:#000000;stroke-width:7;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#CapRibbon1-9-6);marker-end:url(#CapTriangle-7-9-0-3-7-7)"
+         d="m 209.67731,86.864766 h 1.87888"
          id="path1531-3-7-7-0-6-8"
          inkscape:transform-center-x="0.9266696"
          inkscape:transform-center-y="-0.92604166" />
       <text
          xml:space="preserve"
          style="font-size:5.64444px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1;stroke-dasharray:none;stroke-dashoffset:0"
-         x="91.673988"
+         x="90.086487"
          y="88.629211"
          id="text10222-1"><tspan
            sodipodi:role="line"
            id="tspan10220-8"
            style="fill:#000000;stroke:#000000;stroke-width:0.1;stroke-dasharray:none"
-           x="91.673988"
+           x="90.086487"
            y="88.629211">exon 1</tspan><tspan
            sodipodi:role="line"
            style="fill:#000000;stroke:#000000;stroke-width:0.1;stroke-dasharray:none"
-           x="91.673988"
+           x="90.086487"
            y="95.684761"
            id="tspan10416" /></text>
       <text

@@ -17,10 +17,11 @@ Counts are summarized at the gene level.
 Sometimes a read will map to two or more genomic locations.
 These 'multi-mappers' are ambiguous are not counted, since we cannot be certain of their origin.
 
-_TODO: diagrams of featureCounts cases ?_
-
-<a href="images/featureCounts_assignment.svg" target="_blank">![](images/featureCounts_assignment.svg){width="80%"}</a>
-
+> <a href="images/featureCounts_assignment.svg" target="_blank">![](images/featureCounts_assignment.svg){width="80%"}</a>
+>
+> Here's an example of how some reads from an unstranded library might align with a set of genes in the genome.
+> Green reads are those that would be counted - the overlap an exon or UTR with no ambiguity.
+> Red reads are those that would not be counted - the either do no overlap any exon or UTR, or are ambiguous in their assignment.
 
 ### Strandedness
 
@@ -34,6 +35,13 @@ In a 'stranded' library, the reads always come from the coding strand, resolving
 
 See <a href="https://journals.plos.org/ploscompbiol/article/figure?id=10.1371/journal.pcbi.1004393.g006">Figure 6, Griffith et al, 2015</a> for a nice example of read assignment for strand specific libraries.
 
+#### **Question** {- .rationale}
+
+In the our aligned reads example above, which red read(s) could be assigned if the library was 'stranded' instead of 'unstraded' ?
+
+####  {-}
+
+### Read counting challenge
 
 #### **Challenge:** Count reads for gene X {- .challenge}
 
