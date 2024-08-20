@@ -2,45 +2,56 @@
 
 ## Introduction
 
-
 The first step of planning an RNAseq experiment is asking whether RNAseq will answer the intended research question and whether it should be performed. Sequencing experiments are not cheap and a lot of time and money can be saved by ensuring that the sequencing experiment performed is suited to answering the research question at hand. There is a huge diversity in what RNA-seq can achieve due to the number of different protocols that have been  developed and published. Therefore having a clear experimental goal will help in selecting an appropriate protocol that will best answer the research question.
 
 There are many choices to be made in designing an experiment and it is easy to feel overwhelmed by these choices. Consulting with relevant experts such as sequencing providers and bioinformaticians prior to performing the experiment can aid in this process. 
 
+```{r, echo=FALSE, fig.align="center", fig.cap="Overview of RNAseq with short read/long read technologies", out.width="70%"}
+knitr::include_graphics("https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/bin/fgene-14-997383-g002.jpg")
+```
+
+Image taken from: [Deshpande D, et al, RNA-seq data science: From raw data to effective interpretation. Frontier Genetics. 2023](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/) - outlines long read and short read sequencing. - can highlight how you can use this to study/interrogate isoforms
+
+
+## Before you begin: questions to consider…
+
+The questions below are a few that might help in selecting a suitable protocol:
+
+- do you want to assay changes in gene expression? Or do you want to identify novel transcripts?
+- do you intend to study transcriptomic changes in individual cells or the tissue level? (single versus bulk RNAseq)
+- do you want to characterise isoforms/study alternative splicing? (short versus long read sequencing)
+- will you pull down transcripts with a poly A tail (poly-A selection) or deplete ribosomal genes (ribo depletion)? Does your organism produce mRNA with a polyA tail?
+- single end or paired end sequencing?
+- does your organism of interest have an annotated reference genome or will you need to assemble a transcriptome?
+
+## RNAseq Applications
+
 The most common use for RNAseq is to identify differentially expressed genes in a tissue of interest for a given organism. This workshop has been designed with this understanding that this is the type of analysis that most researchers intend to perform but it is not the only application of RNAseq. There are other applications RNA-seq that we will briefly discuss, this list is not an exhaustive one.
 
-- Differential gene expression
-- De novo transcriptome assembly: if a reference genome for an organism is not available, the information from RNAseq reads can be used
-- Novel transcript/isoform discovery: identify new transcripts/isofrms that are not annotated in a reference
+- Differential expression analysis: DGE, DTE, DTU
+- Novel transcript/isoform discovery: identify new transcripts/isoforms that are not annotated in a reference
+- De novo transcriptome assembly: if a reference genome for an organism is not available, the information from RNAseq reads can be assembled into contigs to form a transcriptome
 - Differential isoform usage: detect changes in isoform abundance
 - Alternate splicing: 
 - Gene fusion detection: Gene fusions can occur as a result of chromosomal re-arrangments, resulting in the exchange of coding or regulatory sequences between genes. This can be a cause of cancer and therefore identification of fusion genes has important implications for human health.
 - Aberrant splicing event detection:
 - Epigenetic integration: combine transcriptomic and epigenetic information
 
+### Differential Expression Analysis
 
-## RNAseq Applications
+The most common type of analysis performed with RNAseq data is differential gene expression (DGE) analysis. This analysis looks at the difference in abundance for genes between conditions. However it is not the only type of differential test that can be performed in 
 
-
-```{r, echo=FALSE, fig.align="center", fig.cap="Short read vs long read alignment"}
-knitr::include_graphics("https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/bin/fgene-14-997383-g002.jpg")
+```{r, echo=FALSE, fig.align="center", fig.cap="The different types of differential expression analysis"}
+knitr::include_graphics("https://f1000research.s3.amazonaws.com/manuscripts/19594/95bdb2a3-7459-4d64-9569-ad69d8910d35_figure1.gif")
 ```
 
-Image taken from: [Deshpande D, et al, RNA-seq data science: From raw data to effective interpretation. Frontier Genetics. 2023](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/) - outlines long read and short read sequencing. - can highlight how you can use this to study/interrogate isoforms
+Image taken from: [Froussios K, et al, Relative Abundance of Transcripts (RATs): Identifying differential isoform abundance from RNA-seq. F1000Research. 2019](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/)
 
-## Before you begin: questions to consider …
+### Novel Transcript/Isoform Discovery
 
+### De Novo Transcriptome Assembly
 
-Do you want to assay changes in gene expression? Or do you want to identify novel transcripts?
-
-The questions below are a few that might help in selecting a suitable protocol:
-
-- do you intend to study transcriptomic changes in individual cells or the tissue level? (single versus bulk RNAseq)
-- do you want to characterise isoforms/study alternative splicing? (short versus long read sequencing)
-- will you pull down transcripts with a poly A tail (poly-A selection) or deplete ribosomal genes (ribo depletion)
-- single end or paired end sequencing?
-- does your organism of interest have an annotated reference genome or will you need to assemble a transcriptome?
-
+### Gene Fusion Detection
 
 ## Designing a Bulk RNAseq Experiment
 
@@ -52,7 +63,11 @@ The simplest experimental setup for an RNAseq experiment would be 2 conditions o
 
 
 ```{r, echo=FALSE, fig.align="center", fig.cap ="With a bulk RNAseq experiment, we usually want to examine changes in transcript abundance in an organism. We do this by comparing the gene expression levels in an experimental condition against the gene expression levels in a control condition"}
-knitr::include_graphics("images/experimental_design/fig_experimental_design.png")
+knitr::include_graphics("images/experimental_design/fig_dge.png")
+```
+
+```{r, echo=FALSE, fig.align="center"}
+knitr::include_graphics("images/experimental_design/fig_dtu.png")
 ```
 
 Fundamentals of research -> Factor , Confounding factor, Variable to measure, Controls, Batch, Techinical replicates and not biological, Pooling samples, 
@@ -78,7 +93,7 @@ A common query is to what depth should a sequence experiment be performed.
 
 Researchers are often faced with a choice as to whether to sequence more deeply or sequence more samples. More biological replicates will provide better estimates of variance and more precise measures of gene expression than sequencing to a greater depth. It is generally advised to sequence more samples rather than sequence deeply if the option is there. 
 
-```{r, echo=FALSE, fig.align="center", fig.cap="Biological replicates provide more statistical power to detect differential genes than sequencing depth", out.width="200px", out.height="200px"}
+```{r, echo=FALSE, fig.align="center", fig.cap="Biological replicates provide more statistical power to detect differential genes than sequencing depth"}
 knitr::include_graphics("images/experimental_design/liu_y_bioinformatics_2014.jpg")
 ```
 
