@@ -89,16 +89,6 @@ Image taken from: [Liu Y et al, RNA-seq differential expression studies: more se
 
 However, higher sequencing depth is necessary for detecting lowly expressed differentially expressed (DE) genes and for conducting isoform-level differential expression analysis.
 
-
-* gene-level differential expression
-* Isoform-level differential expression
-* Other types of RNA analyses (intron retention, small RNA-Seq, etc.)
-
-As shown in @Liu2013
-
-Batch, Techinical replicates and not biological, Pooling samples, Randomization, Noise. Clonal (cell-lines, bacteria, inbred animalls) or not clonal organisms, Does my tissue has different cell types -> Cell sorting or single cell
-
-
 ## Batches and replicates (technical/biological)
 
 There are two types of replicates in an experiment:
@@ -167,4 +157,10 @@ For instance, sex is known to significantly influence gene expression. If all th
 
 To avoid confounding, it is important to ensure the sample source/animals in each condition are all the same sex, age, litter, and batch, if possible. If this is not entirely possible, then make sure to split the animals equally between different conditions. It's best to discuss he experimental design with a bioinformatcian before conducting the experiment.
 
+As shown in Liu, Zhou, and White (2013)
 
+* gene-level differential expression
+* Isoform-level differential expression
+* Other types of RNA analyses (intron retention, small RNA-Seq, etc.)
+
+Batch, Techinical replicates and not biological, Pooling samples, Randomization, Noise. Clonal (cell-lines, bacteria, inbred animalls) or not clonal organisms, Does my tissue has different cell types -> Cell sorting or single cell
