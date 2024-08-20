@@ -93,7 +93,7 @@ A common query is to what depth should a sequence experiment be performed.
 
 Researchers are often faced with a choice as to whether to sequence more deeply or sequence more samples. More biological replicates will provide better estimates of variance and more precise measures of gene expression than sequencing to a greater depth. It is generally advised to sequence more samples rather than sequence deeply if the option is there. 
 
-```{r, echo=FALSE, fig.align="center", fig.cap="Biological replicates provide more statistical power to detect differential genes than sequencing depth"}
+```{r, echo=FALSE, fig.align="center", fig.cap="Biological replicates provide more statistical power to detect differential genes than sequencing depth", out.width="350px", out.height="300px"}
 knitr::include_graphics("images/experimental_design/liu_y_bioinformatics_2014.jpg")
 ```
 
@@ -107,7 +107,7 @@ There are two types of replicates in an experiment:
 
 1.  Technical replicates are repeated measurements taken from the same biological source to accurately **assess technical variation in an experiment**.
 
-```{r, echo=FALSE, fig.align="center", fig.cap ="Technical replicates: A single mouse sample, three replicates per condiion.", fig.height= 0.1, fig.width=0.8}
+```{r, echo=FALSE, out.width="430px", out.height="300px", fig.align="center", fig.cap ="Technical replicates: A single mouse sample, three replicates per condiion.", fig.height= 0.1, fig.width=0.8}
 knitr::include_graphics("images/experimental_design/technical_reps.png")
 ```
 
@@ -127,7 +127,7 @@ The samples mouseX_normal_1, mouseX_normal_2, and mouseX_normal_3 serve as techn
 2.  Biological replicates involve using different biological sources to **capture the biological variation between samples**.
 
 
-```{r, echo=FALSE, fig.align="center", fig.cap ="Biological and Technical replicates: Three mice sample (biological reps), three replicates (technical) per condition."}
+```{r, echo=FALSE, out.width="500px", out.height= 400px", fig.align="center", fig.cap ="Biological and Technical replicates: Three mice sample (biological reps), three replicates (technical) per condition."}
 knitr::include_graphics("images/experimental_design/biological_reps.png")
 ```
 
@@ -166,6 +166,10 @@ Conversely, biological replicates are indispensable for differential expression 
 A confounded RNA-Seq experiment is one in which the distinct effects of two different sources of variation in the data cannot be separated.
 
 For instance, sex is known to significantly influence gene expression. If all the control mice in an experiment were female and all the treatment mice were male, the treatment effect would be confounded by sex. In this scenario, it would be impossible to distinguish the treatment effect from the effect of sex. Consider another scenario, if all the control mice are from cage A and all the treatment mice for cage B, the treatment effects are confounded by the cage. The living conditions in the two cages may vary which is indistinguishable from the treatment effects.
+
+```{r, echo=FALSE, fig.align="center", fig.cap ="Confounding effects in RNASeq experiments: Three female mice in the contol group and three male mice in the treatment group.", out.width="400px", out.height="300px"}
+knitr::include_graphics("images/experimental_design/confounding.png")
+```
 
 To avoid confounding, it is important to ensure the sample source/animals in each condition are all the same sex, age, litter, and batch, if possible. If this is not entirely possible, then make sure to split the animals equally between different conditions. It's best to discuss he experimental design with a bioinformatcian before conducting the experiment.
 
