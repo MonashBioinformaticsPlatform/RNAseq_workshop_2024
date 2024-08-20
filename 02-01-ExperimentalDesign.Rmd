@@ -6,9 +6,10 @@ The first step of planning an RNAseq experiment is asking whether RNAseq will an
 
 There are many choices to be made in designing an experiment and it is easy to feel overwhelmed by these choices. Consulting with relevant experts such as sequencing providers and bioinformaticians prior to performing the experiment can aid in this process. 
 
+## RNAseq Applications
+
 The most common use for RNAseq is to identify differentially expressed genes in a tissue of interest for a given organism. This workshop has been designed with this understanding that this is the type of analysis that most researchers intend to perform but it is not the only application of RNAseq. There are other applications RNA-seq that we will briefly discuss, this list is not an exhaustive one.
 
-- Differential gene expression
 - De novo transcriptome assembly: if a reference genome for an organism is not available, the information from RNAseq reads can be used
 - Novel transcript/isoform discovery: identify new transcripts/isofrms that are not annotated in a reference
 - Differential isoform usage: detect changes in isoform abundance
@@ -17,8 +18,6 @@ The most common use for RNAseq is to identify differentially expressed genes in 
 - Aberrant splicing event detection:
 - Epigenetic integration: combine transcriptomic and epigenetic information
 
-
-## RNAseq Applications
 
 
 ```{r, echo=FALSE, fig.align="center", fig.cap=}
