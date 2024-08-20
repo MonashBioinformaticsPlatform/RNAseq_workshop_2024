@@ -127,7 +127,7 @@ The samples mouseX_normal_1, mouseX_normal_2, and mouseX_normal_3 serve as techn
 2.  Biological replicates involve using different biological sources to **capture the biological variation between samples**.
 
 
-```{r, echo=FALSE, out.width="500px", out.height= 400px", fig.align="center", fig.cap ="Biological and Technical replicates: Three mice sample (biological reps), three replicates (technical) per condition."}
+```{r, echo=FALSE, out.width="500px", out.height= "400px", fig.align="center", fig.cap ="Biological and Technical replicates: Three mice sample (biological reps), three replicates (technical) per condition."}
 knitr::include_graphics("images/experimental_design/biological_reps.png")
 ```
 
