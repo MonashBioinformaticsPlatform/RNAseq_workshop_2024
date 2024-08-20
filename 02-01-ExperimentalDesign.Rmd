@@ -92,7 +92,7 @@ There are two types of replicates in an experiment:
 
 1.  Technical replicates are repeated measurements taken from the same biological source to accurately **assess technical variation in an experiment**.
 
-```{r, echo=FALSE, fig.height= 2, fig.width=3, fig.align="center", fig.cap ="Technical replicates: A single mouse sample, three replicates per condiion.", fig.height= 0.1, fig.width=0.8}
+```{r, echo=FALSE, out.width="200px", out.height="200px", fig.align="center", fig.cap ="Technical replicates: A single mouse sample, three replicates per condiion.", fig.height= 0.1, fig.width=0.8}
 knitr::include_graphics("images/experimental_design/technical_reps.png")
 ```
 
@@ -112,7 +112,7 @@ The samples mouseX_normal_1, mouseX_normal_2, and mouseX_normal_3 serve as techn
 2.  Biological replicates involve using different biological sources to **capture the biological variation between samples**.
 
 
-```{r, echo=FALSE, fig.height= 2, fig.width=3, fig.align="center", fig.cap ="Biological and Technical replicates: Three mice sample (biological reps), three replicates (technical) per condition."}
+```{r, echo=FALSE, out.width="200px", out.height="200px", fig.align="center", fig.cap ="Biological and Technical replicates: Three mice sample (biological reps), three replicates (technical) per condition."}
 knitr::include_graphics("images/experimental_design/biological_reps.png")
 ```
 
@@ -152,7 +152,7 @@ A confounded RNA-Seq experiment is one in which the distinct effects of two diff
 
 For instance, sex is known to significantly influence gene expression. If all the control mice in an experiment were female and all the treatment mice were male, the treatment effect would be confounded by sex. In this scenario, it would be impossible to distinguish the treatment effect from the effect of sex. Consider another scenario, if all the control mice are from cage A and all the treatment mice for cage B, the treatment effects are confounded by the cage. The living conditions in the two cages may vary which is indistinguishable from the treatment effects.
 
-```{r, echo=FALSE, fig.align="center", fig.cap ="Confounding effects in RNASeq experiments: Three female mice in the contol group and three male mice in the treatment group.", fig.height= 2, fig.width=3}
+```{r, echo=FALSE, fig.align="center", fig.cap ="Confounding effects in RNASeq experiments: Three female mice in the contol group and three male mice in the treatment group.", out.width="200px", out.height="200px"}
 knitr::include_graphics("images/experimental_design/confounding.png")
 ```
 
