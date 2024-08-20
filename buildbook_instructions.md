@@ -4,7 +4,7 @@
 
 ## install bookdown
 
-```{r }
+```
 install.packages("renv")
 renv::restore()
 
@@ -16,8 +16,13 @@ renv::restore()
 
 open the .Rproj file and in the history panel of Rstudio you will see the ```build``` tab. ```Build Book``` from there.
 
+Or, on the command line run:
+```
+./build.sh
+```
+
 Alternatively, in the R console run:
-```{r }
+```
 bookdown::render_book("index.Rmd")
 ```
 
