@@ -22,13 +22,13 @@ The most common use for RNAseq is to identify differentially expressed genes in 
 ## RNAseq Applications
 
 
-```{r, echo=FALSE, fig.align="center", fig.cap=}
+```{r, echo=FALSE, fig.align="center", fig.cap=fig.cap="Short read vs long read alignment"}
 knitr::include_graphics("https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/bin/fgene-14-997383-g002.jpg")
 ```
 
 Image taken from: [Deshpande D, et al, RNA-seq data science: From raw data to effective interpretation. Frontier Genetics. 2023](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/) - outlines long read and short read sequencing. - can highlight how you can use this to study/interrogate isoforms
 
-##
+## Before you begin: questions to consider …
 
 
 Do you want to assay changes in gene expression? Or do you want to identify novel transcripts?
@@ -42,9 +42,6 @@ The questions below are a few that might help in selecting a suitable protocol:
 - does your organism of interest have an annotated reference genome or will you need to assemble a transcriptome?
 
 
-The 'typical' RNAseq experiment is short read bulk RNAseq to examine the changes in gene expression levels between different experimental conditions. 
-
-
 ## Designing a Bulk RNAseq Experiment
 
 > Knowing what you want to study will determine the protocol
@@ -54,7 +51,7 @@ It is important to have a clear idea of what the experimental goal is as this wi
 The simplest experimental setup for an RNAseq experiment would be 2 conditions of interest: a control condition and an experimental condition. By comparing the gene expression levels in the experimental condition against the expression levels in the control condition, we can determine which genes are responding to the experimental condition. The experimental condition could be a drug treatment, knocking out a gene of interest, over expressing a gene of interest, a different type of diet, etc. The control condition is our baseline measurement - we compare the gene expression levels in our experimental condition to the gene expresison levels in the control condition. 
 
 
-```{r, echo=FALSE, fig.align="center", fig.cap ="With a bulk RNAseq experiment, we want to examine changes in all expressed genes in an organism. We do this by comparing the gene expression levels in an experimental condition against the gene expression levels in a control condition"}
+```{r, echo=FALSE, fig.align="center", fig.cap ="With a bulk RNAseq experiment, we usually want to examine changes in transcript abundance in an organism. We do this by comparing the gene expression levels in an experimental condition against the gene expression levels in a control condition"}
 knitr::include_graphics("images/experimental_design/fig_experimental_design.png")
 ```
 
