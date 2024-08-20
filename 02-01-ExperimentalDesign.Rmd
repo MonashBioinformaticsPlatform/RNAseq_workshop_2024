@@ -152,6 +152,10 @@ A confounded RNA-Seq experiment is one in which the distinct effects of two diff
 
 For instance, sex is known to significantly influence gene expression. If all the control mice in an experiment were female and all the treatment mice were male, the treatment effect would be confounded by sex. In this scenario, it would be impossible to distinguish the treatment effect from the effect of sex. Consider another scenario, if all the control mice are from cage A and all the treatment mice for cage B, the treatment effects are confounded by the cage. The living conditions in the two cages may vary which is indistinguishable from the treatment effects.
 
+```{r, echo=FALSE, fig.align="center", fig.cap ="Confounding effects in RNASeq experiments: Three female mice in the contol group and three male mice in the treatment group."}
+knitr::include_graphics("images/experimental_design/confounding.png")
+```
+
 To avoid confounding, it is important to ensure the sample source/animals in each condition are all the same sex, age, litter, and batch, if possible. If this is not entirely possible, then make sure to split the animals equally between different conditions. It's best to discuss he experimental design with a bioinformatcian before conducting the experiment.
 
 As shown in Liu, Zhou, and White (2013)
