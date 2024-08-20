@@ -6,7 +6,7 @@ The first step of planning an RNAseq experiment is asking whether RNAseq will an
 
 There are many choices to be made in designing an experiment and it is easy to feel overwhelmed by these choices. Consulting with relevant experts such as sequencing providers and bioinformaticians prior to performing the experiment can aid in this process. 
 
-```{r, echo=FALSE, fig.align="center", fig.cap="Overview of RNAseq with short read/long read technologies", out.width="70%"}
+```{r, echo=FALSE, fig.align="center", fig.cap="Overview of RNAseq with short read/long read technologies", out.width="80%"}
 knitr::include_graphics("https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/bin/fgene-14-997383-g002.jpg")
 ```
 
@@ -41,7 +41,7 @@ The most common use for RNAseq is to identify differentially expressed genes in 
 
 The most common type of analysis performed with RNAseq data is differential gene expression (DGE) analysis. This analysis looks at the difference in abundance for genes between conditions. However it is not the only type of differential test that can be performed in 
 
-```{r, echo=FALSE, fig.align="center", fig.cap="The different types of differential expression analysis"}
+```{r, echo=FALSE, fig.align="center", fig.cap="The different types of differential expression analysis", out.width="60%"}
 knitr::include_graphics("https://f1000research.s3.amazonaws.com/manuscripts/19594/95bdb2a3-7459-4d64-9569-ad69d8910d35_figure1.gif")
 ```
 
@@ -66,7 +66,7 @@ The simplest experimental setup for an RNAseq experiment would be 2 conditions o
 knitr::include_graphics("images/experimental_design/fig_dge.png")
 ```
 
-```{r, echo=FALSE, fig.align="center"}
+```{r, echo=FALSE, fig.align="center", out.width="80%"}
 knitr::include_graphics("images/experimental_design/fig_dtu.png")
 ```
 
