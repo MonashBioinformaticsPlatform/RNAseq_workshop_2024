@@ -22,7 +22,7 @@ The most common use for RNAseq is to identify differentially expressed genes in 
 ## RNAseq Applications
 
 
-```{r, echo=FALSE, fig.align="center", fig.cap=fig.cap="Short read vs long read alignment"}
+```{r, echo=FALSE, fig.align="center", fig.cap="Short read vs long read alignment"}
 knitr::include_graphics("https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/bin/fgene-14-997383-g002.jpg")
 ```
 
