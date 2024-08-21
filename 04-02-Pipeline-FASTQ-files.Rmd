@@ -1,4 +1,4 @@
-## FASTQ files
+# FASTQ files {-}
 
 ## 'Raw' short reads
 

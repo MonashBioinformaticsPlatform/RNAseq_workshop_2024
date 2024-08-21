@@ -1,1 +1,14 @@
-## Show them where they my run it
+# Show them where they my run it  {-}
+
+At Monash:
+
+Web-based:
+
+- Laxy.io / Degust
+- Galaxy Australia
+
+Command line:
+
+- M3 / Monarch HPC clusters
+- NeCTAR virtual machine (~32 - 64Gb RAM)
+- Your laptop .. _while not recommended, you may be able to do this for bacteria, yeast, and large genomes if using the Salmon pseudo-mapping protocol_

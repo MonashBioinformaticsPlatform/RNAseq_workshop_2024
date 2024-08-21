@@ -1,4 +1,4 @@
-## Alignment / mapping
+# Alignment / mapping  {-}
 
 ![Simple RNA-seq pipeline overview: FastQC step](images/pipeline/simple_pipeline_alignment.svg){width="100%"}
 

@@ -1,4 +1,4 @@
-## Detour: demultiplexing
+# Detour: demultiplexing {-}
 
 ***Before***  you get your FASTQs, the sequencing provider will have 'demultiplexed' the data output by the instrument.
 

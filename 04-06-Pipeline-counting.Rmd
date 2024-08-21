@@ -1,4 +1,4 @@
-## Counting transcripts
+# Counting transcripts {-}
 
 ## featureCounts
 

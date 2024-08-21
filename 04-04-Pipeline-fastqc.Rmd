@@ -1,4 +1,4 @@
-## An example dataset
+# An example dataset {-}
 
 For the following examples, we will use the results of an `nf-core/rnaseq` run on a published dataset from [Shanle et al, 2013](https://doi.org/10.1210/me.2013-1164). ([SRP062287](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SRP062287)).
 This is a breast cancer cell line with (ERα/PR/HER2 negative) engineered to have doxycycline inducible ERβ expression. 
