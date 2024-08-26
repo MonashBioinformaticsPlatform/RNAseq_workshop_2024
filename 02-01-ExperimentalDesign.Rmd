@@ -6,16 +6,17 @@ The first step of planning an RNAseq experiment is asking whether RNAseq will an
 
 There are many choices to be made in designing an experiment and it is easy to feel overwhelmed by these choices. Consulting with relevant experts such as sequencing providers and bioinformaticians prior to performing the experiment can aid in this process. 
 
+> Might need a different figure here - want to keep this figure but might be better in a different section? e.g under sequencing protocols
+
 ```{r, echo=FALSE, fig.align="center", fig.cap="Overview of RNAseq with short read/long read technologies", out.width="95%"}
 knitr::include_graphics("https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/bin/fgene-14-997383-g002.jpg")
 ```
 
 Image taken from: [Deshpande D, et al, RNA-seq data science: From raw data to effective interpretation. Frontier Genetics. 2023](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/) - outlines long read and short read sequencing. - can highlight how you can use this to study/interrogate isoforms
 
-
 ## Before you begin: questions to consider…
 
-The questions below are a few that might help in selecting a suitable protocol:
+The questions below are a few that might help in designing an experiment:
 
 - do you want to assay changes in gene expression? Or do you want to identify novel transcripts?
 - do you intend to study transcriptomic changes in individual cells or the tissue level? (single versus bulk RNAseq)
@@ -23,6 +24,80 @@ The questions below are a few that might help in selecting a suitable protocol:
 - will you pull down transcripts with a poly A tail (poly-A selection) or deplete ribosomal genes (ribo depletion)? Does your organism produce mRNA with a polyA tail?
 - single end or paired end sequencing?
 - does your organism of interest have an annotated reference genome or will you need to assemble a transcriptome?
+- how many different conditions are you testing? How many replicates do you have for each condition? Do you have a control condition?
+
+## Sequencing Protocols
+
+> Sequencing Decision. Transcriptomics for Bulk RNAseq. Short reads. Coverage.
+
+### Bulk Sequencing
+
+> What is it
+>
+> Summary of how it works
+>
+> Advantage
+>
+> Disadvantages
+
+
+### Single Cell Sequence
+
+> What is it
+>
+> Summary of how it works
+>
+> Advantage
+>
+> Disadvantages
+
+
+### Short Read Sequencing
+
+> What is it
+>
+> Summary of how it works
+>
+> Advantage
+>
+> Disadvantages
+
+
+### Long Read Sequencing
+
+> What is it
+>
+> Summary of how it works
+>
+> Advantage
+>
+> Disadvantages
+
+
+### Coverage
+
+
+A common query is to what depth should a sequence experiment be performed. 
+
+Researchers are often faced with a choice as to whether to sequence more deeply or sequence more samples. More biological replicates will provide better estimates of variance and more precise measures of gene expression than sequencing to a greater depth. It is generally advised to sequence more samples rather than sequence deeply if the option is there. 
+
+```{r, echo=FALSE, fig.align="center", fig.cap="Biological replicates provide more statistical power to detect differential genes than sequencing depth", out.width="90%"}
+
+knitr::include_graphics("images/experimental_design/liu_y_bioinformatics_2014.jpg")
+```
+
+Image taken from: [Liu Y et al, RNA-seq differential expression studies: more sequence or more replication? Bioinformatics. 2014](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3904521/)
+
+However, higher sequencing depth is necessary for detecting lowly expressed differentially expressed (DE) genes and for conducting isoform-level differential expression analysis.
+
+### Pooling Samples
+
+> What is a pooled sample
+>
+> Why might we use a pooled sample (bulk RNAseq)
+>
+> If we've pooled a sample - does a pooled sample count as multiple biological samples or do we still need replicates 
+
 
 ## RNAseq Applications
 
@@ -47,99 +122,73 @@ knitr::include_graphics("https://f1000research.s3.amazonaws.com/manuscripts/1959
 
 Image taken from: [Froussios K, et al, Relative Abundance of Transcripts (RATs): Identifying differential isoform abundance from RNA-seq. F1000Research. 2019](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/)
 
+> DGE explainer
+> DTE explainer
+> DTU explainer
+
+
 ### Novel Transcript/Isoform Discovery
+
+> What is it
+>
+> Why would you want to do it
+> 
+> What protocols are better suited it
 
 ### De Novo Transcriptome Assembly
 
+> What is it
+>
+> Why would you want to do it
+>
+> What protocols are better suited it: long read sequencing
+
 ### Gene Fusion Detection
+
+> What is it
+>
+> Why would you want to do it
+>
+> What protocols are better suited it: long read sequencing
+
+### Epigenetic Integration
+
+> What is it
+> 
+> Why would you want to do it
+> 
+> How would you do it
+
+## Experimental Factors
+
+> What is a control, what is the treatment/experimental factor
+>
+> Should probably move Nikita's batch & replicate content under here but haven't shifted it yet to hopefully avoid merge clashes 
+>
+> Fundamentals of research -> Factor , Confounding factor, Variable to measure, Controls, Batch, Techinical replicates and not biological, Pooling samples, 
 
 ## Designing a Bulk RNAseq Experiment
 
 > Knowing what you want to study will determine the protocol
+> This should probably be the last section
+> This section should have an example where there is a research question and then how you'd design an RNAseq experiment to answer that question
+> Finally have an exercise here that builds on the previous sections to get participants to design their own experiment based on what they are interested in
 
 It is important to have a clear idea of what the experimental goal is as this will guide the experimental design in terms of choice of sequencing protocol, technology and the number of replicates. 
 
 The simplest experimental setup for an RNAseq experiment would be 2 conditions of interest: a control condition and an experimental condition. By comparing the gene expression levels in the experimental condition against the expression levels in the control condition, we can determine which genes are responding to the experimental condition. The experimental condition could be a drug treatment, knocking out a gene of interest, over expressing a gene of interest, a different type of diet, etc. The control condition is our baseline measurement - we compare the gene expression levels in our experimental condition to the gene expresison levels in the control condition. 
 
-
+> Maybe move these figures around
 ```{r, echo=FALSE, fig.align="center", fig.cap ="With a bulk RNAseq experiment, we usually want to examine changes in transcript abundance in an organism. We do this by comparing the gene expression levels in an experimental condition against the gene expression levels in a control condition"}
 knitr::include_graphics("images/experimental_design/fig_dge.png")
 ```
 
+> This figure can probably be moved to the DTU section
 ```{r, echo=FALSE, fig.align="center", out.width="80%"}
 knitr::include_graphics("images/experimental_design/fig_dtu.png")
 ```
 
-Fundamentals of research -> Factor , Confounding factor, Variable to measure, Controls, Batch, Techinical replicates and not biological, Pooling samples, 
 
-### Experimental Factors
-
-
-
-### Pooling Samples
-
-## Sequencing methods
-
-Sequencing Decision. Transcriptomics for Bulk RNAseq. Short reads. Coverage.
-
-### Short Read Sequencing
-
-What is it
-
-Summary of how it works
-
-Advantage
-
-Disadvantages
-
-
-### Long Read Sequencing
-
-What is it
-
-Summary of how it works
-
-Advantage
-
-Disadvantages
-
-### Bulk Sequencing
-
-What is it
-
-Summary of how it works
-
-Advantage
-
-Disadvantages
-
-
-### Single Cell Sequence
-
-What is it
-
-Summary of how it works
-
-Advantage
-
-Disadvantages
-
-
-### Coverage
-
-
-A common query is to what depth should a sequence experiment be performed. 
-
-Researchers are often faced with a choice as to whether to sequence more deeply or sequence more samples. More biological replicates will provide better estimates of variance and more precise measures of gene expression than sequencing to a greater depth. It is generally advised to sequence more samples rather than sequence deeply if the option is there. 
-
-```{r, echo=FALSE, fig.align="center", fig.cap="Biological replicates provide more statistical power to detect differential genes than sequencing depth", out.width="90%"}
-
-knitr::include_graphics("images/experimental_design/liu_y_bioinformatics_2014.jpg")
-```
-
-Image taken from: [Liu Y et al, RNA-seq differential expression studies: more sequence or more replication? Bioinformatics. 2014](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3904521/)
-
-However, higher sequencing depth is necessary for detecting lowly expressed differentially expressed (DE) genes and for conducting isoform-level differential expression analysis.
 
 ## Batches and replicates (technical/biological)
 
