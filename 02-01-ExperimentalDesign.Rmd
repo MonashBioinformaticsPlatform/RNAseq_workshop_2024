@@ -39,9 +39,9 @@ The most common use for RNAseq is to identify differentially expressed genes in 
 
 ### Differential Expression Analysis
 
-The most common type of analysis performed with RNAseq data is differential gene expression (DGE) analysis. This analysis looks at the difference in abundance for genes between conditions. However it is not the only type of differential test that can be performed in 
+The most common type of analysis performed with RNAseq data is differential gene expression (DGE) analysis. This analysis looks at the difference in abundance for genes between conditions. However it is not the only type of differential test that can be performed with RNAseq data.
 
-```{r, echo=FALSE, fig.align="center", fig.cap="The different types of differential expression analysis", out.width="90%"}
+```{r, echo=FALSE, fig.align="center", fig.cap="The different types of differential expression analysis", out.width="100%"}
 knitr::include_graphics("https://f1000research.s3.amazonaws.com/manuscripts/19594/95bdb2a3-7459-4d64-9569-ad69d8910d35_figure1.gif")
 ```
 
@@ -84,7 +84,46 @@ Sequencing Decision. Transcriptomics for Bulk RNAseq. Short reads. Coverage.
 
 ### Short Read Sequencing
 
+What is it
+
+Summary of how it works
+
+Advantage
+
+Disadvantages
+
+
 ### Long Read Sequencing
+
+What is it
+
+Summary of how it works
+
+Advantage
+
+Disadvantages
+
+### Bulk Sequencing
+
+What is it
+
+Summary of how it works
+
+Advantage
+
+Disadvantages
+
+
+### Single Cell Sequence
+
+What is it
+
+Summary of how it works
+
+Advantage
+
+Disadvantages
+
 
 ### Coverage
 
@@ -93,7 +132,8 @@ A common query is to what depth should a sequence experiment be performed.
 
 Researchers are often faced with a choice as to whether to sequence more deeply or sequence more samples. More biological replicates will provide better estimates of variance and more precise measures of gene expression than sequencing to a greater depth. It is generally advised to sequence more samples rather than sequence deeply if the option is there. 
 
-```{r, echo=FALSE, fig.align="center", fig.cap="Biological replicates provide more statistical power to detect differential genes than sequencing depth"}
+```{r, echo=FALSE, fig.align="center", fig.cap="Biological replicates provide more statistical power to detect differential genes than sequencing depth", out.width="90%"}
+
 knitr::include_graphics("images/experimental_design/liu_y_bioinformatics_2014.jpg")
 ```
 
