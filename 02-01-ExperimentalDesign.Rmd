@@ -1,6 +1,7 @@
 # Experimental Design
 
 > Useful links: https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-0881-8#Sec2
+>
 > https://www.annualreviews.org/content/journals/10.1146/annurev-biodatasci-072018-021255
 
 ## Introduction
@@ -130,7 +131,9 @@ knitr::include_graphics("https://f1000research.s3.amazonaws.com/manuscripts/1959
 Image taken from: [Froussios K, et al, Relative Abundance of Transcripts (RATs): Identifying differential isoform abundance from RNA-seq. F1000Research. 2019](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/)
 
 > DGE explainer
+>
 > DTE explainer
+>
 > DTU explainer
 
 
@@ -179,8 +182,11 @@ Image taken from: [Froussios K, et al, Relative Abundance of Transcripts (RATs):
 ## Designing a Bulk RNAseq Experiment
 
 > Knowing what you want to study will determine the protocol
+>
 > This should probably be the last section
+>
 > This section should have an example where there is a research question and then how you'd design an RNAseq experiment to answer that question
+>
 > Have an exercise here that builds on the previous sections to get participants to design their own experiment based on what they are interested in
 
 It is important to have a clear idea of what the experimental goal is as this will guide the experimental design in terms of choice of sequencing protocol, technology and the number of replicates. 
