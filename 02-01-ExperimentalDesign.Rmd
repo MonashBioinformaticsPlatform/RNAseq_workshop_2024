@@ -1,5 +1,8 @@
 # Experimental Design
 
+> Useful links: https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-0881-8#Sec2
+> https://www.annualreviews.org/content/journals/10.1146/annurev-biodatasci-072018-021255
+
 ## Introduction
 
 The first step of planning an RNAseq experiment is asking whether RNAseq will answer the intended research question and whether it should be performed. Sequencing experiments are not cheap and a lot of time and money can be saved by ensuring that the sequencing experiment performed is suited to answering the research question at hand. There is a huge diversity in what RNA-seq can achieve due to the number of different protocols that have been  developed and published. Therefore having a clear experimental goal will help in selecting an appropriate protocol that will best answer the research question.
@@ -25,6 +28,7 @@ The questions below are a few that might help in designing an experiment:
 - single end or paired end sequencing?
 - does your organism of interest have an annotated reference genome or will you need to assemble a transcriptome?
 - how many different conditions are you testing? How many replicates do you have for each condition? Do you have a control condition?
+- how complex is the experiment? Will you be able to collect all the samples you need in one experiment or are you going to have to do multiple batches?
 
 ## Sequencing Protocols
 
@@ -41,7 +45,7 @@ The questions below are a few that might help in designing an experiment:
 > Disadvantages
 
 
-### Single Cell Sequence
+### Single Cell Sequencing
 
 > What is it
 >
@@ -90,6 +94,8 @@ Image taken from: [Liu Y et al, RNA-seq differential expression studies: more se
 
 However, higher sequencing depth is necessary for detecting lowly expressed differentially expressed (DE) genes and for conducting isoform-level differential expression analysis.
 
+> Competition for sequencing: genes with high amounts of transcripts are more likely to get sequenced than genes with low amounts of transcripts. So a gene that we haven't detected could be lowly expressed or not expressed but hard to determine if we have low coverage (very relevant for single cell).
+
 ### Pooling Samples
 
 > What is a pooled sample
@@ -106,15 +112,16 @@ The most common use for RNAseq is to identify differentially expressed genes in 
 - Differential expression analysis: DGE, DTE, DTU
 - Novel transcript/isoform discovery: identify new transcripts/isoforms that are not annotated in a reference
 - De novo transcriptome assembly: if a reference genome for an organism is not available, the information from RNAseq reads can be assembled into contigs to form a transcriptome
-- Differential isoform usage: detect changes in isoform abundance
-- Alternate splicing: 
+- Detect alternate splicing/differential isoform usage: detect changes in isoform abundance
 - Gene fusion detection: Gene fusions can occur as a result of chromosomal re-arrangments, resulting in the exchange of coding or regulatory sequences between genes. This can be a cause of cancer and therefore identification of fusion genes has important implications for human health.
 - Aberrant splicing event detection:
 - Epigenetic integration: combine transcriptomic and epigenetic information
 
 ### Differential Expression Analysis
 
-The most common type of analysis performed with RNAseq data is differential gene expression (DGE) analysis. This analysis looks at the difference in abundance for genes between conditions. However it is not the only type of differential test that can be performed with RNAseq data.
+The most common type of analysis performed with RNAseq data is differential gene expression (DGE) analysis. This analysis looks at the difference in abundance for genes between 2 or more conditions. However it is not the only type of differential test that can be performed with RNAseq data.
+
+We can also look at the changes in individual transcript expression. 
 
 ```{r, echo=FALSE, fig.align="center", fig.cap="The different types of differential expression analysis", out.width="100%"}
 knitr::include_graphics("https://f1000research.s3.amazonaws.com/manuscripts/19594/95bdb2a3-7459-4d64-9569-ad69d8910d35_figure1.gif")
@@ -153,6 +160,8 @@ Image taken from: [Froussios K, et al, Relative Abundance of Transcripts (RATs):
 
 ### Epigenetic Integration
 
+> Refer to https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-0881-8#Sec20
+>
 > What is it
 > 
 > Why would you want to do it
@@ -172,7 +181,7 @@ Image taken from: [Froussios K, et al, Relative Abundance of Transcripts (RATs):
 > Knowing what you want to study will determine the protocol
 > This should probably be the last section
 > This section should have an example where there is a research question and then how you'd design an RNAseq experiment to answer that question
-> Finally have an exercise here that builds on the previous sections to get participants to design their own experiment based on what they are interested in
+> Have an exercise here that builds on the previous sections to get participants to design their own experiment based on what they are interested in
 
 It is important to have a clear idea of what the experimental goal is as this will guide the experimental design in terms of choice of sequencing protocol, technology and the number of replicates. 
 
