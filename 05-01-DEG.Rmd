@@ -122,6 +122,8 @@ We now only see genes with at least a 2-fold change between any two conditions.
 
 ### Your turn: Compare pairs of conditions {- .challenge}
 
+Configure a Degust page as we have demonstrated above.
+
 Usually we willl be interested in comparing pairs of conditions. Try comparing:
 
 * E2_nodox vs DMSO_nodox
@@ -216,6 +218,8 @@ The PCA is calculated on log2(CPM+moderation), where "moderation" is a constant 
 
 ### Heatmap
 
+![](images/degust/heatmap.png){width="100%"}
+
 Heatmaps can have many uses. Genes can be selected in many different ways, and the genes and possibly also the samples can be seriated -- given a nice ordering to reveal patterns such as clusters. The heatmap Degust shows alongside the MDS plot is particularly useful as an *exploratory* view of the data. 
 
 * Select the MDS plot tab.
@@ -224,9 +228,7 @@ Heatmaps can have many uses. Genes can be selected in many different ways, and t
 
 The "num genes" filter picks the top n most highly variable genes. This affects both the MDS plot and the heatmap.
 
-* color = log2 CPM relative to the average, for each gene. The log2 transformation has an adjustment to reduce variability with low counts, adjusted by the "moderation" control. (See the edgeR cpm function for details.)
-
-Here, the MDS plot indicated a batch effect, and the heatmap shows some of the genes involved.
+The MDS plot indicated a batch effect. Can you see some of the genes affected by this in the heatmap?
 
 
 ## Adjusting for batch effects
@@ -243,7 +245,7 @@ Here our nuisance factor is "replicate". Add hidden factors for replicate 2 and 
 
 We could account for the batch effect because the batches were known. What if there is variation, but we didn't know which samples it would apply to ahead of time? RUV refers to a collection of methods for estimating and/or adjusting for hidden factors like this. Ideally, RUV estimates the hidden factors from a known set of "housekeeping" genes that should not be affected by the experimental condition. 
 
-Degust has basic support for RUV. It uses an "empirical" set of housekeeping genes derived from your data which is, to put it bluntly, cheating. You can give it a try, but examine the results carefully to decide if you believe them.
+Degust has basic support for RUV. It uses an "empirical" set of housekeeping genes derived from your data which is slightly cheating. Give it a try, but examine the results carefully to decide if you believe them.
 
 
 ## Interactions
@@ -259,6 +261,17 @@ This asks "is the effect of adding estrogen different when the estrogen gene is 
 Once this is configured, you can choose it to test in the top-left box of the main page.
 
 &rarr; [Degust page with batches and interaction configured](https://degust.erc.monash.edu/degust/compare.html?code=8eb1f289764b99dade465ff9f04c539e#/)
+
+
+### Your turn: Explore Degust {- .challenge}
+
+Configure your Degust page to account for the batch effect and add the interaction contrast.
+
+Explore the features we have demonstrated.
+
+Do you have observations or questions?
+
+Post interesting screenshots on the Slack channel.
 
 
 ## Going deeper
@@ -286,7 +299,7 @@ Modern RNA-Seq protocol tag fragments with a Unique Molecular Identifier (UMI) b
 
 **Absolute expression enthusiast says:** I like UMI counting because my TPMs are not biassed due to PCR biasses.
 
-**Differential expression ethusiast says:** PCR bias doesn't worry me. Each gene has the same bias in each sample, so it cancels out when I look at fold change. I do like that UMI counting removes a source of noise though.
+**Differential expression ethusiast says:** PCR bias doesn't worry me. Each gene has the same bias in each sample, so it cancels out when I look at fold change. What I do like is that UMI counting removes an extra source of noise.
 
 
 ### Which counts file to use?
