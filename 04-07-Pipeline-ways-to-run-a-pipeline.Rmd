@@ -1,4 +1,4 @@
-# Show them where they my run it  {-}
+# Where / how can I run an RNA-seq pipeline ? {-}
 
 At Monash:
 

@@ -8,7 +8,10 @@ Before any sample mixing occurs, the DNA fragments for each sample are given an 
 
 Demultiplexing is the process of identifying index/barcode sequences in the sequenced fragments and assigning them to samples.
 
-Each sample is identified by a short 'barcode' or 'index' incorporated into the fragment. For example, a common library layout might be:
+Each sample is identified by a short 'barcode' or 'index' incorporated into the fragment. 
+A 'sample sheet' prepared by the sequencing facility maps barcodes to sample names.
+
+For example, a common library layout might be:
 
 ```bash
                         R1>________________           I1>________
@@ -18,7 +21,7 @@ Each sample is identified by a short 'barcode' or 'index' incorporated into the 
                            ________________<2Я
 ```
 
-Which after demultiplexing become the R1 and R2 sequences:
+Which after demultiplexing become the R1, R2 (and I1) sequences:
 
 ```bash
 ----R1_read----- --i7_adapter---
@@ -32,8 +35,18 @@ and:
 GCACATTGCGCCNCTT ............
 ```
 
+and:
+
+```bash
+I1_read-
+CCGCGGTT
+```
+
 These sequences are placed in files `sampleA_R1_001.fastq.gz` and `sampleA_R2_001.fastq.gz`, respectively, 
-since fragments with the `CCGCGGTT` index ("barcode") are known to be from `sampleA`.
+since, fragments with the `CCGCGGTT` index ("barcode") are known to be from `sampleA`.
+
+The I1 read is only used intenally by the demultiplexing software and usually isn't saved into it's own file.
+The barcode sequence is typically preserved in the FASTQ header of the R1/R2 files.
 
 **Barcodes can have sequencing errors** - but are carefully chosen to prevent mis-assigning reads to the wrong sample.
 The default is often to allow one mismatch in the barcode when demultiplexing, 

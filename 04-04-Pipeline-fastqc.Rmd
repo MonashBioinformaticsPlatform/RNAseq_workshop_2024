@@ -1,14 +1,14 @@
 # An example dataset {-}
 
 For the following examples, we will use the results of an `nf-core/rnaseq` run on a published dataset from [Shanle et al, 2013](https://doi.org/10.1210/me.2013-1164). ([SRP062287](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SRP062287)).
-This is a breast cancer cell line with (ERα/PR/HER2 negative) engineered to have doxycycline inducible ERβ expression. 
+This is a breast cancer cell line, ERα/PR/HER2 negative, and engineered to have doxycycline inducible ERβ expression. 
 The cells were treated with various combinations of estrogen, doxycycline, and controls.
 
 <a href="https://doi.org/10.1210/me.2013-1164" target="_blank">
 ![Shanle et al, 2013 headline](images/Shanle_et_al_2013.jpg){width="100%"}
 </a>
 
-We've already run this dataset through the nf-core/rnaseq pipeline - here is the output on <a href="https://laxy.io/#/job/3pLfQoLEuWeAnWh4H3Vvbv/?access_token=e0124ee9-c8ad-4164-b59f-ca2ae0ce4d2a" target="_blank">laxy.io</a>, which includes a the FastQC reports. 
+We've already run this dataset through the `nf-core/rnaseq` pipeline - here is the output on <a href="https://laxy.io/#/job/3pLfQoLEuWeAnWh4H3Vvbv/?access_token=e0124ee9-c8ad-4164-b59f-ca2ae0ce4d2a" target="_blank">laxy.io</a>, which includes a the FastQC reports. 
 
 ## Raw read QC
 
