@@ -11,4 +11,4 @@ Command line:
 
 - M3 / Monarch HPC clusters
 - NeCTAR virtual machine (~32 - 64Gb RAM)
-- Your laptop .. _while not recommended, you may be able to do this for bacteria, yeast, and large genomes if using the Salmon pseudo-mapping protocol_
+- Your laptop .. _while not recommended, you may be able to do this for smaller genomes (bacteria, yeast), and larger genomes if using the Salmon pseudo-mapping protocol_

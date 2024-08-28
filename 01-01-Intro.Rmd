@@ -2,3 +2,22 @@
 
 
 _insert Figure 1 from [here (2016)](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-0881-8), attribute as required under a CC-BY 4.0 license_
+
+## Scope
+
+RNA-seq, as a technique, can be a broad topic. 
+
+In this workshop, we will specifically cover usingbulk **short read** 'next-generation' sequencing data for **differential expression analysis**, 
+with a focus on using **web-based tools** and understanding **how design experiments** and **interpret quality metrics**.
+
+The goal is that for many typical experimental designs, particpants will learn to more confidently approach their own data in order to process it 
+from raw reads to a differential expression analysis.
+
+In this workshop, we explicitly ***don't*** cover:
+
+- Runnning pipelines and analysing data using the commandline, R, Python etc.
+- *De novo* assembly of transcriptomes
+- Long read technologies
+- Single cell and spatial RNA-seq
+- Discovering novel transcripts / splice variants
+- Variant calling (SNPs) from RNA-seq data
