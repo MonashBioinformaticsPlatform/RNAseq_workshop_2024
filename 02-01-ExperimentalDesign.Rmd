@@ -30,6 +30,8 @@ The questions below are a few that might help in designing an experiment:
 - does your organism of interest have an annotated reference genome or will you need to assemble a transcriptome?
 - how many different conditions are you testing? How many replicates do you have for each condition? Do you have a control condition?
 - how complex is the experiment? Will you be able to collect all the samples you need in one experiment or are you going to have to do multiple batches?
+- how inbred is your organism? If the organism of interest is not inbred, what level of genetic variation exists between your individuals?
+- what is your budget? How many samples can you afford to sequence?  
 
 ## Sequencing Protocols
 
