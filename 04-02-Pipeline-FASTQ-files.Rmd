@@ -2,7 +2,7 @@
 
 ## 'Raw' short reads
 
-Your sequencing provider usually provides a set of FASTQ files (usually with the extension `.fq.gz` or `.fastq.gz`).
+Your sequencing provider will provide you with a set of FASTQ files (usually with the extension `.fq.gz` or `.fastq.gz`).
 These files contain the raw sequencing reads. They are `gzipped` text files.
 
 The size of these files will vary depending on the library size / sequencing depth, read length and whether you have single or paired end reads.
