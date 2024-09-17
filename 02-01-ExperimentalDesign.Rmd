@@ -8,21 +8,19 @@
 
 The first step of planning an RNAseq experiment is asking whether RNAseq will answer the intended research question and whether it should be performed. Sequencing experiments are not cheap and a lot of time and money can be saved by ensuring that the sequencing experiment performed is suited to answering the research question at hand. There is a huge diversity in what RNA-seq can achieve due to the number of different protocols that have been  developed and published. Therefore having a clear experimental goal will help in selecting an appropriate protocol that will best answer the research question as well as a good experimental design that will allow you to get the statistical power to answer that question.
 
-There are two main aspects to planning an RNAseq experiment:
+There are three main aspects to planning an RNAseq experiment:
 - the choice of sequencing technology/protocol - can the selected protocol answer the research question
 - the experimental design - will the number of collected samples have enough statistical power to answer the research question? Are there confounding factors that might obscure the effect of biology that we want to study?
+- What is the budget for the proposed experiment
 
-These two aspects are limited and linked by cost. The ideal protocol for answering your research question might be prohibitively expensive - so you may opt for a different protocol. The ideal experimental design may require more samples than you can either afford to collect or are able to collect due to multitude of factors including ethical approval or sample rarity.
+The first two aspects are limited and linked by cost. The ideal protocol for answering your research question might be prohibitively expensive - so you may opt for a different protocol. The ideal experimental design may require more samples than you can either afford to collect or are able to collect due to multitude of factors including ethical approval or sample rarity.
 
-There are many choices to be made in designing an experiment and it is easy to feel overwhelmed by these choices. Consulting with relevant experts such as sequencing providers and bioinformaticians prior to performing the experiment can aid in this process. 
+There are many choices to be made in designing an experiment and it is easy to feel overwhelmed by these choices. Consulting with relevant experts such as sequencing providers and bioinformaticians prior to performing the experiment can aid in this process.
 
-> Might need a different figure here - want to keep this figure but might be better in a different section? e.g under sequencing protocols
+The most common type of RNAseq experiment is a short read bulk experiment for the purpose of identifying differentially expressed genes in a given organisms. This workshop has been designed with this understanding that this is the type of analysis that most researchers intend to perform but it is not the only application of RNAseq. This chapter will give an overview 
 
-```{r, echo=FALSE, fig.align="center", fig.cap="Overview of RNAseq with short read/long read technologies", out.width="95%"}
-knitr::include_graphics("https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/bin/fgene-14-997383-g002.jpg")
-```
 
-Image taken from: [Deshpande D, et al, RNA-seq data science: From raw data to effective interpretation. Frontier Genetics. 2023](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/) - outlines long read and short read sequencing. - can highlight how you can use this to study/interrogate isoforms
+
 
 ## Before you begin: questions to consider…
 
@@ -39,33 +37,26 @@ The questions below are a few that might help in designing an experiment:
 - how inbred is your organism? If the organism of interest is not inbred, what level of genetic variation exists between your individuals?
 - what is your budget? How many samples can you afford to sequence?  
 
-## Sequencing Protocols
+## RNAseq Sequencing Protocols
 
 > Sequencing Decision. Transcriptomics for Bulk RNAseq. Short reads. Coverage.
 
-### Bulk Sequencing
+RNAseq protocols can be categorised in a number of different ways. Typically, they are classified as to the type of reads produced by the technology, e.g either short or long reads. More recently, with the development of single cell technology, they can now also be classified as the type of biological material they work with, ie is it at the single cell level or at a bulk tissue level.
 
-> What is it
->
-> Summary of how it works
->
-> Advantage
->
-> Disadvantages
+They can also be combined together, e.g the most common type of single cell RNAseq experiments tend to be short read single cell RNAseq but long read RNAseq protocols are also available.
 
+```{r, echo=FALSE, fig.align="center", fig.cap="Overview of RNAseq with short read/long read technologies", out.width="95%"}
+knitr::include_graphics("https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/bin/fgene-14-997383-g002.jpg")
+```
 
-### Single Cell Sequencing
+Image taken from: [Deshpande D, et al, RNA-seq data science: From raw data to effective interpretation. Frontier Genetics. 2023](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/) - outlines long read and short read sequencing. - can highlight how you can use this to study/interrogate isoforms
 
-> What is it
->
-> Summary of how it works
->
-> Advantage
->
-> Disadvantages
 
 
 ### Short Read Sequencing
+
+Short read sequencing typically refers to protocols that produce reads with lengths
+
 
 > What is it
 >
@@ -87,12 +78,45 @@ The questions below are a few that might help in designing an experiment:
 > Disadvantages
 
 
-### Coverage
+### Bulk RNA Sequencing
+
+Bulk RNAseq 
+
+> What is it
+>
+> Summary of how it works
+>
+> Advantage
+>
+> Disadvantages
 
 
-A common query is to what depth should a sequence experiment be performed. 
+### Single Cell Sequencing
 
-Researchers are often faced with a choice as to whether to sequence more deeply or sequence more samples. More biological replicates will provide better estimates of variance and more precise measures of gene expression than sequencing to a greater depth. It is generally advised to sequence more samples rather than sequence deeply if the option is there. 
+> What is it
+>
+> Summary of how it works
+>
+> Advantage
+>
+> Disadvantages
+
+
+
+
+### Sequencing Depth & Coverage
+
+```{r, echo=FALSE, fig.align="center", fig.cap=""}
+knitr::include_graphics("https://3billion.io/img/news/depth-and-coverage_2023-08-25-051528_evsk.webp")
+```
+
+These two terms are usually used interchangeably when describing the number of reads aligning to a reference genome but they do refer to slightly different concepts.
+
+The depth of an experiment is the number of times any given position in the genome is sequenced. For example if at nucleotide A, it has been sequenced 15 times, then nucleotide A has a depth of 15x. If nucleotide B has been sequenced 40 times, then it has 40x depth. This can be extended to the average depth across the genome - a sample sequenced to have an average 30 reads at every position in the genome can be referred to have depth of 30x. However, two sequenced samples of 30x depth might not be the same quality - the first might have a uniform distribution of reads across the genome while the second might have high depth in some locations while having gaps in other locations.
+
+Sequencing coverage refers to how much of the known genome has been sequenced. Typically, the aim is to sequence the entire genome but some targeted protocols might only sequence a selected number of regions/genes. 
+
+A common dilemna researchers are often faced with is a choice as to whether to sequence more deeply or sequence more samples. More biological replicates will provide better estimates of variance and more precise measures of gene expression than sequencing to a greater depth. It is generally advised to sequence more samples rather than sequence deeply if the option is there. 
 
 ```{r, echo=FALSE, fig.align="center", fig.cap="Biological replicates provide more statistical power to detect differential genes than sequencing depth", out.width="90%"}
 
@@ -101,7 +125,7 @@ knitr::include_graphics("images/experimental_design/liu_y_bioinformatics_2014.jp
 
 Image taken from: [Liu Y et al, RNA-seq differential expression studies: more sequence or more replication? Bioinformatics. 2014](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3904521/)
 
-However, higher sequencing depth is necessary for detecting lowly expressed differentially expressed (DE) genes and for conducting isoform-level differential expression analysis.
+However, higher sequencing depth is necessary for detecting lowly expressed differentially expressed (DE) genes and for conducting isoform-level differential expression analysis. 
 
 > Competition for sequencing: genes with high amounts of transcripts are more likely to get sequenced than genes with low amounts of transcripts. So a gene that we haven't detected could be lowly expressed or not expressed but hard to determine if we have low coverage (very relevant for single cell).
 
@@ -123,12 +147,16 @@ The most common use for RNAseq is to identify differentially expressed genes in 
 - De novo transcriptome assembly: if a reference genome for an organism is not available, the information from RNAseq reads can be assembled into contigs to form a transcriptome
 - Detect alternate splicing/differential isoform usage: detect changes in isoform abundance
 - Gene fusion detection: Gene fusions can occur as a result of chromosomal re-arrangments, resulting in the exchange of coding or regulatory sequences between genes. This can be a cause of cancer and therefore identification of fusion genes has important implications for human health.
-- Aberrant splicing event detection:
 - Epigenetic integration: combine transcriptomic and epigenetic information
 
 ### Differential Expression Analysis
 
-The most common type of analysis performed with RNAseq data is differential gene expression (DGE) analysis. This analysis looks at the difference in abundance for genes between 2 or more conditions. However it is not the only type of differential test that can be performed with RNAseq data.
+The most common type of analysis performed with RNAseq data is differential gene expression (DGE) analysis. This analysis looks at the difference in abundance for genes between 2 or more conditions. 
+
+
+
+
+While DGE is the most common type of analysis performed on RNAseq data, it is not the only type of differential test that can be performed with RNAseq data.
 
 We can also look at the changes in individual transcript expression. 
 
