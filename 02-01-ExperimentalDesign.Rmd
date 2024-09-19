@@ -207,7 +207,7 @@ Image taken from: [Froussios K, et al, Relative Abundance of Transcripts (RATs):
 > 
 > How would you do it
 
-## Experimental Factors
+## Experimental Factors1
 
 > What is a control, what is the treatment/experimental factor
 >
@@ -227,7 +227,7 @@ Image taken from: [Froussios K, et al, Relative Abundance of Transcripts (RATs):
 
 It is important to have a clear idea of what the experimental goal is as this will guide the experimental design in terms of choice of sequencing protocol, technology and the number of replicates. 
 
-The simplest experimental setup for an RNAseq experiment would be 2 conditions of interest: a control condition and an experimental condition. By comparing the gene expression levels in the experimental condition against the expression levels in the control condition, we can determine which genes are responding to the experimental condition. The experimental condition could be a drug treatment, knocking out a gene of interest, over expressing a gene of interest, a different type of diet, etc. The control condition is our baseline measurement - we compare the gene expression levels in our experimental condition to the gene expresison levels in the control condition. 
+The simplest experimental setup for an RNAseq experiment would be 2 conditions of interest: a control condition and an experimental condition. By comparing the gene expression levels in the experimental condition against the expression levels in the control condition, we can determine which genes are responding to the experimental condition. The experimental condition could be a drug treatment, knocking out a gene of interest, over expressing a gene of interest, a different type of diet, etc. The control condition is our baseline measurement - we compare the gene expression levels in our experimental condition to the gene expression levels in the control condition. 
 
 > Maybe move these figures around
 ```{r, echo=FALSE, fig.align="center", fig.cap ="With a bulk RNAseq experiment, we usually want to examine changes in transcript abundance in an organism. We do this by comparing the gene expression levels in an experimental condition against the gene expression levels in a control condition"}

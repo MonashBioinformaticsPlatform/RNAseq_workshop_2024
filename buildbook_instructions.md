@@ -12,6 +12,7 @@ renv::restore()
 # install.packages(c("bookdown", "downlit", "xml2"))
 ```
 
+
 ## open project
 
 open the .Rproj file and in the history panel of Rstudio you will see the ```build``` tab. ```Build Book``` from there.

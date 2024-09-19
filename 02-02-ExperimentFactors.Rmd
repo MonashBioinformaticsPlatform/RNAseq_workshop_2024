@@ -88,8 +88,13 @@ To avoid confounding, it is important to ensure the sample source/animals in eac
 
 As a general rule for a standard RNA-Seq experiment, the number of biological replicates should at the very least be 2, but its ideal to have 3 or more replicates, and a sequencing depth of 10M to 20M reads per sample is usually enough.
 
+To summarise, 
 
-Batch, Techinical replicates and not biological, Randomization-> when generating samples????, Noise.
+As a general rule for a standard RNA-Seq experiment, the number of biological replicates should at the very least be 2, but its ideal to have 3 or more replicates, and a sequencing depth of 10M to 20M reads per sample is usually enough.
+
+The experiment needs to be designed carefully with sufficient replicates and well randomised samples, to capture enough within group and between group variations while minimising noise.
+
+ Noise.
 
 ## Designing the model matrix and setting contrasts
 
