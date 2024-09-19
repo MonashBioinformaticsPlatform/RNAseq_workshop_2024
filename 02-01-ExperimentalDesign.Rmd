@@ -42,11 +42,6 @@ RNAseq protocols can be categorised in a number of different ways. Typically, th
 
 They can also be combined together, e.g the most common type of single cell RNAseq experiments tend to be short read single cell RNAseq but long read RNAseq protocols are also available.
 
-```{r, echo=FALSE, fig.align="center", fig.cap="Overview of RNAseq with short read/long read technologies", out.width="95%"}
-knitr::include_graphics("https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/bin/fgene-14-997383-g002.jpg")
-```
-
-Image taken from: [Deshpande D, et al, RNA-seq data science: From raw data to effective interpretation. Frontier Genetics. 2023](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/) - outlines long read and short read sequencing. - can highlight how you can use this to study/interrogate isoforms
 
 
 
@@ -73,6 +68,18 @@ Short read sequencing typically refers to protocols that produce reads with leng
 > Advantage
 >
 > Disadvantages
+
+Long read sequencing typically refers to technology that produce reads with length ranging from 10-100kb or 100-300kb. Long read sequencing can capture the full length of mRNA transcripts, which 
+
+
+
+Long read sequencing can have lower accuracy than short read methods. 
+
+```{r, echo=FALSE, fig.align="center", fig.cap="Overview of RNAseq with short read/long read technologies", out.width="95%"}
+knitr::include_graphics("https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/bin/fgene-14-997383-g002.jpg")
+```
+
+Image taken from: [Deshpande D, et al, RNA-seq data science: From raw data to effective interpretation. Frontier Genetics. 2023](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/)
 
 
 ### Bulk RNA Sequencing
@@ -109,22 +116,23 @@ Bulk RNAseq
 knitr::include_graphics("https://3billion.io/img/news/depth-and-coverage_2023-08-25-051528_evsk.webp")
 ```
 
+[Image source](https://3billion.io/blog/sequencing-depth-vs-coverage)
+
 These two terms are usually used interchangeably when describing the number of reads aligning to a reference genome but they do refer to slightly different concepts.
 
 The depth of an experiment is the number of times any given position in the genome is sequenced. For example if at nucleotide A, it has been sequenced 15 times, then nucleotide A has a depth of 15x. If nucleotide B has been sequenced 40 times, then it has 40x depth. This can be extended to the average depth across the genome - a sample sequenced to have an average 30 reads at every position in the genome can be referred to have depth of 30x. However, two sequenced samples of 30x depth might not be the same quality - the first might have a uniform distribution of reads across the genome while the second might have high depth in some locations while having gaps in other locations.
 
 Sequencing coverage refers to how much of the known genome has been sequenced. Typically, the aim is to sequence the entire genome but some targeted protocols might only sequence a selected number of regions/genes. 
 
-A common dilemna researchers are often faced with is a choice as to whether to sequence more deeply or sequence more samples. More biological replicates will provide better estimates of variance and more precise measures of gene expression than sequencing to a greater depth. It is generally advised to sequence more samples rather than sequence deeply if the option is there. 
+A common dilemna researchers are often faced with is a choice as to whether to sequence more deeply or sequence more samples. More biological replicates will provide better estimates of variance and more precise measures of gene expression than sequencing to a greater depth. It is generally advised to sequence more samples rather than sequence deeply if the option is there as early studies showed that more replicates provided more statistical power to identify differentially expressed genes over sequencing to a greater depth.
 
 ```{r, echo=FALSE, fig.align="center", fig.cap="Biological replicates provide more statistical power to detect differential genes than sequencing depth", out.width="90%"}
-
 knitr::include_graphics("images/experimental_design/liu_y_bioinformatics_2014.jpg")
 ```
 
 Image taken from: [Liu Y et al, RNA-seq differential expression studies: more sequence or more replication? Bioinformatics. 2014](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3904521/)
 
-However, higher sequencing depth is necessary for detecting lowly expressed differentially expressed (DE) genes and for conducting isoform-level differential expression analysis. 
+However, higher sequencing depth is necessary for detecting lowly expressed differentially expressed (DE) genes and for conducting isoform-level differential expression analysis.  
 
 > Competition for sequencing: genes with high amounts of transcripts are more likely to get sequenced than genes with low amounts of transcripts. So a gene that we haven't detected could be lowly expressed or not expressed but hard to determine if we have low coverage (very relevant for single cell).
 
@@ -198,7 +206,7 @@ Image taken from: [Froussios K, et al, Relative Abundance of Transcripts (RATs):
 > 
 > How would you do it
 
-## Experimental Factors
+## Experimental Factors1
 
 > What is a control, what is the treatment/experimental factor
 >
@@ -218,7 +226,7 @@ Image taken from: [Froussios K, et al, Relative Abundance of Transcripts (RATs):
 
 It is important to have a clear idea of what the experimental goal is as this will guide the experimental design in terms of choice of sequencing protocol, technology and the number of replicates. 
 
-The simplest experimental setup for an RNAseq experiment would be 2 conditions of interest: a control condition and an experimental condition. By comparing the gene expression levels in the experimental condition against the expression levels in the control condition, we can determine which genes are responding to the experimental condition. The experimental condition could be a drug treatment, knocking out a gene of interest, over expressing a gene of interest, a different type of diet, etc. The control condition is our baseline measurement - we compare the gene expression levels in our experimental condition to the gene expresison levels in the control condition. 
+The simplest experimental setup for an RNAseq experiment would be 2 conditions of interest: a control condition and an experimental condition. By comparing the gene expression levels in the experimental condition against the expression levels in the control condition, we can determine which genes are responding to the experimental condition. The experimental condition could be a drug treatment, knocking out a gene of interest, over expressing a gene of interest, a different type of diet, etc. The control condition is our baseline measurement - we compare the gene expression levels in our experimental condition to the gene expression levels in the control condition. 
 
 > Maybe move these figures around
 ```{r, echo=FALSE, fig.align="center", fig.cap ="With a bulk RNAseq experiment, we usually want to examine changes in transcript abundance in an organism. We do this by comparing the gene expression levels in an experimental condition against the gene expression levels in a control condition"}

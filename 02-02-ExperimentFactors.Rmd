@@ -4,50 +4,22 @@ RNA-Seq is a powerful tool for capturing high-throughput gene expression. It cap
   
 1. Select an appropriate source of samples: cell lines, animal models, patients, etc.
 
-2. Sequencind depth
+2. Sequencing depth - the total number of reads mapped to the reference genome. How much sequencing depth is required for the experiment?
 
-4. How much sequencing depth is required for the experiment?
-
-4. Balancing the variation in the experiment: Understand technical and biological replicates. How many replicates are needed?
+3. Balancing the variation in the experiment: Understand technical and biological replicates and determine the number replicates needed for the experiment?
 
 5. Batch effects can add unwanted variation in the experiment. 
 
 6. Confounding factors: Sex, age, litter etc. 
 
 
-### Pooling Samples
+## Sample Replicates (technical/biological)
 
-RNA sample pooling is done by mixing RNA molecules extracted from independent biological samples from the same population before library preparation.The library prepared then represents a pool of biological samples resulting in a smaller number of replicates, and hence lower cost of sequencing while increasing the statistical power for differential gene expression (DGE) analysis [@takele2020utility].
-
-## Sequencing methods
-
-Sequencing Decision. Transcriptomics for Bulk RNAseq. Short reads. Coverage.
-
-### Short Read Sequencing
-
-### Long Read Sequencing
-
-### Coverage
-
-A common query is to what depth should a sequence experiment be performed.
-
-Researchers are often faced with a choice as to whether to sequence more deeply or sequence more samples. More biological replicates will provide better estimates of variance and more precise measures of gene expression than sequencing to a greater depth. It is generally advised to sequence more samples rather than sequence deeply if the option is there.
-
-```{r, echo=FALSE, fig.align="center", fig.cap="Biological replicates provide more statistical power to detect differential genes than sequencing depth"}
-knitr::include_graphics("images/experimental_design/liu_y_bioinformatics_2014.jpg")
-```
-
-Image taken from: [Liu Y et al, RNA-seq differential expression studies: more sequence or more replication? Bioinformatics. 2014](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3904521/)
-
-However, higher sequencing depth is necessary for detecting lowly expressed differentially expressed (DE) genes and for conducting isoform-level differential expression analysis.
-
-## Batches and replicates (technical/biological)
-
-There are two types of replicates in an experiment:
+A well-designed RNA-Seq experiment should always include replicates. Replicates are crucial as they enhance the statistical power of the analysis, allowing for more accurate and reliable detection of true biological differences. Consistent results across multiple replicates provide confidence that the observed findings are genuine and not due to random chance. Therefore, incorporating replicates in your experiment is essential to ensure the robustness and reproducibility of the results, ultimately leading to more credible and meaningful biological insights.
   
-  1.  Technical replicates are repeated measurements taken from the same biological source to accurately **assess technical variation in an experiment**.
+  1. Incorrect way of including replicates in your study - **Technical replicates** are repeated measurements taken from the same biological source to accurately **assess technical variation in an experiment**.
 
-```{r, echo=FALSE, out.width="430px", out.height="300px", fig.align="center", fig.cap ="Technical replicates: A single mouse sample, three replicates per condiion.", fig.height= 0.1, fig.width=0.8}
+```{r, echo=FALSE, out.width="430px", out.height="300px", fig.align="center", fig.cap ="Wrong way to create replicates: Three measurements taken from the same mouse for two conditions- normal and diseased. These are called technical replicates. These assess technical variation in an experiment.", fig.height= 0.1, fig.width=0.8}
 knitr::include_graphics("images/experimental_design/technical_reps.png")
 ```
 
@@ -64,40 +36,43 @@ For example, consider a simple RNA-Seq experiment comparing two conditions: norm
   
   The samples mouseX_normal_1, mouseX_normal_2, and mouseX_normal_3 serve as technical replicates for the normal condition, while mouseY_diseased_1, mouseY_diseased_2, and mouseY_diseased_3 are technical replicates for the diseased condition.
 
-2.  Biological replicates involve using biologically separate samples to **capture the biological variation between samples**. The biologically separate samples can include different organisms or tissues from different mice, different cell populations grown separately but originating from the same cell-line, sampling tumor samples from same tumor, etc.
+2. Correct way of including replicates in your study - **Biological replicates** involve using biologically separate samples to **capture the biological variation between samples**. The biologically separate samples can include different organisms or tissues from different mice, different cell populations grown separately but originating from the same cell-line, sampling tumor samples from same tumor, etc.
 
-```{r, echo=FALSE, out.width="500px", out.height= "600px", fig.align="center", fig.cap ="Biological and Technical replicates: Three mice sample (biological reps), three replicates (technical) per condition."}
-knitr::include_graphics("images/experimental_design/biological_reps.png")
+```{r, echo=FALSE,  out.width="430px", out.height="300px", fig.align="center", fig.cap ="Correct way to create replicates: A measurement taken from the three different mice for two conditions - normal and diseased. These are called biological replicates. These capture the biological variation between samples"}
+knitr::include_graphics("images/experimental_design/biological-reps.png")
 ```
 
 In the previous RNA-Seq experiment, if we increase the number of mice to three for each healthy and diseased state, we obtain the following samplesheet:
   
-  |       sample       | condition | mouse (biological replicates) | technical replicates |
-  |:-----------------:|:----------------:|:-----------------:|:----------------:|
-  |  mouseX1_normal_1  |  normal   |              X1               |          1           |
-  |  mouseX1_normal_2  |  normal   |              X1               |          2           |
-  |  mouseX1_normal_3  |  normal   |              X1               |          3           |
-  |  mouseX2_normal_1  |  normal   |              X2               |          1           |
-  |  mouseX2_normal_2  |  normal   |              X2               |          2           |
-  |  mouseX2_normal_3  |  normal   |              X2               |          3           |
-  |  mouseX3_normal_1  |  normal   |              X3               |          1           |
-  |  mouseX3_normal_2  |  normal   |              X3               |          2           |
-  |  mouseX3_normal_3  |  normal   |              X3               |          3           |
-  | mouseY1_diseased_1 | diseased  |              Y1               |          1           |
-  | mouseY1_diseased_2 | diseased  |              Y1               |          2           |
-  | mouseY1_diseased_3 | diseased  |              Y1               |          3           |
-  | mouseY2_diseased_1 | diseased  |              Y2               |          1           |
-  | mouseY2_diseased_2 | diseased  |              Y2               |          2           |
-  | mouseY2_diseased_3 | diseased  |              Y2               |          3           |
-  | mouseY3_diseased_1 | diseased  |              Y3               |          1           |
-  | mouseY3_diseased_2 | diseased  |              Y3               |          2           |
-  | mouseY3_diseased_3 | diseased  |              Y3               |          3           |
-  
-  In this experiment, X1, X2, and X3 serve as biological replicates for the normal condition, while Y1, Y2, and Y3 serve as biological replicates for the diseased condition. For each biological replicate, we have three technical replicates for both conditions.
+| sample | condition | replicates |
+|:----:|:-----:|:-----:|
+|  mouseX1_normal  |  normal   |  X1  |   
+|  mouseX2_normal  |  normal   |  X2  |   
+|  mouseX3_normal  |  normal   |  X3  |   
+| mouseY1_diseased | diseased  |  Y1  |   
+| mouseY2_diseased | diseased  |  Y2  |   
+| mouseY3_diseased | diseased  |  Y3  |   
 
-In the era of microarrays, technical replicates were essential. However, with the advent of current RNA-Seq technologies, technical variation is minimal compared to biological variation, making technical replicates less necessary.
+In this experiment, X1, X2, and X3 are the biological replicates for the normal condition, Y1, Y2, and are the biological replicates for the diseased condition.
 
-Conversely, biological replicates are indispensable for differential expression analysis. Increasing the number of biological replicates enhances the accuracy of biological variation estimates and the precision of mean expression level estimates. This, in turn, leads to better data modeling and the identification of more differentially expressed genes.
+During the era of microarrays, technical replicates were crucial to account for the variability arising from the technology itself. However, with the advent of current RNA-Seq technologies, technical variation has significantly diminished, rendering technical replicates less necessary. In contrast, biological replicates remain indispensable for differential expression analysis. Increasing the number of biological replicates enhances the accuracy of biological variation estimates and the precision of mean expression level estimates. This, in turn, leads to better data modeling and the identification of more differentially expressed genes. The emphasis, therefore, is on maximizing biological replicates to capture the true variability in biological systems.
+
+## Sample pooling
+Although a lower average sequencing depth combined with multiple replicates may be adequate for a standard RNA-seq experiment, a higher sequencing depth is essential for more precise measurements of gene expression, especially when detecting lowly expressed genes or conducting isoform-level differential expression analysis. In such cases, it is also important to increase the number of biological replicates to effectively capture within-group biological variability.
+
+However, factors like budget constraints, limited input RNA, or substantial within-group biological variability can significantly impact the outcome of RNA-seq experiments. In these situations, sample pooling becomes a viable strategy.
+
+Pooling of RNA samples involves mixing RNA molecules extracted from independent biological samples within the same population—such as a specific experimental or biological condition, or the same tissue—before library preparation. This approach reduces the number of replicates required and, consequently, lowers the overall cost of the experiment. The library created from pooled samples represents a composite of biological samples, capturing sufficient biological variation while requiring fewer replicates.
+
+This method offers two main advantages: it reduces the cost of sequencing and increases the statistical power for differential gene expression (DGE) analysis, enabling researchers to draw more meaningful conclusions even under resource constraints. [@takele2020utility].
+
+## Batches and their effects
+
+In an RNA-Seq experiment, samples are often processed in batches or groups, and batch effects can arise from various sources throughout the experimental workflow. These effects may stem from differences in sequencing platforms, timing, reagents, experimental conditions, or even variations in how different researchers handle the samples. Batch effects pose a significant challenge in RNA-Seq data analysis, as they can obscure true biological differences and lead to misleading interpretations.
+
+For instance, when visualizing data with a multidimensional scaling (MDS) plot, samples might unexpectedly group together due to these batch effects. Imagine an experiment with multiple samples from three cell lines, comparing two conditions—control and treated. Ideally, the samples should form two clusters based on the conditions, but instead, they form three clusters according to their original cell lines. This deviation is a clear example of a batch effect, where the unintended influence of cell lines overshadows the treatment differences.
+
+To address this issue, it is crucial to thoroughly investigate the data, collect detailed information about the experimental design, and account for batch effects before performing differential expression analysis. Proper adjustment ensures more accurate and reliable biological interpretations, enabling meaningful insights from the RNA-Seq data.
 
 ## Confounding factors
 
@@ -105,7 +80,7 @@ A confounded RNA-Seq experiment is one in which the distinct effects of two diff
 
 For instance, sex is known to significantly influence gene expression. If all the control mice in an experiment were female and all the treatment mice were male, the treatment effect would be confounded by sex. In this scenario, it would be impossible to distinguish the treatment effect from the effect of sex. Consider another scenario, if all the control mice are from cage A and all the treatment mice for cage B, the treatment effects are confounded by the cage. The living conditions in the two cages may vary which is indistinguishable from the treatment effects.
 
-```{r, echo=FALSE, fig.align="center", fig.cap ="Confounding effects in RNASeq experiments: Three female mice in the contol group and three male mice in the treatment group.", out.width="500px", out.height="200px"}
+```{r, echo=FALSE, fig.align="center", fig.cap ="Confounding effects in RNASeq experiments: Three mice are selected each for the two conditions- normal and diseased. But the normal group consist of only female (XX) mice and vice versa. It will be difficult to determine if the true difference between two groups is due to the condition or the sex.", out.width="500px", out.height="200px"}
 knitr::include_graphics("images/experimental_design/confounding.png")
 ```
 
@@ -113,10 +88,14 @@ To avoid confounding, it is important to ensure the sample source/animals in eac
 
 As a general rule for a standard RNA-Seq experiment, the number of biological replicates should at the very least be 2, but its ideal to have 3 or more replicates, and a sequencing depth of 10M to 20M reads per sample is usually enough.
 
-As shown in Liu, Zhou, and White (2013)
+To summarise, 
 
--   gene-level differential expression
--   Isoform-level differential expression
--   Other types of RNA analyses (intron retention, small RNA-Seq, etc.)
+As a general rule for a standard RNA-Seq experiment, the number of biological replicates should at the very least be 2, but its ideal to have 3 or more replicates, and a sequencing depth of 10M to 20M reads per sample is usually enough.
 
-Batch, Techinical replicates and not biological, Pooling samples, Randomization, Noise. Clonal (cell-lines, bacteria, inbred animalls) or not clonal organisms, Does my tissue has different cell types -\> Cell sorting or single cell
+The experiment needs to be designed carefully with sufficient replicates and well randomised samples, to capture enough within group and between group variations while minimising noise.
+
+ Noise.
+
+## Designing the model matrix and setting contrasts
+
+The model matrix
