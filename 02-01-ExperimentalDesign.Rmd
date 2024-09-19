@@ -15,15 +15,11 @@ There are three main aspects to planning an RNAseq experiment:
 
 The first two aspects are limited and linked by cost. The ideal protocol for answering your research question might be prohibitively expensive - so you may opt for a different protocol. The ideal experimental design may require more samples than you can either afford to collect or are able to collect due to multitude of factors including ethical approval or sample rarity.
 
-There are many choices to be made in designing an experiment and it is easy to feel overwhelmed by these choices. Consulting with relevant experts such as sequencing providers and bioinformaticians prior to performing the experiment can aid in this process.
+There are many choices to be made in designing an experiment and it is easy to feel overwhelmed by these choices. Consulting with relevant experts such as sequencing providers and bioinformaticians prior to performing the experiment can aid in this process. It is also allows you to anticipate potential complexities that may arise in the analysis of the data and mitigate them.
 
-The most common type of RNAseq experiment is a short read bulk experiment for the purpose of identifying differentially expressed genes in a given organisms. This workshop has been designed with this understanding that this is the type of analysis that most researchers intend to perform but it is not the only application of RNAseq. This chapter will give an overview 
-
-
-
+The most common type of RNAseq experiment is a short read bulk experiment for the purpose of identifying differentially expressed genes in a given organisms. This workshop has been designed with this understanding that this is the type of analysis that most researchers intend to perform but it is not the only application of RNAseq. This chapter will give an overview of the types of RNAseq protocols available but the rest of the workshop will focus on short read bulk RNAseq.
 
 ## Before you begin: questions to consider…
-
 
 The questions below are a few that might help in designing an experiment:
 
