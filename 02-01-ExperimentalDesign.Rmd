@@ -17,12 +17,19 @@ The first step of planning an RNAseq experiment is asking whether RNAseq will an
 There are some main aspects to planning an RNAseq experiment:
 
 1. What is the research goal?
-2. what sequencing technology will be used - can the selected protocol answer the research question
-3. what is the experimental design - will the number of collected samples have enough statistical power to answer the research question? Are there confounding factors that might obscure the effect of biology that we want to study?
-4. What is the budget for the proposed experiment
-5. What sort of analysis can be performed with the data that has been generated from the experiment
+2. What sequencing technology will be used - can the selected protocol answer the research question
+3. What is the experimental design - will the number of collected samples have enough statistical power to answer the research question? Are there confounding factors that might obscure the effect of biology that we want to study?
+4. What is the budget for the proposed experiment?
+5. What sort of analysis can be performed with the data that has been generated from the experiment?
 
 The second and third aspects are limited and linked by cost. The ideal protocol for answering your research question might be prohibitively expensive - so you may opt for a different protocol. The ideal experimental design may require more samples than you can either afford to collect or are able to collect due to multitude of factors including ethical approval or sample rarity. It is very common for RNAseq experiments to be limited in the number of biological replicates collected due to the cost. 
+
+There is no single RNAseq protocol that is optimised for answering every research question - instead they may have different advantages and disadvantages that can make one protocol better suited for a particular task over another.
+
+```{r, echo=FALSE, out.width="90%"}
+knitr::include_graphics("https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41368-021-00146-0/MediaObjects/41368_2021_146_Fig1_HTML.png?as=webp")
+```
+Image source: [From bulk, single-cell to spatial RNA sequencing (2021)](https://www.nature.com/articles/s41368-021-00146-0)
 
 There are many choices to be made in designing an experiment and it is easy to feel overwhelmed by these choices. Consulting with relevant experts such as sequencing providers and bioinformaticians prior to carrying out the experiment can aid in this process. It is also allows you to anticipate potential complexities that may arise in the analysis of the data and mitigate them. It might take several iterations and consultations to settle on a design that will achieve the most of your research outcomes. It's also important to have an idea of how the generated data can then be analysed - there is not much point generating data if it cannot be used.
 
@@ -47,45 +54,18 @@ The questions below are a few that might help in designing an experiment:
 
 ## RNAseq Sequencing Protocols
 
-RNAseq protocols can be categorised or described in a number of different ways. They can be classified as to the length of the reads produced by the technology, e.g either short or long reads. They can categorised by RNA captured for sequencing, e.g all available genes or if only a subset of target genes are used. More recently, with the development of single cell technology, they can now also be classified as the type of biological material they work with, ie is it at the single cell level or at a bulk tissue level. 
+RNAseq protocols can be described in a number of different ways. They can be classified as to the length of the reads produced by the technology, e.g either short or long reads. They can categorised by RNA captured for sequencing, e.g all available genes or if only a subset of target genes are used. More recently, with the development of single cell technology, they can now also be classified as the type of biological material they work with, ie is it at the single cell level or at a bulk tissue level. 
 
-These categories of RNAseq are not mutually exclusive. For example, most RNAseq experiments tend to be short read bulk RNAseq or short read single cell RNAseq that target polyadenylated genes. 
+These categories of RNAseq are not mutually exclusive. For example, most RNAseq experiments tend to be short read bulk RNAseq that target polyadenylated RNA.
 
-| Biological material                  | RNA targets                                   | Read length                           | RNA isolation meth  |
+| Biological material                  | RNA targets                                   | Read length                           | RNA isolation method  |
 |--------------------------------------|-----------------------------------------------|---------------------------------------|---------------------|
 | Entire tissue: Bulk RNAseq           | All RNA types captured: total RNAseq          | 50-300 bases: short read sequencing   | PolyA pulldown      |
 | Individual cells: Single cell RNAseq | Specific RNA subset captured: targeted RNAseq | 10-100kb: long read sequencing        | Ribosomal depletion |
 |                                      |                                               | 100-300kb: ultra long read sequencing | Short RNA selection |
 
 
-### Short Read Sequencing
-
-Short read sequencing typically refers to protocols that fragment RNA into smaller pieces before converting to cDNA and sequencing
-
-Advantages:
-
-- Highly accurate
-- Cost effective and scalable
-
-Disadvantages:
-
-- 
-
-### Long Read Sequencing
-
-> What is it
->
-> Summary of how it works
->
-> Advantage
->
-> Disadvantages
-
-Long read sequencing typically refers to technology that produce reads with length ranging from 10-100kb or 100-300kb. Long read sequencing can capture the full length of mRNA transcripts, which 
-
-
-
-Long read sequencing can have lower accuracy than short read methods. 
+### Short & Long Read Sequencing
 
 ```{r, echo=FALSE, fig.align="center", fig.cap="Overview of RNAseq with short read/long read technologies", out.width="95%"}
 knitr::include_graphics("https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/bin/fgene-14-997383-g002.jpg")
@@ -93,8 +73,20 @@ knitr::include_graphics("https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/b
 
 Image taken from: [Deshpande D, et al, RNA-seq data science: From raw data to effective interpretation. Frontier Genetics. 2023](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/)
 
+Short read sequencing typically refers to protocols that fragment RNA into smaller pieces before converting to cDNA and sequencing. These are typically highly accurate and cost effective methods that scale well for large datasets. This is typically used for gene expression studies.
 
-### Bulk RNA Sequencing
+Long read sequencing typically refers to technology that produce reads with length ranging from 10-100kb or 100-300kb (ultra long read). Long read sequencing can capture the full length of mRNA transcripts, which is useful when examining changes in isoforms or when performing de novo transcriptome assembly. Long read sequencing can have lower accuracy than short read methods but has been improving over the recent years.
+
+
+### Bulk & Single RNA Sequencing
+
+
+
+```{r, out.width="100%", echo=FALSE}
+knitr::include_graphics("https://www.lexogen.com/wp-content/uploads/2024/01/Difference-between-scRNA-Seq-and-bulk-RNA-Seq.png")
+```
+
+Image source: [Classical Single-Cell RNA Sequencing: a comprehensive overview](https://www.lexogen.com/classical-single-cell-rna-sequencing-a-comprehensive-overview/)
 
 Bulk RNAseq 
 
@@ -122,7 +114,8 @@ Bulk RNAseq
 ### Targeted RNAseq
 
 
-Advantages: requires low RNA input. 
+Advantages: requires less RNA input. 
+
 
 
 ### Sequencing Depth & Coverage
@@ -177,7 +170,7 @@ knitr::include_graphics("https://f1000research.s3.amazonaws.com/manuscripts/1959
 Image taken from: [Froussios K, et al, Relative Abundance of Transcripts (RATs): Identifying differential isoform abundance from RNA-seq. F1000Research. 2019](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/)
 
 
-```{r, echo=FALSE, fig.align="center", fig.cap ="In a DGE analysis, this gene might be ignored for have no change when actually a change is occuring amongst the isoforms that are being produced"}
+```{r, echo=FALSE, fig.align="center", fig.cap ="In a DGE analysis, this gene might be ignored for having no change in expression when actually a change is occuring amongst the isoforms that are being produced"}
 knitr::include_graphics("images/experimental_design/fig_dif_splice_usage.png")
 ```
 
