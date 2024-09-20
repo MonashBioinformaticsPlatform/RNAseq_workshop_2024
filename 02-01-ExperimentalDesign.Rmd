@@ -15,6 +15,7 @@ Image source: [RNA Sequencing and Analysis (2015)](https://www.ncbi.nlm.nih.gov/
 The first step of planning an RNAseq experiment is asking whether RNAseq will answer the intended research question and whether it should be performed. Sequencing experiments are not cheap and a lot of time and money can be saved by ensuring that the sequencing experiment performed is suited to answering the research question at hand. There is a huge diversity in what RNA-seq can achieve due to the number of different protocols that have been developed and published. Therefore having a clear experimental goal will help in selecting an appropriate protocol that will best answer the research question as well as a good experimental design that will allow you to get the statistical power to answer that question.
 
 There are some main aspects to planning an RNAseq experiment:
+
 1. What is the research goal?
 2. what sequencing technology will be used - can the selected protocol answer the research question
 3. what is the experimental design - will the number of collected samples have enough statistical power to answer the research question? Are there confounding factors that might obscure the effect of biology that we want to study?
@@ -25,11 +26,9 @@ The second and third aspects are limited and linked by cost. The ideal protocol 
 
 There are many choices to be made in designing an experiment and it is easy to feel overwhelmed by these choices. Consulting with relevant experts such as sequencing providers and bioinformaticians prior to carrying out the experiment can aid in this process. It is also allows you to anticipate potential complexities that may arise in the analysis of the data and mitigate them. It might take several iterations and consultations to settle on a design that will achieve the most of your research outcomes. It's also important to have an idea of how the generated data can then be analysed - there is not much point generating data if it cannot be used.
 
+RNAseq data can be used for a variety of purposes. The most common one is quantative analysis of both gene and transcript expression changes. It can also be used for discovery, such as detection of novel transcripts, fusion genes. In organisms without a reference genome, RNAseq data can be used for de novo transcriptome assembly. 
 
-
-The most common type of RNAseq experiment is a short read bulk experiment for the purpose of identifying differentially expressed genes in a given organisms. This workshop has been designed with this understanding that this is the type of analysis that most researchers intend to perform but it is not the only application of RNAseq. This chapter will give an overview of the types of RNAseq protocols available but the rest of the workshop will focus on short read bulk RNAseq.
-
-
+The most common type of RNAseq experiment is a short read bulk experiment for the purpose of identifying differentially expressed genes in a given organisms. This workshop has been designed with this understanding that this is the type of analysis that most researchers intend to perform but it is not the only application of RNAseq. This chapter will give an overview of the types of RNAseq protocols available to illustrate the field but the rest of the workshop will focus on short read bulk RNAseq.
 
 ## Before you begin: questions to consider…
 
@@ -48,25 +47,29 @@ The questions below are a few that might help in designing an experiment:
 
 ## RNAseq Sequencing Protocols
 
-> Sequencing Decision. Transcriptomics for Bulk RNAseq. Short reads. Coverage.
-
-RNAseq protocols can be categorised in a number of different ways. They can be classified as to the length of the reads produced by the technology, e.g either short or long reads. They can categorised by RNA captured for sequencing, e.g all available genes or if only a subset of target genes are used. More recently, with the development of single cell technology, they can now also be classified as the type of biological material they work with, ie is it at the single cell level or at a bulk tissue level. 
+RNAseq protocols can be categorised or described in a number of different ways. They can be classified as to the length of the reads produced by the technology, e.g either short or long reads. They can categorised by RNA captured for sequencing, e.g all available genes or if only a subset of target genes are used. More recently, with the development of single cell technology, they can now also be classified as the type of biological material they work with, ie is it at the single cell level or at a bulk tissue level. 
 
 These categories of RNAseq are not mutually exclusive. For example, most RNAseq experiments tend to be short read bulk RNAseq or short read single cell RNAseq that target polyadenylated genes. 
 
+| Biological material                  | RNA targets                                   | Read length                           | RNA isolation meth  |
+|--------------------------------------|-----------------------------------------------|---------------------------------------|---------------------|
+| Entire tissue: Bulk RNAseq           | All RNA types captured: total RNAseq          | 50-300 bases: short read sequencing   | PolyA pulldown      |
+| Individual cells: Single cell RNAseq | Specific RNA subset captured: targeted RNAseq | 10-100kb: long read sequencing        | Ribosomal depletion |
+|                                      |                                               | 100-300kb: ultra long read sequencing | Short RNA selection |
+
+
 ### Short Read Sequencing
 
-Short read sequencing typically refers to protocols that produce reads with lengths
+Short read sequencing typically refers to protocols that fragment RNA into smaller pieces before converting to cDNA and sequencing
 
+Advantages:
 
-> What is it
->
-> Summary of how it works
->
-> Advantage
->
-> Disadvantages
+- Highly accurate
+- Cost effective and scalable
 
+Disadvantages:
+
+- 
 
 ### Long Read Sequencing
 
@@ -153,7 +156,7 @@ The most common use for RNAseq is to identify differentially expressed genes in 
 
 - Differential expression analysis: DGE, DTE, DTU
 - Novel transcript/isoform discovery: identify new transcripts/isoforms that are not annotated in a reference
-- De novo transcriptome assembly: if a reference genome for an organism is not available, the information from RNAseq reads can be assembled into contigs to form a transcriptome
+- De novo transcriptome assembly: if a reference genome for an organism is not available, the information from RNAseq reads can be assembled into contigs to form a transcriptome for protein coding genes
 - Detect alternate splicing/differential isoform usage: detect changes in isoform abundance
 - Gene fusion detection: Gene fusions can occur as a result of chromosomal re-arrangments, resulting in the exchange of coding or regulatory sequences between genes. This can be a cause of cancer and therefore identification of fusion genes has important implications for human health.
 - Epigenetic integration: combine transcriptomic and epigenetic information
@@ -179,8 +182,8 @@ knitr::include_graphics("images/experimental_design/fig_dif_splice_usage.png")
 ```
 
 
-
 ### Novel Transcript/Isoform Discovery
+
 
 > What is it
 >
@@ -188,13 +191,22 @@ knitr::include_graphics("images/experimental_design/fig_dif_splice_usage.png")
 > 
 > What protocols are better suited it
 
-### De Novo Transcriptome Assembly
+### Transcriptome Assembly
 
-> What is it
->
-> Why would you want to do it
->
-> What protocols are better suited it: long read sequencing
+When a reference genome is either unavailable or not desired, it is possible to take the RNAseq reads and assemble them into a transcriptome of the protein-coding genes. The assembly can be done in 2 ways, there are reference based methods and de novo methods. Reference based methods use the reference of either the organism or a closely related species. 
+
+De novo assembly methods are reference free - this is useful when studying non-model organisms as often they lack well annotated reference genomes. In such situations, RNAseq data has a dual purpose - the reference is built from the sequences of the reads and then the reads are counted against the transcriptome for differential analysis.  
+
+Long read sequencing is better suited to building high quality transcriptomes than short read sequencing as the longer read length retains more information and context about the original RNA. A commonly used analogy when describing assembly is to imagine the genome as a puzzle that needs to be put back together. The smaller the pieces, the more difficult the puzzle. A puzzle made of larger pieces is much easier to put back together. 
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("https://oup.silverchair-cdn.com/oup/backfile/Content_public/Journal/bib/23/2/10.1093_bib_bbab563/1/m_bbab563f3.jpeg?Expires=1729202148&Signature=FMhHgcKT3vS5SP1phAnOU3R9ayIzXS6DDCdTPOK7WQdpOPRSxFEqbIla6ISWV7pKDaINiPZBEdcpmjCn75qGFCIGTLasuKU~DD5Po69XlEH8Os~9UgmXbPMhGddL7cXxdw3skQ~dial4rI4A8mu388ZJlRPDbmr6EURBKAdm-lGpG~xxLJzN9hUmqB2FDNtOt6bY6TGvVRNOlGXTz24HveHp~feY4nhtpb9BpUEKBZgpChqMpQEw8mQAkmx-BcXBon8pynzZ7ud6cBjKMZ7W3T1Cip0OGSrJE2Bn~af~uY-Lv68PJ3319cnUelEs05Mnsr34ntJtnllPjVRUkDo2Bw__&Key-Pair-Id=APKAIE5G5CRDK6RD3PGA")
+```
+
+Image source: [A simple guide to de novo transcriptome assembly and annotation (2022)](https://academic.oup.com/bib/article/23/2/bbab563/6514404)
+
+
+
 
 ### Gene Fusion Detection
 
