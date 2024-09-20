@@ -7,7 +7,7 @@
 Broadly speaking, RNAseq is a next generation sequencing technique for profiling all or selected target RNAs in a given biological system. It typically involves isolating RNA, converting to cDNA, then ligating adapter sequences to the RNA before constructing a library that can be used for sequencing. A diverse ecosystem of protocols and technology exist that can be used to generate RNAseq data, which can be used in a wide variety of applications. 
 
 ```{r, echo=FALSE, out.width="100%", fig.cap="Outline of an RNAseq protocol"}
-knitr::include_graphics("https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4863231/figure/F1/")
+knitr::include_graphics("https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4863231/bin/nihms768779f1.jpg")
 ```
 
 Image source: [RNA Sequencing and Analysis (2015)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4863231/)
