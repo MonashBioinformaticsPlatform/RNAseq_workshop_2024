@@ -65,8 +65,9 @@ If few samples have a count of more than around 10, we can safely discard them. 
 * Press "Save changes".
 
 <!-- &rarr; [Degust page set up as described](https://degust.erc.monash.edu/degust/compare.html?code=d4453d6c1cbf8f7c0c876732a4bc0ba5#/) -->
+<!-- &rarr; [Degust page set up as described](https://degust.erc.monash.edu/degust/compare.html?code=e48b17563f95769c842c7c33d6b73de2#/) -->
 
-&rarr; [Degust page set up as described](https://degust.erc.monash.edu/degust/compare.html?code=e48b17563f95769c842c7c33d6b73de2#/)
+&rarr; [Degust page set up as described](https://degust.erc.monash.edu/degust/compare.html?code=af18f703bd969885c267a74dbadc08b9#/)
 
 ### Our filtering rules of thumb {- .rationale}
 
@@ -251,7 +252,7 @@ This asks "is the effect of adding estrogen different when the estrogen gene is 
 
 Once this is configured, you can choose it to test in the top-left box of the main page.
 
-&rarr; [Degust page with batches and interaction configured](https://degust.erc.monash.edu/degust/compare.html?code=8eb1f289764b99dade465ff9f04c539e#/)
+&rarr; [Degust page with batches and interaction configured](https://degust.erc.monash.edu/degust/compare.html?code=25377977832e85d06680cb283638574d#/)
 
 
 ### Your turn: Explore Degust {- .challenge}
