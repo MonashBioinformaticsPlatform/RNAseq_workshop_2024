@@ -119,7 +119,7 @@ After RNA is initially extracted, the RNA molecules are a mix of ribosomal RNA (
 
 - Size selection: this is typically used to enrich for small RNAs and therefore used for small RNAseq. These protocols are used when the goal is to study small RNAs.
 
-```{r, echo=FALSE, out.width="100%", fig.cap="Different RNAseq isolation methods}
+```{r, echo=FALSE, out.width="100%", fig.cap="Different RNAseq isolation methods"}
 knitr::include_graphics("https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4863231/bin/nihms768779f1.jpg")
 ```
 
