@@ -43,13 +43,18 @@ RNAseq data can be used for a variety of purposes. Broadly speaking, it can be u
 - qualitatively: what is expressed? (e.g genes, isoforms, specific exons, intron retention, etc). RNAseq provides *annotation* information
 - quantatively: how much is expressed? Specifically, has the amount changed in response to a variable? RNAseq provides *expression* information.
 
-The most common use is quantative analysis of gene expression changes, though isoform level differential analysis can also be performed. RNAseq can simultaneously be used for discovery, such as detection of novel transcripts, alternate splicing, exon skipping, intron retention or fusion genes. In organisms without a reference genome, RNAseq data can be used for de novo transcriptome assembly. 
+This capability for simultaneous discovery and quantification at the whole transcriptome is a key reason that cemented RNAseq as the technology of choice for studying RNA. Previous technologies such as microarrays used probes based on already known genes. 
 
-```{r, fig.cap="", echo=FALSE, out.width="100%", fig.show="hold", fig.align="center"}
-knitr::include_graphics(c("https://www.azenta.com/sites/default/files/web-media-library/blog/quick-start-guide-rna-seq-data-analysis/fig_6_deseq2.png", "https://www.azenta.com/sites/default/files/web-media-library/blog/quick-start-guide-rna-seq-data-analysis/fig_7_deseq3.png"))
+```{r, fig.cap="", echo=FALSE, out.width="100%", fig.cap="RNAseq captures two layeres of information: what is expressed and how much is expressed"}
+knitr::include_graphics("https://images.squarespace-cdn.com/content/v1/59a1d86e6a49631dd51560f2/1546220317582-R09TS3DSWVDNADNQ3M1S/Figure1-01.png?format=2500w")
 ```
 
-Image source: [A Quick Start Guide to RNA-Seq Data Analysis](https://www.azenta.com/blog/quick-start-guide-rna-seq-data-analysis)
+Image source: [Compbio 022: Differential splicing and transcripts - Not as simple as it first appears](https://www.badgrammargoodsyntax.com/compbio/2018/12/31/compbio-022-differential-splicing-and-transcripts-not-as-simple-as-it-first-appears)
+
+
+The most common use is quantative analysis of gene expression changes, though isoform level differential analysis can also be performed. RNAseq can simultaneously be used for discovery, such as detection of novel transcripts, alternate splicing, exon skipping, intron retention or fusion genes. In organisms without a reference genome, RNAseq data can be used for de novo transcriptome assembly. 
+
+
 
 The most common type of RNAseq experiment is a short read bulk experiment for the purpose of identifying differentially expressed genes in a given organism. This workshop has been designed with this understanding that this is the type of analysis that most researchers intend to perform but it is not the only application of RNAseq. This chapter will give an overview of the types of RNAseq protocols available to illustrate the field but the rest of the workshop will focus on short read bulk RNAseq.
 
@@ -96,7 +101,7 @@ These descriptions of RNAseq are not mutually exclusive and are in fact used in 
     <td class="tg-4erg">RNA tissue source<br></td>
     <td class="tg-0pky">Fresh</td>
     <td class="tg-0pky">Frozen</td>
-    <td class="tg-0pky">FFPE</td>
+    <td class="tg-0pky">FFPE (Formalin-fixed, paraffin-embedded)</td>
   </tr>
   <tr>
     <td class="tg-4erg">RNA species sequenced</td>
@@ -158,6 +163,10 @@ Image source: [Non-coding RNA: what is functional and what is junk? 2015](https:
 
 - Size selection: this is typically used to enrich for small RNAs and therefore used for small RNAseq. These protocols are used when the goal is to study small RNAs.
 
+### Targeted RNAsequencing
+
+Not every gene needs to be assayed in an RNAseq experiment. Targeted RNAseq allows researchers to focus on a subset of genes of interest. This can be done either with enrichment or amplicon methods and can be used with low quality samples. 
+
 
 ### Short & Long Read Sequencing
 
@@ -218,7 +227,15 @@ However, higher sequencing depth is necessary for detecting lowly expressed diff
 
 ## RNAseq Uses
 
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("https://www.helixio.fr/uploads/kcfinder/images/PAGE%20WORKFLOW6-1.jpg")
+```
+
+Image source: [RNA-seq](https://www.helixio.fr/page/rna-seq-1)
+
+
 The most common use for RNAseq is to identify differentially expressed genes in a tissue of interest for a given organism. There are other applications RNA-seq that we will briefly discuss, this list is not an exhaustive one.
+
 
 - Differential expression analysis: DGE, DTE, DTU
 - Novel transcript/isoform discovery: identify new transcripts/isoforms that are not annotated in a reference
@@ -257,7 +274,7 @@ knitr::include_graphics("images/experimental_design/genome_transcriptome_alignme
 
 Image source: [RNA Sequencing Data: Hitchhiker's Guide to Expression Analysis, 2019](https://www.annualreviews.org/content/journals/10.1146/annurev-biodatasci-072018-021255)
 
-Long read sequencing is ideal for isoform/transcript level analyses as 
+Long read sequencing is ideal for isoform/transcript level analyses as there is no ambiguity to which isofrom a read comes from, if the entire isoform has been sequenced. 
 
 
 ### Novel Transcript/Isoform Discovery
