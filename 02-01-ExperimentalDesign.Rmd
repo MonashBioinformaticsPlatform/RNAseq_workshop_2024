@@ -38,10 +38,15 @@ knitr::include_graphics("https://media.springernature.com/lw685/springer-static/
 
 There are many choices to be made in designing an experiment and it is easy to feel overwhelmed by these choices. Consulting with relevant experts such as sequencing providers and bioinformaticians prior to carrying out the experiment can aid in this process. It is also allows you to anticipate potential complexities that may arise in the analysis of the data and mitigate them. It might take several iterations and consultations to settle on a design that will achieve the most of your research outcomes. It's also important to have an idea of how the generated data can then be analysed - there is not much point generating data if it cannot be used.
 
-RNAseq data can be used for a variety of purposes. The most common one is quantative analysis of gene expression changes, though isoform level differential analysis can also be performed. RNAseq can also simultaneously be used for discovery, such as detection of novel transcripts, alternate splicing, exon skipping, intron retention or fusion genes. In organisms without a reference genome, RNAseq data can be used for de novo transcriptome assembly. 
+RNAseq data can be used for a variety of purposes. Broadly speaking, it can be used in 2 different ways:
+
+- qualitatively: what is expressed? (e.g genes, isoforms, specific exons, intron retention, etc). RNAseq provides *annotation* information
+- quantatively: how much is expressed? Specifically, has the amount changed in response to a variable? RNAseq provides *expression* information.
+
+The most common use is quantative analysis of gene expression changes, though isoform level differential analysis can also be performed. RNAseq can simultaneously be used for discovery, such as detection of novel transcripts, alternate splicing, exon skipping, intron retention or fusion genes. In organisms without a reference genome, RNAseq data can be used for de novo transcriptome assembly. 
 
 ```{r, fig.cap="", echo=FALSE, out.width="100%", fig.show="hold", fig.align="center"}
-knitr::include_graphics(c("https://www.azenta.com/sites/default/files/web-media-library/blog/quick-start-guide-rna-seq-data-analysis/fig_5_deseq1.png", "https://www.azenta.com/sites/default/files/web-media-library/blog/quick-start-guide-rna-seq-data-analysis/fig_6_deseq2.png", "https://www.azenta.com/sites/default/files/web-media-library/blog/quick-start-guide-rna-seq-data-analysis/fig_7_deseq3.png"))
+knitr::include_graphics(c("https://www.azenta.com/sites/default/files/web-media-library/blog/quick-start-guide-rna-seq-data-analysis/fig_6_deseq2.png", "https://www.azenta.com/sites/default/files/web-media-library/blog/quick-start-guide-rna-seq-data-analysis/fig_7_deseq3.png"))
 ```
 
 Image source: [A Quick Start Guide to RNA-Seq Data Analysis](https://www.azenta.com/blog/quick-start-guide-rna-seq-data-analysis)
@@ -76,63 +81,60 @@ These descriptions of RNAseq are not mutually exclusive and are in fact used in 
   overflow:hidden;padding:10px 5px;word-break:normal;}
 .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
   font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-f8tv{border-color:inherit;font-style:italic;text-align:left;vertical-align:top}
+.tg .tg-4erg{border-color:inherit;font-style:italic;font-weight:bold;text-align:left;vertical-align:top}
 .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
-.tg .tg-8zwo{font-style:italic;text-align:left;vertical-align:top}
-.tg .tg-0lax{text-align:left;vertical-align:top}
 </style>
 <table class="tg"><thead>
   <tr>
-    <th class="tg-f8tv">Biological material<br></th>
+    <th class="tg-4erg">Biological material<br></th>
     <th class="tg-0pky">Entire tissue: Bulk RNAseq</th>
     <th class="tg-0pky">Individual cells: Single cell RNAseq</th>
     <th class="tg-0pky"></th>
   </tr></thead>
 <tbody>
   <tr>
-    <td class="tg-8zwo">RNA tissue source<br></td>
-    <td class="tg-0lax">Fresh</td>
-    <td class="tg-0lax">Frozen</td>
-    <td class="tg-0lax">FFPE</td>
+    <td class="tg-4erg">RNA tissue source<br></td>
+    <td class="tg-0pky">Fresh</td>
+    <td class="tg-0pky">Frozen</td>
+    <td class="tg-0pky">FFPE</td>
   </tr>
   <tr>
-    <td class="tg-f8tv">RNA species sequenced</td>
+    <td class="tg-4erg">RNA species sequenced</td>
     <td class="tg-0pky">All RNA species captured: total RNAseq</td>
     <td class="tg-0pky">mRNA only: mRNAseq</td>
     <td class="tg-0pky">short RNA: small RNAseq</td>
   </tr>
   <tr>
-    <td class="tg-f8tv">RNA isolation method</td>
+    <td class="tg-4erg">RNA isolation method</td>
     <td class="tg-0pky">Ribosomal depletion</td>
     <td class="tg-0pky">PolyA pulldown</td>
     <td class="tg-0pky">Size selection</td>
   </tr>
   <tr>
-    <td class="tg-f8tv">Read length</td>
+    <td class="tg-4erg">Read length</td>
     <td class="tg-0pky">50-300 bases: short read sequencing</td>
     <td class="tg-0pky">10-100kb: long read sequencing</td>
     <td class="tg-0pky">100-300kb: ultra long read sequencing</td>
   </tr>
   <tr>
-    <td class="tg-f8tv">Library Strandedness</td>
+    <td class="tg-4erg">Library Strandedness</td>
     <td class="tg-0pky">Original strand information not preserved: nonstranded library</td>
     <td class="tg-0pky">Original strand information preserved: Stranded library</td>
     <td class="tg-0pky"></td>
   </tr>
   <tr>
-    <td class="tg-f8tv">Which end of the fragment is sequencing<br></td>
-    <td class="tg-0pky">Just 1 end: Single end sequencing</td>
+    <td class="tg-4erg">Which end of the fragment is sequenced<br></td>
+    <td class="tg-0pky">1 end: Single end sequencing</td>
     <td class="tg-0pky">Both ends: Paired end sequencing</td>
     <td class="tg-0pky"></td>
   </tr>
   <tr>
-    <td class="tg-f8tv">Commercial platforms</td>
+    <td class="tg-4erg">Commercial platforms</td>
     <td class="tg-0pky">Illumina, BGI, PacBio, Nanopore, 10x, Nanostring, etc</td>
     <td class="tg-0pky"></td>
     <td class="tg-0pky"></td>
   </tr>
 </tbody></table>
-
 
 ### RNA Isolation Methods
 
@@ -144,7 +146,7 @@ Image source: [RNA Sequencing and Analysis (2015)](https://www.ncbi.nlm.nih.gov/
 
 After RNA is initially extracted, the RNA molecules are a mix of ribosomal RNA (rRNA), non-coding RNAs as well as messenger RNA (mRNA). The majority of RNA molecules are rRNA which are typically not of interest - a choice is then made on which RNA species are to be sequenced.
 
-```{r, echo=FALSE, out.width="50%", fig.cap="Estimate of RNA levels in a typical mammalian cells"}
+```{r, echo=FALSE, out.width="50%", fig.align = "center", fig.cap="Estimate of RNA levels in a typical mammalian cell"}
 knitr::include_graphics("images/experimental_design/rna_content.jpg")
 ```
 
@@ -240,7 +242,7 @@ While DGE is the most common type of analysis performed on RNAseq data, it is no
 knitr::include_graphics("images/experimental_design/fig_dif_splice_usage.png")
 ```
 
-Lastly, we can look at whether transcript levels are changing between two conditions, regardless of the gene of origin. 
+Additionally, we can look at whether transcript levels are changing between two conditions, regardless of the gene of origin. This is known as differential transcript expression.  
 ```{r, echo=FALSE, fig.align="center", fig.cap="The different types of differential expression analysis", out.width="100%"}
 knitr::include_graphics("https://f1000research.s3.amazonaws.com/manuscripts/19594/95bdb2a3-7459-4d64-9569-ad69d8910d35_figure1.gif")
 ```
