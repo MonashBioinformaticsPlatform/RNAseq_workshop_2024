@@ -1,6 +1,6 @@
 # Experimental Factors
 
-RNA-Seq is a powerful tool for capturing high-throughput gene expression. It captures the expression of thousands of genes in different samples for multiple conditions. A general approach to analysing RNA-seq data is to fit a linear model o each gene. The gene expression measurement for each gene has a mix of biological signal and unwanted noise. The methodology must be carefully though of to design a well-balanced experiment to perform a robust statistical analysis. After you have made decisions on the type of sequencing (long-read or short-read) and the type of RNA-Seq (full length/targeted/bulk/single-cell), there are other factors that can influence your experiment and need to be considered:
+RNA-Seq is a powerful tool for capturing high-throughput gene expression. It captures the expression of thousands of genes in different samples for multiple conditions. A general approach to analysing RNA-seq data is to fit a linear model to each gene. The gene expression measurement for each gene has a mix of biological signal and unwanted noise. The methodology must be carefully thought of to design a well-balanced experiment for a robust statistical analysis. After you have made decisions on the type of sequencing (long-read or short-read) and the type of RNA-Seq (full length/targeted/bulk/single-cell), the next step is to consider other factors that can influence your experiment.
   
 1. Select an appropriate source of samples: cell lines, animal models, patients, etc.
 
@@ -12,6 +12,10 @@ RNA-Seq is a powerful tool for capturing high-throughput gene expression. It cap
 
 6. Confounding factors: Sex, age, litter etc. 
 
+## Source of samples
+The primary goal of RNA-seq analysis is to identify differentially expressed genes between distinct groups or conditions. The source of samples can vary widely, ranging from cells cultured _in vitro_, whole tissues, sorted cells, homogeneous cell lines, or cells derived from a tissue or organ, either from a single patient or multiple patients. The choice of sample source introduces both wanted and unwanted variations in the data, which must be carefully addressed to ensure accurate analysis.
+
+For example, when assessing the effect of a treatment on cells from three different human liver cell lines, the biological differences between the cell lines may overshadow the treatment effect, leading to confounded results. Therefore, before performing differential expression analysis, it is crucial to account for and remove unwanted variations, such as those arising from the cell lines, to focus on the true biological differences caused by the treatment.
 
 ## Sample Replicates (technical/biological)
 
@@ -86,16 +90,34 @@ knitr::include_graphics("images/experimental_design/confounding.png")
 
 To avoid confounding, it is important to ensure the sample source/animals in each condition are all the same sex, age, litter, and batch, if possible. If this is not entirely possible, then make sure to split the animals equally between different conditions. Also ensure the samples are collected at the same time or randomise samples if they can’t be processed all at one time. It's best to discuss he experimental design with a bioinformatcian before conducting the experiment.
 
-As a general rule for a standard RNA-Seq experiment, the number of biological replicates should at the very least be 2, but its ideal to have 3 or more replicates, and a sequencing depth of 10M to 20M reads per sample is usually enough.
 
-To summarise, 
+## Summary
+As a general rule for a standard RNA-Seq experiment, at least two biological replicates should be included, though it is ideal to have three or more replicates to increase statistical power. A sequencing depth of 10 to 20 million reads per sample is typically sufficient for standard gene expression analysis.
 
-As a general rule for a standard RNA-Seq experiment, the number of biological replicates should at the very least be 2, but its ideal to have 3 or more replicates, and a sequencing depth of 10M to 20M reads per sample is usually enough.
+Careful experimental design is critical, with sufficient replicates and randomization of samples to ensure the capture of both within-group and between-group variations while minimizing technical noise. Incorporating these considerations into the experimental design matrix is essential for ensuring robust differential expression (DE) analysis, which will be further explored in the following sections.
 
-The experiment needs to be designed carefully with sufficient replicates and well randomised samples, to capture enough within group and between group variations while minimising noise.
 
- Noise.
 
-## Designing the model matrix and setting contrasts
+```{r, echo=FALSE, fig.align="center", fig.cap ="Summary: Factors affecting the outcome of an RNA-Seq experiment ([source](https://www.amazon.com/Experimental-Design-Laboratory-Biologists-Reproducibility/dp/1107424887)).", out.width="700px", out.height="200px"}
+knitr::include_graphics("images/experimental_design/exp-factors.png")
+```
 
-The model matrix
+
+## Challenge - Design a RNA Seq experiment.
+The project goal is to study the expression profiles of basal stem-cell (B) and luminal cells (L) in the mammary gland of virgin, pregnant and lactating mice. The data has already been mapped against the GRCm39 genome assembly.
+
+1. How many groups are there in this experiment?
+
+* Mm_Virgin_A
+* Mm_Virgin_B
+* Mm_Virgin_C
+* Mm_preg_A
+* Mm_preg_B
+* Mm_preg_C
+* Mm_lact_A
+* Mm_lact_B
+* Mm_lact_C
+
+2. The samples were handled in groups of A, B and C. Create a sample sheet for the experimental design including all relevant factors that might affect the outcome.
+
+
