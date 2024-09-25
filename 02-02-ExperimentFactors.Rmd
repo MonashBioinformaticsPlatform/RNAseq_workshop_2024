@@ -69,7 +69,7 @@ In these situations, sample pooling becomes a viable strategy.
 
 Pooling of RNA samples involves mixing RNA molecules extracted from independent biological samples within the same population—such as a specific experimental or biological condition, or the same tissue—before library preparation. This approach reduces the number of replicates required and, consequently, lowers the overall cost of the experiment. The library created from pooled samples represents a composite of biological samples, capturing sufficient biological variation while requiring fewer replicates.
 
-This method offers two main advantages: it reduces the cost of sequencing and increases the statistical power for differential gene expression (DGE) analysis, enabling researchers to draw more meaningful conclusions even under resource constraints. [@takele2020utility].
+This method offers two main advantages: it reduces the cost of sequencing and increases the statistical power for differential gene expression (DGE) analysis, enabling researchers to draw more meaningful conclusions even under resource constraints.
 
 ## Batches and their effects
 
@@ -104,7 +104,7 @@ knitr::include_graphics("images/experimental_design/exp-factors.png")
 ```
 
 
-## Challenge - Design a RNA Seq experiment.
+## Challenge - Design a RNA Seq experiment. {- .challenge}
 The project goal is to study the expression profiles of basal stem-cell (B) and luminal cells (L) in the mammary gland of virgin, pregnant and lactating mice. The data has already been mapped against the GRCm39 genome assembly.
 
 1. How many groups are there in this experiment? Design an experiment to compare the different groups. 
