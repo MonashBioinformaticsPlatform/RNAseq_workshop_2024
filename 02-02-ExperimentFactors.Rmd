@@ -1,6 +1,6 @@
 # Experimental Factors
 
-RNA-Seq is a powerful tool for capturing high-throughput gene expression. It captures the expression of thousands of genes in different samples for multiple conditions. A general approach to analysing RNA-seq data is to fit a linear model to each gene. The gene expression measurement for each gene has a mix of biological signal and unwanted noise. The methodology must be carefully thought of to design a well-balanced experiment for a robust statistical analysis. After you have made decisions on the type of sequencing (long-read or short-read) and the type of RNA-Seq (full length/targeted/bulk/single-cell), the next step is to consider other factors that can influence your experiment.
+RNA-Seq is a powerful tool for capturing high-throughput gene expression. It captures the expression of thousands of genes in different samples across multiple conditions. A general approach to analysing RNA-seq data is to fit a linear model to each gene. The gene expression measurement for each gene has a mix of biological signal and unwanted noise. The methodology must be carefully thought of to design a well-balanced experiment for a robust statistical analysis. After you have made decisions on the type of sequencing (long-read or short-read) and the type of RNA-Seq (full-length/targeted/bulk/single-cell), the next step is to consider other factors that can influence your experiment.
   
 1. Select an appropriate source of samples: cell lines, animal models, patients, etc.
 
@@ -62,9 +62,10 @@ In this experiment, X1, X2, and X3 are the biological replicates for the normal 
 During the era of microarrays, technical replicates were crucial to account for the variability arising from the technology itself. However, with the advent of current RNA-Seq technologies, technical variation has significantly diminished, rendering technical replicates less necessary. In contrast, biological replicates remain indispensable for differential expression analysis. Increasing the number of biological replicates enhances the accuracy of biological variation estimates and the precision of mean expression level estimates. This, in turn, leads to better data modeling and the identification of more differentially expressed genes. The emphasis, therefore, is on maximizing biological replicates to capture the true variability in biological systems.
 
 ## Sample pooling
-Although a lower average sequencing depth combined with multiple replicates may be adequate for a standard RNA-seq experiment, a higher sequencing depth is essential for more precise measurements of gene expression, especially when detecting lowly expressed genes or conducting isoform-level differential expression analysis. In such cases, it is also important to increase the number of biological replicates to effectively capture within-group biological variability.
+Although it is ideal to have multiple replicates for each condition with a high sequencing depth, there can be factors like factors like budget constraints, limited input RNA or substantial within-group biological variability can significantly impact the outcome of RNA-seq experiments.
 
-However, factors like budget constraints, limited input RNA, or substantial within-group biological variability can significantly impact the outcome of RNA-seq experiments. In these situations, sample pooling becomes a viable strategy.
+One could cut the cost by opting for a lower average sequencing depth combined with multiple replicates may be adequate for a standard RNA-seq experiment. But a higher sequencing depth is essential for more precise measurements of gene expression, especially when detecting lowly expressed genes or conducting isoform-level differential expression analysis. In such cases, it is also important to increase the number of biological replicates to effectively capture within-group biological variability.
+In these situations, sample pooling becomes a viable strategy.
 
 Pooling of RNA samples involves mixing RNA molecules extracted from independent biological samples within the same population—such as a specific experimental or biological condition, or the same tissue—before library preparation. This approach reduces the number of replicates required and, consequently, lowers the overall cost of the experiment. The library created from pooled samples represents a composite of biological samples, capturing sufficient biological variation while requiring fewer replicates.
 
@@ -106,7 +107,7 @@ knitr::include_graphics("images/experimental_design/exp-factors.png")
 ## Challenge - Design a RNA Seq experiment.
 The project goal is to study the expression profiles of basal stem-cell (B) and luminal cells (L) in the mammary gland of virgin, pregnant and lactating mice. The data has already been mapped against the GRCm39 genome assembly.
 
-1. How many groups are there in this experiment?
+1. How many groups are there in this experiment? Design an experiment to compare the different groups. 
 
 * Mm_Virgin_A
 * Mm_Virgin_B
