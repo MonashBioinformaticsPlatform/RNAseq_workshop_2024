@@ -21,7 +21,7 @@ There are some main aspects to planning an RNAseq experiment:
 2. What sequencing technology will be used - can the selected protocol answer the research question
 3. What is the experimental design - will the number of collected samples have enough statistical power to answer the research question? Are there confounding factors that might obscure the effect of biology that we want to study?
 4. What is the budget for the proposed experiment?
-5. What sort of analysis can be performed with the data that has been generated from the experiment?
+5. What sort of analysis can be performed with the data that has been generated from the experiment? Are there already established analytical workflows or are you going to need to do some ad hoc analysis?
 
 Having a clear research goal guides subsequent choices in terms of the type of RNAseq performed and the number of samples. The first, second and third aspects are limited and linked by cost. The ideal protocol for answering your research question might be prohibitively expensive - so you may opt for a different protocol. The ideal experimental design may require more samples than you can either afford to collect or are able to collect due to multitude of factors including ethical approval or sample rarity. It is very common for RNAseq experiments to be limited in the number of biological replicates collected due to the cost. 
 
@@ -36,27 +36,24 @@ knitr::include_graphics("https://media.springernature.com/lw685/springer-static/
 #Image source: [From bulk, single-cell to spatial RNA sequencing (2021)](https://www.nature.com/articles/s41368-021-00146-0)
 ```
 
-There are many choices to be made in designing an experiment and it is easy to feel overwhelmed by these choices. Consulting with relevant experts such as sequencing providers and bioinformaticians prior to carrying out the experiment can aid in this process. It is also allows you to anticipate potential complexities that may arise in the analysis of the data and mitigate them. It might take several iterations and consultations to settle on a design that will achieve the most of your research outcomes. It's also important to have an idea of how the generated data can then be analysed - there is not much point generating data if it cannot be used.
+There are many choices to be made in designing an experiment and it is easy to feel overwhelmed by these choices. Consulting with relevant experts such as sequencing providers and bioinformaticians prior to carrying out the experiment can aid in this process. It is also allows you to anticipate potential complexities that may arise in the analysis of the data and mitigate them. It might take several iterations and consultations to settle on a design that will achieve the most of your research outcomes. It's also important to have an idea of how the generated data can then be analysed - will you be able to analyse it yourself or will you need to get someone else to do it?
 
 RNAseq data can be used for a variety of purposes. Broadly speaking, it can be used in 2 different ways:
 
 - qualitatively: what is expressed? (e.g genes, isoforms, specific exons, intron retention, etc). RNAseq provides *annotation* information
-- quantatively: how much is expressed? Specifically, has the amount changed in response to a variable? RNAseq provides *expression* information.
+- quantatively: how much is expressed? Usually we want to know has the amount changed in response to a variable? RNAseq provides *expression* information.
 
-This capability for simultaneous discovery and quantification at the whole transcriptome is a key reason that cemented RNAseq as the technology of choice for studying RNA. Previous technologies such as microarrays used probes based on already known genes. 
+This capability for simultaneous discovery and quantification at the whole transcriptome level is a key reason that cemented RNAseq as the technology of choice for studying RNA. Previous technologies such as microarrays used probes based on already known genes. 
 
-```{r, fig.cap="", echo=FALSE, out.width="100%", fig.cap="RNAseq captures two layeres of information: what is expressed and how much is expressed"}
-knitr::include_graphics("https://images.squarespace-cdn.com/content/v1/59a1d86e6a49631dd51560f2/1546220317582-R09TS3DSWVDNADNQ3M1S/Figure1-01.png?format=2500w")
+```{r, fig.cap="", echo=FALSE, out.width="100%", fig.cap="RNAseq captures two layers of information: what is expressed and how much is expressed"}
+knitr::include_graphics("images/experimental_design/rnaseq_data.png")
 ```
 
-Image source: [Compbio 022: Differential splicing and transcripts - Not as simple as it first appears](https://www.badgrammargoodsyntax.com/compbio/2018/12/31/compbio-022-differential-splicing-and-transcripts-not-as-simple-as-it-first-appears)
+
+The most common use is quantative analysis of gene expression changes, though isoform level differential analysis can also be performed. RNAseq can be used for discovery, such as detection of novel transcripts, alternate splicing, exon skipping, intron retention or fusion genes. In organisms without a reference genome, RNAseq data can be used for de novo transcriptome assembly. 
 
 
-The most common use is quantative analysis of gene expression changes, though isoform level differential analysis can also be performed. RNAseq can simultaneously be used for discovery, such as detection of novel transcripts, alternate splicing, exon skipping, intron retention or fusion genes. In organisms without a reference genome, RNAseq data can be used for de novo transcriptome assembly. 
-
-
-
-The most common type of RNAseq experiment is a short read bulk experiment for the purpose of identifying differentially expressed genes in a given organism. This workshop has been designed with this understanding that this is the type of analysis that most researchers intend to perform but it is not the only application of RNAseq. This chapter will give an overview of the types of RNAseq protocols available to illustrate the field but the rest of the workshop will focus on short read bulk RNAseq.
+The most common type of RNAseq experiment is a short read bulk experiment for the purpose of identifying differentially expressed genes in a given organism. This workshop has been designed with this understanding that this is the type of analysis that most researchers intend to perform but it is not the only application of RNAseq. This chapter will give an overview of the types of RNAseq protocols available to illustrate the field but the rest of the workshop will predominantly focus on short read bulk RNAseq.
 
 ## Before you begin: questions to consider…
 
@@ -157,7 +154,9 @@ knitr::include_graphics("images/experimental_design/rna_content.jpg")
 
 Image source: [Non-coding RNA: what is functional and what is junk? 2015](https://www.frontiersin.org/journals/genetics/articles/10.3389/fgene.2015.00002/full)
 
-- Ribosomal depletion: this method removes rRNA, leaving the mRNA, precursor messenger RNA (pre-mRNA) and non-coding RNAs. This is used for whole transcriptome sequencing or total RNA sequencing: sequencing of all RNA molecules (rRNA exluded) and is useful studying non-coding RNAs in addition to mRNA. 
+There are a few common methods to isolate RNA:
+
+- Ribosomal depletion: this method removes rRNA, leaving the mRNA, precursor messenger RNA (pre-mRNA) and non-coding RNAs. This is used for whole transcriptome sequencing or total RNA sequencing: sequencing of all RNA molecules (rRNA exluded) and is useful studying for non-coding RNAs in addition to mRNA.
 
 - PolyA pulldown: this targets only RNA with a polyA tail - enriching for mRNAs. This is used for mRNA sequencing and is used when only the coding RNAs are of interest.
 
@@ -166,7 +165,6 @@ Image source: [Non-coding RNA: what is functional and what is junk? 2015](https:
 ### Targeted RNAsequencing
 
 Not every gene needs to be assayed in an RNAseq experiment. Targeted RNAseq allows researchers to focus on a subset of genes of interest. This can be done either with enrichment or amplicon methods and can be used with low quality samples. 
-
 
 ### Short & Long Read Sequencing
 
@@ -246,7 +244,7 @@ The most common use for RNAseq is to identify differentially expressed genes in 
 
 ### Differential Expression Analysis
 
-The most common type of analysis performed with RNAseq data is differential gene expression (DGE) analysis. This type of analysis looks at the difference in abundance for genes between 2 or more conditions. The conditions should have a suitable control condition that provides a baseline measurement that another condition can be compared against.
+The most common type of analysis performed with RNAseq data is differential gene expression (DGE) analysis. This type of analysis looks at the difference in abundance for genes between 2 or more conditions. The conditions should have a suitable control condition that provides a baseline measurement that another condition can be compared against. 
 
 ```{r, echo=FALSE, fig.align="center", fig.cap ="With a bulk RNAseq experiment, we usually want to examine changes in transcript abundance in an organism. We do this by comparing the gene expression levels in an experimental condition against the gene expression levels in a control condition"}
 knitr::include_graphics("images/experimental_design/fig_dge.png")
@@ -260,7 +258,7 @@ knitr::include_graphics("images/experimental_design/fig_dif_splice_usage.png")
 ```
 
 Additionally, we can look at whether transcript levels are changing between two conditions, regardless of the gene of origin. This is known as differential transcript expression.  
-```{r, echo=FALSE, fig.align="center", fig.cap="The different types of differential expression analysis", out.width="100%"}
+```{r, echo=FALSE, fig.align="center", fig.cap="The types of differential expression analysis", out.width="100%"}
 knitr::include_graphics("https://f1000research.s3.amazonaws.com/manuscripts/19594/95bdb2a3-7459-4d64-9569-ad69d8910d35_figure1.gif")
 ```
 
@@ -314,43 +312,14 @@ knitr::include_graphics("https://media.springernature.com/lw685/springer-static/
 
 Image source: [GFusion: an Effective Algorithm to Identify Fusion Genes from Cancer RNA-Seq Data, 2017](https://www.nature.com/articles/s41598-017-07070-6)
 
-### Epigenetic Integration
+### 'Omics Integration
 
-> Refer to https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-0881-8#Sec20
->
-> What is it
-> 
-> Why would you want to do it
-> 
-> How would you do it
+RNAseq data can be combined with other types of sequencing technolgy to provide deeper insights into gene regulation and molecular function.
 
 
-## Designing a Bulk RNAseq Experiment
-
-> Knowing what you want to study will determine the protocol
->
-> This should probably be the last section
->
-> This section should have an example where there is a research question and then how you'd design an RNAseq experiment to answer that question
->
-> Have an exercise here that builds on the previous sections to get participants to design their own experiment based on what they are interested in
 
 
-The simplest experimental setup for an RNAseq experiment would be 2 conditions of interest: a control condition and an experimental condition. By comparing the gene expression levels in the experimental condition against the expression levels in the control condition, we can determine which genes are responding to the experimental condition. The experimental condition could be a drug treatment, knocking out a gene of interest, over expressing a gene of interest, a different type of diet, etc. The control condition is our baseline measurement - we compare the gene expression levels in our experimental condition to the gene expression levels in the control condition. 
+### Discussion: Design A Bulk RNAseq Experiment {- .challenge}
 
-> Maybe move these figures around
+You want to examine the impact of several different growth conditions in a specific bacterial strain and your interest is mostly in changes to gene expression. A side goal of your project is to look at small RNA changes. Assuming you have no limitations on your budget, what are some considerations you'd have in designing a potential RNAseq experiment for this project?
 
-
-### Pooling Samples
-
-> What is a pooled sample
->
-> Why might we use a pooled sample (bulk RNAseq)
->
-> If we've pooled a sample - does a pooled sample count as multiple biological samples or do we still need replicates 
-
-Sometimes, it is difficut to get enough biological material from one individuals to generate a sample. In such a situation, a researcher might choose to collect material from multiple individuals and pool it together to generate a sample. This is called a pooled sample - we have combined the RNA from differents individuals together to get a single sample. This sometimes causes confusion as to whether this sample counts as multiple biological samples and if more replicates are needed. In most cases, this pooled sample counts as one biological replicate and more replicates are still required for your experiment.
-
-Typically we do not have information about which individual an RNA molecule belongs to in the pooled sample. For each gene, we will have a single value - the combined amount from the different individuals that made up the pooled sample. 
-
-If the RNA molecules are tagged or barcoded in such a way prior to pooling that we are then able to identify which individual the RNA molecule came from, then we can leverage that information 
