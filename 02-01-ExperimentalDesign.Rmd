@@ -327,7 +327,7 @@ You want to examine the impact of several different growth conditions in a speci
 
 
 
-### Before you begin: questions to consider…
+### Before you begin an experiment: some questions to consider…
 
 The questions below are a few that might help in planning an experiment:
 
