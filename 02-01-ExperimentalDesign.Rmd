@@ -3,7 +3,7 @@
 
 Broadly speaking, RNAseq is a next generation sequencing technique for profiling all or selected target RNA molecules in a given biological system. It typically involves isolating RNA, converting to cDNA, ligating adapter sequences to the cDNA then amplifying by PCR to construct a library that can be used for sequencing. A diverse ecosystem of protocols and technology exist that can be used to generate RNAseq data, which can be used in a wide variety of applications. 
 
-```{r, echo=FALSE, out.width="100%", fig.cap="Overview of the steps in an RNAseq experiment. At each of these steps, there are choices that are made that can influence the final output of the experiment."}
+```{r, echo=FALSE, out.width="90%", fig.cap="Overview of the steps in an RNAseq experiment. At each of these steps, there are choices that are made that can influence the final output of the experiment."}
 knitr::include_graphics("images/experimental_design/overview_rnaseq.png")
 ```
 
@@ -231,7 +231,7 @@ The most common use for RNAseq is to identify differentially expressed genes in 
 
 The most common type of analysis performed with RNAseq data is differential gene expression (DGE) analysis. This type of analysis looks at the difference in abundance for genes between 2 or more conditions. The conditions should have a suitable control condition that provides a baseline measurement that another condition can be compared against. 
 
-```{r, echo=FALSE, fig.align="center", fig.cap ="With a bulk RNAseq experiment, we usually want to examine changes in transcript abundance in an organism. We do this by comparing the gene expression levels in an experimental condition against the gene expression levels in a control condition"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap ="With a bulk RNAseq experiment, we usually want to examine changes in transcript abundance in an organism. We do this by comparing the gene expression levels in an experimental condition against the gene expression levels in a control condition"}
 knitr::include_graphics("images/experimental_design/fig_dge_barplot.png")
 ```
 
@@ -300,7 +300,7 @@ Image source: [A simple guide to de novo transcriptome assembly and annotation (
 
 RNAseq can have clinical applications. One such application is the detection of fusion genes - these can arise due to chromosomal rearrangements combining the coding regions of two genes. These genes can produce aberrant proteins and lead to cancer development if the fused genes are oncogenes or tumor suppresor genes. Therefore, detection of fusion genes can be an important diagnostic tool in clinical settings as well as for cancer research.
 
-```{r, echo=FALSE, out.width="100%"}
+```{r, echo=FALSE, out.width="90%"}
 knitr::include_graphics("https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41598-017-07070-6/MediaObjects/41598_2017_7070_Fig2_HTML.jpg?as=webp")
 ```
 
@@ -311,7 +311,7 @@ Image source: [GFusion: an Effective Algorithm to Identify Fusion Genes from Can
 
 RNAseq data can be combined with other types of genome wide to provide deeper insights into gene regulation and molecular function. Combining with epigenetic data such as ChIPseq and ATACseq can be used to examine gene regulatory networks in a tissue of interest. There are tools that can take chromatin data and trancriptomic data to classify transcription factor activity as either activating and repressive on target genes. DNA methylation and histone modifications can also be correlated with gene expression data .
 
-```{r, out.width="100%", fig.cap="Overview of the general setup of computational tools to infer transcription factor activity (TFA)"}
+```{r, echo=FALSE, out.width="100%", fig.cap="Overview of the general setup of computational tools to infer transcription factor activity (TFA)"}
 knitr::include_graphics("https://analyticalsciencejournals.onlinelibrary.wiley.com/cms/asset/a6a72698-33cf-451f-8056-dc632e6b23b5/pmic13741-fig-0002-m.png")
 ```
 
@@ -327,7 +327,7 @@ You want to examine the impact of several different growth conditions in a speci
 
 
 
-### Before you begin an experiment: some questions to consider…
+## Before you begin an experiment: some questions to consider…
 
 The questions below are a few that might help in planning an experiment:
 
