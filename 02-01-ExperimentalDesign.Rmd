@@ -174,7 +174,7 @@ Not every gene needs to be assayed in an RNAseq experiment. Targeted RNAseq allo
 
 ### Short & Long Read Sequencing
 
-```{r, echo=FALSE, fig.align="center", fig.cap="Alternative splicing and RNA technologies", out.width="95%"}
+```{r, echo=FALSE, fig.align="center", fig.cap="Alternative splicing and RNA technologies", out.width="95%", out.height="70%"}
 knitr::include_graphics("https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/bin/fgene-14-997383-g002.jpg")
 ```
 
@@ -237,16 +237,16 @@ knitr::include_graphics("images/experimental_design/fig_dge_barplot.png")
 
 After identifying differentially expressed genes, it is common to perform some type of pathway enrichment analysis or gene set enrichment to find molecular pathways or biologically processes that these genes are involved with. This can allow the researcher to identify trends that might be hard to notice when looking at individual genes.
 
-```{r, out.width="100%", fig.cap="Dotplots of the results from overrepresentation anaylsis (ORA) and gene set enrichment analysis (GSEA)"}
+```{r, echo=FALSE, out.width="100%", fig.cap="Dotplots of the results from overrepresentation anaylsis (ORA) and gene set enrichment analysis (GSEA)"}
 knitr::include_graphics("https://yulab-smu.top/biomedical-knowledge-mining-book/biomedicalKnowledge_files/figure-html/Dotplotcap-1.png")
 ```
 
-Image source: [Biomedical Knowledge Mining using GOSemSim and clusterProfiler, ](https://yulab-smu.top/biomedical-knowledge-mining-book/enrichplot.html)
+Image source: [Biomedical Knowledge Mining using GOSemSim and clusterProfiler](https://yulab-smu.top/biomedical-knowledge-mining-book/enrichplot.html)
 
 
 While DGE is the most common type of analysis performed on RNAseq data, it is not the only type of differential test that can be performed with RNAseq data. DGE analysis ignores what is happening at the isoform level and looks at global gene abundance changes only. Instead, an RNAseq dataset can be analysed to look at changes at the transcript level, to see if the change in conditions is also affecting multiple isoforms for a gene differently. 
 
-```{r, echo=FALSE, fig.align="center", fig.cap ="In a DGE analysis, this gene might be ignored for having no change in expression when actually a switch is occuring amongst the isoforms that are being produced"}
+```{r, echo=FALSE, fig.align="center", out.width="90%", fig.cap ="In a DGE analysis, this gene might be ignored for having no change in expression when actually a switch is occuring amongst the isoforms that are being produced"}
 knitr::include_graphics("images/experimental_design/fig_dif_splice_usage.png")
 ```
 
@@ -332,7 +332,7 @@ You want to examine the impact of several different growth conditions in a speci
 The questions below are a few that might help in planning an experiment:
 
 - do you want to assay changes in gene expression? 
-- Do you want to identify novel transcripts?
+- do you want to identify novel transcripts?
 - do you intend to study transcriptomic changes in individual cells or the tissue level? (single versus bulk RNAseq)
 - do you want to characterise isoforms/study alternative splicing? (short versus long read sequencing)
 - will you pull down transcripts with a poly A tail (poly-A selection) or deplete ribosomal genes (ribo depletion)? Does your organism produce mRNA with a polyA tail?
