@@ -32,6 +32,7 @@ There is no single RNAseq technology that is optimised for answering every resea
 knitr::include_graphics("images/experimental_design/ngs_technology.png")
 ```
 
+
 There are many choices to be made in designing an experiment and it is easy to feel overwhelmed by these choices. Consulting with relevant experts such as sequencing providers and bioinformaticians prior to carrying out the experiment can aid in this process. It is also allows you to anticipate potential complexities that may arise in the analysis of the data and mitigate them. It might take several iterations and consultations to settle on a design that will achieve the most of your research outcomes. It's also important to have an idea of how the generated data can then be analysed - will you be able to analyse it yourself or will you need to get someone else to do it?
 
 RNAseq data can be used for a variety of purposes. Broadly speaking, it can be used in 2 different ways:
@@ -234,6 +235,19 @@ The most common type of analysis performed with RNAseq data is differential gene
 ```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap ="With a bulk RNAseq experiment, we usually want to examine changes in transcript abundance in an organism. We do this by comparing the gene expression levels in an experimental condition against the gene expression levels in a control condition"}
 knitr::include_graphics("images/experimental_design/fig_dge_barplot.png")
 ```
+
+
+
+```{r, echo=FALSE, out.width="100%", eval=FALSE, include=FALSE}
+# We'll get into this later in the workshop but broadly speaking, we align reads to the genome and then count how many reads map to an annotated gene. This produces a counts table - where the rows are the genes, the columns are samples and the values are the raw counts for that gene for that sample
+knitr::include_graphics("https://hbctraining.github.io/Intro-to-rnaseq-hpc-O2/img/count-matrix.png")
+```
+
+```{r, echo=FALSE, out.width="100%", fig.cap="DGE analysis is usually asking if there is a signficant difference between the mean expression levels of the conditions"}
+knitr::include_graphics("https://hbctraining.github.io/DGE_workshop_salmon_online/img/Differential_expression.png")
+```
+
+Image source: [Gene-level differential expression analysis with DESeq2](https://hbctraining.github.io/DGE_workshop_salmon_online/lessons/04a_design_formulas.html)
 
 After identifying differentially expressed genes, it is common to perform some type of pathway enrichment analysis or gene set enrichment to find molecular pathways or biologically processes that these genes are involved with. This can allow the researcher to identify trends that might be hard to notice when looking at individual genes.
 
