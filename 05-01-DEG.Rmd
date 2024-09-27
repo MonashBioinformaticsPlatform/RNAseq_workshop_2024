@@ -4,13 +4,13 @@
 
 ![](images/degust/degust.png){width="100%"}
 
-We will now use a web application called [Degust](https://degust.erc.monash.edu/) for statistical analysis of our data. Degust is developed by David Powell at Monash University. It provides an richly interactive interface to widely used R packages for statistical analysis of RNA-Seq data, primarily limma and edgeR which are developed at the Walter and Eliza Hall Institute.
+We will now use a web application called [Degust](https://degust.erc.monash.edu/) for statistical analysis of our data. Degust is developed by David Powell at Monash University. It provides an richly interactive interface to widely used R packages for statistical analysis of RNA-Seq data, primarily [limma](https://www.bioconductor.org/packages/release/bioc/html/limma.html) and [edgeR](https://www.bioconductor.org/packages/release/bioc/html/edgeR.html) which are developed at the Walter and Eliza Hall Institute.
 
 ## Re-introducing the example dataset
 
 We will be looking at data from the project [SRP062287](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SRP062287) in the Sequence Read Archive (SRA). Read counts can be found in [GSE71960](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE71960) in Gene Expression Omnibus (GEO), but in this workshop we have produced our own read counts. The data is associated with [this publication](https://doi.org/10.1210/me.2013-1164).
 
-Triple-negative breast cancer cell line MDA-MB-468 has been engineered to have an inducible ERβ estrogen receptor. This gene is expressed when treated with doxycycline ("plusdox"). Some samples are also be treated with estrogen E2. We expect interesting things to happen when both the estrogen receptor and the estrogen are present.
+Triple-negative breast cancer cell line MDA-MB-468 has been engineered to have an inducible ERβ estrogen receptor. This gene is expressed when treated with doxycycline ("plusdox"). Some samples are also be treated with estrogen E2. We expect interesting changes to happen when both this particular estrogen receptor and estrogen are present.
 
 There are 12 samples in 4 conditions. "DMSO_nodox" is our control condition, and we have three further conditions with doxycycline, E2, and both. Samples were produced in three replications of the experiment.
 
@@ -35,17 +35,17 @@ These 12 read sets have been run through the nf-core/rnaseq pipeline using the [
 
 &rarr; [laxy.io output](https://laxy.io/#/job/3pLfQoLEuWeAnWh4H3Vvbv/?access_token=e0124ee9-c8ad-4164-b59f-ca2ae0ce4d2a)
 
-<!--We will use the file `counts.star_featureCounts.tsv`, which counts reads unambiguously aligned to genes in a straightforward way. See later for a discussion of different ways of counting. -->
+We will use `counts.star_featureCounts.tsv`. Download this file from Laxy (or save this [alternative download](https://raw.githubusercontent.com/MonashBioinformaticsPlatform/RNAseq_workshop_2024/refs/heads/main/files/counts.star_featureCounts.tsv)). 
 
-We will use `salmon.merged.gene_counts.biotypes.tsv`. Download this file and then upload it to [Degust](https://degust.erc.monash.edu/). We now need to configure Degust:
+Now go to [Degust](https://degust.erc.monash.edu/) and press the "Upload your counts file..." to upload the file. You should end up on a configuration screen.
 
-* In "Info columns" add at least "gene_id" and "gene_name".
+* In "Info columns" add at least "Geneid" and "gene_name". 
+* For "Main", select "gene_name".
+* Give your samples meaningful names using the "Rename Samples" button.
 * Using the "Add condition" button, add four conditions. Add samples to each condition as in the table above.
 * Press "Save changes".
 
-Note: You can also give the samples more informative names using the "Rename Samples" button.
-
-![](images/degust/configuration.png){width="100%"}
+![](images/degust/configuration_featureCounts.png){width="100%"}
 
 ## Gene expression filter
 
@@ -66,8 +66,9 @@ If few samples have a count of more than around 10, we can safely discard them. 
 
 <!-- &rarr; [Degust page set up as described](https://degust.erc.monash.edu/degust/compare.html?code=d4453d6c1cbf8f7c0c876732a4bc0ba5#/) -->
 <!-- &rarr; [Degust page set up as described](https://degust.erc.monash.edu/degust/compare.html?code=e48b17563f95769c842c7c33d6b73de2#/) -->
+<!-- &rarr; [Degust page set up as described (salmon)](https://degust.erc.monash.edu/degust/compare.html?code=af18f703bd969885c267a74dbadc08b9#/) -->
+&rarr; [Degust page set up as described](https://degust.erc.monash.edu/degust/compare.html?code=fd2473ef35acac14637b28640b3047e4#/)
 
-&rarr; [Degust page set up as described](https://degust.erc.monash.edu/degust/compare.html?code=af18f703bd969885c267a74dbadc08b9#/)
 
 ### Our filtering rules of thumb {- .rationale}
 
@@ -105,7 +106,7 @@ Suppose we perform a test on each of 20,000 genes, with a p-value cutoff of 0.05
 
 The False Discovery Rate adjustment controls the proportion of false discoveries you make amongst all discoveries. So if you set an FDR cutoff of 0.05, and found 100 differentially expressed genes, then about `100 * 0.05 = 5` of these would be false discoveries.
 
-FDR adjustment is a bit strange: the more discoveries you make, the more false discoveries you are willing to tolerate amongst them, and the higher the corresponding p-value threshold. This is in contrast to an earlier method of p-value adjustment which controlled the Family Wise Error Rate (FWER), i.e. controlling the chance of making *any* false discoveries, which would correspond to a very small p-value threshold no matter how many discoveries you are making.
+FDR adjustment is a bit strange: the more discoveries you make, the more false discoveries you are willing to tolerate amongst them, and the higher the corresponding p-value threshold. This is in contrast to an earlier method of p-value adjustment which controlled the Family-Wise Error Rate (FWER), i.e. controlling the chance of making *any* false discoveries, which would correspond to a very small p-value threshold no matter how many discoveries you are making.
 
 
 
@@ -121,7 +122,7 @@ We discover a larger number of DE genes. We can try to focus on biologically int
 
 * Set the "abs logFC" (absolute log2 fold change) cutoff to 1. 
 
-We now only see genes with at least a 2-fold change between any two conditions.
+We now only see genes with at least a 2-fold difference between the conditions with minimum and maximum expression.
 
 ### Your turn: Compare pairs of conditions {- .challenge}
 
@@ -202,10 +203,9 @@ Here, the "E2_plusdox vs DMSO_plusdox" comparison leans strongly left as we woul
 
 Multi-Dimensional Scaling (MDS) provides a 2D layout of your samples, attempting to preserve "distances" between the samples. MDS is very similar to Principal Components Analysis (PCA). In fact in Degust it is exactly PCA.
 
-(We call it an MDS plot rather than a PCA plot because it's based on the plotMDS function in the limma package. The limma version uses a slightly different distance calculation method by default.)
+(We call it an MDS plot rather than a PCA plot because it's based on the `plotMDS` function in the limma package. The limma version uses a slightly different distance calculation method by default.)
 
-Ideally the MDS layout will separate your samples into experimental groups. If your samples have a batch effect, this may also separate the samples along a different direction. If your samples are all jumbled together you will be sad, as you are unlikely to find many differentially expressed genes. You might also notice one or two outlier samples. 
-You could consider excluding these samples from the analysis - ideally with additional justification based on the raw-read and alignment level QC explored earlier.
+Ideally the MDS layout will separate your samples into experimental groups. If your samples have a batch effect, this may also separate the samples along a different direction. If your samples are all jumbled together you will be sad, as you are unlikely to find many differentially expressed genes. You might also notice one or two outlier samples. You could consider excluding these samples from the analysis, ideally with additional justification based on the raw-read and alignment level QC explored earlier.
 
 The PCA is calculated on log2(CPM+moderation), where "moderation" is a constant you can adjust. The moderation reduces the amount of noise in genes with low counts. Also the PCA can be calculated on only the most variable genes ("Num genes"). Adjusting these parameters might clean up your MDS layout a little.
 
@@ -233,11 +233,13 @@ The MDS plot indicated a batch effect. Can you see some of the genes affected by
 
 Replicates seem to be a source of variation. If we can include this in our model of the data, possibly allowing us to discover more differentially expressed genes.
 
-Under the hood, the packages Degust uses are fitting a "linear models" for each gene. Linear models give us a great deal of flexibility analysing different experimental design. If you configure Degust wrong, such as including a sample in multiple conditions, Degust will go ahead and fit the corresponding linear model, but the results may not make sense and there may not be an error. See the end of this section to learn more about linear models.
+Under the hood, the R packages Degust uses fit a "linear models" for each gene. Linear models give us a great deal of flexibility analysing different experimental design. However if you configure Degust wrongly, such as including a sample in multiple conditions, Degust will go ahead and fit the corresponding linear model, but the results may not make sense and there may not be an error. See the end of this section for links to learn more about linear models.
 
 **To adjust for a nuisance factor with n levels, the rule is that we include n-1 of the levels as "hidden factors" in Degust.** The choice of which n-1 levels should not make a difference.
 
 Here our nuisance factor is "replicate". Add hidden factors for replicate 2 and replicate 3. Do you discover more differentially expressed genes?
+
+![](images/degust/hidden_factors_named.png){width="100%"}
 
 
 ## Interactions
@@ -248,22 +250,36 @@ It is possible to directly test for an interaction between two factors in the ex
 
 We want: (E2_plusdox - DMSO_plusdox) - (E2_nodox - DMSO_nodox)
 
+![](images/degust/interaction.png){width="75%"}
+
 This asks "is the effect of adding estrogen different when the estrogen gene is induced?"
 
 Once this is configured, you can choose it to test in the top-left box of the main page.
 
-&rarr; [Degust page with batches and interaction configured](https://degust.erc.monash.edu/degust/compare.html?code=25377977832e85d06680cb283638574d#/)
+<!-- &rarr; [Degust page with batches and interaction configured (salmon)](https://degust.erc.monash.edu/degust/compare.html?code=25377977832e85d06680cb283638574d#/) -->
+
+&rarr; [Degust page with batches and interaction configured](https://degust.erc.monash.edu/degust/compare.html?code=b11daaf71778e469e121e8cf38bcefd8#/)
+
+## Working with the gene table and downloading results
+
+You can download your results by clicking on "Download results" above the gene table. This will include some further information not shown in the table:
+
+* AveExpr is average expression in log2 CPM. Use this if you want to make your own MD-plot.
+* Raw count data for each sample.
+* Counts Per Million normalized expression levels for each sample.
+
+Also for the gene table:
+
+* Click on a column to sort by that column. Click again to reverse the order.
+* Click on the gear icon in the top right for some configuration options.
+* Search for your favourite gene in the search box.
 
 
-### Your turn: Explore Degust {- .challenge}
+### Your turn: Catch up and explore Degust {- .challenge}
 
 Configure your Degust page to account for the batch effect and add the interaction contrast.
 
-Explore the features we have demonstrated.
-
-Do you have observations or questions?
-
-Post interesting screenshots on the Slack channel.
+Explore the features we have demonstrated. Do you have observations or questions? Post interesting screenshots on the Slack channel.
 
 
 ## Going deeper
@@ -278,7 +294,7 @@ Other RNA-Seq protocols only produce reads at the 3' ends of RNA transcripts. In
 
 These units are only for visualizing and reporting results. For differential expression analysis, the input is always raw counts. CPMs or TPMs are not raw counts and results will be meaningless if they are used with Degust.
 
-To finding TPMs in the Laxy output, in the output pane you would navigate to `output/results/star_salmon` and download `salmon.merged.gene_tpm.tsv` or `salmon.merged.transcript_tpm.tsv`.
+To find TPMs in the Laxy output, in the output pane you would navigate to `output/results/star_salmon` and download `salmon.merged.gene_tpm.tsv` or `salmon.merged.transcript_tpm.tsv`.
 
 **Absolute expression enthusiast says:** TPM is great! TPM is the right unit to describe absolute RNA expression levels.
 
@@ -296,15 +312,15 @@ Modern RNA-Seq protocol tag fragments with a Unique Molecular Identifier (UMI) b
 
 ### Which counts file to use?
 
-What are you counting?
+What are you quantifying or counting?
 
 * Genes?
 * Exons?
-* Transcripts?
+* Transcripts/isoforms?
 
-There is software such as Salmon that can estimate transcript abundances. Since genes have multiple overlapping transcripts, estimating transcript abundance is a difficult inference task. Estimated abundances might hinge on just a few reads, creating an extra source of variation. 
+Software such as Salmon can estimate transcript/isoform abundances. Since genes have multiple overlapping transcripts, estimating transcript abundance is a difficult inference task. Estimated abundances might hinge on just a few reads, creating an extra source of variation. There is also software such as featureCounts which does something much simpler, counting reads aligning to genes (or possibly exons). Output from both of these software packages is included in the Laxy pipeline output. featureCounts output was used in this workshop.
 
-There is also software such as featureCounts which does something much simpler, counting reads aligning to genes (or possibly exons).
+Sometimes it is ambiguous where a read belongs even at the gene level. Salmon can fractionally assign reads to multiple transcripts, which might come from different genes. Gene-level counts are obtained in Salmon by summing the transcript-level counts. Salmon is attempting a difficult inference task where the gene assignment for many reads might hinge on just a few of those reads. On the other hand featureCounts output as produced by Laxy will exclude ambiguous reads ("multi-mapping" or "multi-overlapping"). The total count for featureCounts will be less than for Salmon, but there is also less to go wrong!
 
 **Absolute expression enthusiast says:** Different transcripts of a gene can have different biological effects, so they are important. Thinking about the different lengths of transcripts also helps me give accurate TPMs at the gene level. It's all about accurately measuring the biology!
 
