@@ -310,21 +310,20 @@ Modern RNA-Seq protocol tag fragments with a Unique Molecular Identifier (UMI) b
 **Differential expression ethusiast says:** PCR bias doesn't worry me. Each gene has the same bias in each sample, so it cancels out when I look at fold change. What I do like is that UMI counting removes an extra source of noise.
 
 
-### Which counts file to use?
-
-What are you quantifying or counting?
+### What to count? How to count?
 
 * Genes?
-* Exons?
 * Transcripts/isoforms?
+* Exons?
 
-Software such as Salmon can estimate transcript/isoform abundances. Since genes have multiple overlapping transcripts, estimating transcript abundance is a difficult inference task. Estimated abundances might hinge on just a few reads, creating an extra source of variation. There is also software such as featureCounts which does something much simpler, counting reads aligning to genes (or possibly exons). Output from both of these software packages is included in the Laxy pipeline output. featureCounts output was used in this workshop.
+Software such as Salmon can estimate transcript/isoform abundances. Since genes have multiple overlapping transcripts, estimating transcript abundance is a difficult inference task. Estimated abundances might hinge on just a few reads, creating an extra source of variation. There is also software such as featureCounts which does something much simpler, counting reads aligning to genes. Output from both of these software packages is included in the Laxy pipeline output. featureCounts output was used in this workshop. It is also possible to use featureCounts to produce counts at the exon level.
 
-Sometimes it is ambiguous where a read belongs even at the gene level. Salmon can fractionally assign reads to multiple transcripts, which might come from different genes. Gene-level counts are obtained in Salmon by summing the transcript-level counts. Salmon is attempting a difficult inference task where the gene assignment for many reads might hinge on just a few of those reads. On the other hand featureCounts output as produced by Laxy will exclude ambiguous reads ("multi-mapping" or "multi-overlapping"). The total count for featureCounts will be less than for Salmon, but there is also less to go wrong!
+Even at the gene level, it is sometimes ambiguous where a read belongs. Salmon can fractionally assign reads to multiple transcripts, which might come from different genes. Gene-level counts are obtained from Salmon by summing the transcript-level counts. Again, Salmon is attempting a difficult inference task where the gene assignment for many reads might hinge on just a few of those reads. On the other hand featureCounts output as produced by Laxy will exclude ambiguous reads ("multi-mapping" or "multi-overlapping" reads). The total count for featureCounts will be less than for Salmon, but there is also less to go wrong!
 
 **Absolute expression enthusiast says:** Different transcripts of a gene can have different biological effects, so they are important. Thinking about the different lengths of transcripts also helps me give accurate TPMs at the gene level. It's all about accurately measuring the biology!
 
-**Differential expression enthusiast says:** Genes are easiest to work with. Trying to estimate differential transcript-level counts is a hard inference task, I really have to know what I'm doing and I'll need deeper sequencing too. I do worry a little that differential transcript usage might look like differential gene expression if the transcripts of a gene have different lengths, but it hasn't been a huge problem in practice.
+**Differential expression enthusiast says:** Genes are easiest to work with. Trying to estimate differential transcript-level counts is a hard inference task, I really have to know what I'm doing and I'll need deeper sequencing too. I do worry a little that differential transcript usage might look like differential gene expression if the transcripts of a gene have different lengths, but it hasn't been a problem in practice.
+
 
 ### Other methods
 
@@ -366,9 +365,9 @@ Check the top genes found by this method.
 
 #### Removing Unwanted Variation (RUV)
 
-In this example we could account for the batch effect because the batches were known. What if there is variation, but we didn't know which samples it would apply to ahead of time? RUV refers to a collection of methods for estimating and/or adjusting for hidden factors like this. Ideally, RUV estimates the hidden factors from a known set of "housekeeping" genes that should not be affected by the experimental condition.
+In this example we could account for the batch effect because the batches were known. What if there is variation, but we didn't know which samples it would apply to ahead of time? RUV refers to a collection of methods for estimating and adjusting for hidden factors like this. RUV estimates the hidden factors from a known set of "housekeeping" genes that should not be affected by the experimental condition.
 
-Degust has basic support for RUV. It uses an "empirical" set of housekeeping genes derived from your data, which is slightly cheating. Give it a try, but examine the results carefully to decide if you believe them.
+Degust supports using RUV with an "empirical" set of housekeeping genes derived from your data, which is mildly cheating. The hidden factors it finds can be seen in "Show extra info/design". To supply your own housekeeping genes you would need to use an R package such as RUVSeq. The scMerge package has housekeeping gene lists for human and mouse derived from single-cell data.
 
 
 ### Complex experimental designs
