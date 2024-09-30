@@ -1,4 +1,4 @@
-# Experimental Factors
+# Experimental Design
 
 RNA-Seq is a powerful tool for capturing high-throughput gene expression. It captures the expression of thousands of genes in different samples across multiple conditions. A general approach to analysing RNA-seq data is to fit a linear model to each gene. The gene expression measurement for each gene has a mix of biological signal and unwanted noise. The methodology must be carefully thought of to design a well-balanced experiment for a robust statistical analysis. After you have made decisions on the type of sequencing (long-read or short-read) and the type of RNA-Seq (full-length/targeted/bulk/single-cell), the next step is to consider other factors that can influence your experiment.
   
