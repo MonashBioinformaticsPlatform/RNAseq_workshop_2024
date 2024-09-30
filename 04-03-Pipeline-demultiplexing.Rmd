@@ -69,3 +69,7 @@ The adapter sequence(s) are known, so can be (computationally) removed.
 
 Sometimes the sequencing providers will 'trim' adapters from the read as part of the demultiplexing process; 
 often they won't, and adapters sequences may be present in the raw data.
+
+> Sequencing runs usually have 'PhiX' phage DNA spiked-in as part of the internal calibration, and to increase sequence diversity 
+> in the case of amplicon sequencing. 
+> The demultiplexing software run by the sequencing facility removes these sequences from the output you receive.
