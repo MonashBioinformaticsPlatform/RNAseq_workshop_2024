@@ -3,11 +3,13 @@
 
 Broadly speaking, RNAseq is a next generation sequencing technique for profiling all or selected target RNA molecules in a given biological system. It typically involves isolating RNA, converting to cDNA, ligating adapter sequences to the cDNA then amplifying by PCR to construct a library that can be used for sequencing. A diverse ecosystem of protocols and technology exist that can be used to generate RNAseq data, which can be used in a wide variety of applications. 
 
-```{r, echo=FALSE, out.width="90%", fig.cap="Overview of the steps in an RNAseq experiment. At each of these steps, there are choices that are made that can influence the final output of the experiment."}
+(ref:foo1) Overview of the steps in an RNAseq experiment. At each of these steps, there are choices that are made that can influence the final output of the experiment. Image source: [RNA Sequencing Data: Hitchhiker's Guide to Expression Analysis, 2019](https://www.annualreviews.org/content/journals/10.1146/annurev-biodatasci-072018-021255)
+
+
+```{r, echo=FALSE, out.width="90%", fig.cap="(ref:foo1)"}
 knitr::include_graphics("images/experimental_design/overview_rnaseq.png")
 ```
 
-Image source: [RNA Sequencing Data: Hitchhiker's Guide to Expression Analysis, 2019](https://www.annualreviews.org/content/journals/10.1146/annurev-biodatasci-072018-021255)
 
 
 The first step of planning an RNAseq experiment is asking whether RNAseq will answer the intended research question and whether it should be performed. Sequencing experiments are not cheap and a lot of time and money can be saved by ensuring that the sequencing experiment performed is suited to answering the research question at hand. There is a huge diversity in what RNA-seq can achieve due to the number of different protocols that have been developed and published. Therefore having a clear experimental goal will help in selecting an appropriate protocol that will best answer the research question as well as a good experimental design that will allow you to get the statistical power to answer that question.
@@ -123,42 +125,52 @@ These descriptions of RNAseq are not mutually exclusive and are in fact used in 
 
 When working with bulk tissue samples, the expression profiles of individual cells is lost. A specific cell type might express high levels for a particular gene while another cell type might have low expression for that gene. With bulk sequencing, that signal is lost and instead an average profile of that gene is captured instead across the tissue. To retain information about the individual cells, single cell sequencing protocols have been developed and become quite popular. 
 
-```{r, out.width="100%", echo=FALSE}
+(ref:foo2) Differences between scRNAseq and bulk RNAseq. Image source: [Classical Single-Cell RNA Sequencing: a comprehensive overview](https://www.lexogen.com/classical-single-cell-rna-sequencing-a-comprehensive-overview/)
+
+```{r, out.width="100%", echo=FALSE, fig.cap=' (ref:foo2)'}
 knitr::include_graphics("https://www.lexogen.com/wp-content/uploads/2024/01/Difference-between-scRNA-Seq-and-bulk-RNA-Seq.png")
 ```
 
-Image source: [Classical Single-Cell RNA Sequencing: a comprehensive overview](https://www.lexogen.com/classical-single-cell-rna-sequencing-a-comprehensive-overview/)
+
 
 There are trade-offs between bulk and single cell sequencing. Bulk RNAseq is cheaper and suited for projects where global expression changes is what the researcher is interested in and the heterogeneity of the tissue sample isn't a concern or of interest to the researcher. Bulk RNAseq analysis tends to be less complicated and easier to perform. Fewer genes are detected in a single cell RNAseq experiment and the data is lot more variable. If you are working with sorted cell populations, there may not be much heterogeneity in the sample, in which case single cell RNAseq might be a very expensive way to go about answering your question. 
 
-```{r, out.width="100%", echo=FALSE, include=FALSE, eval=FALSE}
+
+(ref:foo3) Image source: [A Quick Start Guide to RNA-Seq Data Analysis](https://www.azenta.com/blog/quick-start-guide-rna-seq-data-analysis)
+
+```{r, out.width="100%", echo=FALSE, include=FALSE, eval=FALSE, fig.cap='(ref:foo3)'}
 knitr::include_graphics("https://www.azenta.com/sites/default/files/web-media-library/blog/quick-start-guide-rna-seq-data-analysis/fig_7_deseq3.png")
-# Image source: [A Quick Start Guide to RNA-Seq Data Analysis](https://www.azenta.com/blog/quick-start-guide-rna-seq-data-analysis)
+
 ```
 
 Single cell RNAseq is suited for projects where tissue heterogeneity is of interest. It's also ideal for stdying rare cell types, as the signal from such cells would be lost in a bulk tissue. It can be used for charaterising cell states, identifying cell markers and studying cell lineage development and differentiation. 
 
-```{r, out.width="100%", echo=FALSE}
+
+(ref:foo4) Single cell vs bulk sequencing. Image source: [Single cell vs bulk sequencing](https://lizard.bio/knowledge-hub/single-cell-vs-bulk-sequencing)
+
+```{r, out.width="100%", echo=FALSE, fig.cap=' (ref:foo4)'}
 knitr::include_graphics("https://lizard.bio/hs-fs/hubfs/scs_blog1_table-1.png?width=2065&height=1260&name=scs_blog1_table-1.png")
 ```
 
-Image source: [Single cell vs bulk sequencing](https://lizard.bio/knowledge-hub/single-cell-vs-bulk-sequencing)
 
 ### RNA Isolation Methods
 
-```{r, echo=FALSE, out.width="100%", fig.cap="Different RNAseq isolation methods"}
+(ref:foo5) Different RNAseq isolation methods. Image source: [RNA Sequencing and Analysis (2015)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4863231/)
+
+```{r, echo=FALSE, out.width="100%", fig.cap=" (ref:foo5)"}
 knitr::include_graphics("https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4863231/bin/nihms768779f1.jpg")
 ```
 
-Image source: [RNA Sequencing and Analysis (2015)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4863231/)
 
 After RNA is initially extracted from a tissue, the RNA molecules are a mix of ribosomal RNA (rRNA), non-coding RNAs as well as messenger RNA (mRNA). The majority of RNA molecules are rRNA which are typically not of interest - a choice is then made on which RNA species are to be sequenced.
 
-```{r, echo=FALSE, out.width="50%", fig.align = "center", fig.cap="Estimate of RNA levels in a typical mammalian cell"}
+
+(ref:foo6) Estimate of RNA levels in a typical mammalian cell. Image source: [Non-coding RNA: what is functional and what is junk? 2015](https://www.frontiersin.org/journals/genetics/articles/10.3389/fgene.2015.00002/full)
+
+```{r, echo=FALSE, out.width="50%", fig.align = "center", fig.cap="(ref:foo6)"}
 knitr::include_graphics("images/experimental_design/rna_content.jpg")
 ```
 
-Image source: [Non-coding RNA: what is functional and what is junk? 2015](https://www.frontiersin.org/journals/genetics/articles/10.3389/fgene.2015.00002/full)
 
 There are a few common methods to isolate RNA:
 
@@ -174,11 +186,14 @@ Not every gene needs to be assayed in an RNAseq experiment. Targeted RNAseq allo
 
 ### Short & Long Read Sequencing
 
-```{r, echo=FALSE, fig.align="center", fig.cap="Alternative splicing and RNA technologies", out.width="95%", out.height="70%"}
+
+
+(ref:foo7) Alternative splicing and RNA technologies. Image source: [Deshpande D, et al, RNA-seq data science: From raw data to effective interpretation. Frontier Genetics. 2023](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/)
+
+```{r, echo=FALSE, fig.align="center", fig.cap="(ref:foo7)", out.width="95%", out.height="70%"}
 knitr::include_graphics("https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/bin/fgene-14-997383-g002.jpg")
 ```
 
-Image source: [Deshpande D, et al, RNA-seq data science: From raw data to effective interpretation. Frontier Genetics. 2023](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/)
 
 Short read sequencing typically refers to protocols that fragment RNA into smaller pieces before converting to cDNA and sequencing. These are typically highly accurate and cost effective methods with well developed analysis workflows and pipelines. This type of data is commonly used for gene expression studies. Illumina and BGI are two popular short read sequencing providers.
 
@@ -186,11 +201,13 @@ Long read sequencing typically refers to technology that produce reads with leng
 
 ### Sequencing Depth & Coverage
 
-```{r, echo=FALSE, fig.align="center", fig.cap="Sequencing Depth and Coverage", out.width="90%"}
+(ref:foo8) Sequencing Depth and Coverage. Image source: [sequencing depth vs coverage](https://3billion.io/blog/sequencing-depth-vs-coverage)
+
+```{r, echo=FALSE, fig.align="center", fig.cap="(ref:foo8)", out.width="90%"}
 knitr::include_graphics("https://3billion.io/img/news/depth-and-coverage_2023-08-25-051528_evsk.webp")
 ```
 
-[Image source](https://3billion.io/blog/sequencing-depth-vs-coverage)
+
 
 These two terms are usually used interchangeably when describing the number of reads aligning to a reference genome but they do refer to slightly different concepts.
 
@@ -201,21 +218,25 @@ The depth of an experiment is the number of times any given position in the geno
 
 A common dilemna researchers are often faced with is a choice as to whether to sequence more deeply or sequence more samples. More biological replicates will provide better estimates of variance and more precise measures of gene expression than sequencing to a greater depth. It is generally advised to sequence more samples rather than sequence deeply if the option is there as early studies showed that more replicates provided more statistical power to identify differentially expressed genes over sequencing to a greater depth.
 
-```{r, echo=FALSE, fig.align="center", fig.cap="Biological replicates provide more statistical power to detect differential genes than sequencing depth", out.width="90%"}
+(ref:foo9) Biological replicates provide more statistical power to detect differential genes than sequencing depth. Image source: [Liu Y et al, RNA-seq differential expression studies: more sequence or more replication? Bioinformatics. 2014](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3904521/)
+
+
+```{r, echo=FALSE, fig.align="center", fig.cap="(ref:foo9) ", out.width="90%"}
 knitr::include_graphics("images/experimental_design/liu_y_bioinformatics_2014.jpg")
 ```
 
-Image source: [Liu Y et al, RNA-seq differential expression studies: more sequence or more replication? Bioinformatics. 2014](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3904521/)
 
 However, higher sequencing depth is necessary for detecting lowly expressed differentially expressed (DE) genes and for conducting isoform-level differential expression analysis. 
 
 ## RNAseq Uses
 
-```{r, echo=FALSE, out.width="100%"}
+(ref:foo10) Image source: [RNA-seq](https://www.helixio.fr/page/rna-seq-1)
+
+```{r, echo=FALSE, out.width="100%", fig.cap='(ref:foo10)'}
 knitr::include_graphics("https://www.helixio.fr/uploads/kcfinder/images/PAGE%20WORKFLOW6-1.jpg")
 ```
 
-Image source: [RNA-seq](https://www.helixio.fr/page/rna-seq-1)
+
 
 
 The most common use for RNAseq is to identify differentially expressed genes in a tissue of interest for a given organism. There are other applications RNA-seq that we will briefly discuss, this list is not an exhaustive one.
@@ -231,7 +252,9 @@ The most common use for RNAseq is to identify differentially expressed genes in 
 
 The most common type of analysis performed with RNAseq data is differential gene expression (DGE) analysis. This type of analysis looks at the difference in abundance for genes between 2 or more conditions. The conditions should have a suitable control condition that provides a baseline measurement that another condition can be compared against. 
 
-```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap ="With a bulk RNAseq experiment, we usually want to examine changes in gene abundance in an organism. We do this by comparing the gene expression levels in an experimental condition against the gene expression levels in a control condition"}
+(ref:foo11) Image source: [Gene-level differential expression analysis with DESeq2](https://hbctraining.github.io/DGE_workshop_salmon_online/lessons/04a_design_formulas.html)
+
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap =""}
 knitr::include_graphics("images/experimental_design/fig_dge.png")
 ```
 
@@ -242,19 +265,24 @@ knitr::include_graphics("images/experimental_design/fig_dge.png")
 knitr::include_graphics("https://hbctraining.github.io/Intro-to-rnaseq-hpc-O2/img/count-matrix.png")
 ```
 
-```{r, echo=FALSE, out.width="100%", fig.cap="DGE analysis is usually asking if there is a signficant difference between the mean expression levels of the conditions"}
+
+
+```{r, echo=FALSE, out.width="100%", fig.cap="DGE analysis is usually asking if there is a signficant difference between the mean expression levels of the conditions. (ref:foo11) "}
 knitr::include_graphics("https://hbctraining.github.io/DGE_workshop_salmon_online/img/Differential_expression.png")
 ```
 
-Image source: [Gene-level differential expression analysis with DESeq2](https://hbctraining.github.io/DGE_workshop_salmon_online/lessons/04a_design_formulas.html)
+
 
 After identifying differentially expressed genes, it is common to perform some type of pathway enrichment analysis or gene set enrichment to find molecular pathways or biologically processes that these genes are involved with. This can allow the researcher to identify trends that might be hard to notice when looking at individual genes.
 
-```{r, echo=FALSE, out.width="100%", fig.cap="Dotplots of the results from overrepresentation anaylsis (ORA) and gene set enrichment analysis (GSEA)"}
+
+(ref:foo13) Image source: [Biomedical Knowledge Mining using GOSemSim and clusterProfiler](https://yulab-smu.top/biomedical-knowledge-mining-book/enrichplot.html)
+
+
+```{r, echo=FALSE, out.width="100%", fig.cap="Dotplots of the results from overrepresentation anaylsis (ORA) and gene set enrichment analysis (GSEA). (ref:foo13)"}
 knitr::include_graphics("https://yulab-smu.top/biomedical-knowledge-mining-book/biomedicalKnowledge_files/figure-html/Dotplotcap-1.png")
 ```
 
-Image source: [Biomedical Knowledge Mining using GOSemSim and clusterProfiler](https://yulab-smu.top/biomedical-knowledge-mining-book/enrichplot.html)
 
 
 While DGE is the most common type of analysis performed on RNAseq data, it is not the only type of differential test that can be performed with RNAseq data. DGE analysis ignores what is happening at the isoform level and looks at global gene abundance changes only. Instead, an RNAseq dataset can be analysed to look at changes at the transcript level, to see if the change in conditions is also affecting multiple isoforms for a gene differently. 
@@ -265,19 +293,23 @@ knitr::include_graphics("images/experimental_design/fig_dif_splice_usage.png")
 
 Additionally, we can look at whether transcript levels are changing between two conditions, regardless of the gene of origin. This is known as differential transcript expression. 
 
-```{r, echo=FALSE, fig.align="center", fig.cap="The types of differential expression analysis", out.width="100%"}
+
+(ref:foo14) Image source: [Froussios K, et al, Relative Abundance of Transcripts (RATs): Identifying differential isoform abundance from RNA-seq. F1000Research. 2019](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/)
+
+```{r, echo=FALSE, fig.align="center", fig.cap="The types of differential expression analysis. (ref:foo14)", out.width="100%"}
 knitr::include_graphics("https://f1000research.s3.amazonaws.com/manuscripts/19594/95bdb2a3-7459-4d64-9569-ad69d8910d35_figure1.gif")
 ```
 
-Image source: [Froussios K, et al, Relative Abundance of Transcripts (RATs): Identifying differential isoform abundance from RNA-seq. F1000Research. 2019](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/)
+
 
 If interested in transcript changes, the complexity of the analyses can be determined by the choice of short or long read sequencing. While short read sequencing can be used for both, there is additional complexity when used for transcript level analysis as many reads will map ambigiously for transcripts. There are methods that have been developed for probabilistically assigning reads to transcripts.
 
-```{r, echo=FALSE, out.width="100%"}
+(ref:foo15) Image source: [RNA Sequencing Data: Hitchhiker's Guide to Expression Analysis, 2019](https://www.annualreviews.org/content/journals/10.1146/annurev-biodatasci-072018-021255)
+
+```{r, echo=FALSE, out.width="100%",fig.cap='(ref:foo15)'}
 knitr::include_graphics("images/experimental_design/genome_transcriptome_alignment.png")
 ```
 
-Image source: [RNA Sequencing Data: Hitchhiker's Guide to Expression Analysis, 2019](https://www.annualreviews.org/content/journals/10.1146/annurev-biodatasci-072018-021255)
 
 Long read sequencing might be more suited for isoform/transcript level analyses as there is less or no ambiguity to which isofrom a read comes from, if the entire transcript has been sequenced. 
 
@@ -288,11 +320,13 @@ Most RNAseq datasets are used for quantative analysis - the data is aligned to a
 
 It is possible to leverage the sequences of the reads to assemble into transcripts (or if using long read sequencing, to sequence the full transcript and no assembly is then required). This can enable discovery of new genes/transcripts that are not known in a reference database.
 
-```{r, echo=FALSE, out.width="100%"}
+(ref.foo16) Image source: [RNA sequencing, PacBio](https://www.pacb.com/products-and-services/applications/rna-sequencing/)
+
+```{r, echo=FALSE, out.width="100%",fig.cap='(ref.foo16)'}
 knitr::include_graphics("https://www.pacb.com/wp-content/uploads/img_isoform_discovery-1.svg")
 ```
 
-Image source: [RNA sequencing, PacBio](https://www.pacb.com/products-and-services/applications/rna-sequencing/)
+
 
 ### Transcriptome Assembly
 
@@ -302,33 +336,36 @@ De novo assembly methods are reference free - this is useful when studying non-m
 
 Long read sequencing is better suited to building high quality transcriptomes than short read sequencing as the longer read length retains more information and context about the original RNA molecule. A commonly used analogy when describing assembly is to imagine the genome as a puzzle that needs to be put back together. The smaller the pieces, the more difficult the puzzle. A puzzle made of larger pieces is much easier to put back together and reconstruct the original RNA sequence. 
 
-```{r, echo=FALSE, out.width="100%"}
+(ref:foo17) Image source: [A simple guide to de novo transcriptome assembly and annotation (2022)](https://academic.oup.com/bib/article/23/2/bbab563/6514404)
+
+```{r, echo=FALSE, out.width="100%", fig.cap='(ref:foo17)'}
 knitr::include_graphics("https://oup.silverchair-cdn.com/oup/backfile/Content_public/Journal/bib/23/2/10.1093_bib_bbab563/1/m_bbab563f3.jpeg?Expires=1729202148&Signature=FMhHgcKT3vS5SP1phAnOU3R9ayIzXS6DDCdTPOK7WQdpOPRSxFEqbIla6ISWV7pKDaINiPZBEdcpmjCn75qGFCIGTLasuKU~DD5Po69XlEH8Os~9UgmXbPMhGddL7cXxdw3skQ~dial4rI4A8mu388ZJlRPDbmr6EURBKAdm-lGpG~xxLJzN9hUmqB2FDNtOt6bY6TGvVRNOlGXTz24HveHp~feY4nhtpb9BpUEKBZgpChqMpQEw8mQAkmx-BcXBon8pynzZ7ud6cBjKMZ7W3T1Cip0OGSrJE2Bn~af~uY-Lv68PJ3319cnUelEs05Mnsr34ntJtnllPjVRUkDo2Bw__&Key-Pair-Id=APKAIE5G5CRDK6RD3PGA")
 ```
 
-Image source: [A simple guide to de novo transcriptome assembly and annotation (2022)](https://academic.oup.com/bib/article/23/2/bbab563/6514404)
 
 
 ### Gene Fusion Detection
 
 RNAseq can have clinical applications. One such application is the detection of fusion genes - these can arise due to chromosomal rearrangements combining the coding regions of two genes. These genes can produce aberrant proteins and lead to cancer development if the fused genes are oncogenes or tumor suppresor genes. Therefore, detection of fusion genes can be an important diagnostic tool in clinical settings as well as for cancer research.
 
-```{r, echo=FALSE, out.width="90%"}
+
+(ref:foo18) Image source: [GFusion: an Effective Algorithm to Identify Fusion Genes from Cancer RNA-Seq Data, 2017](https://www.nature.com/articles/s41598-017-07070-6)
+```{r, echo=FALSE, out.width="90%", fig.cap='(ref:foo18)'}
 knitr::include_graphics("https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41598-017-07070-6/MediaObjects/41598_2017_7070_Fig2_HTML.jpg?as=webp")
 ```
 
-Image source: [GFusion: an Effective Algorithm to Identify Fusion Genes from Cancer RNA-Seq Data, 2017](https://www.nature.com/articles/s41598-017-07070-6)
 
 
 ### 'Omics Integration
 
 RNAseq data can be combined with other types of genome wide to provide deeper insights into gene regulation and molecular function. Combining with epigenetic data such as ChIPseq and ATACseq can be used to examine gene regulatory networks in a tissue of interest. There are tools that can take chromatin data and trancriptomic data to classify transcription factor activity as either activating and repressive on target genes. DNA methylation and histone modifications can also be correlated with gene expression data .
 
-```{r, echo=FALSE, out.width="100%", fig.cap="Overview of the general setup of computational tools to infer transcription factor activity (TFA)"}
+(ref:foo19) Image source: [Computational tools for inferring transcription factor activity, 2023](https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/10.1002/pmic.202200462)
+```{r, echo=FALSE, out.width="100%", fig.cap="Overview of the general setup of computational tools to infer transcription factor activity (TFA). (ref:foo19) "}
 knitr::include_graphics("https://analyticalsciencejournals.onlinelibrary.wiley.com/cms/asset/a6a72698-33cf-451f-8056-dc632e6b23b5/pmic13741-fig-0002-m.png")
 ```
 
-Image source: [Computational tools for inferring transcription factor activity, 2023](https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/10.1002/pmic.202200462)
+
 
 RNAseq data combined with DNA sequencing data enables the link between genotype and gene expression to be studied. Genetic variation has been shown to affect the expression of genes. Identification of single nucleotide polymorphism (SNPs) or structural variants (SV) from the genomic data can be used with the RNAseq data to identify expression quantitative trait loci (eQTLs) - genetic loci that explain variation in mRNA levels. 
 
