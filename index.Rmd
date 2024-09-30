@@ -25,7 +25,7 @@ github-repo: https://github.com/MonashBioinformaticsPlatform/RNAseq_workshop_202
 
 ## Schedule
 
-This workshop is sessions, each 4 hours
+This workshop is 2 sessions long, each 4 hours
 
 **First Day**
 
