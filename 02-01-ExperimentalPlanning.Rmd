@@ -168,7 +168,7 @@ There are a few common methods to isolate RNA:
 
 - Size selection: this is typically used to enrich for small RNAs and therefore used for small RNAseq. These protocols are used when the goal is to study small RNAs, though some recent studies have suggested better performance from total RNAsequencing over small RNA enrichment protocols.
 
-### Targeted RNAsequencing
+### Targeted RNA sequencing
 
 Not every gene needs to be assayed in an RNAseq experiment. Targeted RNAseq allows researchers to focus on a subset of genes of interest. This can be done either with enrichment or amplicon methods and can be used with low quality samples. 
 
@@ -180,9 +180,9 @@ knitr::include_graphics("https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/b
 
 Image source: [Deshpande D, et al, RNA-seq data science: From raw data to effective interpretation. Frontier Genetics. 2023](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/)
 
-Short read sequencing typically refers to protocols that fragment RNA into smaller pieces before converting to cDNA and sequencing. These are typically highly accurate and cost effective methods with well developed analysis workflows and pipelines. This type of data is commonly used for gene expression studies.
+Short read sequencing typically refers to protocols that fragment RNA into smaller pieces before converting to cDNA and sequencing. These are typically highly accurate and cost effective methods with well developed analysis workflows and pipelines. This type of data is commonly used for gene expression studies. Illumina and BGI are two popular short read sequencing providers.
 
-Long read sequencing typically refers to technology that produce reads with length ranging from 10-100kb or 100-300kb (ultra long read). Long read sequencing can capture the full length of mRNA transcripts, which is useful when examining changes in isoforms or when performing de novo transcriptome assembly. Capturing the full length of a read also that the PCR amplification can be skipped, reducing the coverage biases introduced by PCR. Long read sequencing has had lower read accuracy, high read length variability and lower throughput than short read methods but the technology has been improving over the past decade.
+Long read sequencing typically refers to technology that produce reads with length ranging from 10-100kb or 100-300kb (ultra long read). Long read sequencing can capture the full length of mRNA transcripts, which is useful when examining changes in isoforms or when performing de novo transcriptome assembly. Capturing the full length of a read also that the PCR amplification can be skipped, reducing the coverage biases introduced by PCR. Long read sequencing has had lower read accuracy, high read length variability and lower throughput than short read methods but the technology has been improving over the past decade. Oxford Nanpore and PacBio are the leading long read sesquencing technologies.
 
 ### Sequencing Depth & Coverage
 

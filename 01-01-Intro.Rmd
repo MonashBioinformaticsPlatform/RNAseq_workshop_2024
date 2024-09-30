@@ -16,9 +16,9 @@ from raw reads to a differential expression analysis.
 In this workshop, we explicitly ***don't*** cover:
 
 - Runnning pipelines and analysing data using the commandline, R, Python etc.
-- *De novo* assembly of transcriptomes
-- microRNAs (miRNAs), other small RNAs
-- Long read technologies
-- Single cell and spatial RNA-seq
-- Discovering novel transcripts / splice variants
-- Variant calling (SNPs) from RNA-seq data
+- How to do *De novo* assembly of transcriptomes
+- Analysis of microRNAs (miRNAs), other small RNAs
+- Analysis of long read technologies
+- Single cell and spatial RNA-seq analysis
+- How to discover novel transcripts / splice variants
+- How to perform variant calling (SNPs) from RNA-seq data
