@@ -16,7 +16,7 @@ There are some main aspects to planning an RNAseq experiment:
 
 1. What is the research goal?
 2. What is the budget for the proposed experiment?
-3. What sequencing technology will be used - can the selected protocol answer the research question
+3. What sequencing technology will be used - can the selected protocol answer the research question? Do you have access to this sequencing technology
 4. What is the experimental design - will the number of collected samples have enough statistical power to answer the research question? Are there confounding factors that might obscure the effect of biology that we want to study?
 5. What sort of analysis can be performed with the data that has been generated from the experiment? Are there already established analytical workflows or are you going to need to do some ad hoc analysis?
 
@@ -337,7 +337,6 @@ Multiomic integration analyses tend to be complex and are rarely straightforward
 ### Discussion: Design A Bulk RNAseq Experiment {- .challenge}
 
 You want to examine the impact of several different growth conditions in a specific bacterial strain and your interest is mostly in changes to gene expression. A side goal of your project is to look at small RNA changes. Assuming you have no limitations on your budget, what are some considerations you'd have in designing a potential RNAseq experiment for this project?
-
 
 
 ## Before you begin an experiment: some questions to consider…
