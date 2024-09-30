@@ -61,23 +61,34 @@ In this experiment, X1, X2, and X3 are the biological replicates for the normal 
 
 During the era of microarrays, technical replicates were crucial to account for the variability arising from the technology itself. However, with the advent of current RNA-Seq technologies, technical variation has significantly diminished, rendering technical replicates less necessary. In contrast, biological replicates remain indispensable for differential expression analysis. Increasing the number of biological replicates enhances the accuracy of biological variation estimates and the precision of mean expression level estimates. This, in turn, leads to better data modeling and the identification of more differentially expressed genes. The emphasis, therefore, is on maximizing biological replicates to capture the true variability in biological systems.
 
-## Sample pooling
-Although it is ideal to have multiple replicates for each condition with a high sequencing depth, there can be factors like factors like budget constraints, limited input RNA or substantial within-group biological variability can significantly impact the outcome of RNA-seq experiments.
+## Sample pooling ![](images/experimental_design/danger.jpg){width=50px}  {- .caution} 
 
-One could cut the cost by opting for a lower average sequencing depth combined with multiple replicates may be adequate for a standard RNA-seq experiment. But a higher sequencing depth is essential for more precise measurements of gene expression, especially when detecting lowly expressed genes or conducting isoform-level differential expression analysis. In such cases, it is also important to increase the number of biological replicates to effectively capture within-group biological variability.
-In these situations, sample pooling becomes a viable strategy.
 
-Pooling of RNA samples involves mixing RNA molecules extracted from independent biological samples within the same population—such as a specific experimental or biological condition, or the same tissue—before library preparation. This approach reduces the number of replicates required and, consequently, lowers the overall cost of the experiment. The library created from pooled samples represents a composite of biological samples, capturing sufficient biological variation while requiring fewer replicates.
 
-This method offers two main advantages: it reduces the cost of sequencing and increases the statistical power for differential gene expression (DGE) analysis, enabling researchers to draw more meaningful conclusions even under resource constraints.
+Sample pooling in RNA-Seq is commonly used by experimental biologists to reduce costs and increase throughput, particularly when RNA input is low. While pooling offers practical benefits, it also introduces potential pitfalls that can negatively affect data quality and the conclusions drawn from the experiment. Some of the key challenges include:
+
+* Loss of Individual Sample Resolution - If cell barcodes are absent or compromised, making it impossible to distinguish between individual contributions.
+* Increased Variability and Reduced Sensitivity - Pooling RNA from heterogeneous sources can mask biological differences and increase variability, reducing the sensitivity needed to detect subtle changes in gene expression.
+* Unequal Sample Representation - If unequal amounts of RNA are pooled from each sample, it can result in disproportionate representation, potentially skewing the data and leading to misleading interpretations.
+* Batch Effects - If different pools of samples are processed, prepared, or sequenced in separate batches, batch effects can arise, confounding the biological signal and complicating data analysis. It is impossible to correct for batch effect if the barcodes are absent or compromised.
+* Data normalization - Samples with varying RNA quality, quantities, or levels of degradation may contribute unevenly to the pool, complicating normalization and affecting downstream analysis.
+
+**We strongly advise discussing your pooling strategy with a bioinformatician before proceeding, as these challenges can significantly impact the success of your experiment and its analysis.**
 
 ## Batches and their effects
 
 In an RNA-Seq experiment, samples are often processed in batches or groups, and batch effects can arise from various sources throughout the experimental workflow. These effects may stem from differences in sequencing platforms, timing, reagents, experimental conditions, or even variations in how different researchers handle the samples. Batch effects pose a significant challenge in RNA-Seq data analysis, as they can obscure true biological differences and lead to misleading interpretations.
 
-For instance, when visualizing data with a multidimensional scaling (MDS) plot, samples might unexpectedly group together due to these batch effects. Imagine an experiment with multiple samples from three cell lines, comparing two conditions—control and treated. Ideally, the samples should form two clusters based on the conditions, but instead, they form three clusters according to their original cell lines. This deviation is a clear example of a batch effect, where the unintended influence of cell lines overshadows the treatment differences.
+For example, when visualizing RNA-seq data using a multidimensional scaling (MDS) plot, batch effects can cause unexpected grouping of samples. Imagine an experiment designed to assess the effects of gene 1 and gene 2 knockouts compared to a control. Samples are collected from three patients, X, Y, and Z. Ideally, the samples should form distinct clusters based on the experimental conditions (knockout versus control). However, in the first panel of the MDS plot, the samples instead cluster into three groups, corresponding to the patients they were derived from, not the experimental conditions.
 
-To address this issue, it is crucial to thoroughly investigate the data, collect detailed information about the experimental design, and account for batch effects before performing differential expression analysis. Proper adjustment ensures more accurate and reliable biological interpretations, enabling meaningful insights from the RNA-Seq data.
+This scenario illustrates a typical batch effect, where the biological differences between the patients overshadow the intended experimental treatment differences. Such a confounding effect complicates the interpretation of the results. After correcting for patient-specific variability (i.e., removing the batch effect), the samples re-cluster according to the experimental conditions, allowing for accurate comparisons between the knockout and control groups. This adjustment helps to ensure that the observed differences reflect the treatment effects rather than unintended batch influences.
+
+```{r, echo=FALSE, fig.align="center", fig.cap ="Batch effects: Due to genetic differences in three differentt patients arising due to different patient genetics: Samples are taken from three different patients- X, Y and Z. The gene expression is compared between three conditions- control, gene 1 knockdown and gene 2 knockdown. The samples initially cluster based on sample origin which is clearly a batch effect. After removing the patient diversity, the samples can be seen to cluster based on experimental conditions which can now be compared.", out.width="600px", out.height="250px"}
+knitr::include_graphics("images/experimental_design/MDS-batch.png")
+```
+
+
+Thus, it is crucial to thoroughly investigate the data, collect detailed information about the experimental design, and account for batch effects before performing differential expression analysis. Proper adjustment ensures more accurate and reliable biological interpretations, enabling meaningful insights from the RNA-Seq data.
 
 ## Confounding factors
 
@@ -93,7 +104,8 @@ To avoid confounding, it is important to ensure the sample source/animals in eac
 
 
 ## Summary
-As a general rule for a standard RNA-Seq experiment, at least two biological replicates should be included, though it is ideal to have three or more replicates to increase statistical power. A sequencing depth of 10 to 20 million reads per sample is typically sufficient for standard gene expression analysis.
+
+As a general rule for a standard RNA-Seq experiment, at least three biological replicates should be included, though it is ideal to have more to increase statistical power. A sequencing depth of 10 to 20 million reads per sample is typically sufficient for a standard gene expression analysis.
 
 Careful experimental design is critical, with sufficient replicates and randomization of samples to ensure the capture of both within-group and between-group variations while minimizing technical noise. Incorporating these considerations into the experimental design matrix is essential for ensuring robust differential expression (DE) analysis, which will be further explored in the following sections.
 
@@ -105,20 +117,35 @@ knitr::include_graphics("images/experimental_design/exp-factors.png")
 
 
 ## Challenge - Design a RNA Seq experiment. {- .challenge}
-The project goal is to study the expression profiles of basal stem-cell (B) and luminal cells (L) in the mammary gland of virgin, pregnant and lactating mice. The data has already been mapped against the GRCm39 genome assembly.
+The project goal is to study the expression profiles of basal stem-cell (B) and luminal cells (L) in the mammary gland of virgin (vir), pregnant (preg) and lactating mice (lact). The data has already been mapped against the GRCm39 genome assembly.
 
-1. How many groups are there in this experiment? Design an experiment to compare the different groups. 
+1. The samples are as follows: 
+      * Mm_cgX_vir_B1
+      * Mm_cgX_vir_B2
+      * Mm_cgY_vir_B3
+      * Mm_cgX_vir_L1
+      * Mm_cgX_vir_L2
+      * Mm_cgY_vir_L3
+      * Mm_cgX_preg_B1
+      * Mm_cgX_preg_B2
+      * Mm_cgY_preg_B3
+      * Mm_cgX_preg_L1
+      * Mm_cgX_preg_L2
+      * Mm_cgY_preg_L3
+      * Mm_cgX_lact_B1
+      * Mm_cgX_lact_B2
+      * Mm_cgY_lact_B3
+      * Mm_cgX_lact_L1
+      * Mm_cgX_lact_L2
+      * Mm_cgY_lact_L3
+      
+- How many biological replicates are there in this experiment?
 
-* Mm_Virgin_A
-* Mm_Virgin_B
-* Mm_Virgin_C
-* Mm_preg_A
-* Mm_preg_B
-* Mm_preg_C
-* Mm_lact_A
-* Mm_lact_B
-* Mm_lact_C
+- How many experimental groups are there?
 
-2. The samples were handled in groups of A, B and C. Create a sample sheet for the experimental design including all relevant factors that might affect the outcome.
+- The mice in the experiment were held in two separate cages(Mm_cgX, Mm_cgY). What are the potential issues?
+
+
+2. Create a sample sheet for the experimental design including all relevant factors that might affect the outcome.
 
 
