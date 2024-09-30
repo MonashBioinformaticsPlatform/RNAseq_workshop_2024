@@ -20,33 +20,15 @@ For example, when assessing the effect of a treatment on cells from three differ
 ## Sample Replicates (technical/biological)
 
 A well-designed RNA-Seq experiment should always include replicates. Replicates are crucial as they enhance the statistical power of the analysis, allowing for more accurate and reliable detection of true biological differences. Consistent results across multiple replicates provide confidence that the observed findings are genuine and not due to random chance. Therefore, incorporating replicates in your experiment is essential to ensure the robustness and reproducibility of the results, ultimately leading to more credible and meaningful biological insights.
-  
-  1. Incorrect way of including replicates in your study - **Technical replicates** are repeated measurements taken from the same biological source to accurately **assess technical variation in an experiment**.
 
-```{r, echo=FALSE, out.width="430px", out.height="300px", fig.align="center", fig.cap ="Wrong way to create replicates: Three measurements taken from the same mouse for two conditions- normal and diseased. These are called technical replicates. These assess technical variation in an experiment.", fig.height= 0.1, fig.width=0.8}
-knitr::include_graphics("images/experimental_design/technical_reps.png")
-```
 
-For example, consider a simple RNA-Seq experiment comparing two conditions: normal and diseased. In this scenario, a single normal mouse provides three measurements—mouseX_normal_1, mouseX_normal_2, and mouseX_normal_3. Similarly, a single diseased mouse provides three measurements—mouseY_diseased_1, mouseY_diseased_2, and mouseY_diseased_3. This results in the following samplesheet:
-  
-  |      sample       | condition | mouse | technical replicates |
-  |:-----------------:|:---------:|:-----:|:--------------------:|
-  |  mouseX_normal_1  |  normal   |   X   |          1           |
-  |  mouseX_normal_2  |  normal   |   X   |          2           |
-  |  mouseX_normal_3  |  normal   |   X   |          3           |
-  | mouseY_diseased_1 | diseased  |   Y   |          1           |
-  | mouseY_diseased_2 | diseased  |   Y   |          2           |
-  | mouseY_diseased_3 | diseased  |   Y   |          3           |
-  
-  The samples mouseX_normal_1, mouseX_normal_2, and mouseX_normal_3 serve as technical replicates for the normal condition, while mouseY_diseased_1, mouseY_diseased_2, and mouseY_diseased_3 are technical replicates for the diseased condition.
-
-2. Correct way of including replicates in your study - **Biological replicates** involve using biologically separate samples to **capture the biological variation between samples**. The biologically separate samples can include different organisms or tissues from different mice, different cell populations grown separately but originating from the same cell-line, sampling tumor samples from same tumor, etc.
+1. **Biological replicates** - "Correct way" of including replicates in your study - These are independent samples that are taken from different individuals, organisms, or cells under the same experimental conditions to **capture the biological variation between samples**. The biologically separate samples can include different individuals in a population (e.g., 10 healthy individuals and 10 individuals with a disease), different cell cultures of the same cell line, tissue samples from different animals (e.g., liver tissue of multiple knockout mice and wild-type mice), tumor biopsies of multiple patients in each group (each patient serves as a biological replicate), etc.
 
 ```{r, echo=FALSE,  out.width="430px", out.height="300px", fig.align="center", fig.cap ="Correct way to create replicates: A measurement taken from the three different mice for two conditions - normal and diseased. These are called biological replicates. These capture the biological variation between samples"}
 knitr::include_graphics("images/experimental_design/biological-reps.png")
 ```
 
-In the previous RNA-Seq experiment, if we increase the number of mice to three for each healthy and diseased state, we obtain the following samplesheet:
+Consider a simple RNA-Seq experiment comparing two conditions: normal and diseased. The samples are collected from three different mice for each healthy and diseased state. We obtain the following sample sheet:
   
 | sample | condition | replicates |
 |:----:|:-----:|:-----:|
@@ -57,13 +39,29 @@ In the previous RNA-Seq experiment, if we increase the number of mice to three f
 | mouseY2_diseased | diseased  |  Y2  |   
 | mouseY3_diseased | diseased  |  Y3  |   
 
-In this experiment, X1, X2, and X3 are the biological replicates for the normal condition, Y1, Y2, and are the biological replicates for the diseased condition.
+In this experiment, X1, X2, and X3 represent the biological replicates for the normal condition, while Y1, Y2, and Y3 represent the biological replicates for the diseased condition. Including multiple animals accounts for natural biological variability, enhancing the robustness of statistical analysis. This approach ensures that the results are reliable, generalizable, and not driven by outliers or random chance. 
 
-During the era of microarrays, technical replicates were crucial to account for the variability arising from the technology itself. However, with the advent of current RNA-Seq technologies, technical variation has significantly diminished, rendering technical replicates less necessary. In contrast, biological replicates remain indispensable for differential expression analysis. Increasing the number of biological replicates enhances the accuracy of biological variation estimates and the precision of mean expression level estimates. This, in turn, leads to better data modeling and the identification of more differentially expressed genes. The emphasis, therefore, is on maximizing biological replicates to capture the true variability in biological systems.
+2. "Incorrect way" of including replicates in your study - **Technical replicates** are repeated measurements taken from the same biological sample to accurately **assess technical variation in an experiment**. These replicates are used to control for errors in the experimental process, such as library preparation, sequencing, and sample handling. Examples of technical replicates are: constructing multiple RNA Libraries from the same sample, sequencing the same RNA library multiple times on different sequencing lanes or platforms, etc.
+
+```{r, echo=FALSE, out.width="430px", out.height="300px", fig.align="center", fig.cap ="Wrong way to create replicates: Three measurements taken from the same mouse for two conditions- normal and diseased. These are called technical replicates. These assess technical variation in an experiment.", fig.height= 0.1, fig.width=0.8}
+knitr::include_graphics("images/experimental_design/technical_reps.png")
+```
+
+Consider the above RNA-Seq experiment comparing two conditions: normal and diseased. If only a single normal mouse is used to generate three measurements (mouseX_normal_1, mouseX_normal_2, mouseX_normal_3) and similarly, a single diseased mouse generates three measurements (mouseY_diseased_1, mouseY_diseased_2, mouseY_diseased_3), these measurements would be considered **technical replicates** rather than biological replicates.This results in the following samplesheet:
+  
+  |      sample       | condition | mouse | technical replicates |
+  |:-----------------:|:---------:|:-----:|:--------------------:|
+  |  mouseX_normal_1  |  normal   |   X   |          1           |
+  |  mouseX_normal_2  |  normal   |   X   |          2           |
+  |  mouseX_normal_3  |  normal   |   X   |          3           |
+  | mouseY_diseased_1 | diseased  |   Y   |          1           |
+  | mouseY_diseased_2 | diseased  |   Y   |          2           |
+  | mouseY_diseased_3 | diseased  |   Y   |          3           |
+  
+Technical replicates help assess the consistency of the sequencing process and reduce technical noise. However, they do not account for biological variability, which is crucial for ensuring the generalizability of the results. Without biological replicates (i.e., measurements from multiple individual mice within each condition), the experiment lacks the ability to capture natural biological variation, and any differential expression detected may be specific to those individual mice rather than representative of broader trends across the population. Increasing the number of biological replicates enhances the accuracy of biological variation estimates and the precision of mean expression level estimates. This, in turn, leads to better data modeling and the identification of more differentially expressed genes. The emphasis, therefore, is on maximizing biological replicates to capture the true variability in biological systems.
+
 
 ## Sample pooling ![](images/experimental_design/danger.jpg){width=50px}  {- .caution} 
-
-
 
 Sample pooling in RNA-Seq is commonly used by experimental biologists to reduce costs and increase throughput, particularly when RNA input is low. While pooling offers practical benefits, it also introduces potential pitfalls that can negatively affect data quality and the conclusions drawn from the experiment. Some of the key challenges include:
 
@@ -100,7 +98,7 @@ For instance, sex is known to significantly influence gene expression. If all th
 knitr::include_graphics("images/experimental_design/confounding.png")
 ```
 
-To avoid confounding, it is important to ensure the sample source/animals in each condition are all the same sex, age, litter, and batch, if possible. If this is not entirely possible, then make sure to split the animals equally between different conditions. Also ensure the samples are collected at the same time or randomise samples if they can’t be processed all at one time. It's best to discuss he experimental design with a bioinformatcian before conducting the experiment.
+To avoid confounding, it is important to ensure the sample source/animals in each condition are all the same sex, age, litter, and batch, if possible. If this is not entirely possible, then make sure to split the animals equally between different conditions. Also ensure the samples are collected at the same time or randomise samples if they can’t be processed all at one time. It's best to discuss the experimental design with a bioinformatician before conducting the experiment.
 
 
 ## Summary
