@@ -14,19 +14,58 @@ github-repo: https://github.com/MonashBioinformaticsPlatform/RNAseq_workshop_202
 ---
 ***
 
-# Getting started
+# Getting started  
 
-Instructors: 
+    
+- **[All communications and important links will be in this Drive Document](https://docs.google.com/document/d/1jykhTx23IHoTJvu6rCcs6_cuPznlMLYQZqih_C2-kfs/edit)**
+
+
+- **Instructors:** Adele Barugahare, Nitika Kandhari, Scott Coutts, Andrew Perry, Paul Harrison, Laura Perlaza-Jimenez
+
+
+## Schedule
+
+This workshop is sessions, each 4 hours
+
+**First Day**
+
+|  Time       |  Content                  |
+|:---:|:---:|
+| 10:00 | Getting started and introduction |
+| 10:10 | Planning an RNAseq Experiment |
+| 11:00 | Experimental Design |
+| 11:20 | 00:10 Break |
+| 11:30 | Library Preparation |
+| 12:40 | 00:20 Lunch Break |
+| 13:00 | Pipeline Overview |
+| 14:00 | End of first session |
+
+**Second Day**
+
+|  Time       |  Content                  |
+|:---:|:---:|
+| 10:00 | Pipeline Overview |
+| 11:20 | 00:10 Break |
+| 11:30 | Pipeline Overview |
+| 12:00 | Differential Expression |
+| 12:40 | 00:20 Lunch Break |
+| 13:00 | Differential Expression |
+| 14:00 | End of second session |
+| 13:00 | Pipeline Overview |
+| 14:00 | End of first session |
 
 
 ## Summary
 
+This workshop is aimed at researchers who are looking to design, analyze, and interpret bulk RNA-seq experiments without the need for coding. It is particularly suitable for those who want to:
+
+- Develop a strong understanding of RNA-seq experiment planning and data analysis.
+- Use web-based tools to process and interpret RNA-seq data.
+- Gain confidence in making informed decisions about experimental design and data interpretation.
 
 
-Important links:
-
-
-
+**Contact**
+Please email bioinformatics.platform@monash.edu for more information
 
 
 

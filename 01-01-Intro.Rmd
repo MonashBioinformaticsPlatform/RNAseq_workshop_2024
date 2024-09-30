@@ -1,7 +1,19 @@
 # Introduction
 
+This workshop provides a complete, start-to-finish guide to designing, analyzing, and interpreting bulk RNA-seq experiments, using web-based tools with no coding required. Participants will learn how to plan experiments, process sequencing data, and run analysis pipelines entirely through accessible online platforms. Emphasis is placed on quality control and generating accurate differential expression results. By the end of the workshop, attendees will be equipped to make informed decisions and interpret RNA-seq data with confidence.
 
-_insert Figure 1 from [here (2016)](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-0881-8), attribute as required under a CC-BY 4.0 license_
+
+**Course Objectives**
+
+- Understand the key components and considerations for designing a robust bulk RNA-seq experiment.
+
+- Gain familiarity with laxy.io for processing RNA-seq data, from sequencing to alignment and transcript counting.
+
+- Perform quality control checks to ensure the accuracy and reliability of RNA-seq data.
+
+- Generate and interpret differentially expressed genes (DEGs) using Degust.
+
+- Develop the ability to critically evaluate and adjust RNA-seq experiments based on quality metrics and results.
 
 ## Scope
 
