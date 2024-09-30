@@ -231,7 +231,7 @@ The most common use for RNAseq is to identify differentially expressed genes in 
 
 The most common type of analysis performed with RNAseq data is differential gene expression (DGE) analysis. This type of analysis looks at the difference in abundance for genes between 2 or more conditions. The conditions should have a suitable control condition that provides a baseline measurement that another condition can be compared against. 
 
-```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap ="With a bulk RNAseq experiment, we usually want to examine changes in transcript abundance in an organism. We do this by comparing the gene expression levels in an experimental condition against the gene expression levels in a control condition"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap ="With a bulk RNAseq experiment, we usually want to examine changes in gene abundance in an organism. We do this by comparing the gene expression levels in an experimental condition against the gene expression levels in a control condition"}
 knitr::include_graphics("images/experimental_design/fig_dge.png")
 ```
 
@@ -279,7 +279,7 @@ knitr::include_graphics("images/experimental_design/genome_transcriptome_alignme
 
 Image source: [RNA Sequencing Data: Hitchhiker's Guide to Expression Analysis, 2019](https://www.annualreviews.org/content/journals/10.1146/annurev-biodatasci-072018-021255)
 
-Long read sequencing is ideal for isoform/transcript level analyses as there is less or no ambiguity to which isofrom a read comes from, if the entire transcript has been sequenced. 
+Long read sequencing might be more suited for isoform/transcript level analyses as there is less or no ambiguity to which isofrom a read comes from, if the entire transcript has been sequenced. 
 
 
 ### Novel Transcript/Isoform Discovery
