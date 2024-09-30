@@ -64,7 +64,7 @@ This workshop is aimed at researchers who are looking to design, analyze, and in
 - Gain confidence in making informed decisions about experimental design and data interpretation.
 
 
-**Contact**
+**Contact**   
 Please email bioinformatics.platform@monash.edu for more information
 
 
