@@ -51,8 +51,6 @@ This workshop is sessions, each 4 hours
 | 12:40 | 00:20 Lunch Break |
 | 13:00 | Differential Expression |
 | 14:00 | End of second session |
-| 13:00 | Pipeline Overview |
-| 14:00 | End of first session |
 
 
 ## Summary
