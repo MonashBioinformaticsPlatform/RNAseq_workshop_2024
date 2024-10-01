@@ -320,9 +320,9 @@ Most RNAseq datasets are used for quantative analysis - the data is aligned to a
 
 It is possible to leverage the sequences of the reads to assemble into transcripts (or if using long read sequencing, to sequence the full transcript and no assembly is then required). This can enable discovery of new genes/transcripts that are not known in a reference database.
 
-(ref.foo16) Image source: [RNA sequencing, PacBio](https://www.pacb.com/products-and-services/applications/rna-sequencing/)
+(ref:foo16) Image source: [RNA sequencing, PacBio](https://www.pacb.com/products-and-services/applications/rna-sequencing/)
 
-```{r, echo=FALSE, out.width="100%",fig.cap='(ref.foo16)'}
+```{r, echo=FALSE, out.width="100%",fig.cap='(ref:foo16)'}
 knitr::include_graphics("https://www.pacb.com/wp-content/uploads/img_isoform_discovery-1.svg")
 ```
 
@@ -349,8 +349,10 @@ knitr::include_graphics("https://oup.silverchair-cdn.com/oup/backfile/Content_pu
 RNAseq can have clinical applications. One such application is the detection of fusion genes - these can arise due to chromosomal rearrangements combining the coding regions of two genes. These genes can produce aberrant proteins and lead to cancer development if the fused genes are oncogenes or tumor suppresor genes. Therefore, detection of fusion genes can be an important diagnostic tool in clinical settings as well as for cancer research.
 
 
-(ref:foo18) Image source: [GFusion: an Effective Algorithm to Identify Fusion Genes from Cancer RNA-Seq Data, 2017](https://www.nature.com/articles/s41598-017-07070-6)
-```{r, echo=FALSE, out.width="90%", fig.cap='(ref:foo18)'}
+
+(ref:foo18) Image source [GFusion: an Effective Algorithm to Identify Fusion Genes from Cancer RNA-Seq Data, 2017](https://www.nature.com/articles/s41598-017-07070-6)
+
+```{r, echo=FALSE, out.width="90%", fig.cap= '(ref:foo18)'}
 knitr::include_graphics("https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41598-017-07070-6/MediaObjects/41598_2017_7070_Fig2_HTML.jpg?as=webp")
 ```
 
@@ -361,6 +363,7 @@ knitr::include_graphics("https://media.springernature.com/lw685/springer-static/
 RNAseq data can be combined with other types of genome wide to provide deeper insights into gene regulation and molecular function. Combining with epigenetic data such as ChIPseq and ATACseq can be used to examine gene regulatory networks in a tissue of interest. There are tools that can take chromatin data and trancriptomic data to classify transcription factor activity as either activating and repressive on target genes. DNA methylation and histone modifications can also be correlated with gene expression data .
 
 (ref:foo19) Image source: [Computational tools for inferring transcription factor activity, 2023](https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/10.1002/pmic.202200462)
+
 ```{r, echo=FALSE, out.width="100%", fig.cap="Overview of the general setup of computational tools to infer transcription factor activity (TFA). (ref:foo19) "}
 knitr::include_graphics("https://analyticalsciencejournals.onlinelibrary.wiley.com/cms/asset/a6a72698-33cf-451f-8056-dc632e6b23b5/pmic13741-fig-0002-m.png")
 ```

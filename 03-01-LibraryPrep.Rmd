@@ -192,15 +192,15 @@ knitr::include_graphics("images/library_prep/Picture8.png")
 
 Other compounds also absorb light across the spectrum, and these overlap with the RNA absorbance peaks and troughs. 
 
-(ref:foo9) Absorbance of an assortment of substances commonly found in nucleic acid preparations. Image source  [bmglabtech](https://www.bmglabtech.com/en/application-notes/dna-purity-ratio-fast-and-easy-absorbance-based-evaluation-of-nucleic-acid-quality)
-```{r, echo=FALSE, out.width="530px", fig.align="center", fig.cap ='(ref:foo9)', fig.height= 0.1, fig.width=0.4}
+(ref:foolp9) Absorbance of an assortment of substances commonly found in nucleic acid preparations. Image source  [bmglabtech](https://www.bmglabtech.com/en/application-notes/dna-purity-ratio-fast-and-easy-absorbance-based-evaluation-of-nucleic-acid-quality)
+```{r, echo=FALSE, out.width="530px", fig.align="center", fig.cap ='(ref:foolp9)', fig.height= 0.1, fig.width=0.4}
 knitr::include_graphics("images/library_prep/Picture9.png")
 ```
 
 Therefore, contaminating substances in your sample can alter the absorbance spectrum in predictable ways.
 
-(ref:foo10) Effect of various common contaminants on the absorbance spectrum of DNA/RNA. Imagen source [bmglabtech](https://www.bmglabtech.com/en/application-notes/dna-purity-ratio-fast-and-easy-absorbance-based-evaluation-of-nucleic-acid-quality)
-```{r, echo=FALSE, out.width="530px", fig.align="center", fig.cap ="(ref:foo10)", fig.height= 0.1, fig.width=0.4}
+(ref:foolp10) Effect of various common contaminants on the absorbance spectrum of DNA/RNA. Imagen source [bmglabtech](https://www.bmglabtech.com/en/application-notes/dna-purity-ratio-fast-and-easy-absorbance-based-evaluation-of-nucleic-acid-quality)
+```{r, echo=FALSE, out.width="530px", fig.align="center", fig.cap ="(ref:foolp10)", fig.height= 0.1, fig.width=0.4}
 knitr::include_graphics("images/library_prep/Picture10.png")
 ```
 
@@ -232,9 +232,9 @@ However, you’ll never produce a completely pure sample, and almost anything el
 
 In contrast, fluorimetry uses RNA specific nucleic acid binding dyes that fluoresce only when bound to their target molecule. They are largely unaffected by other substances in your sample, including DNA 
 
-(ref:foo12) RNA specific dye is largely unaffected by DNA present at the same mass. Imagen source [biotium](https://biotium.com/product/accublue-broad-range-rna-quantitation-kit/)
+(ref:foolp12) RNA specific dye is largely unaffected by DNA present at the same mass. Imagen source [biotium](https://biotium.com/product/accublue-broad-range-rna-quantitation-kit/)
 
-```{r, echo=FALSE, out.width="530px", fig.align="center", fig.cap ="(ref:foo12)", fig.height= 0.1, fig.width=0.4}
+```{r, echo=FALSE, out.width="530px", fig.align="center", fig.cap ="(ref:foolp12)", fig.height= 0.1, fig.width=0.4}
 knitr::include_graphics("images/library_prep/Picture12.png")
 ```
 
@@ -264,8 +264,8 @@ Library construction is the process of converting your target RNA molecules into
 
 Generally, we recommend purchasing a commercially prepared kit if there is one available that is suitable for your organism and tissue/cell type - they are convenient, pre-optimised, and batch tracked. However, there are also many (many!) community-developed methods. 
 
-(ref:foo13) Image source [ngs-library-prep](https://www.illumina.com/content/dam/illumina-marketing/documents/applications/ngs-library-prep/for-all-you-seq-rna.pdf)
-```{r, echo=FALSE, out.width="530px", fig.align="center", fig.cap = "There are many, many, different library preparation methods!. This is Illumina For all you seq - RNA poster. Each line of each column represents a summary of single library prep type... And this is from 2015. (ref:foo13)", fig.height= 0.1, fig.width=0.4}
+(ref:foolp13) Image source [ngs-library-prep](https://www.illumina.com/content/dam/illumina-marketing/documents/applications/ngs-library-prep/for-all-you-seq-rna.pdf)
+```{r, echo=FALSE, out.width="530px", fig.align="center", fig.cap = "There are many, many, different library preparation methods!. This is Illumina For all you seq - RNA poster. Each line of each column represents a summary of single library prep type... And this is from 2015. (ref:foolp13)", fig.height= 0.1, fig.width=0.4}
 knitr::include_graphics("images/library_prep/Picture13.png")
 ```
 
@@ -295,8 +295,8 @@ https://sapac.illumina.com/science/technology/next-generation-sequencing/sequenc
 ## Parts of a (typical short-read) library
 Most short read libraries consist of a set of core features: Insert, adapters, flowcell binding regions, primer binding sites, indexes, and (sometimes) unique molecular identifiers.
 
-(ref:foo14) Imagen source [idtdna](https://sg.idtdna.com/pages/products/next-generation-sequencing/workflow/xgen-ngs-library-preparation/ngs-adapters-indexing-primer)
-```{r, echo=FALSE, out.width="530px", fig.align="center", fig.cap = "Illumina adapter format showing flowcell binding regions (black), index/barcode sequences (light blue and purple), unique molecular identifiers (orange and green), and insert between T and A bases (blue-grey, centre). (ref:foo14)", fig.height= 0.1, fig.width=0.4}
+(ref:foolp14) Imagen source [idtdna](https://sg.idtdna.com/pages/products/next-generation-sequencing/workflow/xgen-ngs-library-preparation/ngs-adapters-indexing-primer)
+```{r, echo=FALSE, out.width="530px", fig.align="center", fig.cap = "Illumina adapter format showing flowcell binding regions (black), index/barcode sequences (light blue and purple), unique molecular identifiers (orange and green), and insert between T and A bases (blue-grey, centre). (ref:foolp14)", fig.height= 0.1, fig.width=0.4}
 knitr::include_graphics("images/library_prep/Picture14.png")
 ```
 
@@ -397,17 +397,17 @@ This method removes unwanted RNA and retains all that remains. There are many me
 
 Pull-down: This is one of the most common methods for ribosomal depletion. The sample is denatured, hybridised to probes specific for the target rRNA/tRNA. The probes are biotinylated, so that they can be captured using solid-phase streptavidin-coated magnetic solid-phase beads. This is effective, but only if the probes are complimentary to your organism’s rRNA sequence. You should check with the vendor to ensure that your sample is compatible with the probe-sets in the kit. This method usually doesn’t work well with low-input samples. Example kits: Thermo RiboMinus, original Illumina RiboZero, siTOOLS riboPOOL. 
 
-(ref:foo19) Pull-down of rRNA (and other unwanted transcripts). Single-stranded DNA probes with biotin tags are added to the denatured RNA and allowed to hybridise. Magnetic beads coated in biotin-binding streptavidin are added to capture the probes and their hybridised targets, and are recovered and discarded. Remaining material is depleted of rRNA. Image source [illumina](https://knowledge.illumina.com/library-preparation/rna-library-prep/library-preparation-rna-library-prep-reference_material-list/000005899)
+(ref:foolp19) Pull-down of rRNA (and other unwanted transcripts). Single-stranded DNA probes with biotin tags are added to the denatured RNA and allowed to hybridise. Magnetic beads coated in biotin-binding streptavidin are added to capture the probes and their hybridised targets, and are recovered and discarded. Remaining material is depleted of rRNA. Image source [illumina](https://knowledge.illumina.com/library-preparation/rna-library-prep/library-preparation-rna-library-prep-reference_material-list/000005899)
 
-```{r, echo=FALSE, out.width="530px", fig.align="center", fig.cap ="(ref:foo19)", fig.height= 0.1, fig.width=0.4}
+```{r, echo=FALSE, out.width="530px", fig.align="center", fig.cap ="(ref:foolp19)", fig.height= 0.1, fig.width=0.4}
 knitr::include_graphics("images/library_prep/Picture19.png")
 ```
 
 RNase H: This method uses enzymatic destruction of unwanted RNA. RNase H is an enzyme that selectively degrades RNA when present as a DNA-RNA hybrid. The sample denatured and mixed with ssDNA probes which are specific to depletion targets, and any remaining undigested RNA is carried forward. It works for relatively low input samples, as long as the probes are complementary - You should check with the vendor to ensure that your sample is compatible with the probe-sets in the kit. Example kits: New England Biolabs NEBNext, Illumina RiboZero Plus.
 
-(ref:foo20) RNase H enzymatic depletion of rRNA (and other unwanted targets). 1) Specific ssDNA probs are added to the purified RNA and allowed to hybridise. 2) RNase H digests DNA:RNA hybrids. 3) DNA probes are removed with DNase I, leaving behind enriched mRNA.Imagen source [Library preparation](https://knowledge.illumina.com/library-preparation/rna-library-prep/library-preparation-rna-library-prep-reference_material-list/000005899)
+(ref:foolp20) RNase H enzymatic depletion of rRNA (and other unwanted targets). 1) Specific ssDNA probs are added to the purified RNA and allowed to hybridise. 2) RNase H digests DNA:RNA hybrids. 3) DNA probes are removed with DNase I, leaving behind enriched mRNA.Imagen source [Library preparation](https://knowledge.illumina.com/library-preparation/rna-library-prep/library-preparation-rna-library-prep-reference_material-list/000005899)
 
-```{r, echo=FALSE, out.width="530px", fig.align="center", fig.cap ="(ref:foo20)", fig.height= 0.1, fig.width=0.4}
+```{r, echo=FALSE, out.width="530px", fig.align="center", fig.cap ="(ref:foolp20)", fig.height= 0.1, fig.width=0.4}
 knitr::include_graphics("images/library_prep/Picture20.png")
 ```
 
@@ -415,9 +415,9 @@ Targeted amplification/NSR priming: Uses a set of random primers computationally
 
 Abundance-based depletion: destroys all highly abundant transcripts. A total RNA library is constructed and converted to dsDNA, including unwanted transcripts. The two strands of each library molecule are denatured and slowly re-hybridised. Highly abundant molecules will form dsDNA more quickly than rarer ones, and a duplex-specific nuclease (DSN) digests dsDNA specifically. Because this is done after library construction, it works well for ultra-low input samples. It’s also sequence-independant, so it works for any species (unlike targeted methods, above). It can also reduce the sequencing requirement for samples that contain other very highly abundant transcripts that are not of interest. This is a double-edged sword: sequence independence means that any high abundance transcripts will be depleted, and sometimes the method must be optimised. 
 
-(ref:foo21) Duplex-specific nuclease can be used to remove high abundance transcripts, and these are mostly rRNA and tRNA. Imagen source [lexicon](https://www.lexogen.com/rna-lexicon-rna-pretreatment-enrichment-or-depletion/)
+(ref:foolp21) Duplex-specific nuclease can be used to remove high abundance transcripts, and these are mostly rRNA and tRNA. Imagen source [lexicon](https://www.lexogen.com/rna-lexicon-rna-pretreatment-enrichment-or-depletion/)
 
-```{r, echo=FALSE, out.width="530px", fig.align="center", fig.cap ="(ref:foo21)", fig.height= 0.1, fig.width=0.4}
+```{r, echo=FALSE, out.width="530px", fig.align="center", fig.cap ="(ref:foolp21)", fig.height= 0.1, fig.width=0.4}
 knitr::include_graphics("images/library_prep/Picture21.png")
 ```
 
@@ -459,9 +459,9 @@ Short-read sequencing instruments can only sequence DNA. Consequently the RNA mu
 The reverse transcription step can also enable "strandedness", which allows you to differentiate the DNA strand from which the RNA was transcribed. If we process RNA directly to double-stranded cDNA by reverse transcription, then it will be impossible to determine the genomic DNA strand from which a transcript was produced, because both cDNA strands produce library molecules that will be sequenced. The strand information is lost during library construction.
 
 
-(ref:foo24) Two transcripts produced from from opposite strands sequenced using a non-directional library preparation kit can’t be distinguished. Imagen source [azenta](https://www.azenta.com/blog/stranded-versus-non-stranded-rna-seq)
+(ref:foolp24) Two transcripts produced from from opposite strands sequenced using a non-directional library preparation kit can’t be distinguished. Imagen source [azenta](https://www.azenta.com/blog/stranded-versus-non-stranded-rna-seq)
 
-```{r, echo=FALSE, out.width="530px", fig.align="center", fig.cap ="(ref:foo24)", fig.height= 0.1, fig.width=0.4}
+```{r, echo=FALSE, out.width="530px", fig.align="center", fig.cap ="(ref:foolp24)", fig.height= 0.1, fig.width=0.4}
 knitr::include_graphics("images/library_prep/Picture24.png")
 ```
 
