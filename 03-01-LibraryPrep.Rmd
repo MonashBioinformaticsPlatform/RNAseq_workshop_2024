@@ -193,6 +193,7 @@ knitr::include_graphics("images/library_prep/Picture8.png")
 Other compounds also absorb light across the spectrum, and these overlap with the RNA absorbance peaks and troughs. 
 
 (ref:foolp9) Absorbance of an assortment of substances commonly found in nucleic acid preparations. Image source  [bmglabtech](https://www.bmglabtech.com/en/application-notes/dna-purity-ratio-fast-and-easy-absorbance-based-evaluation-of-nucleic-acid-quality)
+
 ```{r, echo=FALSE, out.width="530px", fig.align="center", fig.cap ='(ref:foolp9)', fig.height= 0.1, fig.width=0.4}
 knitr::include_graphics("images/library_prep/Picture9.png")
 ```
@@ -200,6 +201,7 @@ knitr::include_graphics("images/library_prep/Picture9.png")
 Therefore, contaminating substances in your sample can alter the absorbance spectrum in predictable ways.
 
 (ref:foolp10) Effect of various common contaminants on the absorbance spectrum of DNA/RNA. Imagen source [bmglabtech](https://www.bmglabtech.com/en/application-notes/dna-purity-ratio-fast-and-easy-absorbance-based-evaluation-of-nucleic-acid-quality)
+
 ```{r, echo=FALSE, out.width="530px", fig.align="center", fig.cap ="(ref:foolp10)", fig.height= 0.1, fig.width=0.4}
 knitr::include_graphics("images/library_prep/Picture10.png")
 ```
@@ -207,8 +209,8 @@ knitr::include_graphics("images/library_prep/Picture10.png")
 The general metrics for nucleic acid purity are values calculated from the ratios of particular absorbance minima and maxima. 
 
 For pure RNA:
-A260:A280 = 1.8 - 2.0
-A260:A230 = 2.0 - 2.2
+A260:A280 = 1.8 - 2.0   
+A260:A230 = 2.0 - 2.2   
 
 Look at the general shape of the curve and examine the absorbance ratios before deciding whether to continue with your samples. 
 
@@ -265,6 +267,7 @@ Library construction is the process of converting your target RNA molecules into
 Generally, we recommend purchasing a commercially prepared kit if there is one available that is suitable for your organism and tissue/cell type - they are convenient, pre-optimised, and batch tracked. However, there are also many (many!) community-developed methods. 
 
 (ref:foolp13) Image source [ngs-library-prep](https://www.illumina.com/content/dam/illumina-marketing/documents/applications/ngs-library-prep/for-all-you-seq-rna.pdf)
+
 ```{r, echo=FALSE, out.width="530px", fig.align="center", fig.cap = "There are many, many, different library preparation methods!. This is Illumina For all you seq - RNA poster. Each line of each column represents a summary of single library prep type... And this is from 2015. (ref:foolp13)", fig.height= 0.1, fig.width=0.4}
 knitr::include_graphics("images/library_prep/Picture13.png")
 ```
@@ -296,6 +299,7 @@ https://sapac.illumina.com/science/technology/next-generation-sequencing/sequenc
 Most short read libraries consist of a set of core features: Insert, adapters, flowcell binding regions, primer binding sites, indexes, and (sometimes) unique molecular identifiers.
 
 (ref:foolp14) Imagen source [idtdna](https://sg.idtdna.com/pages/products/next-generation-sequencing/workflow/xgen-ngs-library-preparation/ngs-adapters-indexing-primer)
+
 ```{r, echo=FALSE, out.width="530px", fig.align="center", fig.cap = "Illumina adapter format showing flowcell binding regions (black), index/barcode sequences (light blue and purple), unique molecular identifiers (orange and green), and insert between T and A bases (blue-grey, centre). (ref:foolp14)", fig.height= 0.1, fig.width=0.4}
 knitr::include_graphics("images/library_prep/Picture14.png")
 ```
