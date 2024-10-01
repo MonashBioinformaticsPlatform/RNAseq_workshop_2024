@@ -51,3 +51,7 @@ pre code {
   border-radius: 5px;
   background: #FFCCCC;
 }
+
+.main-title {
+  font-size: large;
+}
