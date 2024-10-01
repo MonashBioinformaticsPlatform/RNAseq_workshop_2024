@@ -380,7 +380,7 @@ Ribosomal RNA depletion discards rRNA and tRNA, and retains everything else.
 
 Note: It’s also possible to remove specific targetted sequences, or to enrich only for specific target sequences. These methods are beyond the scope of this workshop. If you’re interested, please talk to us afterwards!
 
-Poly-A selection (positive selection)
+**Poly-A selection (positive selection)**
 
 This method binds poly-A containing RNA (mostly messenger RNA) and discards all other RNA species, and it is the most common approach to enrichment for eukaryotic samples. To achieve the selection, the RNA sample is exposed to solid-phase magnetic beads coated in poly-T oligos. The poly-A tail binds to these beads, and leaves all other molecules in solution. The beads are recovered, washed, and the retained RNA eluted for library construction.
 
@@ -395,11 +395,11 @@ Because the poly-A tract is required for capture, this method requires highly in
 
 Poly-A selection is generally more effective than ribosomal depletion. We recommend this method if you have RNA that meets all the previous requirements.
 
-Ribodepletion (negative selection)
+**Ribodepletion (negative selection)**
 
 This method removes unwanted RNA and retains all that remains. There are many methods for achieving this goal, and a number of the most popular methods are listed below:
 
-Pull-down: This is one of the most common methods for ribosomal depletion. The sample is denatured, hybridised to probes specific for the target rRNA/tRNA. The probes are biotinylated, so that they can be captured using solid-phase streptavidin-coated magnetic solid-phase beads. This is effective, but only if the probes are complimentary to your organism’s rRNA sequence. You should check with the vendor to ensure that your sample is compatible with the probe-sets in the kit. This method usually doesn’t work well with low-input samples. Example kits: Thermo RiboMinus, original Illumina RiboZero, siTOOLS riboPOOL. 
+_Pull-down:_ This is one of the most common methods for ribosomal depletion. The sample is denatured, hybridised to probes specific for the target rRNA/tRNA. The probes are biotinylated, so that they can be captured using solid-phase streptavidin-coated magnetic solid-phase beads. This is effective, but only if the probes are complimentary to your organism’s rRNA sequence. You should check with the vendor to ensure that your sample is compatible with the probe-sets in the kit. This method usually doesn’t work well with low-input samples. Example kits: Thermo RiboMinus, original Illumina RiboZero, siTOOLS riboPOOL. 
 
 (ref:foolp19) Pull-down of rRNA (and other unwanted transcripts). Single-stranded DNA probes with biotin tags are added to the denatured RNA and allowed to hybridise. Magnetic beads coated in biotin-binding streptavidin are added to capture the probes and their hybridised targets, and are recovered and discarded. Remaining material is depleted of rRNA. Image source [illumina](https://knowledge.illumina.com/library-preparation/rna-library-prep/library-preparation-rna-library-prep-reference_material-list/000005899)
 
@@ -407,7 +407,7 @@ Pull-down: This is one of the most common methods for ribosomal depletion. The s
 knitr::include_graphics("images/library_prep/Picture19.png")
 ```
 
-RNase H: This method uses enzymatic destruction of unwanted RNA. RNase H is an enzyme that selectively degrades RNA when present as a DNA-RNA hybrid. The sample denatured and mixed with ssDNA probes which are specific to depletion targets, and any remaining undigested RNA is carried forward. It works for relatively low input samples, as long as the probes are complementary - You should check with the vendor to ensure that your sample is compatible with the probe-sets in the kit. Example kits: New England Biolabs NEBNext, Illumina RiboZero Plus.
+_RNase H:_ This method uses enzymatic destruction of unwanted RNA. RNase H is an enzyme that selectively degrades RNA when present as a DNA-RNA hybrid. The sample denatured and mixed with ssDNA probes which are specific to depletion targets, and any remaining undigested RNA is carried forward. It works for relatively low input samples, as long as the probes are complementary - You should check with the vendor to ensure that your sample is compatible with the probe-sets in the kit. Example kits: New England Biolabs NEBNext, Illumina RiboZero Plus.
 
 (ref:foolp20) RNase H enzymatic depletion of rRNA (and other unwanted targets). 1) Specific ssDNA probs are added to the purified RNA and allowed to hybridise. 2) RNase H digests DNA:RNA hybrids. 3) DNA probes are removed with DNase I, leaving behind enriched mRNA.Imagen source [Library preparation](https://knowledge.illumina.com/library-preparation/rna-library-prep/library-preparation-rna-library-prep-reference_material-list/000005899)
 
@@ -415,9 +415,9 @@ RNase H: This method uses enzymatic destruction of unwanted RNA. RNase H is an e
 knitr::include_graphics("images/library_prep/Picture20.png")
 ```
 
-Targeted amplification/NSR priming: Uses a set of random primers computationally depleted for those that bind rRNA or other unwanted transcripts ("not-so-random" or "NSR" primers). The depleted set is used for amplification of your sample, leaving rRNA unamplified. This works very well for ultra-low input samples, but is effective only if the depleted probes match your species’ rRNA. You should check with the vendor to ensure that your sample is compatible with the probe-sets in the kit.  For example, NuGen Ovation.
+_Targeted amplification/NSR priming:_ Uses a set of random primers computationally depleted for those that bind rRNA or other unwanted transcripts ("not-so-random" or "NSR" primers). The depleted set is used for amplification of your sample, leaving rRNA unamplified. This works very well for ultra-low input samples, but is effective only if the depleted probes match your species’ rRNA. You should check with the vendor to ensure that your sample is compatible with the probe-sets in the kit.  For example, NuGen Ovation.
 
-Abundance-based depletion: destroys all highly abundant transcripts. A total RNA library is constructed and converted to dsDNA, including unwanted transcripts. The two strands of each library molecule are denatured and slowly re-hybridised. Highly abundant molecules will form dsDNA more quickly than rarer ones, and a duplex-specific nuclease (DSN) digests dsDNA specifically. Because this is done after library construction, it works well for ultra-low input samples. It’s also sequence-independant, so it works for any species (unlike targeted methods, above). It can also reduce the sequencing requirement for samples that contain other very highly abundant transcripts that are not of interest. This is a double-edged sword: sequence independence means that any high abundance transcripts will be depleted, and sometimes the method must be optimised. 
+_Abundance-based depletion:_ destroys all highly abundant transcripts. A total RNA library is constructed and converted to dsDNA, including unwanted transcripts. The two strands of each library molecule are denatured and slowly re-hybridised. Highly abundant molecules will form dsDNA more quickly than rarer ones, and a duplex-specific nuclease (DSN) digests dsDNA specifically. Because this is done after library construction, it works well for ultra-low input samples. It’s also sequence-independant, so it works for any species (unlike targeted methods, above). It can also reduce the sequencing requirement for samples that contain other very highly abundant transcripts that are not of interest. This is a double-edged sword: sequence independence means that any high abundance transcripts will be depleted, and sometimes the method must be optimised. 
 
 (ref:foolp21) Duplex-specific nuclease can be used to remove high abundance transcripts, and these are mostly rRNA and tRNA. Imagen source [lexicon](https://www.lexogen.com/rna-lexicon-rna-pretreatment-enrichment-or-depletion/)
 
