@@ -1,11 +1,7 @@
 # Additional Analysis
 
-## Discuss additional plots and variations 
+Functional Enrichment: [ Biocommons - Functional Enrichment](https://www.biocommons.org.au/events/funct-enrich)
 
-## Discuss gene set enrichment, pathway and network analysis
-
-## Discuss Multivariate integration
-
-"Multiomics?"
-
-## Discuss Single Cell & Spatial transcriptomics
+```{r, echo=FALSE, out.width="100%",}
+knitr::include_graphics("images/Functional enrichment mini series.png")
+```

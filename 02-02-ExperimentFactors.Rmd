@@ -61,7 +61,9 @@ Consider the above RNA-Seq experiment comparing two conditions: normal and disea
 Technical replicates help assess the consistency of the sequencing process and reduce technical noise. However, they do not account for biological variability, which is crucial for ensuring the generalizability of the results. Without biological replicates (i.e., measurements from multiple individual mice within each condition), the experiment lacks the ability to capture natural biological variation, and any differential expression detected may be specific to those individual mice rather than representative of broader trends across the population. Increasing the number of biological replicates enhances the accuracy of biological variation estimates and the precision of mean expression level estimates. This, in turn, leads to better data modeling and the identification of more differentially expressed genes. The emphasis, therefore, is on maximizing biological replicates to capture the true variability in biological systems.
 
 
-## Sample pooling ![](images/experimental_design/danger.jpg){width=50px}  {- .caution} 
+
+
+## ![](images/experimental_design/warning_symbol.svg){width=30px} Sample pooling   ![](images/experimental_design/warning_symbol.svg){width=30px} {- .caution} 
 
 Sample pooling in RNA-Seq is commonly used by experimental biologists to reduce costs and increase throughput, particularly when RNA input is low. While pooling offers practical benefits, it also introduces potential pitfalls that can negatively affect data quality and the conclusions drawn from the experiment. Some of the key challenges include:
 

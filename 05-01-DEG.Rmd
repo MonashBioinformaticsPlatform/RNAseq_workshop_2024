@@ -296,18 +296,18 @@ These units are only for visualizing and reporting results. For differential exp
 
 To find TPMs in the Laxy output, in the output pane you would navigate to `output/results/star_salmon` and download `salmon.merged.gene_tpm.tsv` or `salmon.merged.transcript_tpm.tsv`.
 
-**Absolute expression enthusiast says:** TPM is great! TPM is the right unit to describe absolute RNA expression levels.
+**Absolute expression enthusiast says:** "TPM is great! TPM is the right unit to describe absolute RNA expression levels."
 
-**Differential expression ethusiats says:** I don't care about absolute expression levels, just fold changes. Raw counts are what I need for statistical analysis. TPMs are not raw counts, get them outtahere!
+**Differential expression enthusiast says:** "I don't care about absolute expression levels, just fold changes. Raw counts are what I need for statistical analysis. TPMs are not raw counts!"
 
 
 ### UMIs and counting
 
 Modern RNA-Seq protocol tag fragments with a Unique Molecular Identifier (UMI) before PCR amplification. This allows each original RNA fragment to be counted once, even if it is seen in multiple reads (or read pairs).
 
-**Absolute expression enthusiast says:** I like UMI counting because my TPMs are not biassed due to PCR biasses.
+**Absolute expression enthusiast says:** "I like UMI counting because my TPMs are not biassed due to PCR biasses."
 
-**Differential expression ethusiast says:** PCR bias doesn't worry me. Each gene has the same bias in each sample, so it cancels out when I look at fold change. What I do like is that UMI counting removes an extra source of noise.
+**Differential expression ethusiast says:** "PCR bias doesn't worry me. Each gene has the same bias in each sample, so it cancels out when I look at fold change. What I do like is that UMI counting removes an extra source of noise."
 
 
 ### What to count? How to count?
@@ -320,9 +320,11 @@ Software such as Salmon can estimate transcript/isoform abundances. Since genes 
 
 Even at the gene level, it is sometimes ambiguous where a read belongs. Salmon can fractionally assign reads to multiple transcripts, which might come from different genes. Gene-level counts are obtained from Salmon by summing the transcript-level counts. Again, Salmon is attempting a difficult inference task where the gene assignment for many reads might hinge on just a few of those reads. On the other hand featureCounts output as produced by Laxy will exclude ambiguous reads ("multi-mapping" or "multi-overlapping" reads). The total count for featureCounts will be less than for Salmon, but there is also less to go wrong!
 
-**Absolute expression enthusiast says:** Different transcripts of a gene can have different biological effects, so they are important. Thinking about the different lengths of transcripts also helps me give accurate TPMs at the gene level. It's all about accurately measuring the biology!
+**Absolute expression enthusiast says:** "Different transcripts of a gene can have different biological effects, so they are important. Thinking about the different lengths of transcripts also helps me give accurate TPMs at the gene level. It's all about accurately measuring the biology!"
 
-**Differential expression enthusiast says:** Genes are easiest to work with. Trying to estimate differential transcript-level counts is a hard inference task, I really have to know what I'm doing and I'll need deeper sequencing too. I do worry a little that differential transcript usage might look like differential gene expression if the transcripts of a gene have different lengths, but it hasn't been a problem in practice.
+**Differential expression enthusiast says:** "Genes are easiest to work with. Trying to estimate differential transcript-level counts is a hard inference task, I really have to know what I'm doing and I'll need deeper sequencing too. I do worry a little that differential transcript usage might look like differential gene expression if the transcripts of a gene have different lengths, but it hasn't been a problem in practice."
+
+"At the gene level," continues the differential expression enthusiast, becoming animated, "I did try using some TPM-abundance-based 'counts' the `nf-core/rnaseq` pipeline produced with this dataset, such as `salmon.merged.gene_counts_length_scaled.tsv`, and I noticed in the heatmap there were some extremely noisy genes. This artifactual large amount of noise in some genes can make the whole differential expression analysis worse, because it affects the 'Empirical Bayes' part of the analysis. Proper analysis might involve, for example, the `catchSalmon` function in `edgeR`, which makes use of bootstrap information provided by Salmon. This is not available in Degust."
 
 
 ### Other methods

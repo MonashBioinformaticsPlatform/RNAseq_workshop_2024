@@ -127,3 +127,23 @@ Use the Genbank or RefSeq database identifier (including `.patch` level). Use th
 >eg. We used the human genome assembly `GCF_000001405.40` and corresponding annotations from NCBI for short read alignment and transcript quantification at the gene level.
 
 ####  {-}
+
+## Salmon and Kallisto  {-}
+
+The way `featureCounts` assigns reads to transcripts is relatively straightforward; ambiguous data is ignored (eg multi-mappers)
+
+Other more complex methods, such as Salmon and Kallisto have been developed to try and better use all the available data and account for bias, while dealing with this ambiguity.
+
+Salmon uses a Bayesian statistical model that takes into account many parameters associated with a read and transcriptome, to estimate _transcript_ abundance.
+This includes:
+
+- mapping locations (with probabilistic handling of multiple mapping locations)
+- fragment length distribution (for paired end data)
+- positional bias (coverage along the transcript)
+- sequence-specific bias: Salmon corrects for biases related to the nucleotide sequences surrounding read start sites.
+- GC bias
+
+If you'd like to better understand Salmon, take a look at 
+[this talk by one of the authors, Carl Kingsford](https://simons.berkeley.edu/talks/accurate-fast-model-aware-transcript-expression-quantification-salmon). 
+[YouTube](https://www.youtube.com/watch?v=TMLIxwDP7sk), 
+[Slides](https://simons.berkeley.edu/sites/default/files/docs/4546/kingsford-regulatory-genomics-salmon.pdf)
