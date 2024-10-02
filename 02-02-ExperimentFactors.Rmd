@@ -24,7 +24,7 @@ A well-designed RNA-Seq experiment should always include replicates. Replicates 
 
 1. **Biological replicates** - "Correct way" of including replicates in your study - These are independent samples that are taken from different individuals, organisms, or cells under the same experimental conditions to **capture the biological variation between samples**. The biologically separate samples can include different individuals in a population (e.g., 10 healthy individuals and 10 individuals with a disease), different cell cultures of the same cell line, tissue samples from different animals (e.g., liver tissue of multiple knockout mice and wild-type mice), tumor biopsies of multiple patients in each group (each patient serves as a biological replicate), etc.
 
-```{r, echo=FALSE,  out.width="430px", out.height="300px", fig.align="center", fig.cap ="Correct way to create replicates: A measurement taken from the three different mice for two conditions - normal and diseased. These are called biological replicates. These capture the biological variation between samples"}
+```{r, echo=FALSE,  out.width="430px", out.height="300px", fig.align="center", fig.cap ="Correct way to create biological replicates: A measurement taken from the three different mice for two conditions - normal and diseased. These are called biological replicates. These capture the biological variation between samples"}
 knitr::include_graphics("images/experimental_design/biological-reps.png")
 ```
 
@@ -41,9 +41,9 @@ Consider a simple RNA-Seq experiment comparing two conditions: normal and diseas
 
 In this experiment, X1, X2, and X3 represent the biological replicates for the normal condition, while Y1, Y2, and Y3 represent the biological replicates for the diseased condition. Including multiple animals accounts for natural biological variability, enhancing the robustness of statistical analysis. This approach ensures that the results are reliable, generalizable, and not driven by outliers or random chance. 
 
-2. "Incorrect way" of including replicates in your study - **Technical replicates** are repeated measurements taken from the same biological sample to accurately **assess technical variation in an experiment**. These replicates are used to control for errors in the experimental process, such as library preparation, sequencing, and sample handling. Examples of technical replicates are: constructing multiple RNA Libraries from the same sample, sequencing the same RNA library multiple times on different sequencing lanes or platforms, etc.
+2. **Technical replicates** - "Incorrect way" of including replicates in your study -  These are repeated measurements taken from the same biological sample to accurately **assess technical variation in an experiment**. These replicates are used to control for errors in the experimental process, such as library preparation, sequencing, and sample handling. Examples of technical replicates are: constructing multiple RNA Libraries from the same sample, sequencing the same RNA library multiple times on different sequencing lanes or platforms, etc.
 
-```{r, echo=FALSE, out.width="430px", out.height="300px", fig.align="center", fig.cap ="Wrong way to create replicates: Three measurements taken from the same mouse for two conditions- normal and diseased. These are called technical replicates. These assess technical variation in an experiment.", fig.height= 0.1, fig.width=0.8}
+```{r, echo=FALSE, out.width="430px", out.height="300px", fig.align="center", fig.cap ="Wrong way to create biological replicates: Three measurements taken from the same mouse for two conditions- normal and diseased. These are called technical replicates. These assess technical variation in an experiment.", fig.height= 0.1, fig.width=0.8}
 knitr::include_graphics("images/experimental_design/technical_reps.png")
 ```
 
@@ -105,7 +105,7 @@ To avoid confounding, it is important to ensure the sample source/animals in eac
 
 As a general rule for a standard RNA-Seq experiment, at least three biological replicates should be included, though it is ideal to have more to increase statistical power. A sequencing depth of 10 to 20 million reads per sample is typically sufficient for a standard gene expression analysis.
 
-Careful experimental design is critical, with sufficient replicates and randomization of samples to ensure the capture of both within-group and between-group variations while minimizing technical noise. Incorporating these considerations into the experimental design matrix is essential for ensuring robust differential expression (DE) analysis, which will be further explored in the following sections.
+Careful experimental design is critical, with sufficient replicates and randomization of samples to reduce the impact of technical biases or confounding factors on the results andd ensure the capture of both within-group and between-group variations while minimizing technical noise. Incorporating these considerations into the experimental design matrix is essential for ensuring robust differential expression (DE) analysis, which will be further explored in the following sections.
 
 
 
