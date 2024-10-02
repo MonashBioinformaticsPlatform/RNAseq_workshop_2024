@@ -58,22 +58,20 @@ Consider the above RNA-Seq experiment comparing two conditions: normal and disea
   | mouseY_diseased_2 | diseased  |   Y   |          2           |
   | mouseY_diseased_3 | diseased  |   Y   |          3           |
   
-Technical replicates help assess the consistency of the sequencing process and reduce technical noise. However, they do not account for biological variability, which is crucial for ensuring the generalizability of the results. Without biological replicates (i.e., measurements from multiple individual mice within each condition), the experiment lacks the ability to capture natural biological variation, and any differential expression detected may be specific to those individual mice rather than representative of broader trends across the population. Increasing the number of biological replicates enhances the accuracy of biological variation estimates and the precision of mean expression level estimates. This, in turn, leads to better data modeling and the identification of more differentially expressed genes. The emphasis, therefore, is on maximizing biological replicates to capture the true variability in biological systems.
-
-
+Technical replicates help assess the consistency of the sequencing process and reduce technical noise. However, they do not account for biological variability, which is crucial for ensuring the generalizability of the results. Without biological replicates, the experiment lacks the ability to capture natural biological variation, and any differential expression detected may be specific to those individual mice rather than representative of broader trends across the population. Increasing the number of biological replicates enhances the accuracy of biological variation estimates and the precision of mean expression level estimates. This, in turn, leads to better data modeling and the identification of more differentially expressed genes. The emphasis, therefore, is on maximizing biological replicates to capture the true variability in biological systems.
 
 
 ## ![](images/experimental_design/warning_symbol.svg){width=30px} Sample pooling   ![](images/experimental_design/warning_symbol.svg){width=30px} {- .caution} 
 
 Sample pooling in RNA-Seq is commonly used by experimental biologists to reduce costs and increase throughput, particularly when RNA input is low. While pooling offers practical benefits, it also introduces potential pitfalls that can negatively affect data quality and the conclusions drawn from the experiment. Some of the key challenges include:
 
-* Loss of Individual Sample Resolution - If cell barcodes are absent or compromised, making it impossible to distinguish between individual contributions.
-* Increased Variability and Reduced Sensitivity - Pooling RNA from heterogeneous sources can mask biological differences and increase variability, reducing the sensitivity needed to detect subtle changes in gene expression.
-* Unequal Sample Representation - If unequal amounts of RNA are pooled from each sample, it can result in disproportionate representation, potentially skewing the data and leading to misleading interpretations.
-* Batch Effects - If different pools of samples are processed, prepared, or sequenced in separate batches, batch effects can arise, confounding the biological signal and complicating data analysis. It is impossible to correct for batch effect if the barcodes are absent or compromised.
-* Data normalization - Samples with varying RNA quality, quantities, or levels of degradation may contribute unevenly to the pool, complicating normalization and affecting downstream analysis.
+* **Loss of Individual Sample Resolution** - If cell barcodes are absent or compromised, making it impossible to distinguish between individual contributions.
+* **Increased Variability and Reduced Sensitivity** - Pooling RNA from heterogeneous sources can mask biological differences and increase variability, reducing the sensitivity needed to detect subtle changes in gene expression.
+* **Unequal Sample Representation** - If unequal amounts of RNA are pooled from each sample, it can result in disproportionate representation, potentially skewing the data and leading to misleading interpretations.
+* **Batch Effects** - If different pools of samples are processed, prepared, or sequenced in separate batches, batch effects can arise, confounding the biological signal and complicating data analysis. It is impossible to correct for batch effect if the barcodes are absent or compromised.
+* **Data normalization** - Samples with varying RNA quality, quantities, or levels of degradation may contribute unevenly to the pool, complicating normalization and affecting downstream analysis.
 
-**We strongly advise discussing your pooling strategy with a bioinformatician before proceeding, as these challenges can significantly impact the success of your experiment and its analysis.**
+*We strongly advise discussing your pooling strategy with a bioinformatician before proceeding, as these challenges can significantly impact the success of your experiment and its analysis.*
 
 ## Batches and their effects
 
@@ -83,7 +81,7 @@ For example, when visualizing RNA-seq data using a multidimensional scaling (MDS
 
 This scenario illustrates a typical batch effect, where the biological differences between the patients overshadow the intended experimental treatment differences. Such a confounding effect complicates the interpretation of the results. After correcting for patient-specific variability (i.e., removing the batch effect), the samples re-cluster according to the experimental conditions, allowing for accurate comparisons between the knockout and control groups. This adjustment helps to ensure that the observed differences reflect the treatment effects rather than unintended batch influences.
 
-```{r, echo=FALSE, fig.align="center", fig.cap ="Batch effects: Due to genetic differences in three differentt patients arising due to different patient genetics: Samples are taken from three different patients- X, Y and Z. The gene expression is compared between three conditions- control, gene 1 knockdown and gene 2 knockdown. The samples initially cluster based on sample origin which is clearly a batch effect. After removing the patient diversity, the samples can be seen to cluster based on experimental conditions which can now be compared.", out.width="600px", out.height="250px"}
+```{r, echo=FALSE, fig.align="center", fig.cap ="Batch effects: MDS plot before and after removing patient variation from the data.", out.width="600px", out.height="250px"}
 knitr::include_graphics("images/experimental_design/MDS-batch.png")
 ```
 
@@ -94,21 +92,32 @@ Thus, it is crucial to thoroughly investigate the data, collect detailed informa
 
 A confounded RNA-Seq experiment is one in which the distinct effects of two different sources of variation in the data cannot be separated.
 
-For instance, sex is known to significantly influence gene expression. If all the control mice in an experiment were female and all the treatment mice were male, the treatment effect would be confounded by sex. In this scenario, it would be impossible to distinguish the treatment effect from the effect of sex. Consider another scenario, if all the control mice are from cage A and all the treatment mice for cage B, the treatment effects are confounded by the cage. The living conditions in the two cages may vary which is indistinguishable from the treatment effects.
+For instance, sex is known to significantly influence gene expression. If all the control mice in an experiment were female and all the treatment mice were male, the treatment effect would be confounded by sex. In this scenario, it would be impossible to distinguish the treatment effect from the effect of sex. Consider another scenario, if all the control mice are from cage A and all the treatment mice for cage B, the treatment effects are confounded by the cage. The living conditions in the two cages may vary which is indistinguishable from the treatment effects.  
 
 ```{r, echo=FALSE, fig.align="center", fig.cap ="Confounding effects in RNASeq experiments: Three mice are selected each for the two conditions- normal and diseased. But the normal group consist of only female (XX) mice and vice versa. It will be difficult to determine if the true difference between two groups is due to the condition or the sex.", out.width="500px", out.height="200px"}
 knitr::include_graphics("images/experimental_design/confounding.png")
 ```
 
-To avoid confounding, it is important to ensure the sample source/animals in each condition are all the same sex, age, litter, and batch, if possible. If this is not entirely possible, then make sure to split the animals equally between different conditions. Also ensure the samples are collected at the same time or randomise samples if they can’t be processed all at one time. It's best to discuss the experimental design with a bioinformatician before conducting the experiment.
+However, this is not always possible. When comparing diseased vs. healthy mice that are kept in different cages by design, you risk confounding the biological condition (disease vs. healthy) with cage-specific effects, such as environmental differences (e.g., diet, microflora, stress levels) that can affect gene expression independently of the disease. To mitigate this potential confounding factor, you can take several measures to ensure that cage effects do not bias the results.
+
+1. **Use Multiple Cages per Group (Biological Replicates):** Ensure that both the diseased and healthy groups are housed in multiple cages, with several biological replicates (mice) per condition distributed across different cages. This way, the variation between cages can be treated as a random effect in the statistical analysis. For example, keep 2-3 diseased mice per cage across 3-4 cages and do the same for healthy mice. This helps distribute cage-specific environmental factors.
+
+2. **Account for Cage as a Random Effect in Statistical Models:** In your statistical analysis, explicitly model "cage" as a random effect. Doing this, you separate out any variance caused by cage differences from the variance caused by the condition itself, allowing for more accurate comparisons of gene expression between conditions. To be specific, you can use mixed-effects models (e.g., linear mixed models) where the cage is treated as a random effect and the condition (disease vs. healthy) is a fixed effect. This helps isolate the influence of disease vs. healthy status from any systematic cage-related bias.
+
+3. **Rotate or Randomly Assign Mice to Cages:** If feasible,randomise the assignment of mice, i.e., randomly assign mice to cages or rotate them between cages during the experiment to avoid any systematic differences between cages that could lead to confounding.
+
+4. **Collect Environmental Data from Each Cage:** Measure and monitor environmental factors in each cage, such as temperature, humidity, air quality, food consumption, and microbial flora. These factors can influence gene expression and may vary between cages. This allows you to assess whether any specific environmental variables correlate with gene expression differences. If necessary, these environmental factors can be included as covariates in the statistical analysis.
+
+5. **Pooling Samples Across Cages:** When possible, pool RNA samples from mice in different cages within the same condition (e.g., pool RNA from multiple diseased mice housed in different cages) to reduce the potential influence of cage-specific effects. This reduces the impact of cage-related variation by averaging out environmental differences across multiple cages. However, this approach may reduce the ability to detect individual-level variation.
+
+
 
 
 ## Summary
 
-As a general rule for a standard RNA-Seq experiment, at least three biological replicates should be included, though it is ideal to have more to increase statistical power. A sequencing depth of 10 to 20 million reads per sample is typically sufficient for a standard gene expression analysis.
+In conclusion, designing a robust RNA-Seq experiment requires thoughtful consideration of various factors to ensure accurate and meaningful results. From selecting the appropriate sample sources to determining the necessary sequencing depth (typically 10 to 20 million reads per sample for a standard gene expression analysis), every decision influences the quality of the data and the validity of the conclusions drawn. The inclusion of biological replicates is essential for capturing natural variability, while technical replicates help control for experimental errors. As a general rule for a standard RNA-Seq experiment, **at least three biological replicates** should be included, though it is ideal to have more to increase statistical power.
 
-Careful experimental design is critical, with sufficient replicates and randomization of samples to reduce the impact of technical biases or confounding factors on the results andd ensure the capture of both within-group and between-group variations while minimizing technical noise. Incorporating these considerations into the experimental design matrix is essential for ensuring robust differential expression (DE) analysis, which will be further explored in the following sections.
-
+Attention must also be paid to potential sources of unwanted variation, such as batch effects and confounding factors, which can obscure true biological signals. These challenges can be mitigated through careful planning, including randomization, pooling strategies, and advanced statistical modeling. Addressing these variables not only enhances the reliability of the experiment but also enables a more accurate interpretation of gene expression differences, leading to more valid biological insights. We'll discuss more about the experimental and statistical strategies in the next sections. Ultimately, a well-balanced experimental design is crucial for the success of RNA-Seq studies and for generating reproducible and insightful data.
 
 
 ```{r, echo=FALSE, fig.align="center", fig.cap ="Summary: Factors affecting the outcome of an RNA-Seq experiment ([source](https://www.amazon.com/Experimental-Design-Laboratory-Biologists-Reproducibility/dp/1107424887)).", out.width="700px", out.height="200px"}
@@ -120,30 +129,30 @@ knitr::include_graphics("images/experimental_design/exp-factors.png")
 The project goal is to study the expression profiles of basal stem-cell (B) and luminal cells (L) in the mammary gland of virgin (vir), pregnant (preg) and lactating mice (lact). The data has already been mapped against the GRCm39 genome assembly.
 
 1. The samples are as follows: 
-      * Mm_cgX_vir_B1
-      * Mm_cgX_vir_B2
-      * Mm_cgY_vir_B3
-      * Mm_cgX_vir_L1
-      * Mm_cgX_vir_L2
-      * Mm_cgY_vir_L3
-      * Mm_cgX_preg_B1
-      * Mm_cgX_preg_B2
-      * Mm_cgY_preg_B3
-      * Mm_cgX_preg_L1
-      * Mm_cgX_preg_L2
-      * Mm_cgY_preg_L3
-      * Mm_cgX_lact_B1
-      * Mm_cgX_lact_B2
-      * Mm_cgY_lact_B3
-      * Mm_cgX_lact_L1
-      * Mm_cgX_lact_L2
-      * Mm_cgY_lact_L3
+      * Mm1_cgX_vir_B1
+      * Mm2_cgX_vir_B2
+      * Mm3_cgY_vir_B3
+      * Mm1_cgX_vir_L1
+      * Mm2_cgX_vir_L2
+      * Mm3_cgY_vir_L3
+      * Mm4_cgX_preg_B1
+      * Mm5_cgX_preg_B2
+      * Mm6_cgY_preg_B3
+      * Mm4_cgX_preg_L1
+      * Mm5_cgX_preg_L2
+      * Mm6_cgY_preg_L3
+      * Mm7_cgX_lact_B1
+      * Mm8_cgX_lact_B2
+      * Mm9_cgY_lact_B3
+      * Mm7_cgX_lact_L1
+      * Mm8_cgX_lact_L2
+      * Mm9_cgY_lact_L3
       
 - How many biological replicates are there in this experiment?
 
 - How many experimental groups are there?
 
-- The mice in the experiment were held in two separate cages(Mm_cgX, Mm_cgY). What are the potential issues?
+- The mice in the experiment were held in two separate cages(Mm_cgX, Mm_cgY). Is that a problem? Discuss.
 
 
 2. Create a sample sheet for the experimental design including all relevant factors that might affect the outcome.
