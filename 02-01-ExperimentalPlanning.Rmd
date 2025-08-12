@@ -158,7 +158,7 @@ knitr::include_graphics("https://lizard.bio/hs-fs/hubfs/scs_blog1_table-1.png?wi
 (ref:foo5) Different RNAseq isolation methods. Image source: [RNA Sequencing and Analysis (2015)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4863231/)
 
 ```{r, echo=FALSE, out.width="100%", fig.cap=" (ref:foo5)"}
-knitr::include_graphics("https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4863231/bin/nihms768779f1.jpg")
+knitr::include_graphics("https://cdn.ncbi.nlm.nih.gov/pmc/blobs/ef22/4863231/0cc69253abdf/nihms768779f1.jpg")
 ```
 
 
@@ -191,7 +191,7 @@ Not every gene needs to be assayed in an RNAseq experiment. Targeted RNAseq allo
 (ref:foo7) Alternative splicing and RNA technologies. Image source: [Deshpande D, et al, RNA-seq data science: From raw data to effective interpretation. Frontier Genetics. 2023](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/)
 
 ```{r, echo=FALSE, fig.align="center", fig.cap="(ref:foo7)", out.width="95%", out.height="70%"}
-knitr::include_graphics("https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/bin/fgene-14-997383-g002.jpg")
+knitr::include_graphics("images/experimental_design/fig_fgene-14-997383-g002.jpg")
 ```
 
 
@@ -204,7 +204,7 @@ Long read sequencing typically refers to technology that produce reads with leng
 (ref:foo8) Sequencing Depth and Coverage. Image source: [sequencing depth vs coverage](https://3billion.io/blog/sequencing-depth-vs-coverage)
 
 ```{r, echo=FALSE, fig.align="center", fig.cap="(ref:foo8)", out.width="90%"}
-knitr::include_graphics("https://3billion.io/img/news/depth-and-coverage_2023-08-25-051528_evsk.webp")
+knitr::include_graphics("images/experimental_design/fig_depth_coverage.jpeg")
 ```
 
 
@@ -230,10 +230,10 @@ However, higher sequencing depth is necessary for detecting lowly expressed diff
 
 ## RNAseq Uses
 
-(ref:foo10) Image source: [RNA-seq](https://www.helixio.fr/page/rna-seq-1)
+(ref:foo10) Image source: [RNA-seq](https://helixio.com/page/rna-seq-1)
 
 ```{r, echo=FALSE, out.width="100%", fig.cap='(ref:foo10)'}
-knitr::include_graphics("https://www.helixio.fr/uploads/kcfinder/images/PAGE%20WORKFLOW6-1.jpg")
+knitr::include_graphics("images/experimental_design/fig_rnaseq_uses_helixio.jpg")
 ```
 
 
@@ -254,7 +254,7 @@ The most common type of analysis performed with RNAseq data is differential gene
 
 (ref:foo11) Image source: [Gene-level differential expression analysis with DESeq2](https://hbctraining.github.io/DGE_workshop_salmon_online/lessons/04a_design_formulas.html)
 
-```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap =""}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap ="(ref:foo11)"}
 knitr::include_graphics("images/experimental_design/fig_dge.png")
 ```
 
@@ -294,10 +294,10 @@ knitr::include_graphics("images/experimental_design/fig_dif_splice_usage.png")
 Additionally, we can look at whether transcript levels are changing between two conditions, regardless of the gene of origin. This is known as differential transcript expression. 
 
 
-(ref:foo14) Image source: [Froussios K, et al, Relative Abundance of Transcripts (RATs): Identifying differential isoform abundance from RNA-seq. F1000Research. 2019](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10043755/)
+(ref:foo14) Image source: [Froussios K, et al, Relative Abundance of Transcripts (RATs): Identifying differential isoform abundance from RNA-seq. F1000Research. 2019](https://pmc.ncbi.nlm.nih.gov/articles/PMC6426083/)
 
 ```{r, echo=FALSE, fig.align="center", fig.cap="The types of differential expression analysis. (ref:foo14)", out.width="100%"}
-knitr::include_graphics("https://f1000research.s3.amazonaws.com/manuscripts/19594/95bdb2a3-7459-4d64-9569-ad69d8910d35_figure1.gif")
+knitr::include_graphics("images/experimental_design/fig_f1000research-8-19594-g0000.jpg")
 ```
 
 
@@ -328,6 +328,7 @@ knitr::include_graphics("https://www.pacb.com/wp-content/uploads/img_isoform_dis
 
 
 
+
 ### Transcriptome Assembly
 
 When a reference genome is either unavailable or not desired, it is possible to take RNAseq reads and assemble them into a transcriptome of the assayed genes. The assembly can be done in 2 ways, there are reference based methods and de novo methods. Reference based methods use the reference of either the organism or a closely related species. 
@@ -339,8 +340,9 @@ Long read sequencing is better suited to building high quality transcriptomes th
 (ref:foo17) Image source: [A simple guide to de novo transcriptome assembly and annotation (2022)](https://academic.oup.com/bib/article/23/2/bbab563/6514404)
 
 ```{r, echo=FALSE, out.width="100%", fig.cap='(ref:foo17)'}
-knitr::include_graphics("https://oup.silverchair-cdn.com/oup/backfile/Content_public/Journal/bib/23/2/10.1093_bib_bbab563/1/m_bbab563f3.jpeg?Expires=1729202148&Signature=FMhHgcKT3vS5SP1phAnOU3R9ayIzXS6DDCdTPOK7WQdpOPRSxFEqbIla6ISWV7pKDaINiPZBEdcpmjCn75qGFCIGTLasuKU~DD5Po69XlEH8Os~9UgmXbPMhGddL7cXxdw3skQ~dial4rI4A8mu388ZJlRPDbmr6EURBKAdm-lGpG~xxLJzN9hUmqB2FDNtOt6bY6TGvVRNOlGXTz24HveHp~feY4nhtpb9BpUEKBZgpChqMpQEw8mQAkmx-BcXBon8pynzZ7ud6cBjKMZ7W3T1Cip0OGSrJE2Bn~af~uY-Lv68PJ3319cnUelEs05Mnsr34ntJtnllPjVRUkDo2Bw__&Key-Pair-Id=APKAIE5G5CRDK6RD3PGA")
+knitr::include_graphics("images/experimental_design/fig_assembly_m_bbab563f3.jpeg")
 ```
+
 
 
 
