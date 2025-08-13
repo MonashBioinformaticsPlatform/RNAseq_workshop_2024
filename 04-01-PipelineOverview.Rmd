@@ -2,7 +2,7 @@
 
 ## High-level
 
-An RNA-seq pipeline needs to identify which RNA transcript a (short) read has originated from to quantify transcription of genes.
+An RNA-seq pipeline needs to identify which RNA transcript a sequencing read has originated from to quantify transcription of genes.
 
 Once we know the origin of each read, we can use this to estimate the abundance of each transcript.
 
@@ -18,14 +18,14 @@ At the high-level, a pipeline aims to:
 - count reads associated with features to quantify (differential) abundance
 
 Counts of the number of reads associated with each feature (_gene_) are used to 
-estimate the relative abundance of transcripts, and find differences in expression of a gene between groups (== differential expression analysis).
+estimate the relative abundance of transcripts, and find differences in gene expression between groups (== differential expression analysis).
 
 Usually we quantify expression per gene (the sum of all transcripts arising from that gene).
 
 ## A simple pipeline
 
 <a href="images/pipeline/simple_pipeline.svg" target="_blank">
-![Simple RNA-seq pipeline overview](images/pipeline/simple_pipeline.svg){width="100%"}
+![](images/pipeline/simple_pipeline.svg){width="100%" fig-alt="Simple RNA-seq pipeline overview"}
 </a>
 
 ## A more complex pipeline

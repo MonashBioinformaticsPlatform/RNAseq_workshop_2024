@@ -1,4 +1,6 @@
-# An example dataset {-}
+# Raw read QC & trimming {-}
+
+## An example dataset
 
 For the following examples, we will use the results of an `nf-core/rnaseq` run on a published dataset from [Shanle et al, 2013](https://doi.org/10.1210/me.2013-1164). ([SRP062287](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SRP062287)).
 This is a breast cancer cell line, ERα/PR/HER2 negative, and engineered to have doxycycline inducible ERβ expression. 
@@ -8,14 +10,14 @@ The cells were treated with various combinations of estrogen, doxycycline, and c
 ![Shanle et al, 2013 headline](images/Shanle_et_al_2013.jpg){width="100%"}
 </a>
 
-We've already run this dataset through the `nf-core/rnaseq` pipeline - here is the output on <a href="https://laxy.io/#/job/3pLfQoLEuWeAnWh4H3Vvbv/?access_token=e0124ee9-c8ad-4164-b59f-ca2ae0ce4d2a" target="_blank">laxy.io</a>, which includes a the FastQC reports. 
+We've already run this dataset through the `nf-core/rnaseq` pipeline - here is the output on <a href="https://laxy.io/#/job/3pLfQoLEuWeAnWh4H3Vvbv/?access_token=e0124ee9-c8ad-4164-b59f-ca2ae0ce4d2a" target="_blank">laxy.io</a>, which includes the FastQC reports. 
 
-## Raw read QC
+## FastQC
 
 Let's begin by looking at some metrics about the raw FASTQ reads. The most popular tool for this is [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/), 
 which generates reports on read quality, length, and content (among other things).
 
-![Simple RNA-seq pipeline overview: FastQC step](images/pipeline/simple_pipeline_fastqc.svg){width="100%"}
+![](images/pipeline/simple_pipeline_fastqc.svg){width="100%" fig-alt="Simple RNA-seq pipeline overview: FastQC step"}
 
 > FastQC provides a set of pass 
 > ![FastQC PASS](images/multiqc/fastqc_pass.png) / warn ![FastQC PASS](images/multiqc/fastqc_warn.png)  / fail ![FastQC PASS](images/multiqc/fastqc_fail.png) 
@@ -58,7 +60,7 @@ source of bias to the resulting expression level estimates.
 
 _However ...._
 
-The literature suggests trimming probably isn't nessecary for differential abundance studies, 
+The literature suggests trimming probably isn't necessary for differential abundance studies, 
 and quantification at the gene level is very similar between trimmed and untrimmed reads [(Liao & Shi, 2020)](https://doi.org/10.1093%2Fnargab%2Flqaa068). 
 This is because aligners used for RNA-seq 'soft-clip' reads - discarding parts at the ends of reads that don't match the reference genome.
 
@@ -112,7 +114,7 @@ FastQC shows plots summarizing exact duplicate reads, and overrepresented sequen
 <a href="https://api.laxy.io/api/v1/job/3pLfQoLEuWeAnWh4H3Vvbv/files/output/results/fastqc/SRR2155413_fastqc.html?access_token=e0124ee9-c8ad-4164-b59f-ca2ae0ce4d2a#M8" target="_blank">SRR2155413 Sequence Duplication Levels</a>
 
 > Look at the Sequence Duplication Level plot - what might the peak at >10 duplication level represent ?
-> The red line represents the proportion that the same sequences would contribute after deduplication.
+> The red line represents the proportion that those same sequences would contribute after deduplication.
 
 Our example dataset doesn't have any overrepresented sequences, but it's not uncommon to see ribosomal rRNAs, 
 poly-A or poly-G, adapter sequences, or sequences prone to strong PCR amplification in this list.

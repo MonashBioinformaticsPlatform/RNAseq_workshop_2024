@@ -9,6 +9,6 @@ Web-based:
 
 Command line:
 
-- M3 / Monarch HPC clusters
+- M3 / Monarch HPC clusters (eg using [https://nf-co.re/rnaseq](nf-co.re/rnaseq) )
 - NeCTAR virtual machine (~32 - 64Gb RAM)
 - Your laptop .. _while not recommended, you may be able to do this for smaller genomes (bacteria, yeast), and larger genomes if using the Salmon pseudo-mapping protocol_

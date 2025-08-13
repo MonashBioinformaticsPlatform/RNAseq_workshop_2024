@@ -1,5 +1,9 @@
 # Detour: demultiplexing {-}
 
+![](images/pipeline/simple_pipeline_demultiplexing.svg){width="100%" fig-alt="Simple RNA-seq pipeline overview with demultiplexing step"}
+
+----
+
 ***Before***  you get your FASTQs, the sequencing provider will have 'demultiplexed' the data output by the instrument.
 
 Sequencing providers often pool many samples onto a single flowcell.

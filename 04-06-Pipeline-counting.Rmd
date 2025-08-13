@@ -1,12 +1,26 @@
 # Counting transcripts {-}
 
+![](images/pipeline/simple_pipeline_counting.svg){width="100%" fig-alt="Simple RNA-seq pipeline overview: Counting / abundance estimation step"}
+
+----
+
 ## featureCounts
 
 `featureCounts` is a popular tool often used within RNA-seq pipelines (and as part of the `Rsubread` package in R). 
-It provides summarization and quantification of mapped read.
+It provides summarization and quantification of mapped reads.
 
 ```
 aligned reads (BAM) ==> counts matrix (genes as rows, samples as columns)
+```
+
+Example of a counts matrix (one row per gene):
+
+```
+gene_id          gene_name  gene_biotype            SRR2155413  SRR2155414  SRR2155415
+ENSG00000160072  ATAD3B     protein_coding          114         347         317
+ENSG00000279928  DDX11L17   unprocessed_pseudogene  0           0           0
+ENSG00000228037             lncRNA                  0           1           1
+ENSG00000142611  PRDM16     protein_coding          0           3           0
 ```
 
 When used for RNA-seq read counting, `featureCounts` calls a 'hit' if a read overlaps an exon in the gene by of 1 bp or more.
@@ -31,7 +45,7 @@ In an 'unstranded' library both strands of the cDNA for a transcript are sequenc
 
 For an 'unstranded' library, when two genes overlap on opposite strands, a read in that region cannot be unambigiously assigned.
 
-In a 'stranded' library, the reads always come from the coding strand, resolving this ambiguity.
+In a 'stranded' library, the reads always come from the same strand, resolving this ambiguity.
 
 See <a href="https://journals.plos.org/ploscompbiol/article/figure?id=10.1371/journal.pcbi.1004393.g006">Figure 6, Griffith et al, 2015</a> for a nice example of read assignment for strand specific libraries.
 
@@ -53,8 +67,8 @@ How do your manual counts compare with the value found in the `featureCounts` co
 Use the search box at the top of the IGV viewer to find one of:
 
   - `GNRH1` (`ENSG00000147437`) - this is a short gene with only one intron - Answer: <span class="redacted">(SRR2155413 = 6 reads)</span>
-  - `GHET1` (`ENSG00000281189`) - a lncRNA - Answer: <span class="redacted">(SRR2155413 = 7 reads)</span>
   - `INSL3` (`ENSG00000248099`) - Answer: <span class="redacted">(SRR2155413 = 5 reads) - most reads are mapped to the second intron and not counted. The counted reads are in exon3 and the 3' UTR.</span>
+  - `RGS9BP` (`ENSG00000186326`) - Answer: <span class="redacted">(SRR2155413 = 5 reads) - the ANKRD27 gene overlaps with the RGS9BP transcript, so two (unstranded) reads are ambiguous and not counted. There is one read that doesn't quite overlap the gene.</span>
 
 The locus search box will work with gene names and gene IDs as well as chromosomal coordinates.
 
@@ -68,7 +82,7 @@ _You can also search for your favorite gene - chances are there will be many map
 A 'reference' genome is an polished, high quality genome assembly agreed upon by cooperating [international genome sequencing consortia](https://www.ncbi.nlm.nih.gov/grc).
 For model organisms, these typically represent the best source of truth about the nucleotide sequence of a the genome, at the time of release.
 
-The reference genome is provided as a set of nucleotide sequences, usually as (gzip compressed) FASTA format - files with extensions like `.fasta.gz`, `.fa.gz` or `.fna.gz`. 
+The reference genome is provided as a set of nucleotide sequences, usually as (gzip compressed) FASTA format - files with extensions like `.fasta.gz`, `.fa.gz` or `.fna.gz`, and generally used with the corresponding annotations (eg GTF, GFF3).
 
 ### Reference genome identifiers
 
@@ -76,7 +90,7 @@ Assemblies usually have an 'assembly name' (eg `GRCh38.p14`) and an accession (e
 
 Each database/organization that releases a copy of the reference genome use their own file naming convention, 
 but on their website they will cross-reference to the corresponding GenBank/RefSeq accession (eg `GCA_000001405.29`) 
-- the accession is the unambigious identifier that should be used in publications.
+- this accession is the unambigious identifier that should be used in publications.
 
 For human and mouse, there are two (or three) major releases in use:
 
@@ -91,7 +105,7 @@ Mouse:
   - `GRCm38` (aka `mm10`, released 2012)
   - `GRCm39` (aka `mm39`, released 2020)
 
-eg, The nucleotide sequence of the Ensembl human genome release `GRCh38.p14` is equivalent to the NCBI GenBank `GCA_000001405.29` release.
+eg, The _nucleotide sequence_ of the Ensembl human genome release `GRCh38.p14` is equivalent to the NCBI GenBank `GCA_000001405.29` release.
 
 The chromosome names (`22` vs `chr22`) and sometimes the presence of organelle sequences (mitochondria, `MT` or `chrMT`) can vary between providers.
 
@@ -102,15 +116,15 @@ alternative loci sequences that represent population variation (haplotypes, alte
 Reference genome FASTA files often also come in 'soft-masked' (repeat/low complexity regions in lowercase), 'hard-masked' (repeat/low complexity regions as `N`s) and 'unmasked' (all uppercase) flavors.
 
 You should use the 'soft-masked' or 'unmasked' version for RNA-seq mapping (aligners typically ignore the soft-masking). 
-This allows noisy reads from repeat regions to align there rather than somewhere they shouldn't.
+This allows reads from repeat regions to align there rather than somewhere they shouldn't.
 
 ## Annotations
 
 While the nucleotide sequence of the primary chromosomes for a given release is the same between each database/organization (eg NCBI, Ensembl, ENCODE, UCSF),
-the *annotations* can vary (sometimes considerably). This is where each group gets to be creative with their own methodology for curating manual and computational 
+the *annotations* can vary (sometimes considerably). This is where each organization gets to be creative with their own methodology for curating manual and computational 
 gene annotations.
 
-> The structure of Ensembl annotation files tend to be more consistent (uniform use of gene_id, gene_name attributes etc), especially for non-model organisms.
+> Tip: The structure of Ensembl annotation files tend to be more consistent (uniform use of gene_id, gene_name attributes etc), especially for non-model organisms.
 
 #### **Which reference genome and annotation should I use** {- .rationale}
 
@@ -118,7 +132,7 @@ The one that matches your organism `¯\_(ツ)_/¯` ... ?
 
 ####  {-}
 
-#### **How should I identify the reference genome and annotation in my publication** {- .rationale}
+#### **How should I identify the reference genome and annotation in my publication ?** {- .rationale}
 
 Use the Genbank or RefSeq database identifier (including `.patch` level). Use the 
 
@@ -130,7 +144,7 @@ Use the Genbank or RefSeq database identifier (including `.patch` level). Use th
 
 ## Salmon and Kallisto  {-}
 
-The way `featureCounts` assigns reads to transcripts is relatively straightforward; ambiguous data is ignored (eg multi-mappers)
+The way `featureCounts` assigns reads to transcripts is relatively straightforward; ambiguous data is ignored (eg multi-mappers).
 
 Other more complex methods, such as Salmon and Kallisto have been developed to try and better use all the available data and account for bias, while dealing with this ambiguity.
 
