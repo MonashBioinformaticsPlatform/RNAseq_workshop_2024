@@ -58,8 +58,22 @@
             background-color: #E0BBE4;
         }
 
+        .trimming {
+            background-color: #ffedef;
+        }
+
         .non-typical {
             background-color: #D3D3D3;
+        }
+
+        .drop-placeholder {
+            display: inline-block;
+            width: 60px;
+            height: 28px;
+            margin: 5px;
+            border: 2px dashed #999;
+            border-radius: 5px;
+            background-color: rgba(0, 0, 0, 0.06);
         }
 
         .add-tool-form {
@@ -86,24 +100,41 @@
 <body>
     <div id="app" class="container">
         <h1 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem;">RNA-seq Pipeline Builder</h1>
-        <label>
+        <!-- <label>
             <input type="checkbox" v-model="colorByFunction"> Color by function
-        </label>
+        </label> -->
         <div>
             <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem;">Pipeline</h2>
-            <div class="section" @dragover.prevent @drop="onDrop($event, 'top')">
-                <div v-for="tool in topTools" :key="tool.id" class="tool" :class="{ [tool.function]: colorByFunction }"
-                    draggable="true" @dragstart="onDragStart($event, tool.id)">
-                    {{ tool.name }}
-                </div>
+            <div class="section builtPipeline" @dragover.prevent="onBuiltPipelineDragOver"
+                @drop="onDrop($event, 'top')">
+                <template v-for="(tool, index) in topTools" :key="tool.id">
+                    <div v-if="topInsertIndex === index" class="drop-placeholder" @dragover.prevent
+                        @drop.stop="onDropOnPlaceholder($event, index)"></div>
+                    <div class="tool"
+                        :class="colorByFunction ? (Array.isArray(tool.function) ? tool.function[0] : tool.function) : ''"
+                        draggable="true" @dragstart="onDragStart($event, tool.id, 'top')"
+                        @dragover.prevent="onTopItemDragOver($event, index)"
+                        @drop.stop="onDropOnTopItem($event, tool.id)">
+                        {{ tool.name }}
+                    </div>
+                </template>
+                <div v-if="topInsertIndex === topTools.length" class="drop-placeholder" @dragover.prevent
+                    @drop.stop="onDropOnPlaceholder($event, topTools.length)"></div>
             </div>
         </div>
         <div>
             <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem;">Available Tools</h2>
-            <div class="section" @dragover.prevent @drop="onDrop($event, 'bottom')">
-                <div v-for="tool in bottomTools" :key="tool.id" class="tool"
-                    :class="{ [tool.function]: colorByFunction }" draggable="true"
-                    @dragstart="onDragStart($event, tool.id)">
+            <div style="margin-bottom: 0.5rem; display: flex; gap: 8px; align-items: center;">
+                <label for="function-filter" style="font-weight: 600;">Filter by function:</label>
+                <select id="function-filter" v-model="functionFilter">
+                    <option :value="'All'">All</option>
+                    <option v-for="opt in functionOptions" :key="opt.value" :value="opt.value">{{ opt.label }}</option>
+                </select>
+            </div>
+            <div class="section tools" @dragover.prevent @drop="onDrop($event, 'bottom')">
+                <div v-for="tool in filteredBottomTools" :key="tool.id" class="tool"
+                    :class="colorByFunction ? (Array.isArray(tool.function) ? tool.function[0] : tool.function) : ''"
+                    draggable="true" @dragstart="onDragStart($event, tool.id, 'bottom')">
                     {{ tool.name }}
                 </div>
             </div>
@@ -115,68 +146,160 @@
     </div>
 
     <script>
-        const { createApp, ref } = Vue;
+        const { createApp, ref, computed } = Vue;
 
         const app = createApp({
             setup() {
+                // Mapping of function keys to human-readable labels
+                const functionLabels = {
+                    'pre-alignment-qc': 'Pre-alignment QC',
+                    'trimming': 'Trimming',
+                    'post-alignment-qc': 'Post-alignment QC',
+                    'read-counting': 'Read counting',
+                    'alignment': 'Alignment',
+                    'general-bam-processing': 'General BAM processing',
+                    'differential-expression': 'Differential expression analysis',
+                    'non-typical': 'Other',
+                };
+
                 const initialTools = [
-                    { id: 'FastQC-pre', name: 'FastQC → ', function: 'pre-alignment-qc' },
-                    { id: 'FastQC-post', name: 'FastQC → ', function: 'pre-alignment-qc' },
-                    { id: 'tool2', name: 'Trimmomatic → ', function: 'pre-alignment-qc' },
-                    { id: 'Degust', name: 'Degust → ', function: 'differential-expression' },
-                    { id: 'tool3', name: 'HISAT2 → ', function: 'alignment' },
-                    { id: 'tool4', name: 'STAR → ', function: 'alignment' },
-                    { id: 'tool5', name: 'Salmon → ', function: 'read-counting' },
-                    { id: 'tool6', name: 'Kallisto → ', function: 'read-counting' },
-                    { id: 'tool7', name: 'Samtools → ', function: 'general-bam-processing' },
-                    { id: 'tool8', name: 'featureCounts → ', function: 'read-counting' },
-                    { id: 'tool9', name: 'HTSeq → ', function: 'read-counting' },
-                    { id: 'tool10', name: 'DESeq2 → ', function: 'differential-expression' },
-                    { id: 'tool11', name: 'RSeQC → ', function: 'post-alignment-qc' },
-                    { id: 'tool12', name: 'Qualimap → ', function: 'post-alignment-qc' },
-                    { id: 'tool13', name: 'Subread → ', function: 'alignment' },
-                    { id: 'tool14', name: 'Cutadapt → ', function: 'pre-alignment-qc' },
-                    { id: 'tool15', name: 'fastp → ', function: 'pre-alignment-qc' },
-                    { id: 'tool16', name: 'limma → ', function: 'differential-expression' },
-                    { id: 'tool17', name: 'edgeR → ', function: 'differential-expression' },
-                    { id: 'tool18', name: 'sambamba → ', function: 'general-bam-processing' },
-                    { id: 'tool19', name: 'bedtools → ', function: 'general-bam-processing' },
-                    { id: 'tool20', name: 'RSEM → ', function: 'read-counting' },
-                    { id: 'tool21', name: 'UMI-tools → ', function: 'pre-alignment-qc' },
-                    { id: 'tool22', name: 'Trinity → ', function: 'non-typical' },
-                    { id: 'tool23', name: 'StringTie → ', function: 'non-typical' },
-                    { id: 'tool24', name: 'GATK → ', function: 'non-typical' },
-                    { id: 'tool25', name: 'Microsoft Excel → ', function: 'non-typical' },
-                    { id: 'tool26', name: 'Microsoft Word → ', function: 'non-typical' },
-                    { id: 'tool27', name: 'picard MarkDuplicates → ', function: 'general-bam-processing' },
-                    { id: 'tool28', name: 'samtools sort → ', function: 'general-bam-processing' },
-                    { id: 'tool29', name: 'Bowtie2 → ', function: 'alignment' },
-                    { id: 'MultiQC', name: 'MultiQC → ', function: 'post-alignment-qc' },
-                    { id: 'Glimma', name: 'Glimma → ', function: 'differential-expression' },
-                    { id: 'DupRadar', name: 'DupRadar → ', function: 'post-alignment-qc' },
+                    { id: 'FastQC-pre', name: 'FastQC → ', function: ['pre-alignment-qc'] },
+                    { id: 'FastQC-post', name: 'FastQC → ', function: ['pre-alignment-qc'] },
+                    { id: 'tool2', name: 'Trimmomatic → ', function: ['trimming'] },
+                    { id: 'Degust', name: 'Degust → ', function: ['differential-expression'] },
+                    { id: 'tool3', name: 'HISAT2 → ', function: ['alignment'] },
+                    { id: 'tool4', name: 'STAR → ', function: ['alignment'] },
+                    { id: 'tool5', name: 'Salmon → ', function: ['read-counting'] },
+                    { id: 'tool6', name: 'Kallisto → ', function: ['read-counting'] },
+                    { id: 'tool7', name: 'Samtools → ', function: ['general-bam-processing'] },
+                    { id: 'tool8', name: 'featureCounts → ', function: ['read-counting'] },
+                    { id: 'tool9', name: 'HTSeq → ', function: ['read-counting'] },
+                    { id: 'tool10', name: 'DESeq2 → ', function: ['differential-expression'] },
+                    { id: 'tool11', name: 'RSeQC → ', function: ['post-alignment-qc'] },
+                    { id: 'tool12', name: 'Qualimap → ', function: ['post-alignment-qc'] },
+                    { id: 'tool13', name: 'Subread → ', function: ['alignment'] },
+                    { id: 'tool14', name: 'Cutadapt → ', function: ['trimming'] },
+                    { id: 'tool15', name: 'fastp → ', function: ['pre-alignment-qc', 'trimming'] },
+                    { id: 'tool16', name: 'limma → ', function: ['differential-expression'] },
+                    { id: 'tool17', name: 'edgeR → ', function: ['differential-expression'] },
+                    { id: 'tool18', name: 'sambamba → ', function: ['general-bam-processing'] },
+                    { id: 'tool19', name: 'bedtools → ', function: ['general-bam-processing'] },
+                    { id: 'tool20', name: 'RSEM → ', function: ['read-counting'] },
+                    { id: 'tool21', name: 'UMI-tools → ', function: ['trimming'] },
+                    { id: 'tool22', name: 'Trinity → ', function: ['non-typical'] },
+                    { id: 'tool23', name: 'StringTie → ', function: ['non-typical'] },
+                    { id: 'tool24', name: 'GATK → ', function: ['non-typical'] },
+                    { id: 'tool25', name: 'Microsoft Excel → ', function: ['non-typical'] },
+                    { id: 'tool26', name: 'Microsoft Word → ', function: ['non-typical'] },
+                    { id: 'tool27', name: 'picard MarkDuplicates → ', function: ['general-bam-processing'] },
+                    { id: 'tool28', name: 'samtools sort → ', function: ['general-bam-processing'] },
+                    { id: 'tool29', name: 'Bowtie2 → ', function: ['alignment'] },
+                    { id: 'MultiQC', name: 'MultiQC → ', function: ['post-alignment-qc'] },
+                    { id: 'Glimma', name: 'Glimma → ', function: ['differential-expression'] },
+                    { id: 'DupRadar', name: 'DupRadar → ', function: ['post-alignment-qc'] },
                 ];
 
                 const topTools = ref([]);
+                const topInsertIndex = ref(null);
                 const bottomTools = ref([...initialTools]);
                 const colorByFunction = ref(true);
+                const functionFilter = ref('All');
                 const newToolName = ref('');
 
-                const onDragStart = (event, id) => {
+                const onDragStart = (event, id, sourceList) => {
                     event.dataTransfer.setData('text/plain', id);
+                    event.dataTransfer.setData('source', sourceList);
                 };
 
                 const onDrop = (event, targetList) => {
-                    const id = event.dataTransfer.getData('text');
+                    const id = event.dataTransfer.getData('text/plain') || event.dataTransfer.getData('text');
+                    const sourceList = event.dataTransfer.getData('source');
                     const allTools = [...topTools.value, ...bottomTools.value];
                     const sourceTool = allTools.find(tool => tool.id === id);
 
-                    if (targetList === 'top' && !topTools.value.some(tool => tool.id === id)) {
-                        topTools.value.push(sourceTool);
-                        bottomTools.value = bottomTools.value.filter(tool => tool.id !== id);
-                    } else if (targetList === 'bottom' && !bottomTools.value.some(tool => tool.id === id)) {
-                        bottomTools.value.push(sourceTool);
-                        topTools.value = topTools.value.filter(tool => tool.id !== id);
+                    if (targetList === 'top') {
+                        if (sourceList === 'bottom' && !topTools.value.some(tool => tool.id === id)) {
+                            // Move from bottom to end of top or at placeholder index
+                            const insertIndex = (topInsertIndex.value ?? topTools.value.length);
+                            topTools.value.splice(insertIndex, 0, sourceTool);
+                            bottomTools.value = bottomTools.value.filter(tool => tool.id !== id);
+                        }
+                        topInsertIndex.value = null;
+                        // If source is top and dropped on the container, treat as no-op (keeps current order)
+                    } else if (targetList === 'bottom') {
+                        if (sourceList === 'top' && !bottomTools.value.some(tool => tool.id === id)) {
+                            // Move from top to end of bottom
+                            bottomTools.value.push(sourceTool);
+                            topTools.value = topTools.value.filter(tool => tool.id !== id);
+                        }
+                        // If source is bottom and dropped on container, no-op
                     }
+                };
+
+                const onDropOnTopItem = (event, targetId) => {
+                    const draggedId = event.dataTransfer.getData('text/plain') || event.dataTransfer.getData('text');
+                    const sourceList = event.dataTransfer.getData('source');
+                    if (!draggedId || draggedId === targetId) return;
+
+                    const targetIndex = topTools.value.findIndex(t => t.id === targetId);
+                    if (targetIndex === -1) return;
+
+                    if (sourceList === 'top') {
+                        const draggedIndex = topTools.value.findIndex(t => t.id === draggedId);
+                        if (draggedIndex === -1) return;
+                        const [moved] = topTools.value.splice(draggedIndex, 1);
+                        let insertIndex = targetIndex;
+                        if (draggedIndex < targetIndex) insertIndex -= 1;
+                        topTools.value.splice(insertIndex, 0, moved);
+                        topInsertIndex.value = null;
+                    } else if (sourceList === 'bottom') {
+                        const draggedIndexBottom = bottomTools.value.findIndex(t => t.id === draggedId);
+                        if (draggedIndexBottom === -1) return;
+                        const [moved] = bottomTools.value.splice(draggedIndexBottom, 1);
+                        topTools.value.splice(targetIndex, 0, moved);
+                        topInsertIndex.value = null;
+                    }
+                };
+
+                const onDropOnPlaceholder = (event, insertIndex) => {
+                    const draggedId = event.dataTransfer.getData('text/plain') || event.dataTransfer.getData('text');
+                    const sourceList = event.dataTransfer.getData('source');
+                    if (!draggedId) return;
+
+                    if (sourceList === 'top') {
+                        const draggedIndex = topTools.value.findIndex(t => t.id === draggedId);
+                        if (draggedIndex === -1) return;
+                        const [moved] = topTools.value.splice(draggedIndex, 1);
+                        let target = insertIndex;
+                        if (draggedIndex < insertIndex) target -= 1;
+                        topTools.value.splice(target, 0, moved);
+                    } else if (sourceList === 'bottom') {
+                        const draggedIndexBottom = bottomTools.value.findIndex(t => t.id === draggedId);
+                        if (draggedIndexBottom === -1) return;
+                        const [moved] = bottomTools.value.splice(draggedIndexBottom, 1);
+                        topTools.value.splice(insertIndex, 0, moved);
+                    }
+                    topInsertIndex.value = null;
+                };
+
+                const onTopItemDragOver = (event, index) => {
+                    // Compute whether to insert before or after based on cursor horizontal position
+                    const rect = event.currentTarget.getBoundingClientRect();
+                    const midpoint = rect.left + rect.width / 2;
+                    topInsertIndex.value = event.clientX < midpoint ? index : index + 1;
+                };
+
+                const onBuiltPipelineDragOver = (event) => {
+                    // Show placeholder at end when hovering over container with no specific item
+                    if (topTools.value.length === 0) {
+                        topInsertIndex.value = 0;
+                    } else {
+                        topInsertIndex.value = topTools.value.length;
+                    }
+                };
+
+                const onBuiltPipelineDragLeave = () => {
+                    topInsertIndex.value = null;
                 };
 
                 const addTool = () => {
@@ -184,20 +307,43 @@
                         const newTool = {
                             id: `tool${Date.now()}`,
                             name: `${newToolName.value.trim()} → `,
-                            function: 'non-typical'
+                            function: ['non-typical']
                         };
                         bottomTools.value.push(newTool);
                         newToolName.value = '';
                     }
                 };
 
+                const functionOptions = computed(() => {
+                    return Object.entries(functionLabels).map(([value, label]) => ({ value, label }));
+                });
+
+                const filteredBottomTools = computed(() => {
+                    if (functionFilter.value === 'All') {
+                        return bottomTools.value;
+                    }
+                    return bottomTools.value.filter(t => Array.isArray(t.function)
+                        ? t.function.includes(functionFilter.value)
+                        : t.function === functionFilter.value);
+                });
+
                 return {
+                    functionLabels,
                     topTools,
                     bottomTools,
+                    topInsertIndex,
                     colorByFunction,
+                    functionFilter,
+                    functionOptions,
+                    filteredBottomTools,
                     newToolName,
                     onDragStart,
                     onDrop,
+                    onDropOnTopItem,
+                    onDropOnPlaceholder,
+                    onTopItemDragOver,
+                    onBuiltPipelineDragOver,
+                    onBuiltPipelineDragLeave,
                     addTool
                 };
             }
