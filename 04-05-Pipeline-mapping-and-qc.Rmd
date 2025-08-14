@@ -105,7 +105,8 @@ For samples of human or mouse tissue, you might expect anywhere between 60 - 95 
 For FFPE preserved tissue samples the mapping rate can be highly variable depending on sample quality.
 
 If the overall percentage of reads mapped is very low (<25% ?), there is chance you've chosen the wrong organism for your reference genome. 
-[Here's an example](https://laxy.io/#/job/20nDhlhpb8xv53x3R2CACg/?access_token=29ddd348-0a55-4596-b6f9-060e5186236f) of attempting to use 
+Here's <a href="files/multiqc/SRP062287_mouse_ref/multiqc_report.html" target="_blank">an example</a> 
+(or <a href="https://laxy.io/#/job/20nDhlhpb8xv53x3R2CACg/?access_token=29ddd348-0a55-4596-b6f9-060e5186236f" target="_blank">on laxy.io</a>) of attempting to use 
 the mouse genome with our human cell line example dataset.
 
 ### MultiQC: Duplication statistics

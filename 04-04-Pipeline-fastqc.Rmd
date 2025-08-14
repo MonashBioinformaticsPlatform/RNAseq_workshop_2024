@@ -76,8 +76,11 @@ What happens to the adapter content and sequence length distribution ?
 
 ####  {-}
 
-Here's our [example RNAseq run](https://laxy.io/#/job/1qUtszdMrQnXC4tawunu92/?access_token=7ad22813-fa68-4848-b93e-de30d53a35b3) without a trimming step. For this dataset, 
-important QC metrics like the "% Aligned" to the reference genome are very close, but not identical between trimmed and untrimmed reads.
+Here's a the MultiQC report for the example dataset with
+<a href="files/multiqc/SRP062287/multiqc_report.html" target="_blank">trimming</a> and 
+<a href="files/multiqc/SRP062287_untrimmed/multiqc_report.html" target="_blank">excluding the trimming step</a> 
+(and <a href="https://laxy.io/#/job/1qUtszdMrQnXC4tawunu92/?access_token=7ad22813-fa68-4848-b93e-de30d53a35b3" target="_blank">the full untrimmed run on laxy.io</a>). 
+For this dataset, important QC metrics like the "% Aligned" to the reference genome are very close (within ~1%), but not identical between trimmed and untrimmed reads.
 
 > Trimming _is_ beneficial if you are _de novo_ assembling RNA-seq reads (eg, for a non-model organism), or using RNA-seq for variant calling.
 
@@ -86,7 +89,7 @@ important QC metrics like the "% Aligned" to the reference genome are very close
 
 FastQC reports "Per base sequence content".
 
-![FastQC 'Per base sequence content' plot showing nucleotide composition bias in the first ~12 bases](images/multiqc/fastqc_per-base-sequence-content.png){width="100%"}
+![](images/multiqc/fastqc_per-base-sequence-content.png){width="100%" fig-alt="FastQC 'Per base sequence content' plot showing nucleotide composition bias in the first ~12 bases"}
 
 It is quite common to see some sequence bias at the 5' end of reads in RNA-seq libraries.
 
@@ -111,7 +114,8 @@ Ideally the %GC distribution of reads will match the theorerical distribution - 
 
 FastQC shows plots summarizing exact duplicate reads, and overrepresented sequences.
 
-<a href="https://api.laxy.io/api/v1/job/3pLfQoLEuWeAnWh4H3Vvbv/files/output/results/fastqc/SRR2155413_fastqc.html?access_token=e0124ee9-c8ad-4164-b59f-ca2ae0ce4d2a#M8" target="_blank">SRR2155413 Sequence Duplication Levels</a>
+<a href="files/fastqc/SRP062287/untrimmed/SRR2155413_fastqc.html#M8" target="_blank">SRR2155413 Sequence Duplication Levels</a> (or 
+<a href="https://api.laxy.io/api/v1/job/3pLfQoLEuWeAnWh4H3Vvbv/files/output/results/fastqc/SRR2155413_fastqc.html?access_token=e0124ee9-c8ad-4164-b59f-ca2ae0ce4d2a#M8" target="_blank">on laxy.io</a>).
 
 > Look at the Sequence Duplication Level plot - what might the peak at >10 duplication level represent ?
 > The red line represents the proportion that those same sequences would contribute after deduplication.
