@@ -141,6 +141,8 @@ What other comparisons could you perform? What do the different comparisons tell
 
 ### Volcano plot
 
+![](images/degust/volcano.png){width="75%"}
+
 A volcano plot shows the effects of these thresholds.
 
 * x-axis = log2 fold change
@@ -151,6 +153,8 @@ We might like a nice V-shaped volcano plot, where larger fold changes are always
 There may be many false negative results, and if the experiment were repeated a quite different set of genes might be discovered! Statistical testing protects us from false discoveries but not false negatives. False negatives can be reduced with more replicates and better experimental design.
 
 ### MA plot
+
+![](images/degust/ma_plot.png){width="75%"}
 
 An MA plot (sometimes also called an MD plot) helps show our ability to discover DE at different average expression levels.
 
@@ -197,9 +201,11 @@ If the histogram leans left, there probably is some real differential expression
 
 If the histogram leans right, something weird is going on because this shouldn't happen.
 
-Here, the "E2_plusdox vs DMSO_plusdox" comparison leans strongly left as we would expect. The "E2_nodox vs DMSO_nodox" comparisons leans right. That is, hmm, actually not ideal.
+Here, the "E2_plusdox vs DMSO_plusdox" comparison leans strongly left as we would expect. The "E2_nodox vs DMSO_nodox" comparisons leans right. That is, hmm, actually a little unexpected, perhaps the p-values limma is producing are slightly conservative here.
 
 ### MDS plot 
+
+![](images/degust/mds_plot.png){width="75%"}
 
 Multi-Dimensional Scaling (MDS) provides a 2D layout of your samples, attempting to preserve "distances" between the samples. MDS is very similar to Principal Components Analysis (PCA). In fact in Degust it is exactly PCA.
 
@@ -231,9 +237,9 @@ The MDS plot indicated a batch effect. Can you see some of the genes affected by
 
 ## Adjusting for batch effects
 
-Replicates seem to be a source of variation. If we can include this in our model of the data, possibly allowing us to discover more differentially expressed genes.
+Replicates seem to be a source of variation. We can include this in our model of the data, possibly allowing us to discover more differentially expressed genes.
 
-Under the hood, the R packages Degust uses fit a "linear models" for each gene. Linear models give us a great deal of flexibility analysing different experimental design. However if you configure Degust wrongly, such as including a sample in multiple conditions, Degust will go ahead and fit the corresponding linear model, but the results may not make sense and there may not be an error. See the end of this section for links to learn more about linear models.
+Under the hood, the R packages Degust uses fit a "linear model" for each gene. Linear models give us a great deal of flexibility analysing different experimental design. However if you configure Degust wrongly, such as including a sample in multiple conditions, Degust will go ahead and fit the corresponding linear model, but the results may not make sense and there may not be an error. See the end of this section for links to learn more about linear models.
 
 **To adjust for a nuisance factor with n levels, the rule is that we include n-1 of the levels as "hidden factors" in Degust.** The choice of which n-1 levels should not make a difference.
 
@@ -264,7 +270,7 @@ Once this is configured, you can choose it to test in the top-left box of the ma
 
 You can download your results by clicking on "Download results" above the gene table. This will include some further information not shown in the table:
 
-* AveExpr is average expression in log2 CPM. Use this if you want to make your own MD-plot.
+* AveExpr is average expression in log2 CPM. Use this if you want to make your own MA-plot.
 * Raw count data for each sample.
 * Counts Per Million normalized expression levels for each sample.
 
@@ -272,7 +278,7 @@ Also for the gene table:
 
 * Click on a column to sort by that column. Click again to reverse the order.
 * Click on the gear icon in the top right for some configuration options.
-* Search for your favourite gene in the search box.
+* Search for particular genes in the search box.
 
 
 ### Your turn: Catch up and explore Degust {- .challenge}
@@ -335,7 +341,7 @@ Besides the default voom/limma method, Degust offers a drop-down box of further 
 
 With the default voom/limma method, all samples are assumed to have the same quality. Recall that the residual variance is estimated from all samples, even if we are only comparing two conditions. Poor quality samples can therefore harm *all* of the comparisons we do.
 
-The voom with sample weights allows that there might be some samples with lower quality. It assigns each sample a weight, i.e. it allows that some samples may have more variation than others. If your data contains poor quality samples, but you don't want to exclude them, this method might be used.
+Voom with sample weights allows that there might be some samples with lower quality. It assigns each sample a weight, i.e. it allows that some samples may have more variation than others. If your data contains poor quality samples, but you don't want to exclude them, this method might be used.
 
 Exercise: Which of the QC plots can show us if there are poor quality samples?
 
@@ -344,7 +350,7 @@ Exercise: Which of the QC plots can show us if there are poor quality samples?
 
 The edgeR quasi-likelihood method is another well respected method of detecting differential expression.
 
-Recall that the voom/limma method uses a linear model with prevision weights derived from examining the data. In contrast the edgeR quasi-likelihood method:
+Recall that the voom/limma method uses a linear model with precision weights derived from examining the data. In contrast the edgeR quasi-likelihood method:
 
 * Uses a Generalized Linear Model: the model itself is on a log scale, but the data is fitted on a linear scale.
 * Noise is assumed to follow a negative-binomial distribution, which is thought to be appropriate for count data which also has biological variation.
@@ -357,7 +363,7 @@ The edgeR quasi-likelihood is built on a strong theoretical foundation, whereas 
 
 Topconfects is a bolt-on to the end of the voom/limma method. We could call this method voom/limma/topconfects. It tries to provide a useful ranking of genes without the need to fine-tune cutoffs. 
 
-A small FDR just tells us the log fold change is probably not zero, but it might not be a biologically important size of fold change. Even if we also filter by the *estimated* log fold change this does not guarantee a large *real* log fold change. Which genes confidently have a large log fold change? The "topconfects" method, developed at Monash, answers this question. For a chosen FDR (0.05 should be fine), topconfects ranks genes from large to small confident log fold change. Topconfects is built on a method called TREAT ("t-tests relative to a threshold"), and choosing a certain cutoff "confect" will produce an identical set of gene to TREAT for that particular log fold change threshold.
+A small FDR just tells us the log fold change is probably not zero, but it might not be a biologically important size of fold change. Even if we also filter by the *estimated* log fold change this does not guarantee a large *real* log fold change. Which genes confidently have a large log fold change? The "topconfects" method, developed at Monash, answers this question. For a chosen FDR (0.05 should be fine), topconfects ranks genes from large to small confident log fold change. Topconfects is built on a method called TREAT ("t-tests relative to a threshold"), and choosing a certain cutoff "confect" will produce an identical set of genes to TREAT for that particular log fold change threshold.
 
 * x-axis = log2 fold change, line is confidence bound ("confect"), dot is estimated log2 fold change
 * dot-size = average log2 expression
@@ -382,7 +388,7 @@ Degust provides a convenient interface for analysing RNA-Seq data, but some larg
 * A mixture of biological and technical replication.
 * Sources of unwanted variation that are not fully known.
 
-Experiments with these features can be analysed in R. Monash offers some introductory courses to R through the [Data Fluency](https://www.monash.edu/data-fluency/toolkit/r) program. To better understand the fundamentals of linear models, see in particular this Data Fluency workshop:
+Experiments with these features can be analysed in R. Your first step is to understand the R way of specifying models and using models to perform statistical tests. We have some workshop material on this topic available here:
 
 * ["Linear models in R"](https://monashdatafluency.github.io/r-linear/)
 
