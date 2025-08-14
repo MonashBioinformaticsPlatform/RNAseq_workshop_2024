@@ -1,0 +1,13 @@
+Sample	total_passed	total_failed	secondary_passed	secondary_failed	supplementary_passed	supplementary_failed	duplicates_passed	duplicates_failed	mapped_passed	mapped_failed	mapped_passed_pct	mapped_failed_pct	paired in sequencing_passed	paired in sequencing_failed	read1_passed	read1_failed	read2_passed	read2_failed	properly paired_passed	properly paired_failed	properly paired_passed_pct	properly paired_failed_pct	with itself and mate mapped_passed	with itself and mate mapped_failed	singletons_passed	singletons_failed	singletons_passed_pct	singletons_failed_pct	with mate mapped to a different chr_passed	with mate mapped to a different chr_failed	with mate mapped to a different chr (mapQ >= 5)_passed	with mate mapped to a different chr (mapQ >= 5)_failed	flagstat_total
+SRR2155413	10169111	0	1262737	0	0	0	3449577	0	10169111	0	100.0	nan	0	0	0	0	0	0	0	0	nan	nan	0	0	0	0	nan	nan	0	0	0	0	10169111
+SRR2155414	34560073	0	4755665	0	0	0	16508728	0	34560073	0	100.0	nan	0	0	0	0	0	0	0	0	nan	nan	0	0	0	0	nan	nan	0	0	0	0	34560073
+SRR2155415	32726986	0	4495077	0	0	0	15416676	0	32726986	0	100.0	nan	0	0	0	0	0	0	0	0	nan	nan	0	0	0	0	nan	nan	0	0	0	0	32726986
+SRR2155416	23003005	0	3178095	0	0	0	9819604	0	23003005	0	100.0	nan	0	0	0	0	0	0	0	0	nan	nan	0	0	0	0	nan	nan	0	0	0	0	23003005
+SRR2155417	43747268	0	6110273	0	0	0	22313134	0	43747268	0	100.0	nan	0	0	0	0	0	0	0	0	nan	nan	0	0	0	0	nan	nan	0	0	0	0	43747268
+SRR2155418	32927564	0	4672947	0	0	0	15454231	0	32927564	0	100.0	nan	0	0	0	0	0	0	0	0	nan	nan	0	0	0	0	nan	nan	0	0	0	0	32927564
+SRR2155419	16931247	0	2311385	0	0	0	6570953	0	16931247	0	100.0	nan	0	0	0	0	0	0	0	0	nan	nan	0	0	0	0	nan	nan	0	0	0	0	16931247
+SRR2155420	42096037	0	5984392	0	0	0	21123564	0	42096037	0	100.0	nan	0	0	0	0	0	0	0	0	nan	nan	0	0	0	0	nan	nan	0	0	0	0	42096037
+SRR2155421	24760933	0	3361974	0	0	0	10837506	0	24760933	0	100.0	nan	0	0	0	0	0	0	0	0	nan	nan	0	0	0	0	nan	nan	0	0	0	0	24760933
+SRR2155422	23463745	0	3137445	0	0	0	10235602	0	23463745	0	100.0	nan	0	0	0	0	0	0	0	0	nan	nan	0	0	0	0	nan	nan	0	0	0	0	23463745
+SRR2155423	34537127	0	4841428	0	0	0	16702775	0	34537127	0	100.0	nan	0	0	0	0	0	0	0	0	nan	nan	0	0	0	0	nan	nan	0	0	0	0	34537127
+SRR2155424	29857334	0	3987131	0	0	0	13825815	0	29857334	0	100.0	nan	0	0	0	0	0	0	0	0	nan	nan	0	0	0	0	nan	nan	0	0	0	0	29857334

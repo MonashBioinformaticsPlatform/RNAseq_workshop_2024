@@ -4,11 +4,11 @@ At Monash:
 
 Web-based:
 
-- Laxy.io / Degust
-- Galaxy Australia
+- <a href="https://laxy.io" target="_blank">laxy.io</a> &rarr; <a href="https://degust.erc.monash.edu/" target="_blank">Degust</a>
+- <a href="https://usegalaxy.org.au/" target="_blank">Galaxy Australia</a>
 
 Command line:
 
-- M3 / Monarch HPC clusters (eg using [https://nf-co.re/rnaseq](nf-co.re/rnaseq) )
+- M3 HPC cluster (eg using [https://nf-co.re/rnaseq](nf-co.re/rnaseq) )
 - NeCTAR virtual machine (~32 - 64Gb RAM)
 - Your laptop .. _while not recommended, you may be able to do this for smaller genomes (bacteria, yeast), and larger genomes if using the Salmon pseudo-mapping protocol_

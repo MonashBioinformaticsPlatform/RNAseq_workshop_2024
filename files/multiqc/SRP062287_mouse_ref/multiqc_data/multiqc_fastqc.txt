@@ -1,0 +1,13 @@
+Sample	Filename	File type	Encoding	Total Sequences	Sequences flagged as poor quality	Sequence length	%GC	total_deduplicated_percentage	avg_sequence_length	basic_statistics	per_base_sequence_quality	per_tile_sequence_quality	per_sequence_quality_scores	per_base_sequence_content	per_sequence_gc_content	per_base_n_content	sequence_length_distribution	sequence_duplication_levels	overrepresented_sequences	adapter_content
+SRR2155413	SRR2155413.gz	Conventional base calls	Sanger / Illumina 1.9	9113877.0	0.0	101.0	49.0	69.408044266972	101.0	pass	pass	warn	pass	fail	pass	pass	pass	warn	pass	pass
+SRR2155414	SRR2155414.gz	Conventional base calls	Sanger / Illumina 1.9	30581575.0	0.0	101.0	49.0	59.99795141986114	101.0	pass	pass	fail	pass	fail	pass	warn	pass	warn	pass	pass
+SRR2155415	SRR2155415.gz	Conventional base calls	Sanger / Illumina 1.9	29100275.0	0.0	101.0	49.0	57.14375048676774	101.0	pass	warn	fail	pass	fail	pass	pass	pass	warn	pass	pass
+SRR2155416	SRR2155416.gz	Conventional base calls	Sanger / Illumina 1.9	20318349.0	0.0	101.0	49.0	60.27322439550953	101.0	pass	pass	pass	pass	fail	pass	pass	pass	warn	pass	pass
+SRR2155417	SRR2155417.gz	Conventional base calls	Sanger / Illumina 1.9	38665207.0	0.0	101.0	49.0	56.871370800812514	101.0	pass	pass	fail	pass	fail	pass	warn	pass	warn	pass	pass
+SRR2155418	SRR2155418.gz	Conventional base calls	Sanger / Illumina 1.9	29079084.0	0.0	101.0	49.0	56.78413075349419	101.0	pass	pass	fail	pass	fail	pass	pass	pass	warn	pass	pass
+SRR2155419	SRR2155419.gz	Conventional base calls	Sanger / Illumina 1.9	14980598.0	0.0	101.0	48.0	64.5192142049239	101.0	pass	pass	warn	pass	fail	pass	pass	pass	warn	pass	pass
+SRR2155420	SRR2155420.gz	Conventional base calls	Sanger / Illumina 1.9	37064178.0	0.0	101.0	49.0	57.40210861010827	101.0	pass	pass	fail	pass	fail	pass	warn	pass	warn	pass	pass
+SRR2155421	SRR2155421.gz	Conventional base calls	Sanger / Illumina 1.9	22017473.0	0.0	101.0	49.0	60.56594655562333	101.0	pass	warn	fail	pass	fail	pass	pass	pass	warn	pass	pass
+SRR2155422	SRR2155422.gz	Conventional base calls	Sanger / Illumina 1.9	20836789.0	0.0	101.0	49.0	60.00781173477117	101.0	pass	warn	pass	pass	fail	pass	pass	pass	warn	pass	pass
+SRR2155423	SRR2155423.gz	Conventional base calls	Sanger / Illumina 1.9	30541349.0	0.0	101.0	49.0	59.316939867830044	101.0	pass	pass	fail	pass	fail	pass	warn	pass	warn	pass	pass
+SRR2155424	SRR2155424.gz	Conventional base calls	Sanger / Illumina 1.9	26622255.0	0.0	101.0	49.0	57.95235353291004	101.0	pass	warn	fail	pass	fail	pass	pass	pass	warn	pass	pass
